@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mUserIconIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user"/>
+
+        <TextView
+            android:id="@+id/mPhoneTv"
+            style="@style/MatchWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mUserIconIv"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/mDateTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mUserIconIv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mUserIconIv"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <com.c.gaoyuan.star_view_lib.StarView
+            android:id="@+id/mEvaluateStarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/mUserIconIv"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mDateTv"
+            app:checkStarDrawable="@drawable/starform"
+            app:starCount="5"
+            app:starDrawable="@drawable/starform2"
+            app:starHeight="@dimen/yPadding"
+            app:starHorizontalSpace="@dimen/yPaddingSmall"
+            app:starWidth="@dimen/yPadding"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mContentTv"
+        style="@style/MatchWrap"
+        android:layout_alignBottom="@+id/mUserIconIv"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="@dimen/yPaddingSmall"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextMiddleBigSize"/>
+
+    <RelativeLayout
+        android:id="@+id/mLikeView"
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/mLikeCountTv"
+            style="@style/WrapWrap"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:layout_toLeftOf="@+id/mEvaCountTv"
+            android:drawableLeft="@drawable/like"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="点赞"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/mEvaCountTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/news3"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="评论"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mImageRv"
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle"/>
+
+    <View
+        style="@style/DividerFixedHeight_10"/>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/bind_wechat"/>
+
+    <ImageView
+        style="@style/WrapWrap"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/yPaddingBig"
+        android:src="@drawable/wechat3"/>
+
+    <Button
+        android:id="@+id/mBindBtn"
+        style="@style/FullWeChatBtnStyle"
+        android:layout_margin="@dimen/yPaddingBigEven"
+        android:text="@string/empower_bind"
+        android:textSize="@dimen/yTextBigSize"/>
+</LinearLayout>

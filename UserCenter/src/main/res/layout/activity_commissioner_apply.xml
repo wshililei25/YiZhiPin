@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:rightText="@string/commissioner_what"
+        app:titleText="@string/apply_commissioner"/>
+
+    <LinearLayout
+        style="@style/MatchMatch.Vertical"
+        android:layout_margin="@dimen/yPaddingBig">
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="65dp"
+                android:text="@string/name"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/input_name"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+
+        <View style="@style/DividerFixedHeight"/>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="65dp"
+                android:text="@string/card_number"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mIdEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/input_card_number"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+
+        <View style="@style/DividerFixedHeight"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginTop="@dimen/yPadding"
+            android:paddingLeft="@dimen/yPadding"
+            android:text="@string/card_photo"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginTop="@dimen/yPadding"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <LinearLayout
+                style="@style/WrapWrap.Vertical">
+
+                <ImageView
+                    android:id="@+id/mCardFrontIv"
+                    android:layout_width="90dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/id2"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:text="@string/card_front"
+                    android:textColor="@color/yHint"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/WrapWrap.Vertical"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:id="@+id/mCardContraryIv"
+                    android:layout_width="90dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/id"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:text="@string/card_contrary"
+                    android:textColor="@color/yHint"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginTop="@dimen/yPadding"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <LinearLayout
+                style="@style/WrapWrap.Vertical">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:text="@string/card_photo_hand"
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <ImageView
+                    android:id="@+id/mHandIv"
+                    android:layout_width="90dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:src="@drawable/id2"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:text="@string/upload_photo"
+                    android:textColor="@color/yHint"
+                    android:textSize="@dimen/yTextSmallLarSize"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/WrapWrap.Vertical"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/example"
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <ImageView
+                    style="@style/WrapWrap"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:src="@drawable/id2"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/mCommitBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPaddingBig"
+            android:layout_marginRight="@dimen/yPadding"
+            android:text="@string/commit"
+            android:textSize="@dimen/yTextBigSize"/>
+
+    </LinearLayout>
+
+</LinearLayout>

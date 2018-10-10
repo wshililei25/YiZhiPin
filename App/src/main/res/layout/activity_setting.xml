@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        style="@style/MatchWrap"
+        app:titleText="@string/set"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap">
+
+        <TextView
+            android:id="@+id/mUserProtocolTv"
+            style="@style/SettingItemStyle"
+            android:text="@string/push_switch"/>
+
+        <ToggleButton
+            android:id="@+id/mToggleButton"
+            android:layout_width="52dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/yPadding"
+            android:background="@drawable/article_toggon_btn"
+            android:text=""
+            android:textOff=""
+            android:textOn=""/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <TextView
+        android:id="@+id/mUpdatePayTv"
+        style="@style/SettingItemStyle"
+        android:text="@string/update_pay_pwd"/>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <TextView
+        android:id="@+id/mAboutTv"
+        style="@style/SettingItemStyle"
+        android:text="@string/version_info"/>
+
+    <Button
+        android:id="@+id/mLogoutBtn"
+        style="@style/FullBtnStyle"
+        android:layout_margin="@dimen/yPaddingBig"
+        android:enabled="true"
+        android:text="@string/out_login"
+        />
+</LinearLayout>

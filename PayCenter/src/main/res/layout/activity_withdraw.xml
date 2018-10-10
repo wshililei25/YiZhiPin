@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/withdraw_w"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite"
+        android:paddingLeft="@dimen/yPadding"
+        android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingRight="@dimen/yPadding"
+        android:paddingBottom="@dimen/yPaddingSmall">
+
+        <TextView
+            android:id="@+id/nickName"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/withdraw_amount"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <EditText
+            android:id="@+id/mNickNameEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_toRightOf="@+id/nickName"
+            android:background="@null"
+            android:hint="可提 ￥0.00"
+            android:textColor="@color/yBlackLight"
+            android:textColorHint="@color/yHint"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right"/>
+    </RelativeLayout>
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/yPadding"
+        android:text="@string/withdraw_all"
+        android:textColor="@color/yMain"
+        android:textSize="@dimen/yTextMiddleSize"/>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:background="@color/yWhite">
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar">
+
+            <TextView
+                android:id="@+id/channel"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/withdraw_channel"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_toRightOf="@+id/channel"
+                android:text="@string/wechat"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:src="@drawable/right"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar">
+
+            <TextView
+                android:id="@+id/account"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/wechat_account"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_toRightOf="@+id/account"
+                android:text="@string/no_bind_account"
+                android:textColor="@color/yRed"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:src="@drawable/right"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mConfirmBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/commit"
+        android:textSize="@dimen/yTextBigSize"/>
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite">
+
+    <LinearLayout
+        style="@style/MatchWrap.Horizontal">
+
+        <TextView
+            android:id="@+id/mShipNameTv"
+            android:text="ddd"
+            style="@style/OrderShipName"/>
+
+        <TextView
+            android:id="@+id/mShipMobileTv"
+            android:text="ddd"
+            android:textColor="@color/yBlackGray"
+            style="@style/OrderShipName"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mShipAddressTv"
+        android:text="ddddddddddddddddddddddddddddd"
+        style="@style/OrderShipAddress"/>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@color/yWhite"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            android:id="@+id/mSetDefaultTv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/common_check_selector"
+            android:drawablePadding="@dimen/common_padding_middle"
+            android:gravity="center_vertical"
+            android:text="设为默认"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mEditTv"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/common_padding"
+            android:layout_toLeftOf="@+id/mDeleteTv"
+            android:drawableLeft="@drawable/pen"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/edit"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mDeleteTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/trash"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/delete"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_height="@dimen/yPaddingMiddle"
+        android:background="@color/yBgGray"/>
+</LinearLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yWhite">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        style="@style/MatchWrap"
+        app:titleText="@string/version_info"/>
+
+    <ImageView
+        style="@style/WrapWrap"
+        android:layout_marginTop="@dimen/yPaddingBigEven"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/trademark"/>
+
+    <TextView
+        android:id="@+id/mAboutTv"
+        style="@style/WrapWrap"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/version_info"
+        android:textSize="@dimen/yTextBigSize"
+        android:textColor="@color/yBlackDeep"/>
+
+</LinearLayout>

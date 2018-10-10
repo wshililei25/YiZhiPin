@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite"
+              android:padding="@dimen/yPaddingMiddle">
+
+    <RelativeLayout
+        style="@style/MatchWrap">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mUserIconReportIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user"/>
+
+        <TextView
+            android:id="@+id/mPhoneReportTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mUserIconReportIv"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mPhoneReportTv"
+            android:src="@drawable/grade12"/>
+
+        <TextView
+            android:id="@+id/mDateReportTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mUserIconReportIv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mUserIconReportIv"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <com.c.gaoyuan.star_view_lib.StarView
+            android:id="@+id/mEvaluateReportStarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/mUserIconReportIv"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mDateReportTv"
+            app:checkStarDrawable="@drawable/starform"
+            app:starCount="5"
+            app:starDrawable="@drawable/starform2"
+            app:starHeight="@dimen/yPadding"
+            app:starHorizontalSpace="@dimen/yPaddingSmall"
+            app:starWidth="@dimen/yPadding"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mContentReportTv"
+        style="@style/WrapWrap"
+        android:layout_alignBottom="@+id/mUserIconReportIv"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="@dimen/yPaddingSmall"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextMiddleBigSize"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mImageReportRv"
+        style="@style/MatchWrap"/>
+</LinearLayout>

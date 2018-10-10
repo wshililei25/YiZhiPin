@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:backImage="@drawable/leftarrow"
+        app:bg="@color/yWhite"
+        app:rightText="@string/skip"
+        app:rightTextColor="@color/yTitle"
+        app:titleText="@string/info"
+        app:titleTextColor="@color/yTitle"/>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_margin="@dimen/yPaddingBig"
+        android:gravity="center_horizontal">
+
+        <RelativeLayout
+            android:id="@+id/mUserIconView"
+            style="@style/WrapWrap">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/mUserIconIv"
+                android:layout_width="@dimen/yHeadWidth"
+                android:layout_height="@dimen/yHeadHeight"
+                android:src="@drawable/user"/>
+
+            <TextView
+                android:id="@+id/mAddTv"
+                style="@style/WrapWrap"
+                android:layout_alignBottom="@+id/mUserIconIv"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/yPadding"
+                android:text="@string/add_head"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextSmallSize"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPaddingBigSmall">
+
+            <TextView
+                android:id="@+id/nickName"
+                style="@style/WrapWrap"
+                android:layout_width="80dp"
+                android:layout_centerVertical="true"
+                android:text="@string/nickname"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mNickNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_toRightOf="@+id/nickName"
+                android:background="@null"
+                android:hint="@string/input_nickname"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+        </RelativeLayout>
+
+        <View style="@style/DividerFixedHeight"/>
+
+        <RelativeLayout
+            android:id="@+id/mMobileView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/mobile"
+                style="@style/WrapWrap"
+                android:layout_width="80dp"
+                android:layout_centerVertical="true"
+                android:text="@string/mobile_bind"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mMobileEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginRight="@dimen/yPaddingMiddle"
+                android:layout_toLeftOf="@+id/mMobileIv"
+                android:layout_toRightOf="@+id/mobile"
+                android:gravity="center_vertical"
+                android:hint="@string/bind_no"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <ImageView
+                android:id="@+id/mMobileIv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/right"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/mMobileLine"
+            style="@style/DividerFixedHeight"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/mWeChatView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/weChat"
+                style="@style/WrapWrap"
+                android:layout_width="80dp"
+                android:layout_centerVertical="true"
+                android:text="@string/wechat_bind"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mWeChatEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginRight="@dimen/yPaddingMiddle"
+                android:layout_toLeftOf="@+id/mWeChatIv"
+                android:layout_toRightOf="@+id/weChat"
+                android:gravity="center_vertical"
+                android:hint="@string/bind_no"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <ImageView
+                android:id="@+id/mWeChatIv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/right"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/mWeChatLine"
+            style="@style/DividerFixedHeight"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/mConfirmBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPaddingBigEven"
+            android:text="@string/continuation"
+            android:textSize="@dimen/yTextBigSize"/>
+    </LinearLayout>
+
+</LinearLayout>

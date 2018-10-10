@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:backImage="@drawable/leftarrow"
+        app:bg="@color/yWhite"
+        app:titleText="@string/login"
+        app:titleTextColor="@color/yTitle"/>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <LinearLayout
+        style="@style/MatchMatch.Vertical"
+        android:layout_marginLeft="@dimen/yPaddingBig"
+        android:layout_marginRight="@dimen/yPaddingBig"
+        android:gravity="center_vertical">
+
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/phone"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mMobileEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:background="@null"
+                android:hint="@string/input_mobile"
+                android:maxLength="11"
+                android:inputType="phone"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+
+        <View style="@style/DividerFixedHeight"/>
+
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal">
+
+            <TextView
+                android:id="@+id/mCodeTv"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/code"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mCodeEt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yEditHeight"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_toLeftOf="@+id/mSendCodeTv"
+                android:layout_toRightOf="@+id/mCodeTv"
+                android:background="@null"
+                android:hint="@string/input_code"
+                android:inputType="number"
+                android:textColor="@color/yBlackLight"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mSendCodeTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/get_code"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+        </RelativeLayout>
+
+        <View style="@style/DividerFixedHeight"/>
+
+        <Button
+            android:id="@+id/mLoginBtn"
+            style="@style/FullBtnStyle"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:layout_marginTop="@dimen/yPaddingBigEven"
+            android:text="@string/login"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginTop="@dimen/yPaddingBigLar"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:src="@drawable/checked"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:text="@string/read"
+                android:textColor="@color/yHint"
+                android:textSize="@dimen/yTextSmallSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:text="@string/register_agreement"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallSize"/>
+        </LinearLayout>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/yPaddingBigEven"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:drawableTop="@drawable/wechat"
+            android:text="@string/login_wechart"
+            android:textColor="@color/yHint"
+            android:textSize="@dimen/yTextSmallSize"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/recharge"/>
+
+    <TextView
+        style="@style/MatchWrap"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/yWhite"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/yPaddingBigLar"
+        android:text="@string/recharge_balance"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextMiddleSize"/>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <LinearLayout
+        style="@style/MatchWrap"
+        android:background="@color/yWhite"
+        android:gravity="center"
+        android:paddingTop="@dimen/yPaddingBig"
+        android:paddingBottom="@dimen/yPaddingBig">
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/reduce"/>
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="@dimen/yEditHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_marginRight="@dimen/yPadding"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextMaxSize"
+            android:textStyle="bold"
+            android:theme="@style/EditTextUnderline"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:src="@drawable/increase"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite">
+
+        <TextView
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar"
+            android:text="@string/pay_way"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <View
+            style="@style/DividerFixedHeight"/>
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar">
+
+            <ImageView
+                android:id="@+id/aliIv"
+                style="@style/WrapWrap"
+                android:src="@drawable/alipay"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_toRightOf="@+id/aliIv"
+                android:text="@string/pay_way"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/mAliCheckIv"
+                android:text="@string/selected"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <ImageView
+                android:id="@+id/mAliCheckIv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:src="@drawable/select4"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar">
+
+            <ImageView
+                android:id="@+id/wechatIv"
+                style="@style/WrapWrap"
+                android:src="@drawable/wechat2"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_toRightOf="@+id/wechatIv"
+                android:text="@string/pay_way"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/mWechatCheckIv"
+                android:text="@string/selected"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/mWechatCheckIv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:src="@drawable/unchecked"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mConfirmBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPadding"
+        android:text="@string/confirm_recharge"
+        android:enabled="true"
+        android:textSize="@dimen/yTextBigSize"/>
+</LinearLayout>

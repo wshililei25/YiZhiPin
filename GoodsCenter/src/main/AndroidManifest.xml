@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.yizhipin.goods">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity android:name=".ui.activity.SearchGoodsActivity"/>
+        <activity
+            android:name=".ui.activity.GoodsDetailActivity"/>
+        <activity android:name=".ui.activity.CartActivity"/>
+        <activity android:name=".ui.activity.EvaluateActivity"/>
+    </application>
+</manifest>

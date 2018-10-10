@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <LinearLayout
+        style="@style/SearchHeaderStyle"
+        android:layout_height="@dimen/ySerchHead"
+        android:paddingLeft="@dimen/yPaddingBigLar">
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:src="@drawable/coordinate"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:text="金山家园"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:src="@drawable/lower"/>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/ySerchHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_weight="1"
+            android:background="@drawable/home_header_corner_bg"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:src="@drawable/search"/>
+
+            <EditText
+                android:id="@+id/mSearchEt"
+                style="@style/WrapMatch"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:editable="false"
+                android:hint="@string/serch_hint"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mTab"
+        style="@style/TabsStyle.Category"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mVp"
+        style="@style/MatchWrap"/>
+</LinearLayout>

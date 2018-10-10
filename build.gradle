@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.compile_sdk_version = 28
+    ext.build_tools_version = '28.0.2'
+    ext.android_support_version = '28.0.0'
+    ext.min_sdk_version = 19
+    ext.target_sdk_version = 28
+
+    ext.multidex_version = '1.0.2'
+
+    ext.kotlin_version = '1.2.71'
+    ext.anko_version = '0.10.4'
+    ext.rx_java_version = '2.1.12'
+    ext.rx_android_version = '2.0.2'
+    ext.ok_http_version = '3.10.0'
+    ext.retrofit_version = '2.4.0'
+    ext.dagger_version = '2.15'
+    ext.rx_lifecycle_version = '2.2.1'
+    ext.glide_version = '3.7.0'
+    ext.circle_imageView_version = "2.1.0"
+    ext.take_photo_version = "4.0.3"
+    ext.alert_view_version = "1.0.3"
+    ext.bottom_navigation = "2.0.4"
+    ext.banner_version = "1.4.10"
+    ext.triangle_label_view_version = "1.1.2"
+    ext.flowlayout_version = "1.0.3"
+    ext.rxbus_version = "1.0.2"
+    ext.badgeview_version = "1.1.2"
+    ext.numberbutton_version = "0.0.1"
+    ext.arouter_api_version = '1.4.0'
+    ext.arouter_compiler_version = '1.2.1'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

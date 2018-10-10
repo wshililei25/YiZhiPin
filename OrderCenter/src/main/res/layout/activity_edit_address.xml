@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Common"
+              android:orientation="vertical">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:rightText="@string/confirm_add"
+        app:titleText="@string/take_address"/>
+
+    <LinearLayout
+        style="@style/WrapWrap.Vertical"
+        android:background="@color/yWhite">
+
+        <LinearLayout
+            android:id="@+id/mShipNameView"
+            style="@style/MatchWrap.Horizontal"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/addressee"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mShipNameEt"
+                style="@style/WeightMatch"
+                android:background="@null"
+                android:hint="@string/input_addressee"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <LinearLayout
+            android:id="@+id/mShipMobileView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_below="@id/mShipNameView"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/take_mobile"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mShipMobileEt"
+                style="@style/WeightMatch"
+                android:background="@null"
+                android:hint="@string/input_addressee_mobile"
+                android:maxLength="11"
+                android:inputType="phone|number"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <LinearLayout
+            android:id="@+id/mCityAddressView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_below="@id/mShipMobileView"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/take_address"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mCityAddressEt"
+                style="@style/WeightMatch"
+                android:background="@null"
+                android:hint="@string/input_addressee"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:src="@drawable/right"/>
+        </LinearLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <LinearLayout
+            android:id="@+id/mShipAddressView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_below="@id/mShipMobileView"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/detail_addressee"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <EditText
+                android:id="@+id/mShipAddressEt"
+                style="@style/WeightMatch"
+                android:background="@null"
+                android:hint="@string/input_detail_addressee"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

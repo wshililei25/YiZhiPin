@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <LinearLayout
+        style="@style/SearchHeaderStyle"
+        android:layout_height="@dimen/ySerchHead"
+        android:paddingLeft="@dimen/yPaddingBigLar">
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:src="@drawable/coordinate"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:text="金山家园"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <ImageView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:src="@drawable/lower"/>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/ySerchHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_weight="1"
+            android:background="@drawable/home_header_corner_bg"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:src="@drawable/search"/>
+
+            <EditText
+                android:id="@+id/mSearchEt"
+                style="@style/WrapMatch"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:editable="false"
+                android:hint="@string/serch_hint"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        style="@style/MatchWrap">
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/mHomeBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"/>
+
+                <com.yizhipin.message.widgets.NewsFlipperView
+                    android:id="@+id/mNewsFlipperView"
+                    style="@style/MatchWrap"
+                    android:layout_width="250dp"
+                    android:layout_marginLeft="@dimen/common_padding_middle"
+                    android:layout_marginTop="@dimen/common_padding_small"
+                    android:layout_marginRight="@dimen/common_padding_middle"
+                    android:layout_marginBottom="@dimen/common_padding_small"
+                    android:background="@drawable/corner_news_bg"/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mCategoryRv"
+                style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/yPaddingSmall"/>
+
+            <LinearLayout
+                style="@style/MatchWrap.Horizontal"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:background="@color/yWhite"
+                android:padding="@dimen/yPadding">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/yMain"/>
+
+                <TextView
+                    style="@style/MatchWrap"
+                    android:layout_marginLeft="@dimen/yPaddingSmall"
+                    android:background="@color/common_white"
+                    android:text="@string/hot"
+                    android:textColor="@color/yMain"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mHomeDiscountRv"
+                style="@style/commonRecyclerView"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:paddingLeft="@dimen/common_padding"
+                android:paddingRight="@dimen/common_padding"
+                android:paddingBottom="@dimen/common_padding_small"/>
+
+            <LinearLayout
+                style="@style/MatchWrap.Horizontal"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:background="@color/yWhite"
+                android:padding="@dimen/yPadding">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/yMain"/>
+
+                <TextView
+                    style="@style/MatchWrap"
+                    android:layout_marginLeft="@dimen/yPaddingSmall"
+                    android:background="@color/common_white"
+                    android:text="@string/nearby_bill"
+                    android:textColor="@color/yMain"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"/>
+
+            <me.crosswall.lib.coverflow.core.PagerContainer
+                android:id="@+id/mTopicContainer"
+                style="@style/MatchMatch">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/mTopicPager"
+                    android:layout_width="200dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:overScrollMode="never"/>
+            </me.crosswall.lib.coverflow.core.PagerContainer>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

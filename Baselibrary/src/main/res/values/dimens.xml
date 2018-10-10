@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="yTextMaxSize">23sp</dimen>
+    <dimen name="yTextHugeSize">21sp</dimen>
+    <dimen name="yTextLargeSize">18sp</dimen>
+    <dimen name="yTextBigSize">16sp</dimen>
+    <dimen name="yTextMiddleBigSize">15sp</dimen>
+    <dimen name="yTextMiddleSize">13sp</dimen>
+    <dimen name="yTextSmallLarSize">12sp</dimen>
+    <dimen name="yTextSmallSize">11sp</dimen>
+
+    <dimen name="yPaddingBigEven">80dp</dimen>
+    <dimen name="yPaddingBig">50dp</dimen>
+    <dimen name="yPaddingBigSmall">25dp</dimen>
+    <dimen name="yPaddingBigLar">20dp</dimen>
+    <dimen name="yPadding">15dp</dimen>
+    <dimen name="yPaddingMiddle">10dp</dimen>
+    <dimen name="yPaddingSmall">5dp</dimen>
+    <dimen name="yPaddingMinSmall">3dp</dimen>
+
+    <dimen name="yBtnHeight">40dp</dimen>
+    <dimen name="yEditHeight">50dp</dimen>
+    <dimen name="yBtnRadius">20dp</dimen>
+    <dimen name="yHeadHeight">80dp</dimen>
+    <dimen name="yHeadWidth">80dp</dimen>
+    <dimen name="ySerchWidth">150dp</dimen>
+    <dimen name="ySerchHeight">33dp</dimen>
+    <dimen name="ySerchHead">55dp</dimen>
+    <dimen name="yEvaluateIvWidthHeight">110dp</dimen>
+
+    <dimen name="common_divider_height">1px</dimen>
+    <dimen name="common_divider_width">1px</dimen>
+    <dimen name="common_header_bar_height">50dp</dimen>
+
+    <dimen name="common_line_height">50dp</dimen>
+
+    <dimen name="common_padding_big">50dp</dimen>
+    <dimen name="common_padding">15dp</dimen>
+    <dimen name="common_padding_middle">10dp</dimen>
+    <dimen name="common_padding_small">5dp</dimen>
+    <dimen name="common_padding_least">3dp</dimen>
+    <dimen name="common_radius">30dp</dimen>
+    <dimen name="common_border_size">1px</dimen>
+
+    <dimen name="text_large_size">18sp</dimen>
+    <dimen name="text_big_size">16sp</dimen>
+    <dimen name="text_middle_size">14sp</dimen>
+    <dimen name="text_small_size">12sp</dimen>
+</resources>

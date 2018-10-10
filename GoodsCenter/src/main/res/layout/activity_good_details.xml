@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch"
+                android:background="@color/yWhite">
+
+    <FrameLayout
+        style="@style/MatchMatch"
+        android:layout_above="@+id/bottomView">
+
+        <com.yizhipin.base.widgets.IdeaScrollView
+            android:id="@+id/mIdeaScrollView"
+            style="@style/MatchWrap">
+
+            <LinearLayout
+                style="@style/MatchWrap"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/mGoodView"
+                    style="@style/MatchWrap"
+                    android:orientation="vertical">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/mBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="375dp"/>
+
+                    <TextView
+                        android:id="@+id/mGoodName"
+                        style="@style/WrapWrap"
+                        android:padding="@dimen/yPaddingMiddle"
+                        android:text="ddddd"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextLargeSize"/>
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:paddingLeft="@dimen/yPaddingMiddle"
+                        android:paddingRight="@dimen/yPaddingMiddle">
+
+                        <TextView
+                            android:id="@+id/systemPrice"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mSystemPriceTv"
+                            android:layout_marginBottom="2dp"
+                            android:text="@string/system_price"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/systemRmb"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mSystemPriceTv"
+                            android:layout_marginBottom="2dp"
+                            android:layout_toRightOf="@+id/systemPrice"
+                            android:paddingLeft="@dimen/yPaddingMiddle"
+                            android:text="@string/rmb"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/mSystemPriceTv"
+                            style="@style/WrapWrap"
+                            android:layout_toRightOf="@+id/systemRmb"
+                            android:paddingLeft="@dimen/yPaddingSmall"
+                            android:text="0.00"
+                            android:textColor="@color/yRed"
+                            android:textSize="@dimen/yTextLargeSize"/>
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/shape_main"
+                            android:paddingLeft="@dimen/yPaddingMiddle"
+                            android:paddingTop="@dimen/yPaddingMinSmall"
+                            android:paddingRight="@dimen/yPaddingMiddle"
+                            android:paddingBottom="@dimen/yPaddingMinSmall"
+                            android:text="@string/collect_goods"
+                            android:textColor="@color/yMain"
+                            android:textSize="@dimen/yTextSmallLarSize"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:paddingLeft="@dimen/yPaddingMiddle"
+                        android:paddingRight="@dimen/yPaddingMiddle">
+
+                        <TextView
+                            android:id="@+id/retailPrice"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mRetailPriceTv"
+                            android:layout_marginBottom="2dp"
+                            android:text="@string/retail_price"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/retailRmb"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mRetailPriceTv"
+                            android:layout_marginBottom="2dp"
+                            android:layout_toRightOf="@+id/retailPrice"
+                            android:paddingLeft="@dimen/yPaddingMiddle"
+                            android:text="@string/rmb"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/mRetailPriceTv"
+                            style="@style/WrapWrap"
+                            android:layout_toRightOf="@+id/retailRmb"
+                            android:paddingLeft="@dimen/yPaddingSmall"
+                            android:text="0.00"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextLargeSize"/>
+
+                        <TextView
+                            android:id="@+id/inventory"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mRetailPriceTv"
+                            android:layout_marginBottom="2dp"
+                            android:layout_toRightOf="@+id/mRetailPriceTv"
+                            android:paddingLeft="@dimen/yPaddingBigSmall"
+                            android:text="@string/inventory"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/mInventoryTv"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mRetailPriceTv"
+                            android:layout_marginBottom="2dp"
+                            android:layout_toRightOf="@+id/inventory"
+                            android:paddingLeft="@dimen/yPaddingSmall"
+                            android:text="0件"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:padding="@dimen/yPaddingMiddle">
+
+                        <TextView
+                            android:id="@+id/mMonthVolumeTv"
+                            style="@style/WrapWrap"
+                            android:text="月销 0单"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextSmallLarSize"/>
+
+                        <TextView
+                            android:id="@+id/mAllVolumeTv"
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPaddingBig"
+                            android:layout_toRightOf="@+id/mMonthVolumeTv"
+                            android:text="总成交 0单"
+                            android:textColor="@color/yCategory"
+                            android:textSize="@dimen/yTextSmallLarSize"/>
+
+                        <com.c.gaoyuan.star_view_lib.StarView
+                            android:id="@+id/mStarView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            app:checkStarDrawable="@drawable/starform"
+                            app:starCount="5"
+                            app:starDrawable="@drawable/starform2"
+                            app:starHeight="@dimen/yPadding"
+                            app:starHorizontalSpace="@dimen/yPaddingSmall"
+                            app:starWidth="@dimen/yPadding"/>
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/DividerFixedHeight_10"/>
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:layout_margin="@dimen/yPaddingMiddle">
+
+                        <ImageView
+                            android:id="@+id/mShopIv"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/leftarrow2"/>
+
+                        <TextView
+                            android:id="@+id/mShopName"
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPadding"
+                            android:layout_toRightOf="@+id/mShopIv"
+                            android:text="ddddd"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextLargeSize"/>
+
+                        <TextView
+                            android:id="@+id/mCategoryTv"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mShopIv"
+                            android:layout_marginLeft="@dimen/yPadding"
+                            android:layout_toRightOf="@+id/mShopIv"
+                            android:background="@drawable/shape_main"
+                            android:paddingLeft="@dimen/yPaddingMiddle"
+                            android:paddingTop="@dimen/yPaddingMinSmall"
+                            android:paddingRight="@dimen/yPaddingMiddle"
+                            android:paddingBottom="@dimen/yPaddingMinSmall"
+                            android:text="@string/hamlet"
+                            android:textColor="@color/yMain"
+                            android:textSize="@dimen/yTextSmallLarSize"/>
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/mShopIv"
+                            android:layout_marginLeft="@dimen/yPadding"
+                            android:layout_toRightOf="@+id/mCategoryTv"
+                            android:background="@drawable/shape_main_solid"
+                            android:paddingLeft="@dimen/yPaddingMiddle"
+                            android:paddingTop="@dimen/yPaddingMinSmall"
+                            android:paddingRight="@dimen/yPaddingMiddle"
+                            android:paddingBottom="@dimen/yPaddingMinSmall"
+                            android:text="@string/into_shop"
+                            android:textColor="@color/yWhite"
+                            android:textSize="@dimen/yTextSmallLarSize"/>
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/DividerFixedHeight_10"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mEvaluateView"
+                    style="@style/MatchWrap"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:orientation="vertical"
+                        android:padding="@dimen/yPaddingMiddle">
+
+                        <TextView
+                            android:id="@+id/mEvaluateTv"
+                            style="@style/WrapWrap"
+                            android:text="@string/evaluate_new"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/mEvaluateMoreTv"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:drawableRight="@drawable/right"
+                            android:drawablePadding="@dimen/yPaddingMinSmall"
+                            android:text="@string/more"
+                            android:textColor="@color/yBlackGray"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/DividerFixedHeight"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"/>
+
+                    <include layout="@layout/layout_evaluate_item"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mReportView"
+                    style="@style/MatchWrap"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:orientation="vertical"
+                        android:padding="@dimen/yPaddingMiddle">
+
+                        <TextView
+                            android:id="@+id/mReportTv"
+                            style="@style/WrapWrap"
+                            android:text="@string/report_commissioner"
+                            android:textColor="@color/yBlack"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+
+                        <TextView
+                            android:id="@+id/mReportMoreTv"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:drawableRight="@drawable/right"
+                            android:drawablePadding="@dimen/yPaddingMinSmall"
+                            android:text="@string/more"
+                            android:textColor="@color/yBlackGray"
+                            android:textSize="@dimen/yTextMiddleSize"/>
+                    </RelativeLayout>
+
+                    <View
+                        style="@style/DividerFixedHeight"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"/>
+
+                    <include layout="@layout/layout_report_item"/>
+
+                    <View
+                        style="@style/DividerFixedHeight_10"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/four"
+                    style="@style/MatchWrap"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/five"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/six"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/six"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/six"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.yizhipin.base.widgets.IdeaScrollView>
+
+        <LinearLayout
+            android:id="@+id/mHeaderParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/yBtnHeight"
+                android:background="#00FFFFFF"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/mBackIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:src="@drawable/leftarrow2"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioGroup
+                        android:id="@+id/mRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            style="@style/WrapWrap"
+                            android:button="@null"
+                            android:text="@string/commodity"/>
+
+                        <RadioButton
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:button="@null"
+                            android:text="@string/evaluate"/>
+
+                        <RadioButton
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:button="@null"
+                            android:text="@string/report"/>
+
+                        <RadioButton
+                            style="@style/WrapWrap"
+                            android:layout_marginLeft="@dimen/yPaddingMiddle"
+                            android:button="@null"
+                            android:text="@string/details"/>
+
+                    </RadioGroup>
+
+                    <ImageView
+                        android:id="@+id/mBackHeadIv"
+                        style="@style/WrapWrap"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/yPadding"
+                        android:src="@drawable/leftarrow"/>
+                </FrameLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomView"
+        style="@style/MatchWrap"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yBgGray"
+            android:drawableTop="@drawable/shoppingcart2"
+            android:gravity="center"
+            android:paddingTop="@dimen/yPaddingMiddle"
+            android:paddingBottom="@dimen/yPaddingMiddle"
+            android:text="@string/add_card"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yWhite"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="￥ 0.00"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/single_price"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yMain"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="￥ 0.00"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/appname"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextSmallSize"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.yizhipin.usercenter">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:label="@string/app_name"
+        android:exported="true">
+        <activity android:name=".ui.activity.LoginActivity"/>
+        <activity android:name=".ui.activity.UserInfoActivity"/>
+        <activity android:name=".ui.activity.BindMobileActivity"/>
+        <activity android:name=".ui.activity.BindWeChatActivity"/>
+        <activity android:name=".ui.activity.CommissionerApplyActivity"/>
+        <activity android:name=".ui.activity.WalletActivity"/>
+
+    </application>
+</manifest>

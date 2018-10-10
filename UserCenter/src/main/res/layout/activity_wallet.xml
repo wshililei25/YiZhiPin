@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/wallet"/>
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:text="@string/balance"
+        android:textColor="@color/yBlackDeep"
+        android:textSize="@dimen/yTextSmallLarSize"/>
+
+    <RelativeLayout
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:layout_marginBottom="@dimen/yPaddingBigSmall">
+
+        <TextView
+            android:id="@+id/mAmountTv"
+            style="@style/WrapWrap"
+            android:text="￥0.00"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextHugeSize"
+            android:textStyle="bold"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mAmountTv"
+            android:layout_marginBottom="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mAmountTv"
+            android:text="@string/yuan"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"/>
+
+    <LinearLayout
+        style="@style/MatchWrap.Horizontal"
+        android:layout_height="@dimen/yPaddingBig">
+
+        <LinearLayout
+            android:id="@+id/mRechargeTv"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:src="@drawable/inbox"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:text="@string/recharge"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <View
+            style="@style/DividerFixedWidth.MarginTopBottom"/>
+
+        <LinearLayout
+            android:id="@+id/mWithdrawTv"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:src="@drawable/inbox2"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:text="@string/withdraw_w"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        style="@style/DividerFixedHeight_10"/>
+
+</LinearLayout>

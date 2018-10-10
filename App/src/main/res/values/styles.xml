@@ -1,0 +1,38 @@
+<resources>
+    <!-- "我的" 订单标签样式 -->
+    <style name="MeOrderLabelStyle">
+        <item name="android:textSize">@dimen/yTextSmallLarSize</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:background">@color/yWhite</item>
+        <item name="android:paddingTop">@dimen/yPaddingMiddle</item>
+        <item name="android:paddingBottom">@dimen/yPaddingMiddle</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:textColor">@color/yBlackDeep</item>
+    </style>
+    <!-- "我的" 单项样式 -->
+    <style name="MeItemStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/yPadding</item>
+        <item name="android:paddingTop">@dimen/yPadding</item>
+        <item name="android:paddingRight">@dimen/yPadding</item>
+        <item name="android:paddingBottom">@dimen/yPadding</item>
+        <item name="android:background">@color/yWhite</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableRight">@drawable/right</item>
+        <item name="android:textSize">@dimen/yTextMiddleBigSize</item>
+        <item name="android:textColor">@color/yBlack</item>
+    </style>
+    <!-- 设置界面单项样式 -->
+    <style name="SettingItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/yBlackLight</item>
+        <item name="android:textSize">@dimen/yTextBigSize</item>
+        <item name="android:drawableRight">@drawable/right</item>
+        <item name="android:background">@color/yWhite</item>
+        <item name="android:padding">@dimen/yPadding</item>
+    </style>
+</resources>

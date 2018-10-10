@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/MatchMatch.Vertical"
+            android:background="@color/yBgGray">
+
+    <LinearLayout
+        style="@style/MatchMatch.Vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background"
+            android:gravity="center_vertical"
+            android:padding="@dimen/yPadding">
+
+            <RelativeLayout
+                style="@style/WrapWrap">
+
+                <RelativeLayout
+                    android:id="@+id/mHeadView"
+                    style="@style/WrapWrap">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/mUserIconIv"
+                        android:layout_width="@dimen/yHeadWidth"
+                        android:layout_height="@dimen/yHeadHeight"
+                        android:src="@drawable/user"/>
+
+                    <ImageView
+                        android:id="@+id/mCommissionerIv"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mUserIconIv"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/commissioner"
+                        android:visibility="gone"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/mUserNameTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_toRightOf="@+id/mHeadView"
+                    android:text="@string/login"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+                <ImageView
+                    android:id="@+id/mGradeIv"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/yPaddingSmall"
+                    android:layout_toRightOf="@+id/mUserNameTv"/>
+
+                <TextView
+                    android:id="@+id/credit"
+                    style="@style/WrapWrap"
+                    android:layout_alignBottom="@+id/mHeadView"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_toRightOf="@+id/mHeadView"
+                    android:text="@string/credit"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:id="@+id/mCreditTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignBottom="@+id/mHeadView"
+                    android:layout_marginLeft="@dimen/yPaddingSmall"
+                    android:layout_toRightOf="@+id/credit"
+                    android:text="0"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/yTextLargeSize"/>
+
+                <RelativeLayout
+                    android:id="@+id/mNewView"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="@dimen/yPaddingBigLar"
+                    android:paddingRight="@dimen/yPaddingSmall">
+
+                    <ImageView
+                        android:id="@+id/mNewIv"
+                        style="@style/WrapWrap"
+                        android:src="@drawable/news"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mNewIv"
+                        android:text="@string/news"
+                        android:textColor="@color/common_white"
+                        android:textSize="@dimen/yTextMiddleSize"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/mNewCountIv"
+                    style="@style/WrapWrap"
+                    android:layout_alignRight="@+id/mNewView"
+                    android:layout_marginLeft="-5dp"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"
+                    android:src="@drawable/circular3"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/mAllOrderTv"
+            style="@style/MeItemStyle"
+            android:paddingTop="@dimen/yPaddingBigLar"
+            android:paddingBottom="@dimen/yPaddingBigLar"
+            android:text="@string/my_order"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:background="@color/yWhite">
+
+            <TextView
+                android:id="@+id/mWaitPayOrderTv"
+                style="@style/MeOrderLabelStyle"
+                android:drawableTop="@drawable/wallet2"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/for_paymen"/>
+
+            <TextView
+                android:id="@+id/mSpellListTv"
+                style="@style/MeOrderLabelStyle"
+                android:drawableTop="@drawable/spelling"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/spell_list"/>
+
+            <TextView
+                android:id="@+id/mSendGoodsTv"
+                style="@style/MeOrderLabelStyle"
+                android:drawableTop="@drawable/closedpackage"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/send_goods"/>
+
+            <TextView
+                android:id="@+id/mWaitConfirmOrderTv"
+                style="@style/MeOrderLabelStyle"
+                android:drawableTop="@drawable/rectangulardeliverytruck"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/take_goods"/>
+
+            <TextView
+                android:id="@+id/mAppraiseTv"
+                style="@style/MeOrderLabelStyle"
+                android:drawableTop="@drawable/news2"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/appraise"/>
+
+            <TextView
+                android:id="@+id/mCustomerServiceTv"
+                style="@style/MeOrderLabelStyle"
+                android:drawableTop="@drawable/currencybutton"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/customer_service"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/mWalletView"
+            style="@style/MatchWrap"
+            android:layout_marginTop="@dimen/yPaddingMiddle">
+
+            <TextView
+                style="@style/MeItemStyle"
+                android:drawableLeft="@drawable/wallet3"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/wallet"/>
+
+            <TextView
+                android:id="@+id/mAnountTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/yPaddingBigSmall"
+                android:text="￥0.00"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mRedPaperTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/redenvelopes"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/red_reper"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mCommissionerTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/medal"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/apply_commissioner"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <RelativeLayout
+            style="@style/MatchWrap">
+
+            <TextView
+                style="@style/MeItemStyle"
+                android:drawableLeft="@drawable/shoppingcart"
+                android:drawablePadding="@dimen/yPaddingSmall"
+                android:text="@string/nav_bar_cart"/>
+
+            <TextView
+                android:id="@+id/mCartCountTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/yPaddingBigSmall"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mCollectSkimTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/stars"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/collect_skim"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mAddressTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/take_address"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/take_address"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mShareTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/growth"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/spread"/>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+
+        <TextView
+            android:id="@+id/mWithdrawTv"
+            style="@style/MeItemStyle"
+            android:drawableLeft="@drawable/creditcard"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="@string/withdraw"/>
+
+        <TextView
+            android:id="@+id/mSettingTv"
+            style="@style/MeItemStyle"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:layout_marginBottom="@dimen/yPaddingMiddle"
+            android:drawableLeft="@drawable/settings"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="设置"/>
+    </LinearLayout>
+</ScrollView>
