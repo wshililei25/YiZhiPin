@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/MatchMatch"
-                android:background="@color/yWhite">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch"
+    android:background="@color/yWhite">
 
     <FrameLayout
         style="@style/MatchMatch"
@@ -24,7 +24,7 @@
                     <com.youth.banner.Banner
                         android:id="@+id/mBanner"
                         android:layout_width="match_parent"
-                        android:layout_height="375dp"/>
+                        android:layout_height="375dp" />
 
                     <TextView
                         android:id="@+id/mGoodName"
@@ -32,7 +32,7 @@
                         android:padding="@dimen/yPaddingMiddle"
                         android:text="ddddd"
                         android:textColor="@color/yBlack"
-                        android:textSize="@dimen/yTextLargeSize"/>
+                        android:textSize="@dimen/yTextLargeSize" />
 
                     <RelativeLayout
                         style="@style/MatchWrap"
@@ -46,7 +46,7 @@
                             android:layout_marginBottom="2dp"
                             android:text="@string/system_price"
                             android:textColor="@color/yRed"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/systemRmb"
@@ -57,7 +57,7 @@
                             android:paddingLeft="@dimen/yPaddingMiddle"
                             android:text="@string/rmb"
                             android:textColor="@color/yRed"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/mSystemPriceTv"
@@ -66,7 +66,7 @@
                             android:paddingLeft="@dimen/yPaddingSmall"
                             android:text="0.00"
                             android:textColor="@color/yRed"
-                            android:textSize="@dimen/yTextLargeSize"/>
+                            android:textSize="@dimen/yTextLargeSize" />
 
                         <TextView
                             style="@style/WrapWrap"
@@ -78,7 +78,7 @@
                             android:paddingBottom="@dimen/yPaddingMinSmall"
                             android:text="@string/collect_goods"
                             android:textColor="@color/yMain"
-                            android:textSize="@dimen/yTextSmallLarSize"/>
+                            android:textSize="@dimen/yTextSmallLarSize" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -93,7 +93,7 @@
                             android:layout_marginBottom="2dp"
                             android:text="@string/retail_price"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/retailRmb"
@@ -104,7 +104,7 @@
                             android:paddingLeft="@dimen/yPaddingMiddle"
                             android:text="@string/rmb"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/mRetailPriceTv"
@@ -113,7 +113,7 @@
                             android:paddingLeft="@dimen/yPaddingSmall"
                             android:text="0.00"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextLargeSize"/>
+                            android:textSize="@dimen/yTextLargeSize" />
 
                         <TextView
                             android:id="@+id/inventory"
@@ -124,7 +124,7 @@
                             android:paddingLeft="@dimen/yPaddingBigSmall"
                             android:text="@string/inventory"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/mInventoryTv"
@@ -135,7 +135,7 @@
                             android:paddingLeft="@dimen/yPaddingSmall"
                             android:text="0件"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                     </RelativeLayout>
 
@@ -148,7 +148,7 @@
                             style="@style/WrapWrap"
                             android:text="月销 0单"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextSmallLarSize"/>
+                            android:textSize="@dimen/yTextSmallLarSize" />
 
                         <TextView
                             android:id="@+id/mAllVolumeTv"
@@ -157,7 +157,7 @@
                             android:layout_toRightOf="@+id/mMonthVolumeTv"
                             android:text="总成交 0单"
                             android:textColor="@color/yCategory"
-                            android:textSize="@dimen/yTextSmallLarSize"/>
+                            android:textSize="@dimen/yTextSmallLarSize" />
 
                         <com.c.gaoyuan.star_view_lib.StarView
                             android:id="@+id/mStarView"
@@ -169,11 +169,10 @@
                             app:starDrawable="@drawable/starform2"
                             app:starHeight="@dimen/yPadding"
                             app:starHorizontalSpace="@dimen/yPaddingSmall"
-                            app:starWidth="@dimen/yPadding"/>
+                            app:starWidth="@dimen/yPadding" />
                     </RelativeLayout>
 
-                    <View
-                        style="@style/DividerFixedHeight_10"/>
+                    <View style="@style/DividerFixedHeight_10" />
 
                     <RelativeLayout
                         style="@style/MatchWrap"
@@ -183,7 +182,7 @@
                             android:id="@+id/mShopIv"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/leftarrow2"/>
+                            android:src="@drawable/leftarrow2" />
 
                         <TextView
                             android:id="@+id/mShopName"
@@ -192,7 +191,7 @@
                             android:layout_toRightOf="@+id/mShopIv"
                             android:text="ddddd"
                             android:textColor="@color/yBlack"
-                            android:textSize="@dimen/yTextLargeSize"/>
+                            android:textSize="@dimen/yTextLargeSize" />
 
                         <TextView
                             android:id="@+id/mCategoryTv"
@@ -207,7 +206,7 @@
                             android:paddingBottom="@dimen/yPaddingMinSmall"
                             android:text="@string/hamlet"
                             android:textColor="@color/yMain"
-                            android:textSize="@dimen/yTextSmallLarSize"/>
+                            android:textSize="@dimen/yTextSmallLarSize" />
 
                         <TextView
                             style="@style/WrapWrap"
@@ -221,11 +220,10 @@
                             android:paddingBottom="@dimen/yPaddingMinSmall"
                             android:text="@string/into_shop"
                             android:textColor="@color/yWhite"
-                            android:textSize="@dimen/yTextSmallLarSize"/>
+                            android:textSize="@dimen/yTextSmallLarSize" />
                     </RelativeLayout>
 
-                    <View
-                        style="@style/DividerFixedHeight_10"/>
+                    <View style="@style/DividerFixedHeight_10" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -243,7 +241,7 @@
                             style="@style/WrapWrap"
                             android:text="@string/evaluate_new"
                             android:textColor="@color/yBlack"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/mEvaluateMoreTv"
@@ -253,14 +251,14 @@
                             android:drawablePadding="@dimen/yPaddingMinSmall"
                             android:text="@string/more"
                             android:textColor="@color/yBlackGray"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
                     </RelativeLayout>
 
                     <View
                         style="@style/DividerFixedHeight"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"/>
+                        android:layout_marginLeft="@dimen/yPaddingMiddle" />
 
-                    <include layout="@layout/layout_evaluate_item"/>
+                    <include layout="@layout/layout_evaluate_item" />
 
 
                 </LinearLayout>
@@ -280,7 +278,7 @@
                             style="@style/WrapWrap"
                             android:text="@string/report_commissioner"
                             android:textColor="@color/yBlack"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
 
                         <TextView
                             android:id="@+id/mReportMoreTv"
@@ -290,43 +288,38 @@
                             android:drawablePadding="@dimen/yPaddingMinSmall"
                             android:text="@string/more"
                             android:textColor="@color/yBlackGray"
-                            android:textSize="@dimen/yTextMiddleSize"/>
+                            android:textSize="@dimen/yTextMiddleSize" />
                     </RelativeLayout>
 
                     <View
                         style="@style/DividerFixedHeight"
-                        android:layout_marginLeft="@dimen/yPaddingMiddle"/>
+                        android:layout_marginLeft="@dimen/yPaddingMiddle" />
 
-                    <include layout="@layout/layout_report_item"/>
+                    <include layout="@layout/layout_report_item" />
 
-                    <View
-                        style="@style/DividerFixedHeight_10"/>
+                    <View style="@style/DividerFixedHeight_10" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/four"
+                    android:id="@+id/mDetailView"
                     style="@style/MatchWrap"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/five"/>
+                        android:src="@drawable/default_loading" />
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/six"/>
+                        android:src="@drawable/default_loading" />
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/six"/>
+                        android:src="@drawable/default_loading" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/six"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -352,7 +345,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/yPaddingMiddle"
                     android:layout_marginTop="@dimen/yPaddingMiddle"
-                    android:src="@drawable/leftarrow2"/>
+                    android:src="@drawable/leftarrow2" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -368,25 +361,25 @@
                         <RadioButton
                             style="@style/WrapWrap"
                             android:button="@null"
-                            android:text="@string/commodity"/>
+                            android:text="@string/commodity" />
 
                         <RadioButton
                             style="@style/WrapWrap"
                             android:layout_marginLeft="@dimen/yPaddingMiddle"
                             android:button="@null"
-                            android:text="@string/evaluate"/>
+                            android:text="@string/evaluate" />
 
                         <RadioButton
                             style="@style/WrapWrap"
                             android:layout_marginLeft="@dimen/yPaddingMiddle"
                             android:button="@null"
-                            android:text="@string/report"/>
+                            android:text="@string/report" />
 
                         <RadioButton
                             style="@style/WrapWrap"
                             android:layout_marginLeft="@dimen/yPaddingMiddle"
                             android:button="@null"
-                            android:text="@string/details"/>
+                            android:text="@string/details" />
 
                     </RadioGroup>
 
@@ -395,7 +388,7 @@
                         style="@style/WrapWrap"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/yPadding"
-                        android:src="@drawable/leftarrow"/>
+                        android:src="@drawable/leftarrow" />
                 </FrameLayout>
             </RelativeLayout>
         </LinearLayout>
@@ -418,7 +411,7 @@
             android:paddingBottom="@dimen/yPaddingMiddle"
             android:text="@string/add_card"
             android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallSize"/>
+            android:textSize="@dimen/yTextSmallSize" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -432,13 +425,13 @@
                 style="@style/WrapWrap"
                 android:text="￥ 0.00"
                 android:textColor="@color/yMain"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
+                android:textSize="@dimen/yTextMiddleBigSize" />
 
             <TextView
                 style="@style/WrapWrap"
                 android:text="@string/single_price"
                 android:textColor="@color/yMain"
-                android:textSize="@dimen/yTextSmallSize"/>
+                android:textSize="@dimen/yTextSmallSize" />
         </LinearLayout>
 
         <LinearLayout
@@ -453,13 +446,13 @@
                 style="@style/WrapWrap"
                 android:text="￥ 0.00"
                 android:textColor="@color/yWhite"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
+                android:textSize="@dimen/yTextMiddleBigSize" />
 
             <TextView
                 style="@style/WrapWrap"
                 android:text="@string/appname"
                 android:textColor="@color/yWhite"
-                android:textSize="@dimen/yTextSmallSize"/>
+                android:textSize="@dimen/yTextSmallSize" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

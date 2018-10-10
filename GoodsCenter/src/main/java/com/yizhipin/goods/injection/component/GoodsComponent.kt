@@ -6,7 +6,7 @@ import com.yizhipin.goods.injection.module.CartModule
 import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.ui.activity.EvaluateActivity
 import com.yizhipin.goods.ui.activity.GoodsDetailActivity
-import com.yizhipin.goods.ui.fragment.GoodsDetailTabOneFragment
+import com.yizhipin.goods.ui.activity.ReportActivity
 import dagger.Component
 
 /**
@@ -17,6 +17,6 @@ import dagger.Component
 interface GoodsComponent {
 
     fun inject(activity: GoodsDetailActivity)
-    fun inject(fragment: GoodsDetailTabOneFragment)
-    fun inject(fragment: EvaluateActivity)
+    fun inject(activity: EvaluateActivity)
+    fun inject(activity: ReportActivity)
 }

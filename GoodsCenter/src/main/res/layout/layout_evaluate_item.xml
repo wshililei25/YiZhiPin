@@ -53,8 +53,8 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingLeft="@dimen/yPaddingMiddle"
-        android:paddingRight="@dimen/yPaddingMiddle"
         android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingRight="@dimen/yPaddingMiddle"
         android:paddingBottom="@dimen/yPaddingSmall"
         android:textColor="@color/yBlackGray"
         android:textSize="@dimen/yTextMiddleBigSize" />
@@ -63,7 +63,7 @@
         android:id="@+id/mImageRv"
         style="@style/MatchWrap"
         android:padding="@dimen/yPaddingMiddle"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/mLikeView"
@@ -76,10 +76,10 @@
             style="@style/WrapWrap"
             android:layout_marginRight="@dimen/yPaddingMiddle"
             android:layout_toLeftOf="@+id/mEvaCountTv"
-            android:drawableLeft="@drawable/like"
+            android:drawableLeft="@drawable/news3"
             android:drawablePadding="@dimen/yPaddingSmall"
             android:text="点赞"
-            android:textColor="@color/yMain"
+            android:textColor="@drawable/selector_text"
             android:textSize="@dimen/yTextSmallLarSize" />
 
         <TextView
@@ -96,8 +96,14 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mReplyRv"
         style="@style/MatchWrap"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="-10dp"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:background="@drawable/chatbox"
         android:paddingBottom="@dimen/yPaddingMiddle"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
-    <View style="@style/DividerFixedHeight_10" />
+    <View
+        style="@style/DividerFixedHeight_10"
+        android:layout_marginTop="@dimen/yPaddingMiddle" />
 </LinearLayout>

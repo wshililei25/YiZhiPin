@@ -3,6 +3,7 @@ package com.yizhipin.goods.injection.component
 import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.goods.injection.module.CategoryModule
+import com.yizhipin.goods.ui.activity.ShopActivity
 import com.yizhipin.goods.ui.fragment.CartFragment
 import com.yizhipin.goods.ui.fragment.CategoryFragment
 import com.yizhipin.goods.ui.fragment.CategorySecondFragment
@@ -18,4 +19,5 @@ interface CategoryComponent {
     fun inject(activity: CategoryFragment)
     fun inject(activity: CategorySecondFragment)
     fun inject(activity: CartFragment)
+    fun inject(activity: ShopActivity)
 }

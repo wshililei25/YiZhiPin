@@ -128,18 +128,11 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     }
 
     private fun initView() {
-        /* mGoodsDetailTab.tabMode = TabLayout.MODE_FIXED
-               mGoodsDetailVp.adapter = GoodsDetailVpAdapter(supportFragmentManager, this)
-               mGoodsDetailTab.setupWithViewPager(mGoodsDetailVp)
 
-               mQBadgeView = QBadgeView(this)
-               mAddCartBtn.onClick(this)
-               mEnterCartTv.onClick {
-                   startActivity<CartActivity>()
-               }*/
         mBackIv.onClick(this)
         mBackHeadIv.onClick(this)
         mEvaluateMoreTv.onClick(this)
+        mReportMoreTv.onClick(this)
 
         retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         retailRmb.paint.isAntiAlias = true
@@ -200,9 +193,10 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                     Bus.send(AddCartEvent())
                 }
             }
-            R.id.mEvaluateMoreTv -> {
-                startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId)
-            }
+            R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId)
+
+            R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId)
+
 
         }
     }

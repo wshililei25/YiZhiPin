@@ -14,11 +14,6 @@ import retrofit2.http.*
     商品接口
  */
 interface GoodsApi {
-    /*
-        获取商品列表
-     */
-    @POST("goods/getGoodsList")
-    fun getGoodsList(@Body req: GoodsReq.GetGoodsListReq): Observable<BaseResp<MutableList<Goods>?>>
 
     /*
         获取商品列表
@@ -47,14 +42,27 @@ interface GoodsApi {
     fun getEvaluateNew(@Query("pid") pid: String): Observable<BaseResp<Evaluate>>
 
     /**
-     * 评价列表
-     */
-    @GET("${Api.EVALUATE_LIST}")
-    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("pid") pid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
-
-    /**
      * 最新体验报告
      */
     @GET("${Api.REPORT_NEW}")
     fun getReportNew(@Query("pid") pid: String): Observable<BaseResp<Report>>
+
+    /**
+     * 评价列表
+     */
+    @GET("${Api.EVALUATE_LIST}")
+    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+
+    /**
+     * 体验报告列表
+     */
+    @GET("${Api.REPORT_LIST}")
+    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+
+    /**
+     * 点赞
+     */
+    @POST("${Api.GIVE_LIKE}")
+    fun giveLike(): Observable<BaseResp<Boolean>>
+
 }

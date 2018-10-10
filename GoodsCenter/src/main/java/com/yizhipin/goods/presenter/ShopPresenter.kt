@@ -9,10 +9,10 @@ import com.yizhipin.goods.presenter.view.ReportView
 import com.yizhipin.goods.service.impl.GoodsServiceImpl
 import javax.inject.Inject
 
-/*
-    评价 Presenter
+/**
+ * 店铺 Presenter
  */
-class EvaluatePresenter @Inject constructor() : BasePresenter<ReportView>() {
+class ShopPresenter @Inject constructor() : BasePresenter<ReportView>() {
 
     @Inject
     lateinit var mGoodsServiceImpl: GoodsServiceImpl

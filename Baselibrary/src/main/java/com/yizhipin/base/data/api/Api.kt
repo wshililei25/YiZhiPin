@@ -18,7 +18,9 @@ interface Api {
         const val GOODS_LIST = "api/Product/Page"//商品列表
         const val GOODS_DETAIL = "api/Product"//商品详情
         const val EVALUATE_NEW = "api/ProductEva/New"//最新评价
-        const val EVALUATE_LIST = "api/ProductEva/Page"//评价列表
         const val REPORT_NEW = "api/Experience/Product"//最新体验报告
+        const val EVALUATE_LIST = "api/ProductEva/Page"//评价列表
+        const val REPORT_LIST = "api/Experience/Page"//体验报告列表
+        const val GIVE_LIKE = "api/ProductEva/Zan"//点赞
     }
 }

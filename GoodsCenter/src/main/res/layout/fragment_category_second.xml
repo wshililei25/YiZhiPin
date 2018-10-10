@@ -26,11 +26,12 @@
                     android:gravity="center">
 
                     <TextView
+                        android:id="@+id/mAreaTv"
                         style="@style/WrapWrap"
                         android:drawableRight="@drawable/lower2"
                         android:drawablePadding="@dimen/yPaddingSmall"
                         android:text="@string/region_all"
-                        android:textColor="@color/yMain"
+                        android:textColor="@drawable/selector_text"
                         android:textSize="@dimen/yTextMiddleBigSize"/>
                 </LinearLayout>
 

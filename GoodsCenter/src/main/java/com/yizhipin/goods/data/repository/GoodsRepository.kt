@@ -2,6 +2,7 @@ package com.yizhipin.goods.data.repository
 
 import com.yizhipin.base.data.net.RetrofitFactory
 import com.yizhipin.base.data.net.RetrofitFactoryGet
+import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.goods.data.api.GoodsApi
@@ -21,7 +22,9 @@ class GoodsRepository @Inject constructor() {
         根据分类搜索商品
      */
     fun getGoodsList(categoryId: Int, pageNo: Int): Observable<BaseResp<MutableList<Goods>?>> {
-        return RetrofitFactory.instance.create(GoodsApi::class.java).getGoodsList(GoodsReq.GetGoodsListReq(categoryId, pageNo))
+
+        return null!!
+//        return RetrofitFactory.instance.create(GoodsApi::class.java).getGoodsList(GoodsReq.GetGoodsListReq(categoryId, pageNo))
     }
 
     /*
@@ -34,17 +37,27 @@ class GoodsRepository @Inject constructor() {
     /*
         商品详情
      */
-    fun getGoodsDetail(map :MutableMap<String,String>): Observable<BaseResp<Goods>> {
+    fun getGoodsDetail(map: MutableMap<String, String>): Observable<BaseResp<Goods>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getGoodsDetail(map["id"]!!)
     }
 
-    fun getEvaluateNew(map :MutableMap<String,String>): Observable<BaseResp<Evaluate>> {
+    fun getEvaluateNew(map: MutableMap<String, String>): Observable<BaseResp<Evaluate>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateNew(map["pid"]!!)
     }
-    fun getEvaluateList(map :MutableMap<String,String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateList(map["currentPage"]!!,map["pid"]!!)
-    }
-    fun getReportNew(map :MutableMap<String,String>): Observable<BaseResp<Report>> {
+
+    fun getReportNew(map: MutableMap<String, String>): Observable<BaseResp<Report>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getReportNew(map["pid"]!!)
     }
+
+    fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateList(map["currentPage"]!!, map["pid"]!!, map["loginUid"]!!)
+    }
+
+    fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getReportList(map["currentPage"]!!, map["pid"]!!)
+    }
+    fun giveLike(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLike()
+    }
+
 }

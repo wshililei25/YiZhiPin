@@ -21,7 +21,7 @@ data class Evaluate(
         val createTime: String,
         val zanCount: Int,
         val evaCount: Int,
-        val zan: String,
+        var zan: Boolean,
         val loginUid: Int,
         val comments: MutableList<EvaluateReply>
 ) : Parcelable

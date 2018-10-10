@@ -66,6 +66,7 @@ class CategorySecondFragment : BaseMvpFragment<CategoryPresenter>(), CategoryVie
 
     private fun initView() {
 
+        mAreaTv.isSelected = true
         mPriceTv.isSelected = true
         mSalesView.onClick(this)
         mPriceView.onClick(this)

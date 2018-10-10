@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              style="@style/MatchWrap.Vertical"
-              android:background="@color/yWhite"
-              android:padding="@dimen/yPaddingMiddle">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchWrap.Vertical"
+    android:background="@color/yWhite">
 
     <RelativeLayout
-        style="@style/MatchWrap">
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mUserIconReportIv"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/user"/>
+            android:src="@drawable/user" />
 
         <TextView
             android:id="@+id/mPhoneReportTv"
@@ -21,13 +20,13 @@
             android:layout_marginLeft="@dimen/yPaddingSmall"
             android:layout_toRightOf="@+id/mUserIconReportIv"
             android:textColor="@color/yBlack"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
         <ImageView
             style="@style/WrapWrap"
             android:layout_marginLeft="@dimen/yPaddingMiddle"
             android:layout_toRightOf="@+id/mPhoneReportTv"
-            android:src="@drawable/grade12"/>
+            android:src="@drawable/grade12" />
 
         <TextView
             android:id="@+id/mDateReportTv"
@@ -36,11 +35,11 @@
             android:layout_marginLeft="@dimen/yPaddingSmall"
             android:layout_toRightOf="@+id/mUserIconReportIv"
             android:textColor="@color/yBlackGray"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
         <com.c.gaoyuan.star_view_lib.StarView
             android:id="@+id/mEvaluateReportStarView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/mUserIconReportIv"
             android:layout_marginLeft="@dimen/yPaddingMiddle"
@@ -50,20 +49,67 @@
             app:starDrawable="@drawable/starform2"
             app:starHeight="@dimen/yPadding"
             app:starHorizontalSpace="@dimen/yPaddingSmall"
-            app:starWidth="@dimen/yPadding"/>
+            app:starWidth="@dimen/yPadding" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/mContentReportTv"
-        style="@style/WrapWrap"
+        style="@style/MatchWrap"
         android:layout_alignBottom="@+id/mUserIconReportIv"
         android:ellipsize="end"
         android:maxLines="2"
-        android:padding="@dimen/yPaddingSmall"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingRight="@dimen/yPaddingMiddle"
+        android:paddingBottom="@dimen/yPaddingSmall"
         android:textColor="@color/yBlackGray"
-        android:textSize="@dimen/yTextMiddleBigSize"/>
+        android:textSize="@dimen/yTextMiddleBigSize" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mImageReportRv"
-        style="@style/MatchWrap"/>
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/mLikeReportView"
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/mLikeCountReportTv"
+            style="@style/WrapWrap"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:layout_toLeftOf="@+id/mEvaCountReportTv"
+            android:drawableLeft="@drawable/like"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="点赞"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/mEvaCountReportTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/news3"
+            android:drawablePadding="@dimen/yPaddingSmall"
+            android:text="评论"
+            android:textColor="@color/yBlackGray"
+            android:textSize="@dimen/yTextSmallLarSize" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mReplyReportRv"
+        style="@style/MatchWrap"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginTop="-10dp"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:background="@drawable/chatbox"
+        android:paddingBottom="@dimen/yPaddingMiddle"
+        android:visibility="gone" />
+
+    <View
+        style="@style/DividerFixedHeight_10"
+        android:layout_marginTop="@dimen/yPaddingMiddle" />
 </LinearLayout>
