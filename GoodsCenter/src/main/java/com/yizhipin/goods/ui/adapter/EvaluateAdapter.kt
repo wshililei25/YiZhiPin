@@ -1,18 +1,26 @@
 package com.yizhipin.goods.ui.adapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.Evaluate
+import com.yizhipin.goods.event.LikeEvent
+import com.yizhipin.provider.common.afterLogin
+import kotlinx.android.synthetic.main.fragment_category_second.*
 import kotlinx.android.synthetic.main.layout_evaluate_item.view.*
 
 /**
@@ -57,6 +65,37 @@ class EvaluateAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, 
             mEvaluateReplyAdapter.setData(modle.comments)
         }
 
+        holder.itemView.mLikeCountTv.isSelected = modle.zan
+        holder.itemView.mLikeCountTv.setCompoundDrawables(getSortStatus(modle.zan), null, null, null)
+        holder.itemView.mLikeCountTv.onClick {
+            afterLogin {
+                if (modle.zan) {
+                    holder.itemView.mLikeCountTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount - 1}${")"}"
+                } else {
+                    holder.itemView.mLikeCountTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount + 1}${")"}"
+                }
+                holder.itemView.mLikeCountTv.isSelected = !modle.zan
+                holder.itemView.mLikeCountTv.setCompoundDrawables(getSortStatus(!modle.zan), null, null, null)
+                modle.zan = !modle.zan
+                notifyDataSetChanged()
+                Bus.send(LikeEvent(modle.id))
+            }
+        }
+    }
+
+    private fun getSortStatus(isLike: Boolean): Drawable? {
+        var drawable: Drawable? = null
+        when (isLike) {
+            true -> {
+                drawable = ContextCompat.getDrawable(context, R.drawable.like)!!
+                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
+            }
+            false -> {
+                drawable = ContextCompat.getDrawable(context, R.drawable.news3)!!
+                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
+            }
+        }
+        return drawable
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
