@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.event.LikeEvent
 import com.yizhipin.provider.common.afterLogin
-import kotlinx.android.synthetic.main.fragment_category_second.*
 import kotlinx.android.synthetic.main.layout_evaluate_item.view.*
 
 /**
@@ -70,9 +68,9 @@ class EvaluateAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, 
         holder.itemView.mLikeCountTv.onClick {
             afterLogin {
                 if (modle.zan) {
-                    holder.itemView.mLikeCountTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount - 1}${")"}"
+                    modle.zanCount =  modle.zanCount - 1
                 } else {
-                    holder.itemView.mLikeCountTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount + 1}${")"}"
+                    modle.zanCount =  modle.zanCount + 1
                 }
                 holder.itemView.mLikeCountTv.isSelected = !modle.zan
                 holder.itemView.mLikeCountTv.setCompoundDrawables(getSortStatus(!modle.zan), null, null, null)

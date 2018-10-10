@@ -30,5 +30,16 @@ class ReportPresenter @Inject constructor() : BasePresenter<ReportView>() {
         }, mLifecycleProvider)
 
     }
+    /**
+     * 点赞 / 取消点赞
+     */
+    fun giveLikeReport(map :MutableMap<String,String>) {
+
+        mGoodsServiceImpl.giveLikeReport(map).execute(object : BaseSubscriber<Boolean>(mView) {
+            override fun onNext(t: Boolean) {
+
+            }
+        }, mLifecycleProvider)
+    }
 
 }

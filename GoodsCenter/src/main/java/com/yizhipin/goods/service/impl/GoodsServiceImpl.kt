@@ -2,12 +2,13 @@ package com.yizhipin.goods.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.convert
-import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.base.ext.convertBoolean
+import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.goods.data.repository.GoodsRepository
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Goods
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.Shop
 import com.yizhipin.goods.service.GoodsService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -56,5 +57,11 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
     }
     override fun giveLike(map: MutableMap<String, String>): Observable<Boolean> {
         return mRepository.giveLike(map).convertBoolean()
+    }
+    override fun giveLikeReport(map: MutableMap<String, String>): Observable<Boolean> {
+        return mRepository.giveLikeReport(map).convertBoolean()
+    }
+    override fun getShopDetails(map: MutableMap<String, String>): Observable<Shop> {
+        return mRepository.getShopDetails(map).convert()
     }
 }

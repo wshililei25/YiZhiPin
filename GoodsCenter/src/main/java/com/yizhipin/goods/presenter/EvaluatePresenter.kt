@@ -35,7 +35,6 @@ class EvaluatePresenter @Inject constructor() : BasePresenter<ReportView>() {
      */
     fun giveLike(map :MutableMap<String,String>) {
 
-        mView.showLoading()
         mGoodsServiceImpl.giveLike(map).execute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
 

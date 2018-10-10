@@ -10,6 +10,7 @@ import com.yizhipin.goods.data.protocol.GoodsReq
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Goods
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.Shop
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -58,6 +59,13 @@ class GoodsRepository @Inject constructor() {
     }
     fun giveLike(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLike()
+    }
+    fun giveLikeReport(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLikeReport()
+    }
+
+    fun getShopDetails(map: MutableMap<String, String>): Observable<BaseResp<Shop>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getShopDetails(map["id"]!!)
     }
 
 }

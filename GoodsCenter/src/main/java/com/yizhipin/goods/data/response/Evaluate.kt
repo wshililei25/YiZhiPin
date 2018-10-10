@@ -19,7 +19,7 @@ data class Evaluate(
         val imgurls: String,
         val starCount: Int,
         val createTime: String,
-        val zanCount: Int,
+        var zanCount: Int,
         val evaCount: Int,
         var zan: Boolean,
         val loginUid: Int,

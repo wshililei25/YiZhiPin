@@ -6,6 +6,7 @@ import com.yizhipin.goods.data.protocol.GoodsReq
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Goods
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.Shop
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -60,9 +61,20 @@ interface GoodsApi {
     fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
-     * 点赞
+     * 点赞评价
      */
     @POST("${Api.GIVE_LIKE}")
     fun giveLike(): Observable<BaseResp<Boolean>>
 
+    /**
+     * 点赞体验报告
+     */
+    @POST("${Api.GIVE_LIKE_REPORT}")
+    fun giveLikeReport(): Observable<BaseResp<Boolean>>
+
+    /**
+     * 店铺详情
+     */
+    @GET("${Api.SHOP_DETAIL}${"/{id}"}")
+    fun getShopDetails(@Path("id") id: String): Observable<BaseResp<Shop>>
 }

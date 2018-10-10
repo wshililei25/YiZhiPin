@@ -23,7 +23,6 @@ import com.yizhipin.goods.presenter.EvaluatePresenter
 import com.yizhipin.goods.presenter.view.ReportView
 import com.yizhipin.goods.ui.adapter.EvaluateAdapter
 import kotlinx.android.synthetic.main.activity_evaluate.*
-import org.jetbrains.anko.toast
 
 /**
  * Created by ${XiLei} on 2018/9/2.
@@ -34,6 +33,9 @@ class EvaluateActivity : BaseMvpActivity<EvaluatePresenter>(), ReportView, BGARe
     @Autowired(name = GoodsConstant.KEY_GOODS_ID) //注解接收上个页面的传参
     @JvmField
     var mGoodsId: Int = 0
+    @Autowired(name = GoodsConstant.KEY_EVA_COUNT) //注解接收上个页面的传参
+    @JvmField
+    var mEvaCount: Int = 0
 
     private var mCurrentPage: Int = 1
     private var mMaxPage: Int = 1
@@ -86,7 +88,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluatePresenter>(), ReportView, BGARe
         mRefreshLayout.endLoadingMore()
         mRefreshLayout.endRefreshing()
         if (result != null && result.data != null && result.data!!.size > 0) {
-            mHeaderBar.getTiTleTv().text = "所有评价"
+            mHeaderBar.getTiTleTv().text = "所有评价(${mEvaCount})"
             mMaxPage = result!!.pi.totalPage
             if (mCurrentPage == 1) {
                 mEvaluateAdapter.setData(result.data!!)

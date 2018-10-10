@@ -85,7 +85,7 @@
             android:drawableLeft="@drawable/like"
             android:drawablePadding="@dimen/yPaddingSmall"
             android:text="点赞"
-            android:textColor="@color/yMain"
+            android:textColor="@drawable/selector_text"
             android:textSize="@dimen/yTextSmallLarSize" />
 
         <TextView

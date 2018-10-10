@@ -52,6 +52,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     private var mCurrentPercentage = 0f
     private var isNeedScrollTo = true
     private lateinit var mEvaluateImageAdapter: EvaluateImageAdapter
+    private var mGoods: Goods? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,6 +134,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mBackHeadIv.onClick(this)
         mEvaluateMoreTv.onClick(this)
         mReportMoreTv.onClick(this)
+        mShopView.onClick(this)
 
         retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         retailRmb.paint.isAntiAlias = true
@@ -193,11 +195,11 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                     Bus.send(AddCartEvent())
                 }
             }
-            R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId)
+            R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.evaCount)
 
-            R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId)
+            R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.experienceCount)
 
-
+            R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
         }
     }
 
@@ -230,7 +232,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onGetGoodsDetailSuccess(result: Goods) {
         result?.let {
-
+            mGoods = result
             mGoodName.text = result.name
             mSystemPriceTv.text = result.pinPrice.toString()
             mRetailPriceTv.text = result.price.toString()

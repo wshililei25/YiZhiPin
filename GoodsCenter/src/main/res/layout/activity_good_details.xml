@@ -175,6 +175,7 @@
                     <View style="@style/DividerFixedHeight_10" />
 
                     <RelativeLayout
+                        android:id="@+id/mShopView"
                         style="@style/MatchWrap"
                         android:layout_margin="@dimen/yPaddingMiddle">
 
