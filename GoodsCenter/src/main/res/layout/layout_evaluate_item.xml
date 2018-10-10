@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              style="@style/MatchWrap.Vertical"
-              android:background="@color/yWhite">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchWrap.Vertical"
+    android:background="@color/yWhite">
 
     <RelativeLayout
         style="@style/MatchWrap"
@@ -12,7 +12,7 @@
             android:id="@+id/mUserIconIv"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/user"/>
+            android:src="@drawable/user" />
 
         <TextView
             android:id="@+id/mPhoneTv"
@@ -20,7 +20,7 @@
             android:layout_marginLeft="@dimen/yPaddingSmall"
             android:layout_toRightOf="@+id/mUserIconIv"
             android:textColor="@color/yBlack"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
         <TextView
             android:id="@+id/mDateTv"
@@ -29,7 +29,7 @@
             android:layout_marginLeft="@dimen/yPaddingSmall"
             android:layout_toRightOf="@+id/mUserIconIv"
             android:textColor="@color/yBlackGray"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
         <com.c.gaoyuan.star_view_lib.StarView
             android:id="@+id/mEvaluateStarView"
@@ -43,7 +43,7 @@
             app:starDrawable="@drawable/starform2"
             app:starHeight="@dimen/yPadding"
             app:starHorizontalSpace="@dimen/yPaddingSmall"
-            app:starWidth="@dimen/yPadding"/>
+            app:starWidth="@dimen/yPadding" />
     </RelativeLayout>
 
     <TextView
@@ -52,9 +52,18 @@
         android:layout_alignBottom="@+id/mUserIconIv"
         android:ellipsize="end"
         android:maxLines="2"
-        android:padding="@dimen/yPaddingSmall"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPaddingMiddle"
+        android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingBottom="@dimen/yPaddingSmall"
         android:textColor="@color/yBlackGray"
-        android:textSize="@dimen/yTextMiddleBigSize"/>
+        android:textSize="@dimen/yTextMiddleBigSize" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mImageRv"
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:id="@+id/mLikeView"
@@ -71,7 +80,7 @@
             android:drawablePadding="@dimen/yPaddingSmall"
             android:text="点赞"
             android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
         <TextView
             android:id="@+id/mEvaCountTv"
@@ -81,14 +90,14 @@
             android:drawablePadding="@dimen/yPaddingSmall"
             android:text="评论"
             android:textColor="@color/yBlackGray"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/mImageRv"
+        android:id="@+id/mReplyRv"
         style="@style/MatchWrap"
-        android:padding="@dimen/yPaddingMiddle"/>
+        android:paddingBottom="@dimen/yPaddingMiddle"
+        android:visibility="gone"/>
 
-    <View
-        style="@style/DividerFixedHeight_10"/>
+    <View style="@style/DividerFixedHeight_10" />
 </LinearLayout>

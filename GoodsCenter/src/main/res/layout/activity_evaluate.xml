@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               style="@style/MatchMatch.Vertical.Common">
 
     <com.yizhipin.base.widgets.HeaderBar
-        style="@style/MatchWrap"
-        app:titleText="商品列表"/>
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"/>
 
     <com.kennyc.view.MultiStateView
         android:id="@+id/mMultiStateView"

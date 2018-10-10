@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap"
+    android:paddingLeft="@dimen/yPaddingMiddle"
+    android:paddingTop="@dimen/yPaddingMiddle"
+    android:paddingRight="@dimen/yPaddingMiddle">
+
+    <TextView
+        android:id="@+id/mEvaluateReplyTv"
+        android:textColor="@color/yBlackGray"
+        android:textSize="@dimen/yTextSmallLarSize"
+        style="@style/WrapWrap" />
+</LinearLayout>

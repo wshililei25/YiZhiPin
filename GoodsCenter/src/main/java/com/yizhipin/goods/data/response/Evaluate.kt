@@ -23,5 +23,5 @@ data class Evaluate(
         val evaCount: Int,
         val zan: String,
         val loginUid: Int,
-        val shop: MutableList<EvaluateReply>
+        val comments: MutableList<EvaluateReply>
 ) : Parcelable

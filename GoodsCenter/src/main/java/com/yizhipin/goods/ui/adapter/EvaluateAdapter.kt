@@ -2,6 +2,7 @@ package com.yizhipin.goods.ui.adapter
 
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.layout_evaluate_item.view.*
 class EvaluateAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, EvaluateAdapter.ViewHolder>(context) {
 
     private lateinit var mEvaluateImageAdapter: EvaluateImageAdapter
+    private lateinit var mEvaluateReplyAdapter: EvaluateReplyAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_evaluate_item, null)
@@ -35,16 +37,24 @@ class EvaluateAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, 
         holder.itemView.mDateTv.text = DateUtils.parseDate(modle.createTime, DateUtils.FORMAT_SHORT).toString()
         holder.itemView.mContentTv.text = modle.content
         holder.itemView.mLikeCountTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount}${")"}"
-        holder.itemView.mEvaCountTv.text = "${context.getString(R.string.like)}${"("}${modle.evaCount}${")"}"
+        holder.itemView.mEvaCountTv.text = "${context.getString(R.string.comment)}${"("}${modle.evaCount}${")"}"
         holder.itemView.mEvaluateStarView.setCheckStarCount(modle.starCount)
         GlideUtils.loadUrlImage(context, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(modle.imgurl), holder.itemView.mUserIconIv)
 
-        modle.imgurls?.let {
+        if (!modle.imgurls.isNullOrEmpty()) {
+            holder.itemView.mImageRv.visibility = View.VISIBLE
             holder.itemView.mImageRv.layoutManager = GridLayoutManager(context, 3)
             mEvaluateImageAdapter = EvaluateImageAdapter(context)
             holder.itemView.mImageRv.adapter = mEvaluateImageAdapter
             val list = modle.imgurls.split(",").toMutableList()
             mEvaluateImageAdapter.setData(list)
+        }
+        if (modle.comments.isNotEmpty()) {
+            holder.itemView.mReplyRv.visibility = View.VISIBLE
+            holder.itemView.mReplyRv.layoutManager = LinearLayoutManager(context)
+            mEvaluateReplyAdapter = EvaluateReplyAdapter(context)
+            holder.itemView.mReplyRv.adapter = mEvaluateReplyAdapter
+            mEvaluateReplyAdapter.setData(modle.comments)
         }
 
     }

@@ -62,7 +62,6 @@ class EvaluateActivity : BaseMvpActivity<EvaluatePresenter>(), ReportView, BGARe
 
     private fun loadData() {
         mMultiStateView.startLoading()
-
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
         map.put("pid", mGoodsId.toString())
@@ -77,6 +76,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluatePresenter>(), ReportView, BGARe
     override fun onGetEvaluateListSuccess(result: BasePagingResp<MutableList<Evaluate>>) {
 
         if (result != null && result.data != null && result.data!!.size > 0) {
+            mHeaderBar.getTiTleTv().text = "所有评价"
             mMaxPage = result!!.pi.totalPage
             if (mCurrentPage == 1) {
                 mEvaluateAdapter.setData(result.data!!)
