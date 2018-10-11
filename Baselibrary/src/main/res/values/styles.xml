@@ -64,6 +64,14 @@
         <item name="android:background">@drawable/btn_common_selector</item>
         <item name="android:enabled">false</item>
     </style>
+    <!-- 红色按钮样式-->
+    <style name="FullRedBtnStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/yBtnHeight</item>
+        <item name="android:textColor">@color/yWhite</item>
+        <item name="android:background">@drawable/btn_common_red</item>
+        <item name="android:enabled">false</item>
+    </style>
 
     <!-- 微信绑定按钮样式-->
     <style name="FullWeChatBtnStyle">

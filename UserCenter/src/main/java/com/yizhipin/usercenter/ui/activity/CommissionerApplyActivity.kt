@@ -5,9 +5,9 @@ import android.view.View
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.enable
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.presenter.CommissionerPresenter
@@ -97,15 +97,15 @@ class CommissionerApplyActivity : BaseTakePhotoActivity<CommissionerPresenter>()
             when (mType) {
                 1 -> {
                     mFrontFileUrl = message
-                    GlideUtils.loadUrlImage(this@CommissionerApplyActivity, BaseConstant.IMAGE_SERVICE_ADDRESS + mFrontFileUrl, mCardFrontIv)
+                    mCardFrontIv.loadUrl(mFrontFileUrl)
                 }
                 2 -> {
                     mContraryFileUrl = message
-                    GlideUtils.loadUrlImage(this@CommissionerApplyActivity, BaseConstant.IMAGE_SERVICE_ADDRESS + mContraryFileUrl, mCardContraryIv)
+                    mCardContraryIv.loadUrl(mContraryFileUrl)
                 }
                 3 -> {
                     mHandFileUrl = message
-                    GlideUtils.loadUrlImage(this@CommissionerApplyActivity, BaseConstant.IMAGE_SERVICE_ADDRESS + mHandFileUrl, mHandIv)
+                    mHandIv.loadUrl(mHandFileUrl)
                 }
             }
         }

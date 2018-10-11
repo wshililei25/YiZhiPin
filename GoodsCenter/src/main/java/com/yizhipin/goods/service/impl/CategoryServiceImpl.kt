@@ -33,6 +33,10 @@ open class CategoryServiceImpl @Inject constructor() : CategoryService {
 
         return mRepository.getGoodsList(map).convertPaging()
     }
+    override fun getShopGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
+
+        return mRepository.getShopGoodsList(map).convertPaging()
+    }
 
 
 }

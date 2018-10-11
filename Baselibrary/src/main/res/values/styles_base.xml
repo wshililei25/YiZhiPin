@@ -82,6 +82,22 @@
     </style>
 
     <style name="MatchMatch.Vertical.Common">
+        <item name="android:background">@color/yBgGray</item>
+    </style>
+
+    <style name="MatchMatch.White">
+        <item name="android:background">@color/yWhite</item>
+    </style>
+
+    <style name="MatchWrap.White">
+        <item name="android:background">@color/yWhite</item>
+    </style>
+
+    <style name="MatchMatch.Vertical.White">
+        <item name="android:background">@color/yWhite</item>
+    </style>
+
+    <style name="MatchWrap.Vertical.White">
         <item name="android:background">@color/yWhite</item>
     </style>
 

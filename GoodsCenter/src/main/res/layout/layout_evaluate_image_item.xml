@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchWrap"
-              android:padding="@dimen/yPaddingMiddle">
+    style="@style/MatchWrap"
+    android:padding="@dimen/yPaddingMiddle">
 
-   <ImageView
-       android:id="@+id/mEvaluateItemIv"
-       android:layout_width="@dimen/yEvaluateIvWidthHeight"
-       android:layout_height="@dimen/yEvaluateIvWidthHeight"/>
+    <ImageView
+        android:id="@+id/mEvaluateItemIv"
+        android:layout_width="@dimen/yEvaluateIvWidthHeight"
+        android:layout_height="@dimen/yEvaluateIvWidthHeight"
+        android:scaleType="fitXY" />
 </LinearLayout>

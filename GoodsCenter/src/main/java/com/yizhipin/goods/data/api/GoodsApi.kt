@@ -29,6 +29,11 @@ interface GoodsApi {
     fun getGoodsList(@Query("currentPage") currentPage: String, @Query("primaryCategory") primaryCategory: String
                      , @Query("secondCategory") secondCategory: String, @Query("order") order: String
                      , @Query("orderType") orderType: String): Observable<BasePagingResp<MutableList<Goods>?>>
+    /**
+     * 店铺的商品列表
+     */
+    @GET(Api.GOODS_LIST)
+    fun getShopGoodsList(@Query("currentPage") currentPage: String, @Query("shopId") shopId: String): Observable<BasePagingResp<MutableList<Goods>?>>
 
     /*
         获取商品详情
@@ -58,7 +63,7 @@ interface GoodsApi {
      * 体验报告列表
      */
     @GET("${Api.REPORT_LIST}")
-    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
      * 点赞评价

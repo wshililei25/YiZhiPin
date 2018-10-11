@@ -20,12 +20,12 @@ class GoodsConstant {
         //sku分隔标识
         const val SKU_SEPARATOR = ","
         //商品ID
-        const  val KEY_GOODS_ID = "id"
+        const  val KEY_GOODS_ID = "goods_id"
         //一级分类item
         const  val KEY_CATEGORY_ITEM = "category_item"
         //评价总数量
         const  val KEY_EVA_COUNT = "eva_count"
         //店铺ID
-        const  val KEY_SHOP_ID = "id"
+        const  val KEY_SHOP_ID = "shop_id"
     }
 }

@@ -10,13 +10,12 @@ import android.widget.RadioGroup
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.event.AddCartEvent
 import com.yizhipin.base.event.UpdateCartSizeEvent
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.DateUtils
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.base.widgets.IdeaScrollView
 import com.yizhipin.goods.R
@@ -199,7 +198,9 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.experienceCount)
 
-            R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
+            R.id.mShopView -> {
+                startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id, GoodsConstant.KEY_GOODS_ID to mGoodsId)
+            }
         }
     }
 
@@ -243,6 +244,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mShopName.text = result.shop.shopName
             mEvaluateTv.text = "${getString(R.string.evaluate_new)} (${result.evaCount})"
             mReportTv.text = "${getString(R.string.report_commissioner)} (${result.experienceCount})"
+            mShopIv.loadUrl(result.shop.shopImgurl)
 
             if (result.shop.shopIdentity == "product") {
                 mCategoryTv.text = getString(R.string.hamlet)
@@ -258,8 +260,6 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 mBanner.setImages(list)
                 mBanner.start()
             }
-
-            GlideUtils.loadUrlImage(this, BaseConstant.IMAGE_SERVICE_ADDRESS + result.shop.shopImgurl, mShopIv)
         }
     }
 
@@ -281,7 +281,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mDateTv.text = DateUtils.parseDate(result.createTime, DateUtils.FORMAT_SHORT).toString()
             mContentTv.text = result.content
             mEvaluateStarView.setCheckStarCount(result.starCount)
-            GlideUtils.loadUrlImage(this, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(result.imgurl), mUserIconIv)
+            mUserIconIv.loadUrl(result.imgurl)
 
             result.imgurls?.let {
                 mImageRv.layoutManager = GridLayoutManager(this, 3)
@@ -312,7 +312,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mDateReportTv.text = DateUtils.parseDate(result.createTime, DateUtils.FORMAT_SHORT).toString()
             mContentReportTv.text = result.content
             mEvaluateReportStarView.setCheckStarCount(result.starCount)
-            GlideUtils.loadUrlImage(this, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(result.imgurl), mUserIconReportIv)
+            mUserIconReportIv.loadUrl(result.imgurl)
 
             result.imgurls?.let {
                 mImageReportRv.layoutManager = GridLayoutManager(this, 3)

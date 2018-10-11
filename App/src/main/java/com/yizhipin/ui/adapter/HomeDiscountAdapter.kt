@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.R
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.base.utils.GlideUtils
 import kotlinx.android.synthetic.main.layout_home_discount_item.view.*
 
 /**
@@ -24,9 +24,9 @@ class HomeDiscountAdapter(context: Context) : BaseRecyclerViewAdapter<String, Ho
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
 
-        GlideUtils.loadImage(mContext, dataList[position], holder.itemView.mGoodsIconIv)
         holder.itemView.mDiscountAfterTv.text = "￥150.00"
         holder.itemView.mDiscountBeforeTv.text = "￥1000.00"
+        holder.itemView.mGoodsIconIv.loadUrl(dataList[position])
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

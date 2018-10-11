@@ -5,10 +5,10 @@ import android.view.View
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.enable
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.usercenter.R
@@ -88,9 +88,8 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
                 AppPrefsUtils.putBoolean(ProviderConstant.KEY_IS_EDIT_USERINFO, true)
                 finish()
             }
-            R.id.mUserIconView -> {
-                showAlertView()
-            }
+            R.id.mUserIconView -> showAlertView()
+
             R.id.mConfirmBtn -> {
 
                 var map = mutableMapOf<String, String>()
@@ -101,7 +100,6 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
                 map.put("weixin", "")
                 map.put("alipay", "")
                 map.put("alipayName", "")
-
                 mPresenter.editUserInfo(map)
             }
 
@@ -135,7 +133,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
             toast(R.string.upload_success)
             mAddTv.visibility = View.GONE
             mRemoteFileUrl = message
-            GlideUtils.loadUrlImage(this@UserInfoActivity, BaseConstant.IMAGE_SERVICE_ADDRESS + mRemoteFileUrl, mUserIconIv)
+            mUserIconIv.loadUrl(mRemoteFileUrl)
         }
     }
 
@@ -165,7 +163,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         }
         if (result.imgurl != "") {
             mAddTv.visibility = View.GONE
-            GlideUtils.loadUrlImage(this, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(result.imgurl), mUserIconIv)
+            mUserIconIv.loadUrl(result.imgurl)
         }
 
     }

@@ -11,5 +11,6 @@
         <activity android:name=".ui.activity.EvaluateActivity"/>
         <activity android:name=".ui.activity.ReportActivity"/>
         <activity android:name=".ui.activity.ShopActivity"/>
+        <activity android:name=".ui.activity.ComplainActivity"/>
     </application>
 </manifest>

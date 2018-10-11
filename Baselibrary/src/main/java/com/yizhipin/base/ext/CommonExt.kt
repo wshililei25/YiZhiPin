@@ -8,6 +8,7 @@ import android.widget.ImageView
 import com.kennyc.view.MultiStateView
 import com.trello.rxlifecycle2.LifecycleProvider
 import com.yizhipin.base.R
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.rx.BaseFunc
 import com.yizhipin.base.rx.BaseFuncBoolean
@@ -82,7 +83,7 @@ fun Button.enable(editText: EditText, method: () -> Boolean) {
  * ImageView加载网络图片 扩展
  */
 fun ImageView.loadUrl(url: String) {
-    GlideUtils.loadUrlImage(context, url, this)
+    GlideUtils.loadUrlImage(context, BaseConstant.IMAGE_SERVICE_ADDRESS + url, this)
 }
 
 /**

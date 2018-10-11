@@ -25,10 +25,16 @@ class CategoryRepository @Inject constructor() {
         return RetrofitFactoryGet().create(CategoryApi::class.java)
                 .getCategorySecond(map["primaryCategory"]!!)
     }
+
     fun getGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java)
-                .getGoodsList(map["currentPage"]!!,map["primaryCategory"]!!,map["secondCategory"]!!,map["order"]!!
-                ,map["orderType"]!!)
+                .getGoodsList(map["currentPage"]!!, map["primaryCategory"]!!, map["secondCategory"]!!, map["order"]!!
+                        , map["orderType"]!!)
+    }
+
+    fun getShopGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java)
+                .getShopGoodsList(map["currentPage"]!!, map["shopId"]!!)
     }
 
 

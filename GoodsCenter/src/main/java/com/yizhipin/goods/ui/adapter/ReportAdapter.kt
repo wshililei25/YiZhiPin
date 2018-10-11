@@ -10,11 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
-import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.DateUtils
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.event.LikeEvent
@@ -45,7 +44,7 @@ class ReportAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, Re
         holder.itemView.mLikeCountReportTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount}${")"}"
         holder.itemView.mEvaCountReportTv.text = "${context.getString(R.string.comment)}${"("}${modle.evaCount}${")"}"
         holder.itemView.mEvaluateReportStarView.setCheckStarCount(modle.starCount)
-        GlideUtils.loadUrlImage(context, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(modle.imgurl), holder.itemView.mUserIconReportIv)
+        holder.itemView.mUserIconReportIv.loadUrl(modle.imgurl)
 
         if (!modle.imgurls.isNullOrEmpty()) {
             holder.itemView.mImageReportRv.visibility = View.VISIBLE

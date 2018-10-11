@@ -52,4 +52,15 @@ open class CategoryPresenter @Inject constructor() : BasePresenter<CategoryView>
                 }, mLifecycleProvider)
 
     }
+    fun getShopGoodsList(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mCategoryServiceImpl.getShopGoodsList(map)
+                .execute(object : BaseSubscriber<BasePagingResp<MutableList<Goods>?>>(mView) {
+                    override fun onNext(t: BasePagingResp<MutableList<Goods>?>) {
+                        mView.onGetGoodsListSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
 }

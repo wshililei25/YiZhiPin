@@ -17,12 +17,13 @@
     <color name="yBlackDeep">#7f7f7f</color>
     <color name="yBlackLight">#858585</color>
     <color name="yBlackGray">#8c8c8c</color>
-    <color name="yRed">#f83345</color>
+    <color name="yRed">#ff3a3f</color>
     <color name="yFlipper">#e9e9e9</color>
     <color name="yTab">#636363</color>
     <color name="yCategory">#a2a2a2</color>
     <color name="yCategoryBg">#f7f7f7</color>
     <color name="yShopTv">#fffefe</color>
+    <color name="yBlue">#5093ef</color>
 
     <color name="common_black">#000000</color>
     <color name="common_blue">#03a9f4</color>

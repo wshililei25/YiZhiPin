@@ -7,6 +7,7 @@ import android.os.Environment
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bigkoo.alertview.AlertView
+import com.bigkoo.alertview.OnDismissListener
 import com.bigkoo.alertview.OnItemClickListener
 import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.app.TakePhotoImpl
@@ -30,7 +31,7 @@ import javax.inject.Inject
  */
 abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), BaseView, TakePhoto.TakeResultListener {
 
-    private lateinit var mTakePhoto:TakePhoto
+    private lateinit var mTakePhoto: TakePhoto
 
     private lateinit var mTempFile: File
 
@@ -46,7 +47,7 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
         initActivityInjection()
         injectComponent()
 
-        mTakePhoto = TakePhotoImpl(this,this)
+        mTakePhoto = TakePhotoImpl(this, this)
         mTakePhoto.onCreate(savedInstanceState)
 
         mLoadingDialog = ProgressLoading.create(this)
@@ -86,18 +87,19 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
     /*
         错误信息提示，默认实现
      */
-    override fun onError(text:String) {
+    override fun onError(text: String) {
         toast(text)
     }
 
-    /*
-        弹出选择框，默认实现
-        可根据实际情况，自行修改
+    /**
+     * 弹出选择框，默认实现  可根据实际情况，自行修改
+     *
+     * 单张图片选取
      */
     protected fun showAlertView() {
         AlertView("选择图片", "", "取消", null, arrayOf("拍照", "相册"), this,
                 AlertView.Style.ActionSheet, OnItemClickListener { o, position ->
-            mTakePhoto.onEnableCompress(CompressConfig.ofDefaultConfig(),false)
+            mTakePhoto.onEnableCompress(CompressConfig.ofDefaultConfig(), false)
             when (position) {
                 0 -> {
                     createTempFile()
@@ -108,15 +110,43 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
         }
 
         ).show()
+    }
 
+    /**
+     * 弹出选择框，默认实现  可根据实际情况，自行修改
+     *
+     * 多张图片选取
+     */
+    protected fun showAlertViewMore() {
+        AlertView("选择图片", "", "取消", null, arrayOf("拍照", "相册"), this,
+                AlertView.Style.ActionSheet, OnItemClickListener { o, position ->
+            mTakePhoto.onEnableCompress(CompressConfig.ofDefaultConfig(), false)
+            when (position) {
+                0 -> {
+                    createTempFile()
+                    mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
+                }
+                1 -> {
+                    mTakePhoto.onPickMultiple(6)
+
+                }
+            }
+        }
+
+        ).setOnDismissListener(object :OnDismissListener{
+            override fun onDismiss(o: Any?) {
+
+            }
+
+        }).show()
     }
 
     /*
         获取图片，成功回调
      */
     override fun takeSuccess(result: TResult?) {
-        Log.d("TakePhoto",result?.image?.originalPath)
-        Log.d("TakePhoto",result?.image?.compressPath)
+        Log.d("TakePhoto", result?.image?.originalPath)
+        Log.d("TakePhoto", result?.image?.compressPath)
     }
 
     /*
@@ -129,7 +159,7 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
         获取图片，失败回调
      */
     override fun takeFail(result: TResult?, msg: String?) {
-        Log.e("takePhoto",msg)
+        Log.e("takePhoto", msg)
     }
 
     /*
@@ -137,20 +167,20 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        mTakePhoto.onActivityResult(requestCode,resultCode,data)
+        mTakePhoto.onActivityResult(requestCode, resultCode, data)
     }
 
     /*
         新建临时文件
      */
-    fun createTempFile(){
+    fun createTempFile() {
         val tempFileName = "${DateUtils.curTime}.png"
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
-            this.mTempFile = File(Environment.getExternalStorageDirectory(),tempFileName)
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            this.mTempFile = File(Environment.getExternalStorageDirectory(), tempFileName)
             return
         }
 
-        this.mTempFile = File(filesDir,tempFileName)
+        this.mTempFile = File(filesDir, tempFileName)
     }
 
 }

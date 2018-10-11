@@ -5,9 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.goods.R
 import kotlinx.android.synthetic.main.layout_evaluate_image_item.view.*
 
@@ -23,7 +22,7 @@ class EvaluateImageAdapter(val context: Context) : BaseRecyclerViewAdapter<Strin
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        GlideUtils.loadUrlImage(context, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(dataList[position]), holder.itemView.mEvaluateItemIv)
+        holder.itemView.mEvaluateItemIv.loadUrl(dataList[position])
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

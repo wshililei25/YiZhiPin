@@ -7,6 +7,7 @@ import com.yizhipin.goods.ui.activity.ShopActivity
 import com.yizhipin.goods.ui.fragment.CartFragment
 import com.yizhipin.goods.ui.fragment.CategoryFragment
 import com.yizhipin.goods.ui.fragment.CategorySecondFragment
+import com.yizhipin.goods.ui.fragment.GoodsFragment
 import dagger.Component
 
 /**
@@ -20,4 +21,5 @@ interface CategoryComponent {
     fun inject(activity: CategorySecondFragment)
     fun inject(activity: CartFragment)
     fun inject(activity: ShopActivity)
+    fun inject(activity: GoodsFragment)
 }

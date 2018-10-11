@@ -4,9 +4,10 @@ import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.goods.injection.module.CartModule
 import com.yizhipin.goods.injection.module.GoodsModule
-import com.yizhipin.goods.ui.activity.EvaluateActivity
+import com.yizhipin.goods.ui.activity.ComplainActivity
 import com.yizhipin.goods.ui.activity.GoodsDetailActivity
-import com.yizhipin.goods.ui.activity.ReportActivity
+import com.yizhipin.goods.ui.fragment.EvaluateFragment
+import com.yizhipin.goods.ui.fragment.ReportFragment
 import dagger.Component
 
 /**
@@ -17,6 +18,7 @@ import dagger.Component
 interface GoodsComponent {
 
     fun inject(activity: GoodsDetailActivity)
-    fun inject(activity: EvaluateActivity)
-    fun inject(activity: ReportActivity)
+    fun inject(activity: EvaluateFragment)
+    fun inject(activity: ReportFragment)
+    fun inject(activity: ComplainActivity)
 }

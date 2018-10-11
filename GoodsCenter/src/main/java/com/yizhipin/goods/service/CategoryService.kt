@@ -15,4 +15,5 @@ interface CategoryService {
     fun getCategoryAll(): Observable<MutableList<Category>?>
     fun getCategorySecond(map: MutableMap<String, String>): Observable<MutableList<CategorySecond>?>
     fun getGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>>
+    fun getShopGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>>
 }

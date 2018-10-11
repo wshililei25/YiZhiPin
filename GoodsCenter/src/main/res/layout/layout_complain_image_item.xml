@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WrapWrap">
+
+    <RelativeLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/mComplainItemIv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/mDelIv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-8dp"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            android:src="@drawable/delet_zhaopian_1x" />
+
+    </RelativeLayout>
+
+    <!--  <RelativeLayout
+          style="@style/WrapWrap">
+      <ImageView
+          android:id="@+id/mComplainItemIv"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          android:scaleType="fitXY" />
+
+      <ImageView
+          android:id="@+id/iv_del"
+          style="@style/WrapWrap"
+          android:layout_toRightOf="@+id/mComplainItemIv"
+          android:layout_marginLeft="-10dp"
+          android:layout_marginTop="-10dp"
+          android:src="@drawable/delet_zhaopian_1x" />
+      </RelativeLayout>-->
+</RelativeLayout>

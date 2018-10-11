@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 style="@style/MatchMatch.Vertical.Common">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical.White"
+    tools:ignore="MissingDefaultResource">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -29,7 +31,7 @@
                     android:paddingLeft="@dimen/yPaddingMiddle"
                     android:paddingTop="@dimen/yPaddingMiddle"
                     android:paddingRight="@dimen/yPaddingMiddle"
-                    android:src="@drawable/leftarrow3"/>
+                    android:src="@drawable/leftarrow3" />
 
                 <RelativeLayout
                     style="@style/MatchWrap"
@@ -45,7 +47,7 @@
                             android:id="@+id/mShopIv"
                             android:layout_width="@dimen/yHeadWidth"
                             android:layout_height="@dimen/yHeadHeight"
-                            android:src="@drawable/user"/>
+                            android:src="@drawable/user" />
 
                         <TextView
                             android:id="@+id/mCategoryTv"
@@ -57,10 +59,9 @@
                             android:paddingTop="@dimen/yPaddingMinSmall"
                             android:paddingRight="@dimen/yPaddingSmall"
                             android:paddingBottom="@dimen/yPaddingMinSmall"
-                            android:src="@drawable/commissioner"
                             android:text="一村一品"
                             android:textColor="@color/yMain"
-                            android:textSize="@dimen/yTextSmallLarSize"/>
+                            android:textSize="@dimen/yTextSmallLarSize" />
                     </RelativeLayout>
 
                     <TextView
@@ -70,7 +71,7 @@
                         android:layout_toRightOf="@+id/mHeadView"
                         android:text="@string/shop"
                         android:textColor="@color/yShopTv"
-                        android:textSize="@dimen/yTextHugeSize"/>
+                        android:textSize="@dimen/yTextHugeSize" />
 
                     <com.c.gaoyuan.star_view_lib.StarView
                         android:id="@+id/mStarView"
@@ -83,7 +84,7 @@
                         app:starDrawable="@drawable/starform2"
                         app:starHeight="@dimen/yPadding"
                         app:starHorizontalSpace="@dimen/yPaddingSmall"
-                        app:starWidth="@dimen/yPadding"/>
+                        app:starWidth="@dimen/yPadding" />
 
                     <ImageView
                         android:id="@+id/mGradeIv"
@@ -91,14 +92,14 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/yPadding"
                         android:layout_toRightOf="@+id/mStarView"
-                        android:src="@drawable/grade1"/>
+                        android:src="@drawable/grade1" />
 
                     <ImageView
                         android:id="@+id/mNewIv"
                         style="@style/WrapWrap"
                         android:layout_below="@+id/mShopNameTv"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/telephonecall"/>
+                        android:src="@drawable/telephonecall" />
 
                     <TextView
                         android:id="@+id/credit"
@@ -109,7 +110,7 @@
                         android:layout_toRightOf="@+id/mHeadView"
                         android:text="@string/credit"
                         android:textColor="@color/yShopTv"
-                        android:textSize="@dimen/yTextMiddleSize"/>
+                        android:textSize="@dimen/yTextMiddleSize" />
 
                     <TextView
                         android:id="@+id/mCreditTv"
@@ -119,7 +120,7 @@
                         android:layout_toRightOf="@+id/credit"
                         android:text="0"
                         android:textColor="@color/yShopTv"
-                        android:textSize="@dimen/yTextLargeSize"/>
+                        android:textSize="@dimen/yTextLargeSize" />
 
                     <TextView
                         style="@style/WrapWrap"
@@ -127,7 +128,7 @@
                         android:layout_alignParentRight="true"
                         android:text="@string/collect_add"
                         android:textColor="@color/yShopTv"
-                        android:textSize="@dimen/yTextSmallLarSize"/>
+                        android:textSize="@dimen/yTextSmallLarSize" />
 
                 </RelativeLayout>
             </RelativeLayout>
@@ -136,11 +137,11 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/mTab"
             style="@style/TabsStyle.Category"
-            app:tabMode="scrollable"/>
+            app:tabMode="scrollable" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mVp"
         style="@style/MatchWrap"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </android.support.design.widget.CoordinatorLayout>

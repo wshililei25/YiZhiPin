@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchMatch.Vertical.Common">
+              style="@style/MatchMatch.Vertical.White">
 
     <LinearLayout
         style="@style/SearchHeaderStyle"

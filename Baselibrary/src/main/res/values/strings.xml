@@ -122,6 +122,9 @@
     <string name="comment">评论</string>
     <string name="shop">店铺</string>
     <string name="collect_add">+收藏</string>
+    <string name="complain">投诉举报</string>
+    <string name="complain_shop">投诉商家</string>
+    <string name="complain_content">投诉内容</string>
 
 
 

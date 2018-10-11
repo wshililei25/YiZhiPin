@@ -87,7 +87,7 @@ class CategorySecondFragment : BaseMvpFragment<CategoryPresenter>(), CategoryVie
 
         //商品
         mGoodsRv.layoutManager = LinearLayoutManager(activity)
-        mGoodsAdapter = GoodsAdapter(context!!)
+        mGoodsAdapter = GoodsAdapter(context!!,false)
         mGoodsRv.adapter = mGoodsAdapter
         mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods> {
             override fun onItemClick(item: Goods, position: Int) {

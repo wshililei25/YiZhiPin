@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.R
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.common.OrderStatus
 import com.yizhipin.ordercender.ui.activity.OrderActivity
@@ -159,9 +157,9 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mUserNameTv.text = if (result.nickname.isNullOrEmpty()) getString(R.string.app_name) else result.nickname
         mCreditTv.text = result.score
         mAnountTv.text = "￥${result.totalAmount}"
+        mUserIconIv.loadUrl(result.imgurl)
         if (result.commissioner) mCommissionerIv.visibility = View.VISIBLE else mCommissionerIv.visibility = View.GONE
         if (result.commissioner) mCommissionerTv.text = getString(R.string.commissioner) else mCommissionerTv.text = getString(R.string.apply_commissioner)
-        GlideUtils.loadUrlImage(activity!!, BaseConstant.IMAGE_SERVICE_ADDRESS.plus(result.imgurl), mUserIconIv)
 
         when (result.level) {
             1 -> mGradeIv.setImageResource(R.drawable.grade1)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchWrap.Vertical"
-              android:background="@color/yWhite">
+    style="@style/MatchWrap.Vertical"
+    android:background="@color/yWhite">
 
     <RelativeLayout
         style="@style/MatchWrap"
@@ -11,7 +11,7 @@
             android:id="@+id/mGoodsIv"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/mGoodsNameTv"
@@ -22,13 +22,13 @@
             android:maxLines="1"
             android:text="dddd"
             android:textColor="@color/yBlack"
-            android:textSize="@dimen/yTextMiddleBigSize"/>
+            android:textSize="@dimen/yTextMiddleBigSize" />
 
         <RelativeLayout
+            android:id="@+id/systemView"
             style="@style/WrapWrap"
             android:layout_below="@+id/mGoodsNameTv"
             android:layout_marginLeft="@dimen/yPaddingSmall"
-            android:layout_marginBottom="@dimen/yPaddingMiddle"
             android:layout_toRightOf="@+id/mGoodsIv">
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_marginTop="2dp"
                 android:text="@string/system_price"
                 android:textColor="@color/yMain"
-                android:textSize="@dimen/yTextSmallLarSize"/>
+                android:textSize="@dimen/yTextSmallLarSize" />
 
             <TextView
                 android:id="@+id/rmb_s"
@@ -47,7 +47,7 @@
                 android:layout_toRightOf="@+id/system"
                 android:text="@string/rmb"
                 android:textColor="@color/yMain"
-                android:textSize="@dimen/yTextSmallLarSize"/>
+                android:textSize="@dimen/yTextSmallLarSize" />
 
             <TextView
                 android:id="@+id/mSystemTv"
@@ -56,15 +56,14 @@
                 android:layout_toRightOf="@+id/rmb_s"
                 android:text="0.00"
                 android:textColor="@color/yMain"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
+                android:textSize="@dimen/yTextMiddleBigSize" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/retailView"
             style="@style/WrapWrap"
-            android:layout_above="@+id/mTypeTv"
+            android:layout_below="@+id/systemView"
             android:layout_marginLeft="@dimen/yPaddingSmall"
-            android:layout_marginBottom="@dimen/yPaddingSmall"
             android:layout_toRightOf="@+id/mGoodsIv">
 
             <TextView
@@ -73,7 +72,7 @@
                 android:layout_marginTop="2dp"
                 android:text="@string/retail_price"
                 android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextSmallLarSize"/>
+                android:textSize="@dimen/yTextSmallLarSize" />
 
             <TextView
                 android:id="@+id/rmb"
@@ -83,7 +82,7 @@
                 android:layout_toRightOf="@+id/retail"
                 android:text="@string/rmb"
                 android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextSmallLarSize"/>
+                android:textSize="@dimen/yTextSmallLarSize" />
 
             <TextView
                 android:id="@+id/mRetailTv"
@@ -92,7 +91,7 @@
                 android:layout_toRightOf="@+id/rmb"
                 android:text="0.00"
                 android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextMiddleBigSize"/>
+                android:textSize="@dimen/yTextMiddleBigSize" />
         </RelativeLayout>
 
         <TextView
@@ -106,7 +105,7 @@
             android:paddingRight="@dimen/yPaddingMinSmall"
             android:text="@string/hamlet"
             android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
         <TextView
             android:id="@+id/mShopTv"
@@ -116,12 +115,12 @@
             android:layout_toRightOf="@+id/mTypeTv"
             android:text="kkk"
             android:textColor="@color/yCategory"
-            android:textSize="@dimen/yTextSmallLarSize"/>
+            android:textSize="@dimen/yTextSmallLarSize" />
 
     </RelativeLayout>
 
     <View
         style="@style/DividerFixedHeight"
         android:layout_below="@+id/mGoodsIv"
-        android:layout_marginTop="@dimen/yPaddingMiddle"/>
+        android:layout_marginTop="@dimen/yPaddingMiddle" />
 </LinearLayout>

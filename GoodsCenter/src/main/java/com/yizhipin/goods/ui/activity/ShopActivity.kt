@@ -3,10 +3,9 @@ package com.yizhipin.goods.ui.activity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.utils.GlideUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Category
@@ -65,7 +64,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
     override fun onGetShopDetailsSuccess(result: Shop) {
         result?.let {
             mShopNameTv.text = result.shopName
-
+            mShopIv.loadUrl(result.shopImgurl)
             if (result.shopIdentity == "product") {
                 mCategoryTv.text = getString(R.string.hamlet)
             } else if (result.shopIdentity == "homestay") {
@@ -75,7 +74,6 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
             } else if (result.shopIdentity == "car") {
                 mCategoryTv.text = getString(R.string.motor_homes)
             }
-            GlideUtils.loadUrlImage(this, BaseConstant.IMAGE_SERVICE_ADDRESS + result.shopImgurl, mShopIv)
         }
     }
 }
