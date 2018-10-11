@@ -2,6 +2,7 @@ package com.yizhipin.goods.ui.activity
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -9,6 +10,7 @@ import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Category
+import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Shop
 import com.yizhipin.goods.injection.component.DaggerCategoryComponent
 import com.yizhipin.goods.injection.module.CategoryModule
@@ -39,7 +41,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
 
     private fun initView() {
         mTab.tabMode = TabLayout.MODE_FIXED
-        mShopVpAdapter = ShopVpAdapter(supportFragmentManager)
+        mShopVpAdapter = ShopVpAdapter(supportFragmentManager, mShopId.toString())
         mVp.adapter = mShopVpAdapter
         mTab.setupWithViewPager(mVp)
         mBackIv.onClick { finish() }
@@ -56,6 +58,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
     }
 
     private fun loadData() {
+        Log.d("2", "mShopId=" + mShopId)
         var map = mutableMapOf<String, String>()
         map.put("id", mShopId.toString())
         mBasePresenter.getShopDetails(map)
@@ -75,6 +78,9 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
                 mCategoryTv.text = getString(R.string.motor_homes)
             }
         }
+    }
+
+    override fun onComplainShopSuccess(result: Complain) {
     }
 }
 

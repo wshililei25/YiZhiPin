@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
-import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.kennyc.view.MultiStateView
@@ -33,10 +32,8 @@ import kotlinx.android.synthetic.main.fragment_recyclerview.*
  */
 class ReportFragment : BaseMvpFragment<ReportPresenter>(), ReportView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
-    @Autowired(name = GoodsConstant.KEY_GOODS_ID) //注解接收上个页面的传参
-    @JvmField
-    var mGoodsId: Int = 0
-
+    private var mGoodsId: Int = 0
+    private var mShopId: String = ""
     private var mCurrentPage: Int = 1
     private var mMaxPage: Int = 1
     private lateinit var mReportAdapter: ReportAdapter
@@ -55,6 +52,10 @@ class ReportFragment : BaseMvpFragment<ReportPresenter>(), ReportView, BGARefres
     }
 
     private fun initView() {
+        mGoodsId = activity!!.intent.getIntExtra(GoodsConstant.KEY_GOODS_ID, 0)
+        arguments?.let {
+            mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
+        }
         mRv.layoutManager = LinearLayoutManager(activity)
         mReportAdapter = ReportAdapter(activity!!)
         mRv.adapter = mReportAdapter
@@ -71,7 +72,8 @@ class ReportFragment : BaseMvpFragment<ReportPresenter>(), ReportView, BGARefres
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("pid", mGoodsId.toString())
+        map.put("pid", if (mShopId.isNullOrEmpty()) mGoodsId.toString() else "") //商品详情里的体验报告
+        map.put("shopId", mShopId) //店铺的体验报告
         map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         mBasePresenter.getReportList(map)
     }

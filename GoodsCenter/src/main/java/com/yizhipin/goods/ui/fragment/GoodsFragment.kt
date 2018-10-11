@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
-import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.startLoading
@@ -30,10 +29,7 @@ import kotlinx.android.synthetic.main.fragment_recyclerview.*
  */
 class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
-    @Autowired(name = GoodsConstant.KEY_SHOP_ID) //注解接收上个页面的传参
-    @JvmField
-    var mShopId: Int = 0
-
+    private var mShopId: String = ""
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
     private lateinit var mGoodsAdapter: GoodsAdapter
@@ -51,8 +47,12 @@ class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARef
     }
 
     private fun initView() {
+
+        arguments?.let {
+            mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
+        }
         mRv.layoutManager = LinearLayoutManager(activity)
-        mGoodsAdapter = GoodsAdapter(activity!!,true)
+        mGoodsAdapter = GoodsAdapter(activity!!, true)
         mRv.adapter = mGoodsAdapter
     }
 
@@ -76,7 +76,7 @@ class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARef
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("shopId", mShopId.toString())
+        map.put("shopId", mShopId)
         mBasePresenter.getShopGoodsList(map)
     }
 

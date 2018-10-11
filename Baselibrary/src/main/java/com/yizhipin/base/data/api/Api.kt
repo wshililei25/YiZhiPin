@@ -24,5 +24,6 @@ interface Api {
         const val GIVE_LIKE = "api/ProductEva/Zan"//点赞评价
         const val GIVE_LIKE_REPORT = "api/Experience/Zan"//点赞体验报告
         const val SHOP_DETAIL = "api/Shop"//店铺详情
+        const val COMPLAIN_SHOP = "api/ShopComplaint"//举报投诉
     }
 }

@@ -125,6 +125,7 @@
     <string name="complain">投诉举报</string>
     <string name="complain_shop">投诉商家</string>
     <string name="complain_content">投诉内容</string>
+    <string name="input_complain_content">请输入对商家的投诉内容或举报信息</string>
 
 
 

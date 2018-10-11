@@ -1,6 +1,7 @@
 package com.yizhipin.goods.presenter.view
 
 import com.yizhipin.base.presenter.view.BaseView
+import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Shop
 
 /*
@@ -9,5 +10,6 @@ import com.yizhipin.goods.data.response.Shop
 interface ShopView : BaseView {
 
     fun onGetShopDetailsSuccess(result: Shop)
+    fun onComplainShopSuccess(result: Complain)
 
 }

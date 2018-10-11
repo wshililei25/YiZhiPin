@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/MatchMatch"
-    android:background="@color/yBgGray">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/MatchMatch"
+            android:background="@color/yBgGray">
 
     <LinearLayout style="@style/MatchWrap.Vertical">
 
         <com.yizhipin.base.widgets.HeaderBar
             android:id="@id/mHeaderBar"
             style="@style/MatchWrap"
-            app:titleText="@string/complain" />
+            app:titleText="@string/complain"/>
 
         <RelativeLayout
             style="@style/MatchWrap.White"
@@ -20,7 +20,7 @@
                 style="@style/WrapWrap"
                 android:text="@string/complain_shop"
                 android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
             <ImageView
                 android:id="@+id/mShopIv"
@@ -28,19 +28,18 @@
                 android:layout_height="60dp"
                 android:layout_marginLeft="@dimen/yPaddingBigLar"
                 android:layout_toRightOf="@+id/nickName"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/mShopNameTv"
                 style="@style/WrapWrap"
                 android:layout_marginLeft="@dimen/yPadding"
                 android:layout_toRightOf="@+id/mShopIv"
-                android:text="@string/complain_shop"
                 android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
             <TextView
-                android:id="@+id/mTypeTv"
+                android:id="@+id/mCategoryTv"
                 style="@style/WrapWrap"
                 android:layout_below="@+id/mShopNameTv"
                 android:layout_marginLeft="@dimen/yPadding"
@@ -51,7 +50,7 @@
                 android:paddingRight="@dimen/yPaddingMinSmall"
                 android:text="@string/hamlet"
                 android:textColor="@color/yBlue"
-                android:textSize="@dimen/yTextSmallLarSize" />
+                android:textSize="@dimen/yTextSmallLarSize"/>
 
         </RelativeLayout>
 
@@ -64,11 +63,11 @@
                 style="@style/WrapWrap"
                 android:text="@string/complain_content"
                 android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
             <View
                 style="@style/DividerFixedHeight"
-                android:layout_marginTop="@dimen/yPaddingMiddle" />
+                android:layout_marginTop="@dimen/yPaddingMiddle"/>
 
             <EditText
                 android:id="@+id/mEt"
@@ -77,11 +76,11 @@
                 android:layout_toRightOf="@+id/nickName"
                 android:background="@null"
                 android:gravity="top"
-                android:hint="@string/input_nickname"
+                android:hint="@string/input_complain_content"
                 android:paddingTop="@dimen/yPadding"
                 android:textColor="@color/yBlackLight"
                 android:textColorHint="@color/yHint"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
         </LinearLayout>
 
@@ -89,7 +88,7 @@
             android:id="@+id/mRv"
             style="@style/MatchWrap"
             android:background="@color/yWhite"
-            android:padding="@dimen/yPadding" />
+            android:padding="@dimen/yPadding"/>
 
         <Button
             android:id="@+id/mConfirmBtn"
@@ -100,7 +99,7 @@
             android:layout_marginRight="@dimen/yPaddingBig"
             android:layout_marginBottom="@dimen/yPaddingBigLar"
             android:text="@string/commit"
-            android:textSize="@dimen/yTextBigSize" />
+            android:textSize="@dimen/yTextBigSize"/>
     </LinearLayout>
 
 

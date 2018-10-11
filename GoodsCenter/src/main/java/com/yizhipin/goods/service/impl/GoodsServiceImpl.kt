@@ -5,10 +5,7 @@ import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.goods.data.repository.GoodsRepository
-import com.yizhipin.goods.data.response.Evaluate
-import com.yizhipin.goods.data.response.Goods
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.Shop
+import com.yizhipin.goods.data.response.*
 import com.yizhipin.goods.service.GoodsService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -63,5 +60,8 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
     }
     override fun getShopDetails(map: MutableMap<String, String>): Observable<Shop> {
         return mRepository.getShopDetails(map).convert()
+    }
+    override fun getComplainShop(map: MutableMap<String, String>): Observable<Complain> {
+        return mRepository.getComplainShop(map).convert()
     }
 }

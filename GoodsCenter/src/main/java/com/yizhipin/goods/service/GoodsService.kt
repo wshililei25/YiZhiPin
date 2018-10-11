@@ -1,10 +1,7 @@
 package com.yizhipin.goods.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.goods.data.response.Evaluate
-import com.yizhipin.goods.data.response.Goods
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.Shop
+import com.yizhipin.goods.data.response.*
 import io.reactivex.Observable
 
 
@@ -37,4 +34,5 @@ interface GoodsService {
     fun giveLike(map: MutableMap<String, String>): Observable<Boolean>
     fun giveLikeReport(map: MutableMap<String, String>): Observable<Boolean>
     fun getShopDetails(map: MutableMap<String, String>): Observable<Shop>
+    fun getComplainShop(map: MutableMap<String, String>): Observable<Complain>
 }

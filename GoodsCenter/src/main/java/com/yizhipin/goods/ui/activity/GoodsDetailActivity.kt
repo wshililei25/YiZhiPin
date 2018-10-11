@@ -198,9 +198,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.experienceCount)
 
-            R.id.mShopView -> {
-                startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id, GoodsConstant.KEY_GOODS_ID to mGoodsId)
-            }
+            R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
+
         }
     }
 

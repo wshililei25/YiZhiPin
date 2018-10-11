@@ -3,10 +3,7 @@ package com.yizhipin.goods.data.api
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.goods.data.protocol.GoodsReq
-import com.yizhipin.goods.data.response.Evaluate
-import com.yizhipin.goods.data.response.Goods
-import com.yizhipin.goods.data.response.Report
-import com.yizhipin.goods.data.response.Shop
+import com.yizhipin.goods.data.response.*
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -57,13 +54,13 @@ interface GoodsApi {
      * 评价列表
      */
     @GET("${Api.EVALUATE_LIST}")
-    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    fun getEvaluateList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
      * 体验报告列表
      */
     @GET("${Api.REPORT_LIST}")
-    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
      * 点赞评价
@@ -82,4 +79,9 @@ interface GoodsApi {
      */
     @GET("${Api.SHOP_DETAIL}${"/{id}"}")
     fun getShopDetails(@Path("id") id: String): Observable<BaseResp<Shop>>
+    /**
+     * 举报投诉
+     */
+    @POST(Api.COMPLAIN_SHOP)
+    fun getComplainShop(): Observable<BaseResp<Complain>>
 }
