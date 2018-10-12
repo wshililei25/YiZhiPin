@@ -1,6 +1,8 @@
 package com.yizhipin.goods.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging

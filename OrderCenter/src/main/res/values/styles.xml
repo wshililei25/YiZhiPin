@@ -2,24 +2,24 @@
 <resources>
 
     <style name="OrderShipName">
-        <item name="android:textSize">@dimen/yTextBigSize</item>
+        <item name="android:textSize">@dimen/yTextMiddleLarSize</item>
         <item name="android:textColor">@color/yBlack</item>
         <item name="android:background">@color/yWhite</item>
         <item name="android:paddingLeft">@dimen/yPadding</item>
-        <item name="android:paddingTop">@dimen/yPadding</item>
+        <item name="android:paddingTop">@dimen/yPaddingMiddle</item>
         <item name="android:paddingBottom">@dimen/yPaddingMiddle</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="OrderShipAddress">
-        <item name="android:textSize">@dimen/yTextMiddleSize</item>
+        <item name="android:textSize">@dimen/yTextMiddleLarSize</item>
         <item name="android:background">@color/yWhite</item>
         <item name="android:paddingLeft">@dimen/yPadding</item>
         <item name="android:textColor">@color/yBlackGray</item>
         <item name="android:paddingRight">@dimen/yPadding</item>
-        <item name="android:paddingBottom">@dimen/yPaddingBigLar</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingBottom">@dimen/yPaddingMiddle</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

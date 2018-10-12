@@ -5,6 +5,8 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.data.api.GoodsApi
 import com.yizhipin.goods.data.protocol.GoodsReq
 import com.yizhipin.goods.data.response.*

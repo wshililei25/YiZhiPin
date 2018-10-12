@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.event.CartAllCheckedEvent
-import com.yizhipin.base.event.UpdateTotalPriceEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.YuanFenConverter
-import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.CartGoods
-import com.yizhipin.goods.getEditText
 import kotlinx.android.synthetic.main.layout_cart_goods_item.view.*
 
 /*
@@ -42,7 +39,7 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
         //商品价格
         holder.itemView.mGoodsPriceTv.text = YuanFenConverter.changeF2YWithUnit(model.goodsPrice)
         //商品数量
-        holder.itemView.mGoodsCountBtn.setCurrentNumber(model.goodsCount)
+//        holder.itemView.mGoodsCountBtn.setCurrentNumber(model.goodsCount)
         //选中按钮事件
         holder.itemView.mCheckedCb.onClick {
             model.isSelected = holder.itemView.mCheckedCb.isChecked
@@ -52,16 +49,16 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
         }
 
         //商品数量变化监听
-        holder.itemView.mGoodsCountBtn.getEditText().addTextChangedListener(object : DefaultTextWatcher() {
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                //修复Bug，删除为空时异常
-                if (s.isNullOrEmpty().not()) {
-                    model.goodsCount = s.toString().toInt()
-                    Bus.send(UpdateTotalPriceEvent())
-                }
+        /*  holder.itemView.mGoodsCountBtn.getEditText().addTextChangedListener(object : DefaultTextWatcher() {
+              override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                  //修复Bug，删除为空时异常
+                  if (s.isNullOrEmpty().not()) {
+                      model.goodsCount = s.toString().toInt()
+                      Bus.send(UpdateTotalPriceEvent())
+                  }
 
-            }
-        })
+              }
+          })*/
 
     }
 

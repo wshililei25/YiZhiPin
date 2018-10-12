@@ -1,9 +1,9 @@
 package com.yizhipin.goods.presenter
 
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
-import com.yizhipin.goods.data.response.Goods
 import com.yizhipin.goods.presenter.view.GoodsListView
 import com.yizhipin.goods.service.impl.GoodsServiceImpl
 import javax.inject.Inject

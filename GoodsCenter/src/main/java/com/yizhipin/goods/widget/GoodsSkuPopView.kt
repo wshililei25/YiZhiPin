@@ -67,14 +67,14 @@ class GoodsSkuPopView(context: Activity) : PopupWindow(context), View.OnClickLis
         mRootView.mCloseIv.onClick(this)
         mRootView.mAddCartBtn.onClick(this)
 
-        mRootView.mSkuCountBtn.setCurrentNumber(1)
+       /* mRootView.mSkuCountBtn.setCurrentNumber(1)
         mRootView.mSkuCountBtn.getEditText().addTextChangedListener(
                 object : DefaultTextWatcher() {
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                         Bus.send(SkuChangedEvent())
                     }
                 }
-        )
+        )*/
 
         mRootView.mAddCartBtn.onClick {
             Bus.send(AddCartEvent())
@@ -130,7 +130,7 @@ class GoodsSkuPopView(context: Activity) : PopupWindow(context), View.OnClickLis
     /*
         获取商品数量
      */
-    fun getSelectCount() = mRootView.mSkuCountBtn.number
+//    fun getSelectCount() = mRootView.mSkuCountBtn.number
 
     override fun onClick(v: View) {
         when (v.id) {

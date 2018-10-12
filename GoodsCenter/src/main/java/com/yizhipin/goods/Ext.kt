@@ -1,9 +1,8 @@
 package com.yizhipin.goods
 
 import android.widget.EditText
+import com.yizhipin.base.widgets.NumberButton
 import org.jetbrains.anko.find
-import ren.qinc.numberbutton.NumberButton
-import ren.qinc.numberbutton.R
 
 /*
     三方控件扩展

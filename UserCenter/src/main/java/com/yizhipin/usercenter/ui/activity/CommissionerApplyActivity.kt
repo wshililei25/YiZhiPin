@@ -9,11 +9,13 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.UploadUtil
+import com.yizhipin.base.widgets.CustomToast
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.presenter.CommissionerPresenter
 import kotlinx.android.synthetic.main.activity_commissioner_apply.*
 import org.jetbrains.anko.toast
 import java.io.File
+
 
 /**
  * Created by ${XiLei} on 2018/9/24.
@@ -92,8 +94,7 @@ class CommissionerApplyActivity : BaseTakePhotoActivity<CommissionerPresenter>()
     override fun onUploadDone(responseCode: Int, message: String) {
         runOnUiThread {
             hideLoading()
-            toast(R.string.upload_success)
-
+            CustomToast.INSTANCE.showToast(this, getString(R.string.upload_success));
             when (mType) {
                 1 -> {
                     mFrontFileUrl = message
@@ -122,4 +123,6 @@ class CommissionerApplyActivity : BaseTakePhotoActivity<CommissionerPresenter>()
                 mIdEt.text.isNullOrEmpty().not() &&
                 mFrontFileUrl.isNullOrEmpty()
     }
+
+
 }

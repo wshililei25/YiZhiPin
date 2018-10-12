@@ -8,15 +8,16 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.UploadUtil
+import com.yizhipin.base.widgets.CustomToast
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Complain
-import com.yizhipin.goods.data.response.Shop
 import com.yizhipin.goods.event.ImageMoreEvent
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
@@ -95,6 +96,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
      */
     override fun onComplainShopSuccess(result: Complain) {
         toast("投诉成功")
+
         finish()
     }
 
@@ -112,13 +114,16 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
      */
     override fun takeSuccess(result: TResult?) {
 
-        showLoading()
+        if (!mPresenter.checkNetWork()) {
+            return
+        }
         for (list in result!!.images) {
             val localFileUrl = list.compressPath
             val fileKey = "avatarFile"
             val uploadUtil = UploadUtil.getInstance()
             uploadUtil.setOnUploadProcessListener(this@ComplainActivity) //设置监听器监听上传状态
 
+            showLoading()
             val filepath = File(localFileUrl)
             uploadUtil.uploadFile(filepath, fileKey, BaseConstant.SERVICE_ADDRESS + "file/img", HashMap<String, String>())
         }
@@ -165,4 +170,8 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        CustomToast.INSTANCE.cancelToast()//销毁页面时，取消掉toast
+    }
 }

@@ -3,11 +3,11 @@ package com.yizhipin.goods.data.repository
 import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.goods.data.api.CategoryApi
 import com.yizhipin.goods.data.api.GoodsApi
 import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.data.response.CategorySecond
-import com.yizhipin.goods.data.response.Goods
 import io.reactivex.Observable
 import javax.inject.Inject
 

@@ -1,76 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/MatchMatch.Common">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Common">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
-        app:titleText="订单确认"/>
+        app:titleText="@string/order_details" />
 
-    <TextView
+    <LinearLayout
         android:id="@+id/mSelectShipTv"
-        style="@style/MatchWrap"
-        android:layout_below="@id/mHeaderBar"
-        android:background="@drawable/border_all"
-        android:drawableRight="@drawable/right"
-        android:padding="@dimen/common_padding"
-        android:text="选择收货人"
-        android:textColor="@color/text_light_dark"/>
-
-    <RelativeLayout
-        android:id="@+id/mShipView"
-        style="@style/MatchWrap"
-        android:layout_below="@id/mSelectShipTv"
-        android:layout_marginTop="@dimen/common_padding"
-        android:background="@drawable/border_all"
-        android:paddingBottom="@dimen/common_padding_middle"
-        android:paddingTop="@dimen/common_padding_middle"
-        android:visibility="gone">
+        style="@style/MatchWrap.Vertical">
 
         <TextView
-            android:id="@+id/mShipNameTv"
-            style="@style/OrderShipName"/>
+            style="@style/MatchWrap"
+            android:layout_below="@id/mHeaderBar"
+            android:background="@drawable/border_all"
+            android:drawableRight="@drawable/right"
+            android:padding="@dimen/yPadding"
+            android:text="@string/no_set_address"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/yTextMiddleLarSize" />
 
-        <TextView
-            android:id="@+id/mShipAddressTv"
-            style="@style/OrderShipAddress"
-            android:layout_below="@id/mShipNameTv"
-            android:background="@null"
-            android:paddingBottom="@dimen/common_padding_small"/>
+        <RelativeLayout
+            android:id="@+id/mShipView"
+            style="@style/MatchWrap"
+            android:layout_below="@id/mSelectShipTv"
+            android:background="@drawable/border_all"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/mShipNameTv"
+                style="@style/OrderShipName"
+                android:text="收货人:" />
+
+            <TextView
+                android:id="@+id/mShipMobileTv"
+                style="@style/OrderShipName"
+                android:layout_marginRight="@dimen/yPaddingMiddle"
+                android:layout_toLeftOf="@+id/iv"
+                android:textColor="@color/yBlackGray" />
+
+            <TextView
+                android:id="@+id/mShipAddressTv"
+                style="@style/OrderShipAddress"
+                android:layout_below="@id/mShipNameTv"
+                android:background="@null"
+                android:paddingBottom="@dimen/common_padding_small" />
+
+            <ImageView
+                android:id="@+id/iv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/yPadding"
+                android:src="@drawable/right" />
+        </RelativeLayout>
 
         <ImageView
             style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/common_padding"
-            android:src="@drawable/right"/>
-    </RelativeLayout>
+            android:src="@drawable/lace2" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mOrderGoodsRv"
         style="@style/commonRecyclerView"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mShipView"
-        android:layout_marginTop="@dimen/common_padding"/>
+        android:layout_below="@id/mSelectShipTv"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite" />
 
     <RelativeLayout
+        android:id="@+id/num"
         style="@style/MatchWrap"
         android:layout_below="@id/mOrderGoodsRv"
         android:background="@drawable/border_all"
-        android:padding="@dimen/common_padding">
+        android:padding="@dimen/yPadding">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
-            android:text="支付配送"/>
+            android:text="支付配送" />
+
+        <com.yizhipin.base.widgets.NumberButton
+            android:id="@+id/mGoodsCountBtn"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:layout_below="@id/num"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="支付配送" />
 
         <TextView
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:lineSpacingMultiplier="1.3"
             android:text="在线支付\n快递运输"
-            android:textColor="@color/text_light_dark"/>
+            android:textColor="@color/text_light_dark" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -84,7 +118,7 @@
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
-            android:textColor="@color/common_red"/>
+            android:textColor="@color/common_red" />
 
         <Button
             android:id="@+id/mSubmitOrderBtn"
@@ -95,6 +129,6 @@
             android:paddingRight="30dp"
             android:text="提交订单"
             android:textColor="@color/common_white"
-            android:textSize="@dimen/text_big_size"/>
+            android:textSize="@dimen/text_big_size" />
     </RelativeLayout>
 </RelativeLayout>

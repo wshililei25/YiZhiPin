@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -11,7 +12,6 @@ import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.data.response.Complain
-import com.yizhipin.goods.data.response.Shop
 import com.yizhipin.goods.injection.component.DaggerCategoryComponent
 import com.yizhipin.goods.injection.module.CategoryModule
 import com.yizhipin.goods.presenter.ShopPresenter

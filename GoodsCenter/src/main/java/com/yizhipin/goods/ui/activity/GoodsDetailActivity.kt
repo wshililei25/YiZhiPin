@@ -8,8 +8,10 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.event.AddCartEvent
 import com.yizhipin.base.event.UpdateCartSizeEvent
 import com.yizhipin.base.ext.loadUrl
@@ -21,7 +23,6 @@ import com.yizhipin.base.widgets.IdeaScrollView
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Evaluate
-import com.yizhipin.goods.data.response.Goods
 import com.yizhipin.goods.data.response.Report
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
 import com.yizhipin.goods.injection.module.GoodsModule
@@ -29,6 +30,7 @@ import com.yizhipin.goods.presenter.GoodsDetailPresenter
 import com.yizhipin.goods.presenter.view.GoodsDetailView
 import com.yizhipin.goods.ui.adapter.EvaluateImageAdapter
 import com.yizhipin.provider.common.afterLogin
+import com.yizhipin.provider.router.RouterPath
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_good_details.*
@@ -134,6 +136,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mEvaluateMoreTv.onClick(this)
         mReportMoreTv.onClick(this)
         mShopView.onClick(this)
+        mSingleBuyView.onClick(this)
 
         retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         retailRmb.paint.isAntiAlias = true
@@ -200,6 +203,10 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
 
+            R.id.mSingleBuyView -> {
+                ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withParcelable(GoodsConstant.KEY_GOOD_ITEM, mGoods).navigation()
+            }
+
         }
     }
 
@@ -244,6 +251,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mEvaluateTv.text = "${getString(R.string.evaluate_new)} (${result.evaCount})"
             mReportTv.text = "${getString(R.string.report_commissioner)} (${result.experienceCount})"
             mShopIv.loadUrl(result.shop.shopImgurl)
+            mSystemPriceBotTv.text = getString(R.string.rmb).plus(result.pinPrice.toString())
+            mSingleBuyTv.text = getString(R.string.rmb).plus(result.price.toString())
 
             if (result.shop.shopIdentity == "product") {
                 mCategoryTv.text = getString(R.string.hamlet)

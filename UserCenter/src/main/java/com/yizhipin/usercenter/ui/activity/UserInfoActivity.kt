@@ -112,7 +112,9 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
      * 获取图片成功回调
      */
     override fun takeSuccess(result: TResult?) {
-
+        if (!mPresenter.checkNetWork()) {
+            return
+        }
         val localFileUrl = result?.image?.compressPath
 
         val fileKey = "avatarFile"

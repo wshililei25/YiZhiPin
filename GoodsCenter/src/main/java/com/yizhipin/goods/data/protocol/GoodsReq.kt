@@ -5,9 +5,6 @@ package com.yizhipin.goods.data.protocol
  */
 interface GoodsReq {
 
-
-    class GetGoodsListReq(val categoryId: Int, val pageNo: Int)
-
     class GetGoodsListByKeywordReq(val keyword: String, val pageNo: Int)
 
 }

@@ -6,6 +6,7 @@
     <dimen name="yTextLargeSize">18sp</dimen>
     <dimen name="yTextBigSize">16sp</dimen>
     <dimen name="yTextMiddleBigSize">15sp</dimen>
+    <dimen name="yTextMiddleLarSize">14sp</dimen>
     <dimen name="yTextMiddleSize">13sp</dimen>
     <dimen name="yTextSmallLarSize">12sp</dimen>
     <dimen name="yTextSmallSize">11sp</dimen>

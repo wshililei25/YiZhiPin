@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WrapWrap">
+
+    <TextView
+        android:id="@+id/button_sub"
+        style="@style/WrapWrap"
+        android:background="@color/yCategoryBg"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingRight="@dimen/yPaddingMiddle"
+        android:paddingBottom="@dimen/yPaddingSmall"
+        android:text="-"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextMiddleSize" />
+
+    <EditText
+        android:id="@+id/text_count"
+        style="@style/WrapWrap"
+        android:layout_width="40dp"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:digits="0123456789"
+        android:gravity="center"
+        android:inputType="number"
+        android:padding="@dimen/yPaddingSmall"
+        android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingBottom="@dimen/yPaddingSmall"
+        android:singleLine="true"
+        android:text="1"
+        android:textColor="@color/yBlack"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/yTextMiddleSize" />
+
+    <TextView
+        android:id="@+id/button_add"
+        style="@style/WrapWrap"
+        android:background="@color/yCategoryBg"
+        android:paddingLeft="@dimen/yPaddingMiddle"
+        android:paddingTop="@dimen/yPaddingSmall"
+        android:paddingRight="@dimen/yPaddingMiddle"
+        android:paddingBottom="@dimen/yPaddingSmall"
+        android:text="+"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextMiddleSize" />
+</LinearLayout>

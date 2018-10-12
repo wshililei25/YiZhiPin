@@ -88,7 +88,7 @@ class EvaluateAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, 
                 drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
             }
             false -> {
-                drawable = ContextCompat.getDrawable(context, R.drawable.news3)!!
+                drawable = ContextCompat.getDrawable(context, R.drawable.like2)!!
                 drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
             }
         }

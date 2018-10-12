@@ -1,8 +1,8 @@
 package com.yizhipin.goods.presenter.view
 
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.presenter.view.BaseView
 import com.yizhipin.goods.data.response.Evaluate
-import com.yizhipin.goods.data.response.Goods
 import com.yizhipin.goods.data.response.Report
 
 /*

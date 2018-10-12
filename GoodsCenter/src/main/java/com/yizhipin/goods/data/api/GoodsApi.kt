@@ -2,6 +2,8 @@ package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.data.protocol.GoodsReq
 import com.yizhipin.goods.data.response.*
 import com.yizhipin.usercenter.data.api.Api
@@ -26,6 +28,7 @@ interface GoodsApi {
     fun getGoodsList(@Query("currentPage") currentPage: String, @Query("primaryCategory") primaryCategory: String
                      , @Query("secondCategory") secondCategory: String, @Query("order") order: String
                      , @Query("orderType") orderType: String): Observable<BasePagingResp<MutableList<Goods>?>>
+
     /**
      * 店铺的商品列表
      */
@@ -79,6 +82,7 @@ interface GoodsApi {
      */
     @GET("${Api.SHOP_DETAIL}${"/{id}"}")
     fun getShopDetails(@Path("id") id: String): Observable<BaseResp<Shop>>
+
     /**
      * 举报投诉
      */

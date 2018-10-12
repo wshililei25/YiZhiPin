@@ -1,9 +1,9 @@
 package com.yizhipin.goods.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.data.response.CategorySecond
-import com.yizhipin.goods.data.response.Goods
 import io.reactivex.Observable
 
 

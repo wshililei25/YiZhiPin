@@ -415,6 +415,7 @@
             android:textSize="@dimen/yTextSmallSize" />
 
         <LinearLayout
+            android:id="@+id/mSingleBuyView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -423,8 +424,9 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/mSingleBuyTv"
                 style="@style/WrapWrap"
-                android:text="￥ 0.00"
+                android:text="¥ 0.00"
                 android:textColor="@color/yMain"
                 android:textSize="@dimen/yTextMiddleBigSize" />
 
@@ -444,8 +446,9 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/mSystemPriceBotTv"
                 style="@style/WrapWrap"
-                android:text="￥ 0.00"
+                android:text="¥ 0.00"
                 android:textColor="@color/yWhite"
                 android:textSize="@dimen/yTextMiddleBigSize" />
 

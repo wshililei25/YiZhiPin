@@ -1,6 +1,8 @@
 package com.yizhipin.goods.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.data.response.*
 import io.reactivex.Observable
 
