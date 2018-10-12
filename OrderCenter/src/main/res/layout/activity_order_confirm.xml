@@ -9,6 +9,7 @@
         app:titleText="@string/order_details" />
 
     <LinearLayout
+        android:layout_below="@+id/mHeaderBar"
         android:id="@+id/mSelectShipTv"
         style="@style/MatchWrap.Vertical">
 

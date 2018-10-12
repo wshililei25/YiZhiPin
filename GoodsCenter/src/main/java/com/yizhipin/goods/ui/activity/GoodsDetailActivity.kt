@@ -203,9 +203,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
 
-            R.id.mSingleBuyView -> {
-                ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withParcelable(GoodsConstant.KEY_GOOD_ITEM, mGoods).navigation()
-            }
+            R.id.mSingleBuyView -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withInt(GoodsConstant.KEY_GOODS_ID, mGoodsId).navigation()
+
 
         }
     }

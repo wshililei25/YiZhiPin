@@ -8,7 +8,6 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
-import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -31,16 +30,16 @@ import org.jetbrains.anko.toast
  * Created by ${XiLei} on 2018/9/24.
  * 订单详情
  */
-
 @Route(path = RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
 class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConfirmView, View.OnClickListener {
 
- /*   @Autowired(name = ProviderConstant.KEY_ORDER_ID)
-    @JvmField*/
+    @Autowired(name = ProviderConstant.KEY_ORDER_ID)
+    @JvmField
     var mOrderId: Int = 0
+    @Autowired(name = "goods_id")
+    @JvmField
+    var mGoodsId: Int = 0
 
-//    @Autowired(name = "good_item")
-    lateinit var mGoods: Goods
     private lateinit var mOrderGoodsAdapter: OrderGoodsAdapter
     private var mOrder: Order? = null
 
@@ -54,8 +53,8 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     }
 
     private fun initView() {
-        mGoods = intent.getParcelableExtra("good_item")
-        Log.d("2", "goods=" + mGoods!!.name)
+
+        Log.d("2", "mGoodsId=" + mGoodsId)
         mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
         mOrderGoodsAdapter = OrderGoodsAdapter(this)
         mOrderGoodsRv.adapter = mOrderGoodsAdapter
