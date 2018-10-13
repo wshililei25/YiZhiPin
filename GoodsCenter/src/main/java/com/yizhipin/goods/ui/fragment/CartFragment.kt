@@ -144,8 +144,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView {
                         mAllCheckedCb.isChecked = t.isAllChecked
                         updateTotalPrice()
                     }
-                }
-                .registerInBus(this)
+                }.registerInBus(this)
 
         Bus.observe<UpdateTotalPriceEvent>()
                 .subscribe { t: UpdateTotalPriceEvent ->

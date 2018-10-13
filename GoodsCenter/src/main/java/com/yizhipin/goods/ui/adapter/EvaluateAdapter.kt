@@ -14,6 +14,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.DateUtils
+import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.event.LikeEvent
@@ -38,7 +39,7 @@ class EvaluateAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, 
         val modle = dataList[position]
 
         holder.itemView.mLikeView.visibility = View.VISIBLE
-        holder.itemView.mPhoneTv.text = modle.nickname.replaceRange(3, 7, "****")
+        holder.itemView.mPhoneTv.text = StringUtils.setMobileStar(modle.nickname)
         holder.itemView.mDateTv.text = DateUtils.parseDate(modle.createTime, DateUtils.FORMAT_SHORT).toString()
         holder.itemView.mContentTv.text = modle.content
         holder.itemView.mLikeCountTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount}${")"}"

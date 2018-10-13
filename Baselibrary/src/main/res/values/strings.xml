@@ -42,7 +42,7 @@
     <string name="customer_service">售后服务</string>
     <string name="wallet">钱包</string>
     <string name="red_reper">我的红包</string>
-    <string name="commissioner">专员版块</string>
+    <string name="commissioner_plate">专员版块</string>
     <string name="apply_commissioner">申请专员</string>
     <string name="nav_bar_cart">购物车</string>
     <string name="collect_skim">我的收藏与浏览记录</string>
@@ -128,6 +128,29 @@
     <string name="input_complain_content">请输入对商家的投诉内容或举报信息</string>
     <string name="order_details">订单详情</string>
     <string name="no_set_address">未设置收货信息</string>
+    <string name="shop_intro">商家简介</string>
+    <string name="shop_type">商家类型</string>
+    <string name="region">所在地区</string>
+    <string name="deposit">保证金</string>
+    <string name="qualification">营业资质</string>
+    <string name="current_main">当前主营</string>
+    <string name="sell_month">月均销售</string>
+    <string name="sell_all">总销售</string>
+    <string name="authenticated">已认证</string>
+    <string name="unverified">未认证</string>
+    <string name="buy_num">购买数量</string>
+    <string name="postage">邮费</string>
+    <string name="payment">实际支付</string>
+    <string name="share_bill_info">拼单信息</string>
+    <string name="participate_share_bill">参与拼单</string>
+    <string name="commissioner">专员</string>
+    <string name="participate_hint">请在规定时间内邀请同址拼友参与拼单</string>
+    <string name="order_number">订单编号:</string>
+    <string name="create_time">创建时间:</string>
+    <string name="reality_pay">实际支付:</string>
+    <string name="order_type">订单类型:</string>
+    <string name="stale_time">过期时间:</string>
+    <string name="consignee">收货人:</string>
 
 
 

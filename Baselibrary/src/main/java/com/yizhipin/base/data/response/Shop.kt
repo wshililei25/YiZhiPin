@@ -22,7 +22,10 @@ data class Shop(
         val mobile: String,
         val backAddress: String,
         val backDetail: String,
-        val status: Int
+        val status: Int,
+        val totalSell: String,
+        val mouthSell: String,
+        val selfCon: String
 ):Parcelable
 
 

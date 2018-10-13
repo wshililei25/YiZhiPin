@@ -1,6 +1,7 @@
 package com.yizhipin.ordercender.serivice
 
 import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.ordercender.data.response.ShipAddress
 import io.reactivex.Observable
 
 /*
@@ -32,4 +33,5 @@ interface OrderService {
         确认订单
      */
     fun confirmOrder(orderId: Int): Observable<Boolean>
+    fun getDefaultAddress(map: MutableMap<String, String>): Observable<ShipAddress>
 }

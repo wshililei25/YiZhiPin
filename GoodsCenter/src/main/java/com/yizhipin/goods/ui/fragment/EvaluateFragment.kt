@@ -47,7 +47,6 @@ class EvaluateFragment : BaseMvpFragment<EvaluatePresenter>(), ReportView, BGARe
         initView()
         initRefreshLayout()
         mMultiStateView.startLoading()
-        loadData()
         initObserve()
     }
 
@@ -68,6 +67,11 @@ class EvaluateFragment : BaseMvpFragment<EvaluatePresenter>(), ReportView, BGARe
         viewHolder.setRefreshViewBackgroundDrawableRes(R.color.yBgGray)
         viewHolder.setLoadMoreBackgroundColorRes(R.color.yBgGray)
         mRefreshLayout.setRefreshViewHolder(viewHolder)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        loadData()
     }
 
     private fun loadData() {

@@ -96,7 +96,6 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
      */
     override fun onComplainShopSuccess(result: Complain) {
         toast("投诉成功")
-
         finish()
     }
 
@@ -135,7 +134,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
     override fun onUploadDone(responseCode: Int, message: String) {
         runOnUiThread {
             hideLoading()
-            toast(R.string.upload_success)
+            CustomToast.INSTANCE.showToast(this,R.string.upload_success)
             mComplainImageAdapter.dataList.add(message)
             mComplainImageAdapter.setData(mComplainImageAdapter.dataList)
         }

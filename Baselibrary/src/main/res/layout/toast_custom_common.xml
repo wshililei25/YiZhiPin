@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvCustomToast"
@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/toast_custom_common_bg"
         android:gravity="center"
-        android:minWidth="200dp"
-        android:padding="15dp"
-        android:textColor="@color/yBlack"
-        android:textSize="17sp" />
+        android:padding="10dp"
+        android:textColor="@color/yWhite"
+        android:textSize="15sp"/>
 </LinearLayout>

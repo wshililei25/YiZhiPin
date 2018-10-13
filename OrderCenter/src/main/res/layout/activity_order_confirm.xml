@@ -1,135 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/MatchMatch.Common">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch.Common">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
-        app:titleText="@string/order_details" />
+        app:titleText="@string/order_details"/>
 
-    <LinearLayout
-        android:layout_below="@+id/mHeaderBar"
-        android:id="@+id/mSelectShipTv"
-        style="@style/MatchWrap.Vertical">
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_below="@id/mHeaderBar"
-            android:background="@drawable/border_all"
-            android:drawableRight="@drawable/right"
-            android:padding="@dimen/yPadding"
-            android:text="@string/no_set_address"
-            android:textColor="@color/text_light_dark"
-            android:textSize="@dimen/yTextMiddleLarSize" />
-
-        <RelativeLayout
-            android:id="@+id/mShipView"
-            style="@style/MatchWrap"
-            android:layout_below="@id/mSelectShipTv"
-            android:background="@drawable/border_all"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/mShipNameTv"
-                style="@style/OrderShipName"
-                android:text="收货人:" />
-
-            <TextView
-                android:id="@+id/mShipMobileTv"
-                style="@style/OrderShipName"
-                android:layout_marginRight="@dimen/yPaddingMiddle"
-                android:layout_toLeftOf="@+id/iv"
-                android:textColor="@color/yBlackGray" />
-
-            <TextView
-                android:id="@+id/mShipAddressTv"
-                style="@style/OrderShipAddress"
-                android:layout_below="@id/mShipNameTv"
-                android:background="@null"
-                android:paddingBottom="@dimen/common_padding_small" />
-
-            <ImageView
-                android:id="@+id/iv"
-                style="@style/WrapWrap"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/yPadding"
-                android:src="@drawable/right" />
-        </RelativeLayout>
-
-        <ImageView
-            style="@style/WrapWrap"
-            android:src="@drawable/lace2" />
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mOrderGoodsRv"
-        style="@style/commonRecyclerView"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mSelectShipTv"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:background="@color/yWhite" />
-
-    <RelativeLayout
-        android:id="@+id/num"
+    <ScrollView
         style="@style/MatchWrap"
-        android:layout_below="@id/mOrderGoodsRv"
-        android:background="@drawable/border_all"
-        android:padding="@dimen/yPadding">
+        android:layout_above="@+id/mBtn"
+        android:layout_below="@+id/mHeaderBar">
 
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_centerVertical="true"
-            android:text="支付配送" />
+        <LinearLayout
+            style="@style/MatchMatch.Vertical">
 
-        <com.yizhipin.base.widgets.NumberButton
-            android:id="@+id/mGoodsCountBtn"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
+            <LinearLayout
+                style="@style/MatchWrap.Vertical">
 
-    <RelativeLayout
+                <TextView
+                    android:id="@+id/mSelectShipTv"
+                    style="@style/MatchWrap"
+                    android:layout_below="@id/mHeaderBar"
+                    android:background="@drawable/border_all"
+                    android:drawableRight="@drawable/right"
+                    android:padding="@dimen/yPadding"
+                    android:text="@string/no_set_address"
+                    android:textColor="@color/text_light_dark"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <RelativeLayout
+                    android:id="@+id/mShipView"
+                    style="@style/MatchWrap"
+                    android:background="@drawable/border_all"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/mShipNameTv"
+                        style="@style/OrderShipName"
+                        android:text="收货人:"/>
+
+                    <TextView
+                        android:id="@+id/mShipMobileTv"
+                        style="@style/OrderShipName"
+                        android:layout_marginRight="@dimen/yPaddingMiddle"
+                        android:layout_toLeftOf="@+id/iv"
+                        android:textColor="@color/yBlackGray"/>
+
+                    <TextView
+                        android:id="@+id/mShipAddressTv"
+                        style="@style/OrderShipAddress"
+                        android:layout_below="@id/mShipNameTv"
+                        android:background="@null"
+                        android:paddingBottom="@dimen/common_padding_small"/>
+
+                    <ImageView
+                        android:id="@+id/iv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/yPadding"
+                        android:src="@drawable/right"/>
+                </RelativeLayout>
+
+                <ImageView
+                    style="@style/WrapWrap"
+                    android:src="@drawable/lace2"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mOrderGoodsRv"
+                style="@style/commonRecyclerView"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:background="@color/yWhite"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@drawable/border_all"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/buy_num"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <com.yizhipin.base.widgets.NumberButton
+                    android:id="@+id/mGoodsCountBtn"
+                    style="@style/WrapWrap"
+                    app:editable="false"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@drawable/border_all"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/postage"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:text="¥ 0.00"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@drawable/border_all"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/payment"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:text="¥ 0.00"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight_10"/>
+
+            <LinearLayout
+                android:id="@+id/mOrderView"
+                style="@style/MatchWrap.Vertical.White"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:background="@drawable/border_all"
+                    android:padding="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:text="@string/share_bill_info"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:text="¥ 0.00"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextMiddleSize"/>
+                </RelativeLayout>
+
+                <View
+                    style="@style/DividerFixedHeight"
+                    android:layout_marginLeft="@dimen/yPadding"/>
+
+                <RelativeLayout
+                    android:id="@+id/mHeadView"
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/yPadding">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/mUserIconIv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/user"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mUserIconIv"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/shape_main_solid_corners"
+                        android:paddingLeft="@dimen/yPaddingSmall"
+                        android:paddingRight="@dimen/yPaddingSmall"
+                        android:text="@string/commissioner"
+                        android:textColor="@color/yWhite"
+                        android:textSize="@dimen/yTextSmallSize"/>
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mCommissionerRv"
+                    style="@style/MatchWrap"/>
+
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"
+                    android:text="最低3人成单"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/yPaddingSmall"
+                    android:text="@string/participate_hint"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <View
+                    style="@style/DividerFixedHeight_10"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"/>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPadding"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/order_number"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/create_time"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/reality_pay"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/order_type"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap"
+                    android:paddingLeft="@dimen/yPadding"
+                    android:paddingTop="@dimen/yPaddingSmall"
+                    android:paddingRight="@dimen/yPadding"
+                    android:paddingBottom="@dimen/yPadding">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="@string/stale_time"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/mBtn"
         style="@style/MatchWrap"
-        android:layout_below="@id/num"
-        android:background="@drawable/border_all"
-        android:padding="@dimen/yPadding">
-
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_centerVertical="true"
-            android:text="支付配送" />
-
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:lineSpacingMultiplier="1.3"
-            android:text="在线支付\n快递运输"
-            android:textColor="@color/text_light_dark" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/mBottomView"
-        style="@style/MatchWrap"
+        android:layout_height="@dimen/yEditHeight"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/border_all">
-
-        <TextView
-            android:id="@+id/mTotalPriceTv"
-            style="@style/WrapWrap"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:textColor="@color/common_red" />
-
-        <Button
-            android:id="@+id/mSubmitOrderBtn"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:background="@color/common_red"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="提交订单"
-            android:textColor="@color/common_white"
-            android:textSize="@dimen/text_big_size" />
-    </RelativeLayout>
+        android:background="@color/yMain"
+        android:gravity="center"
+        android:text="@string/participate_share_bill"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextMiddleBigSize"/>
 </RelativeLayout>

@@ -2,7 +2,6 @@ package com.yizhipin.goods.ui.activity
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.loadUrl
@@ -31,6 +30,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
 
     private lateinit var mShopVpAdapter: ShopVpAdapter
     private lateinit var mData: MutableList<Category>
+    private lateinit var mShop: Shop
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +52,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
         mBasePresenter.mView = this
     }
 
-    override fun onStart() {
-        super.onStart()
-        loadData()
-    }
-
     private fun loadData() {
-        Log.d("2", "mShopId=" + mShopId)
         var map = mutableMapOf<String, String>()
         map.put("id", mShopId.toString())
         mBasePresenter.getShopDetails(map)
@@ -66,6 +60,7 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
 
     override fun onGetShopDetailsSuccess(result: Shop) {
         result?.let {
+            mShop = result
             mShopNameTv.text = result.shopName
             mShopIv.loadUrl(result.shopImgurl)
             if (result.shopIdentity == "product") {
@@ -81,6 +76,10 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView {
     }
 
     override fun onComplainShopSuccess(result: Complain) {
+    }
+
+    fun getShop(): Shop {
+        return mShop
     }
 }
 

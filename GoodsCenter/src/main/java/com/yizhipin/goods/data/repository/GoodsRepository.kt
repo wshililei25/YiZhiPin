@@ -9,7 +9,9 @@ import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.data.api.GoodsApi
 import com.yizhipin.goods.data.protocol.GoodsReq
-import com.yizhipin.goods.data.response.*
+import com.yizhipin.goods.data.response.Complain
+import com.yizhipin.goods.data.response.Evaluate
+import com.yizhipin.goods.data.response.Report
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -50,15 +52,25 @@ class GoodsRepository @Inject constructor() {
     }
 
     fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateList(map["currentPage"]!!, map["pid"]!!,map["shopId"]!!, map["loginUid"]!!)
+        if (map["loginUid"].isNullOrEmpty()) {
+            return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateListNotLogin(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!)
+        } else {
+            return RetrofitFactoryGet().create(GoodsApi::class.java).getEvaluateList(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!, map["loginUid"]!!)
+        }
     }
 
     fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getReportList(map["currentPage"]!!, map["pid"]!!,map["shopId"]!!, map["loginUid"]!!)
+        if (map["loginUid"].isNullOrEmpty()) {
+            return RetrofitFactoryGet().create(GoodsApi::class.java).getReportListNotLogin(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!)
+        } else {
+            return RetrofitFactoryGet().create(GoodsApi::class.java).getReportList(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!, map["loginUid"]!!)
+        }
     }
+
     fun giveLike(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLike()
     }
+
     fun giveLikeReport(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).giveLikeReport()
     }
@@ -66,6 +78,7 @@ class GoodsRepository @Inject constructor() {
     fun getShopDetails(map: MutableMap<String, String>): Observable<BaseResp<Shop>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getShopDetails(map["id"]!!)
     }
+
     fun getComplainShop(map: MutableMap<String, String>): Observable<BaseResp<Complain>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).getComplainShop()
     }

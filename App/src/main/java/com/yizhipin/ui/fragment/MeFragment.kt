@@ -159,7 +159,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mAnountTv.text = "￥${result.totalAmount}"
         mUserIconIv.loadUrl(result.imgurl)
         if (result.commissioner) mCommissionerIv.visibility = View.VISIBLE else mCommissionerIv.visibility = View.GONE
-        if (result.commissioner) mCommissionerTv.text = getString(R.string.commissioner) else mCommissionerTv.text = getString(R.string.apply_commissioner)
+        if (result.commissioner) mCommissionerTv.text = getString(R.string.commissioner_plate) else mCommissionerTv.text = getString(R.string.apply_commissioner)
 
         when (result.level) {
             1 -> mGradeIv.setImageResource(R.drawable.grade1)

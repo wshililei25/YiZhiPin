@@ -25,6 +25,8 @@ class GoodsConstant {
         const  val KEY_CATEGORY_ITEM = "category_item"
         //评价总数量
         const  val KEY_EVA_COUNT = "eva_count"
+        //店铺
+        const  val KEY_SHOP = "shop"
         //店铺ID
         const  val KEY_SHOP_ID = "shop_id"
         //商品item

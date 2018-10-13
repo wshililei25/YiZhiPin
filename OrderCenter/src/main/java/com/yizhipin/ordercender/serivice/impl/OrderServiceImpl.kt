@@ -4,6 +4,7 @@ import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.ordercender.data.repository.OrderRepository
 import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.serivice.OrderService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -16,6 +17,10 @@ class OrderServiceImpl @Inject constructor(): OrderService {
     @Inject
     lateinit var repository: OrderRepository
 
+
+    override fun getDefaultAddress(map: MutableMap<String, String>): Observable<ShipAddress> {
+        return repository.getDefaultAddress(map).convert()
+    }
     /*
         根据ID查询订单
      */

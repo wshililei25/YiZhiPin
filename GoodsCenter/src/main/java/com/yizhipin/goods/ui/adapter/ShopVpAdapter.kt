@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.ui.fragment.EvaluateFragment
 import com.yizhipin.goods.ui.fragment.GoodsFragment
@@ -52,4 +53,6 @@ class ShopVpAdapter(fragmentManager: FragmentManager, val mShopId: String) : Fra
     override fun getPageTitle(position: Int): CharSequence? {
         return mList[position]
     }
+
+
 }

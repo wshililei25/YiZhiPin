@@ -21,7 +21,7 @@ enum class CustomToast {
     fun showToast(ctx: Context, content: String) {
         if (mToast == null) {
             mToast = Toast(ctx)
-            mToast!!.setGravity(Gravity.CENTER, 0, 0)//设置toast显示的位置，这是居中
+            mToast!!.setGravity(Gravity.BOTTOM, 0, 20)//设置toast显示的位置，这是居中
             mToast!!.duration = Toast.LENGTH_SHORT//设置toast显示的时长
             val _root = LayoutInflater.from(ctx).inflate(R.layout.toast_custom_common, null)//自定义样式，自定义布局文件
             mTvToast = _root.findViewById<View>(R.id.tvCustomToast) as TextView

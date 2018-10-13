@@ -1,15 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch.Vertical"
-    android:background="@color/yBgGray">
+                                            style="@style/MatchMatch.Vertical.White">
 
     <LinearLayout style="@style/MatchMatch.Vertical">
 
+        <View
+            style="@style/DividerFixedHeight_10"/>
+
         <TextView
             style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding"
+            android:text="@string/shop_intro"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <TextView
+            android:id="@+id/mIntroTv"
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPaddingMiddle"
+            android:paddingRight="@dimen/yPadding"
+            android:paddingBottom="@dimen/yPadding"
+            android:textColor="@color/yBlackDeep"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <View
+            style="@style/DividerFixedHeight_10"/>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/shop_type"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mTypeTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/region"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mRegionTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/deposit"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mDepositTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/qualification"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mQualificationTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/current_main"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mCurrentMainTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/sell_month"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mSellMonthTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_width="100dp"
+                android:text="@string/sell_all"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+
+            <TextView
+                android:id="@+id/mSellAllTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/yTextMiddleBigSize"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/mComplainBtn"
@@ -17,61 +175,8 @@
             android:layout_margin="@dimen/yPaddingBig"
             android:enabled="true"
             android:text="@string/complain"
-            android:textSize="@dimen/yTextBigSize" />
+            android:textSize="@dimen/yTextBigSize"/>
 
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
-
-        <TextView
-            style="@style/MatchWrap"
-            android:layout_marginTop="20dp"
-            android:text="sdlkhjlkfla"
-            android:textSize="50sp" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

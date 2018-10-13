@@ -8,12 +8,15 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.utils.YuanFenConverter
+import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.event.SelectAddressEvent
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
@@ -61,10 +64,16 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
         mSelectShipTv.onClick(this)
         mShipView.onClick(this)
-        mSubmitOrderBtn.onClick(this)
+//        mSubmitOrderBtn.onClick(this)
+
+        if (mOrderId == 0) mOrderView.setVisible(false) else mOrderView.setVisible(true)
     }
 
     private fun loadData() {
+        var map = mutableMapOf<String, String>()
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        mBasePresenter.getDefaultAddress(map)
+
         mBasePresenter.getOrderById(mOrderId)
     }
 
@@ -73,13 +82,21 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
         mBasePresenter.mView = this
     }
 
+    /**
+     * 获取默认地址成功
+     */
+    override fun onGetDefaultAddressSuccess(result: ShipAddress) {
+
+        updateAddressView(result)
+    }
+
     override fun onGetOrderByIdResult(result: Order) {
 
         mOrder = result
-        mTotalPriceTv.text = "合计:${YuanFenConverter.changeF2YWithUnit(result.totalPrice)}"
+//        mTotalPriceTv.text = "合计:${YuanFenConverter.changeF2YWithUnit(result.totalPrice)}"
         mOrderGoodsAdapter.setData(result.orderGoodsList)
 
-        updateAddressView()
+//        updateAddressView()
     }
 
     override fun onSubmitOrderResult(result: Boolean) {
@@ -91,11 +108,11 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
             R.id.mSelectShipTv, R.id.mShipView -> {
                 startActivity<ShipAddressActivity>()
             }
-            R.id.mSubmitOrderBtn -> {
-                mOrder?.let {
-                    mBasePresenter.submitOrder(mOrder!!)
-                }
-            }
+            /* R.id.mSubmitOrderBtn -> {
+                 mOrder?.let {
+                     mBasePresenter.submitOrder(mOrder!!)
+                 }
+             }*/
         }
     }
 
@@ -104,26 +121,23 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                 .subscribe { t: SelectAddressEvent ->
                     run {
                         mOrder?.let {
-                            it.shipAddress = t.address
+                            updateAddressView(t.address)
                         }
-                        updateAddressView()
                     }
                 }.registerInBus(this)
     }
 
-    private fun updateAddressView() {
-        mOrder?.let {
-            if (it.shipAddress == null) {
-                mSelectShipTv.setVisible(true)
-                mShipView.setVisible(false)
-            } else {
-                mSelectShipTv.setVisible(false)
-                mShipView.setVisible(true)
+    private fun updateAddressView(result: ShipAddress) {
+        if (result == null) {
+            mSelectShipTv.setVisible(true)
+            mShipView.setVisible(false)
+        } else {
+            mSelectShipTv.setVisible(false)
+            mShipView.setVisible(true)
 
-                mShipNameTv.text = it.shipAddress!!.name + "   " +
-                        it.shipAddress!!.mobile
-                mShipAddressTv.text = it.shipAddress!!.detail
-            }
+            mShipNameTv.text = getString(R.string.consignee).plus(result.name)
+            mShipMobileTv.text = StringUtils.setMobileStar(result.mobile)
+            mShipAddressTv.text = result.pro + result.city + result.area + result.detail
         }
     }
 

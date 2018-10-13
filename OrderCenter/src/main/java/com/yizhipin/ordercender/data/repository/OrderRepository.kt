@@ -2,10 +2,12 @@ package com.yizhipin.ordercender.data.repository
 
 
 import com.yizhipin.base.data.net.RetrofitFactory
+import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.ordercender.data.api.OrderApi
 import com.yizhipin.ordercender.data.protocol.*
 import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.ordercender.data.response.ShipAddress
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -28,6 +30,10 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactory.instance.create(OrderApi::class.java).confirmOrder(ConfirmOrderReq(orderId))
     }
 
+
+    fun getDefaultAddress(map: MutableMap<String, String>): Observable<BaseResp<ShipAddress>> {
+        return RetrofitFactoryGet().create(OrderApi::class.java).getDefaultAddress(map["uid"]!!)
+    }
     /*
         根据ID查询订单
      */

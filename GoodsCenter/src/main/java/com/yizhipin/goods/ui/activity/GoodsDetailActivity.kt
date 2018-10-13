@@ -18,6 +18,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.DateUtils
+import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.base.widgets.IdeaScrollView
 import com.yizhipin.goods.R
@@ -203,9 +204,11 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
 
-            R.id.mSingleBuyView -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withInt(GoodsConstant.KEY_GOODS_ID, mGoodsId).navigation()
-
-
+            R.id.mSingleBuyView -> {
+                afterLogin {
+                    ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withInt(GoodsConstant.KEY_GOODS_ID, mGoodsId).navigation()
+                }
+            }
         }
     }
 
@@ -284,7 +287,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onGetEvaluateNewSuccess(result: Evaluate) {
         result?.let {
-            mPhoneTv.text = result.nickname.replaceRange(3, 7, "****")
+            mPhoneTv.text = StringUtils.setMobileStar(result.nickname)
             mDateTv.text = DateUtils.parseDate(result.createTime, DateUtils.FORMAT_SHORT).toString()
             mContentTv.text = result.content
             mEvaluateStarView.setCheckStarCount(result.starCount)
@@ -315,7 +318,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onGetReportNewSuccess(result: Report) {
         result?.let {
-            mPhoneReportTv.text = result.nickname.replaceRange(3, 7, "****")
+            mPhoneReportTv.text = StringUtils.setMobileStar(result.nickname)
             mDateReportTv.text = DateUtils.parseDate(result.createTime, DateUtils.FORMAT_SHORT).toString()
             mContentReportTv.text = result.content
             mEvaluateReportStarView.setCheckStarCount(result.starCount)
