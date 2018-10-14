@@ -13,5 +13,11 @@ class BaseConstant {
         const val TABLE_PREFS = "YiZhiPin"
         //Token Key
         const val KEY_SP_TOKEN = "id"
+
+
+        //商品集合
+        const val KEY_GOODS_LIST = "goodsList"
+        //是否拼单  还是原价购买
+        const val KEY_IS_PIN = "isPin"
     }
 }

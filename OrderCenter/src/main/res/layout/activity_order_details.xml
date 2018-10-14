@@ -112,6 +112,7 @@
                     android:textSize="@dimen/yTextMiddleSize"/>
 
                 <TextView
+                    android:id="@+id/mPostageTv"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:text="¥ 0.00"
@@ -136,6 +137,7 @@
                     android:textSize="@dimen/yTextMiddleSize"/>
 
                 <TextView
+                    android:id="@+id/mAmountTv"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:text="¥ 0.00"

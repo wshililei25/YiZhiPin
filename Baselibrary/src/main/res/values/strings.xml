@@ -41,7 +41,7 @@
     <string name="appraise">待评价</string>
     <string name="customer_service">售后服务</string>
     <string name="wallet">钱包</string>
-    <string name="red_reper">我的红包</string>
+    <string name="red_reper_me">我的红包</string>
     <string name="commissioner_plate">专员版块</string>
     <string name="apply_commissioner">申请专员</string>
     <string name="nav_bar_cart">购物车</string>
@@ -151,7 +151,15 @@
     <string name="order_type">订单类型:</string>
     <string name="stale_time">过期时间:</string>
     <string name="consignee">收货人:</string>
-
+    <string name="commit_order">提交订单</string>
+    <string name="participation_share_bill">参与拼单</string>
+    <string name="select_pay_type">请在下方选择支付方式</string>
+    <string name="red_reper">红包</string>
+    <string name="pay_type">支付方式</string>
+    <string name="balance_pay">余额支付</string>
+    <string name="balance_insufficient">余额不足</string>
+    <string name="ali_pay">支付宝快捷支付</string>
+    <string name="wechat_pay">微信支付</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

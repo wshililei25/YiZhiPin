@@ -19,12 +19,10 @@ import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderListPresenter
 import com.yizhipin.ordercender.presenter.view.OrderListView
-import com.yizhipin.ordercender.ui.activity.OrderDetailActivity
 import com.yizhipin.ordercender.ui.adapter.OrderAdapter
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_order.*
-import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
 /**
@@ -56,7 +54,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
      */
         mOrderAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Order> {
             override fun onItemClick(item: Order, position: Int) {
-                startActivity<OrderDetailActivity>(ProviderConstant.KEY_ORDER_ID to item.id)
+//                startActivity<OrderDetailActivity>(ProviderConstant.KEY_ORDER_ID to item.id)
             }
         })
     }

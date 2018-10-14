@@ -195,7 +195,7 @@
             style="@style/MeItemStyle"
             android:drawableLeft="@drawable/redenvelopes"
             android:drawablePadding="@dimen/yPaddingSmall"
-            android:text="@string/red_reper"/>
+            android:text="@string/red_reper_me"/>
 
         <View
             style="@style/DividerFixedHeight"

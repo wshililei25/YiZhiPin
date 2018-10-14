@@ -131,7 +131,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView {
     }
 
     override fun onSubmitCartListResult(result: Int) {
-        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withInt(ProviderConstant.KEY_ORDER_ID, result).navigation()
+        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS).withInt(ProviderConstant.KEY_ORDER_ID, result).navigation()
     }
 
     /**

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.White">
+
+    <ImageView
+        android:id="@+id/pay_icon"
+        style="@style/WrapWrap"
+        android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/yPadding"
+        android:paddingTop="@dimen/yPadding"
+        android:paddingBottom="@dimen/yPadding"
+        android:src="@drawable/alipay"/>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical">
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                android:id="@+id/pay_name"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/pay_desc"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/yPaddingMiddle"
+                android:layout_toLeftOf="@+id/pay_check"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <RadioButton
+                android:id="@+id/pay_check"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/radio"
+                android:checked="false"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding"/>
+    </LinearLayout>
+</LinearLayout>

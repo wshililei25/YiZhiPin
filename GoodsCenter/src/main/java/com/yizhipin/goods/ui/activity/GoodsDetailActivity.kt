@@ -1,6 +1,5 @@
 package com.yizhipin.goods.ui.activity
 
-import android.content.Intent
 import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
@@ -9,8 +8,10 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.event.AddCartEvent
 import com.yizhipin.base.event.UpdateCartSizeEvent
@@ -30,8 +31,8 @@ import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.GoodsDetailPresenter
 import com.yizhipin.goods.presenter.view.GoodsDetailView
 import com.yizhipin.goods.ui.adapter.EvaluateImageAdapter
-import com.yizhipin.ordercender.ui.activity.OrderConfirmActivity
 import com.yizhipin.provider.common.afterLogin
+import com.yizhipin.provider.router.RouterPath
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_good_details.*
@@ -207,10 +208,14 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mSingleBuyView -> {
                 afterLogin {
-                    var intent = Intent(this,OrderConfirmActivity::class.java)
-                    intent.putExtra("good_item",mGoods)
-                    startActivity(intent)
-//                    startActivity<OrderConfirmActivity>(GoodsConstant.KEY_GOOD_ITEM to mGoods)
+                    mGoods?.let {
+                        var list = arrayListOf<Goods>()
+                        list.add(mGoods)
+                        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+                                .withBoolean(BaseConstant.KEY_IS_PIN, false)
+                                .withParcelableArrayList(BaseConstant.KEY_GOODS_LIST, list)
+                                .navigation()
+                    }
                 }
             }
         }

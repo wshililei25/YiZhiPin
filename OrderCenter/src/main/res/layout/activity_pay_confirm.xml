@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/participation_share_bill"/>
+
+    <ScrollView
+        style="@style/MatchWrap"
+        android:layout_above="@+id/mBtn"
+        android:layout_below="@+id/mHeaderBar">
+
+        <LinearLayout
+            style="@style/MatchMatch.Vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@drawable/border_all"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:text="@string/participation_share_bill"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:id="@+id/mPostageTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:text="¥ 0.00"
+                    android:textColor="@color/yMain"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/exclamation"
+                android:drawablePadding="@dimen/yPaddingMiddle"
+                android:paddingLeft="@dimen/yPadding"
+                android:paddingTop="@dimen/yPaddingSmall"
+                android:paddingBottom="@dimen/yPadding"
+                android:text="@string/select_pay_type"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextSmallSize"/>
+
+            <View
+                style="@style/DividerFixedHeight_10"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@drawable/border_all"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:text="@string/red_reper"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+
+                <TextView
+                    android:id="@+id/mAmountTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@drawable/right"
+                    android:drawablePadding="@dimen/yPaddingMiddle"
+                    android:text="已自定抵扣0.00元"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextMiddleSize"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/DividerFixedHeight_10"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:padding="@dimen/yPadding"
+                android:text="@string/pay_type"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <View
+                style="@style/DividerFixedHeight"
+                android:layout_marginLeft="@dimen/yPadding"/>
+
+            <com.yizhipin.base.widgets.PayRadioGroup
+                android:id="@+id/mPayRadioGroup"
+                style="@style/MatchWrap"
+                android:orientation="vertical">
+
+                <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/p1"
+                    style="@style/MatchWrap"
+                    app:checked="true"
+                    app:desc="@string/balance_insufficient"
+                    app:logo1="@drawable/wallet"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/balance_pay"/>
+
+                <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/p2"
+                    style="@style/MatchWrap"
+                    app:logo1="@drawable/alipay"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/ali_pay"/>
+
+                <com.yizhipin.base.widgets.PayRadioPurified
+                    android:id="@+id/p3"
+                    style="@style/MatchWrap"
+                    app:logo1="@drawable/wechat2"
+                    app:radio="@drawable/radio"
+                    app:title1="@string/wechat_pay"/>
+            </com.yizhipin.base.widgets.PayRadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/mBtn"
+        style="@style/MatchWrap"
+        android:layout_height="@dimen/yEditHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yMain"
+        android:gravity="center"
+        android:text="@string/participate_share_bill"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextMiddleBigSize"/>
+</RelativeLayout>
