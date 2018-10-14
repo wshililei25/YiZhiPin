@@ -52,8 +52,8 @@ class ShopDetailsFragment : BaseFragment(), View.OnClickListener {
         Log.d("2", "initObserve")
         mIntroTv.text = mShop.selfCon
         mRegionTv.text = mShop.city
-//                        mDepositTv.text =mShop.selfCon
-        mQualificationTv.text = if (mShop.license.isNullOrEmpty()) getString(R.string.unverified) else getString(R.string.authenticated)
+        mDepositTv.text = mShop.bail
+        mQualificationTv.text = if (mShop.licenseAuth) getString(R.string.authenticated) else getString(R.string.unverified)
         mCurrentMainTv.text = mShop.scope
         mSellMonthTv.text = mShop.mouthSell
         mSellAllTv.text = mShop.totalSell

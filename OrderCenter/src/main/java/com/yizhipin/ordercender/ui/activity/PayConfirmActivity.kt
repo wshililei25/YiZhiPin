@@ -6,6 +6,8 @@ import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.ordercender.R
+import com.yizhipin.ordercender.common.OrderConstant
+import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.presenter.OrderConfirmPresenter
 import kotlinx.android.synthetic.main.activity_pay_confirm.*
 
@@ -23,6 +25,10 @@ class PayConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), View.OnClic
      @JvmField
      var mGoodsList: ArrayList<Goods>? = null*/
 
+    //    @Autowired(name = OrderConstant.KEY_ORDER) //注解接收上个页面的传参
+//    @JvmField
+    private lateinit var mOrder: Order
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pay_confirm)
@@ -32,7 +38,11 @@ class PayConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), View.OnClic
     }
 
     private fun initView() {
-        mPayRadioGroup.setOnCheckedChangeListener(object :PayRadioGroup.OnCheckedChangeListener{
+
+        mOrder = intent.getParcelableExtra<Order>(OrderConstant.KEY_ORDER)
+        mPaymentTv.text = mOrder!!.payAmount
+
+        mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {
                 for (i in 0 until group.getChildCount()) {
                     (group.getChildAt(i) as PayRadioPurified).setChangeImg(checkedId)

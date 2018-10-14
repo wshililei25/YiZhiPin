@@ -5,18 +5,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.base.utils.YuanFenConverter
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.common.OrderStatus
 import com.yizhipin.ordercender.data.response.Order
 import kotlinx.android.synthetic.main.layout_order_item.view.*
-import org.jetbrains.anko.dip
 
 /*
     订单列表数据适配
@@ -39,7 +34,7 @@ class OrderAdapter(context: Context) : BaseRecyclerViewAdapter<Order, OrderAdapt
         val model = dataList[position]
         var mTotalCount = 0
 
-        if (model.orderGoodsList.size == 1) {//单个商品
+      /*  if (model.orderGoodsList.size == 1) {//单个商品
             holder.itemView.mSingleGoodsView.setVisible(true)
             holder.itemView.mMultiGoodsView.setVisible(false)//单个商品隐藏多个商品视图
             val orderGoods = model.orderGoodsList[0]
@@ -64,12 +59,12 @@ class OrderAdapter(context: Context) : BaseRecyclerViewAdapter<Order, OrderAdapt
 
                 mTotalCount += orderGoods.goodsCount
             }
-        }
+        }*/
 
-        holder.itemView.mOrderInfoTv.text = "合计${mTotalCount}件商品，总价${YuanFenConverter.changeF2YWithUnit(model.totalPrice)}"
+//        holder.itemView.mOrderInfoTv.text = "合计${mTotalCount}件商品，总价${YuanFenConverter.changeF2YWithUnit(model.totalPrice)}"
 
 
-        when (model.orderStatus) {//根据订单状态设置颜色、文案及对应操作按钮
+      /*  when (model.orderStatus) {//根据订单状态设置颜色、文案及对应操作按钮
             OrderStatus.ORDER_WAIT_PAY -> {
                 holder.itemView.mOrderStatusNameTv.text = "待支付"
                 holder.itemView.mOrderStatusNameTv.setTextColor(mContext.resources.getColor(R.color.common_red))
@@ -92,7 +87,7 @@ class OrderAdapter(context: Context) : BaseRecyclerViewAdapter<Order, OrderAdapt
                 holder.itemView.mOrderStatusNameTv.setTextColor(mContext.resources.getColor(R.color.common_gray))
                 setOptVisible(false, false, false, holder)
             }
-        }
+        }*/
 
         //设置确认收货点击事件
         holder.itemView.mConfirmBtn.onClick {

@@ -23,6 +23,8 @@ class OrderConstant {
         const val OPT_ORDER_CONFIRM = 2
         //取消订单操作
         const val OPT_ORDER_CANCEL = 3
+        //订单
+        const val KEY_ORDER = "orderItem"
     }
 
 

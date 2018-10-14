@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.alibaba.android.arouter.launcher.ARouter
 import com.bigkoo.alertview.AlertView
 import com.bigkoo.alertview.OnItemClickListener
 import com.kennyc.view.MultiStateView
@@ -20,8 +19,6 @@ import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderListPresenter
 import com.yizhipin.ordercender.presenter.view.OrderListView
 import com.yizhipin.ordercender.ui.adapter.OrderAdapter
-import com.yizhipin.provider.common.ProviderConstant
-import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_order.*
 import org.jetbrains.anko.support.v4.toast
 
@@ -91,13 +88,13 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
     override fun onOptClick(optType: Int, order: Order) {
         when (optType) {
             OrderConstant.OPT_ORDER_PAY -> {
-                ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE)
+               /* ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE)
                         .withInt(ProviderConstant.KEY_ORDER_ID, order.id)
                         .withLong(ProviderConstant.KEY_ORDER_PRICE, order.totalPrice)
-                        .navigation()
+                        .navigation()*/
             }
             OrderConstant.OPT_ORDER_CONFIRM -> {
-                mBasePresenter.confirmOrder(order.id)
+//                mBasePresenter.confirmOrder(order.id)
             }
             OrderConstant.OPT_ORDER_CANCEL -> {
                 //mPresenter.cancelOrder(order.id)
@@ -112,7 +109,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
     private fun showCancelDialog(order: Order) {
         AlertView("取消订单", "确定取消该订单？", "取消", null, arrayOf("确定"), activity, AlertView.Style.Alert, OnItemClickListener { o, position ->
             if (position == 0) {
-                mBasePresenter.cancelOrder(order.id)
+//                mBasePresenter.cancelOrder(order.id)
             }
         }
         ).show()

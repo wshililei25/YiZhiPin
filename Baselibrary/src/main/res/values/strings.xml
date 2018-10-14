@@ -160,6 +160,7 @@
     <string name="balance_insufficient">余额不足</string>
     <string name="ali_pay">支付宝快捷支付</string>
     <string name="wechat_pay">微信支付</string>
+    <string name="immediate_pay">立即支付</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

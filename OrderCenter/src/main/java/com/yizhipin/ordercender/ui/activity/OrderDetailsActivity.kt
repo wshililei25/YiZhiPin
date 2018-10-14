@@ -15,6 +15,7 @@ import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.ordercender.R
+import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.event.SelectAddressEvent
@@ -43,6 +44,8 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     @JvmField
     var mGoodsList: ArrayList<Goods>? = null
 
+
+    private lateinit var mShipAddress: ShipAddress
     private lateinit var mOrderGoodsAdapter: OrderGoodsAdapter
     private var mOrder: Order? = null
 
@@ -121,8 +124,19 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                 startActivity<ShipAddressActivity>()
             }
             R.id.mBtn -> {
-//                    mBasePresenter.submitOrder(mOrder!!)
-                startActivity<PayConfirmActivity>()
+                if (null == mShipAddress) {
+                    toast("请选择收货地址")
+                    return
+                }
+
+                var map = mutableMapOf<String, String>()
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("pid", mGoodsList!!.get(0).id.toString())
+                map.put("productCount", mGoodsCountBtn.number.toString())
+                map.put("conponId", "")
+                map.put("addressId", mShipAddress.id.toString())
+
+                mBasePresenter.submitOrder(map)
             }
         }
     }
@@ -140,6 +154,8 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     }
 
     private fun updateAddressView(result: ShipAddress) {
+
+        mShipAddress = result
         if (result == null) {
             mSelectShipTv.setVisible(true)
             mShipView.setVisible(false)
@@ -156,9 +172,10 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     /**
      * 提交订单成功
      */
-    override fun onSubmitOrderResult(result: Boolean) {
-        toast("提交成功")
-        startActivity<PayConfirmActivity>()
+    override fun onSubmitOrderSuccess(result: Order) {
+        result?.let {
+            startActivity<PayConfirmActivity>(OrderConstant.KEY_ORDER to result)
+        }
     }
 
     override fun onDestroy() {

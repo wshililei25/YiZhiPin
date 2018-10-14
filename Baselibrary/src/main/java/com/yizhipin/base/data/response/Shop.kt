@@ -18,7 +18,7 @@ data class Shop(
         val city: String,
         val scope: String,
         val license: String,
-        val licenseAuth: String? = null, //为了解决使用Parcelable传参时参数为null报错的问题，这里允许参数为null(傻逼后台返null)
+        val licenseAuth: Boolean,
         val recipients: String,
         val mobile: String,
         val backAddress: String,
@@ -26,7 +26,8 @@ data class Shop(
         val status: Int,
         val totalSell: String? = null,
         val mouthSell: String? = null,
-        val selfCon: String? = null
+        val selfCon: String? = null,
+        val bail: String
 ) : Parcelable
 
 

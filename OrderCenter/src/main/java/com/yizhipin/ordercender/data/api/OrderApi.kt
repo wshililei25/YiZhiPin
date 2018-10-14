@@ -1,7 +1,10 @@
 package com.yizhipin.ordercender.data.api
 
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.ordercender.data.protocol.*
+import com.yizhipin.ordercender.data.protocol.CancelOrderReq
+import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
+import com.yizhipin.ordercender.data.protocol.GetOrderByIdReq
+import com.yizhipin.ordercender.data.protocol.GetOrderListReq
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.usercenter.data.api.Api
@@ -50,7 +53,7 @@ interface OrderApi {
     /*
         提交订单
      */
-    @POST("order/submitOrder")
-    fun submitOrder(@Body req: SubmitOrderReq): Observable<BaseResp<String>>
+    @POST(Api.SUBMIT_ORDER)
+    fun submitOrder(): Observable<BaseResp<Order>>
 
 }
