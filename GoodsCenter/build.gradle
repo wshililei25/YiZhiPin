@@ -32,7 +32,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api project(':Provider')
+    implementation project(':Provider')
+    implementation project(':OrderCenter') //为了解决ARoute跨模块跳转携带Parcelable序列化实体类各种复杂问题而依赖
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 }

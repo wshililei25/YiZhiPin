@@ -27,7 +27,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api project(':Provider')
+    implementation project(':Provider')
 }
 
 //Parcelable序列化插件

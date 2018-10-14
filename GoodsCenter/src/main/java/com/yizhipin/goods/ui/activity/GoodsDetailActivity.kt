@@ -1,5 +1,6 @@
 package com.yizhipin.goods.ui.activity
 
+import android.content.Intent
 import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
@@ -8,7 +9,6 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.data.response.Goods
@@ -30,8 +30,8 @@ import com.yizhipin.goods.injection.module.GoodsModule
 import com.yizhipin.goods.presenter.GoodsDetailPresenter
 import com.yizhipin.goods.presenter.view.GoodsDetailView
 import com.yizhipin.goods.ui.adapter.EvaluateImageAdapter
+import com.yizhipin.ordercender.ui.activity.OrderConfirmActivity
 import com.yizhipin.provider.common.afterLogin
-import com.yizhipin.provider.router.RouterPath
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_good_details.*
@@ -54,7 +54,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     private var mCurrentPercentage = 0f
     private var isNeedScrollTo = true
     private lateinit var mEvaluateImageAdapter: EvaluateImageAdapter
-    private var mGoods: Goods? = null
+    private lateinit var mGoods: Goods
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -198,7 +198,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                     Bus.send(AddCartEvent())
                 }
             }
-            R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.evaCount)
+            R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId
+                    , GoodsConstant.KEY_EVA_COUNT to mGoods!!.evaCount)
 
             R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.experienceCount)
 
@@ -206,7 +207,10 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mSingleBuyView -> {
                 afterLogin {
-                    ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withInt(GoodsConstant.KEY_GOODS_ID, mGoodsId).navigation()
+                    var intent = Intent(this,OrderConfirmActivity::class.java)
+                    intent.putExtra("good_item",mGoods)
+                    startActivity(intent)
+//                    startActivity<OrderConfirmActivity>(GoodsConstant.KEY_GOOD_ITEM to mGoods)
                 }
             }
         }
