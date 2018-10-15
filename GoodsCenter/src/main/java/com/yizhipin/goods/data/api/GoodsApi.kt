@@ -42,7 +42,7 @@ interface GoodsApi {
         获取商品详情
      */
     @GET("${Api.GOODS_DETAIL}${"/{id}"}")
-    fun getGoodsDetail(@Path("id") id: String): Observable<BaseResp<Goods>>
+    fun getGoodsDetail(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Goods>>
 
     /**
      * 最新评价

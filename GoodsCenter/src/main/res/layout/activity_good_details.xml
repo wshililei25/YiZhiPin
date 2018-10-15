@@ -69,6 +69,7 @@
                             android:textSize="@dimen/yTextLargeSize" />
 
                         <TextView
+                            android:id="@+id/mCollectionTv"
                             style="@style/WrapWrap"
                             android:layout_alignParentRight="true"
                             android:background="@drawable/shape_main"

@@ -34,7 +34,8 @@ data class Goods(
         val serviceRate: String,
         val rewardRate: String,
         val popularizeRate: String,
-        val order: String? = null,//为了解决使用Parcelable传参时参数为null报错的问题，这里允许参数为null(傻逼后台返null)
+        val order: String? = null,//为了解决使用Parcelable传参时参数为null报错的问题，这里允许参数为null(后台返null)
         val orderType: String? = null,
+        val collection: Boolean = false,
         val shop: Shop
 ) : Parcelable

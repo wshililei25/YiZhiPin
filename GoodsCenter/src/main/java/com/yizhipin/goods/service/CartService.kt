@@ -1,5 +1,6 @@
 package com.yizhipin.goods.service
 
+import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.data.response.CartGoods
 import io.reactivex.Observable
@@ -12,6 +13,8 @@ interface CartService {
         添加商品到购物车
      */
     fun addCart(map: MutableMap<String, String>): Observable<CartGoods>
+
+    fun collectGood(map: MutableMap<String, String>): Observable<GoodsCollect>
 
     /*
         获取购物车列表

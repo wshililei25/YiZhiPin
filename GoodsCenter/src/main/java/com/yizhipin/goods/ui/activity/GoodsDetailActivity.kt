@@ -13,7 +13,7 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Goods
-import com.yizhipin.base.event.AddCartEvent
+import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.base.event.UpdateCartSizeEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -49,6 +49,7 @@ import q.rorbin.badgeview.QBadgeView
  */
 class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetailView, View.OnClickListener {
 
+
     @Autowired(name = GoodsConstant.KEY_GOODS_ID) //注解接收上个页面的传参
     @JvmField
     var mGoodsId: Int = 0
@@ -69,7 +70,6 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         initSrarView()
         initBanner()
 //        initEvaluateView()
-        loadGoodDetailsData()
         loadEvaluateData()
         loadReportData()
 //        loadCartSize()
@@ -143,6 +143,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mShopView.onClick(this)
         mSingleBuyView.onClick(this)
         mAddCartBtn.onClick(this)
+        mCollectionTv.onClick(this)
 
         retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         retailRmb.paint.isAntiAlias = true
@@ -206,6 +207,15 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                     mBasePresenter.addCart(map)
                 }
             }
+
+            R.id.mCollectionTv -> { //收藏商品
+                afterLogin {
+                    var map = mutableMapOf<String, String>()
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                    map.put("pid", mGoods.id.toString())
+                    mBasePresenter.collectGood(map)
+                }
+            }
             R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId
                     , GoodsConstant.KEY_EVA_COUNT to mGoods!!.evaCount)
 
@@ -243,12 +253,18 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 //        mQBadgeView.bindTarget(mEnterCartTv).badgeNumber = AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
     }
 
+    override fun onStart() {
+        super.onStart()
+        loadGoodDetailsData()
+    }
+
     /**
      * 商品详情
      */
     private fun loadGoodDetailsData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mGoodsId.toString())
+        map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         mBasePresenter.getGoodsDetail(map)
     }
 
@@ -271,6 +287,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mShopIv.loadUrl(result.shop.shopImgurl)
             mSystemPriceBotTv.text = getString(R.string.rmb).plus(result.pinPrice.toString())
             mSingleBuyTv.text = getString(R.string.rmb).plus(result.price.toString())
+            if (result.collection) mCollectionTv.setText(getString(R.string.collect_already)) else mCollectionTv.setText(getString(R.string.collect_goods))
 
             if (result.shop.shopIdentity == "product") {
                 mCategoryTv.text = getString(R.string.hamlet)
@@ -358,6 +375,20 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         result?.let {
             toast(getString(R.string.add_cart_success))
         }
+    }
+
+    /**
+     * 收藏商品成功
+     */
+    override fun onCollectGoodSuccess(result: GoodsCollect) {
+        mCollectionTv.setText(getString(R.string.collect_already))
+    }
+
+    /**
+     *  取消收藏商品成功
+     */
+    override fun onDataIsNull() {
+        mCollectionTv.setText(getString(R.string.collect_goods))
     }
 
     override fun onDestroy() {

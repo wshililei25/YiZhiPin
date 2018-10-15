@@ -1,11 +1,10 @@
 package com.yizhipin.goods.presenter
 
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
-import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
@@ -46,6 +45,19 @@ class GoodsDetailPresenter @Inject constructor() : BasePresenter<GoodsDetailView
             override fun onNext(t: CartGoods) {
 //                AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, t)
                 mView.onAddCartSuccess(t)
+            }
+        }, mLifecycleProvider)
+
+    }
+
+    /**
+     * 收藏商品
+     */
+    fun collectGood(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mCartServiceImpl.collectGood(map).execute(object : BaseSubscriber<GoodsCollect>(mView) {
+            override fun onNext(t: GoodsCollect) {
+                mView.onCollectGoodSuccess(t)
             }
         }, mLifecycleProvider)
 

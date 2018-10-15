@@ -100,16 +100,17 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.OnClickLis
         }
     }
 
+    /**
+     * 收藏成功
+     */
     override fun oncollectShopSuccess(result: Collect) {
-      /*  if (result == null) {
-            mCollectTv.setText(getString(R.string.collect_add))
-        }else{*/
-            mCollectTv.setText(getString(R.string.collect_already))
-//        }
+        mCollectTv.setText(getString(R.string.collect_already))
     }
 
-    override fun onError(mes: String) {
-        super.onError(mes)
+    /**
+     * 取消收藏成功
+     */
+    override fun onDataIsNull() {
         mCollectTv.setText(getString(R.string.collect_add))
     }
 

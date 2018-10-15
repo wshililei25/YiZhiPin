@@ -1,6 +1,7 @@
 package com.yizhipin.goods.presenter.view
 
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.base.presenter.view.BaseView
 import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.response.Evaluate
@@ -15,6 +16,7 @@ interface GoodsDetailView : BaseView {
     fun onGetGoodsDetailSuccess(result: Goods)
     //加入购物车
     fun onAddCartSuccess(result: CartGoods)
+    fun onCollectGoodSuccess(result: GoodsCollect)
     //最新评价
     fun onGetEvaluateNewSuccess(result: Evaluate)
     //最新体验报告

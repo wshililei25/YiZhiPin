@@ -1,5 +1,6 @@
 package com.yizhipin.goods.service.impl
 
+import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.goods.data.repository.CartRepository
@@ -21,6 +22,9 @@ class CartServiceImpl @Inject constructor() : CartService {
      */
     override fun addCart(map: MutableMap<String, String>): Observable<CartGoods> {
         return repository.addCart(map).convert()
+    }
+    override fun collectGood(map: MutableMap<String, String>): Observable<GoodsCollect> {
+        return repository.collectGood(map).convert()
     }
 
     /*

@@ -30,5 +30,6 @@ interface Api {
         const val SUBMIT_ORDER = "api/Order"//提交订单
         const val ADD_CART = "api/ShopCart"//加入购物车
         const val CART_LIST = "api/ShopCart/List"//购物车列表
+        const val COLLECT_GOOD = "api/ProductCollection"//收藏商品
     }
 }

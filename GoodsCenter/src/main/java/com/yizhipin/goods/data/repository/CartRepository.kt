@@ -4,11 +4,12 @@ import com.yizhipin.base.data.net.RetrofitFactory
 import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.goods.data.api.CartApi
-import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.protocol.DeleteCartReq
 import com.yizhipin.goods.data.protocol.SubmitCartReq
 import com.yizhipin.goods.data.response.Cart
+import com.yizhipin.goods.data.response.CartGoods
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -29,6 +30,10 @@ class CartRepository @Inject constructor() {
      */
     fun addCart(map: MutableMap<String, String>): Observable<BaseResp<CartGoods>> {
         return RetrofitFactoryPost(map).create(CartApi::class.java).addCart()
+    }
+
+    fun collectGood(map: MutableMap<String, String>): Observable<BaseResp<GoodsCollect>> {
+        return RetrofitFactoryPost(map).create(CartApi::class.java).collectGood()
     }
 
     /*
