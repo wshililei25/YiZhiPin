@@ -5,6 +5,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.data.api.GoodsApi
@@ -76,11 +77,14 @@ class GoodsRepository @Inject constructor() {
     }
 
     fun getShopDetails(map: MutableMap<String, String>): Observable<BaseResp<Shop>> {
-        return RetrofitFactoryGet().create(GoodsApi::class.java).getShopDetails(map["id"]!!)
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getShopDetails(map["id"]!!,map["loginUid"]!!)
     }
 
     fun getComplainShop(map: MutableMap<String, String>): Observable<BaseResp<Complain>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).getComplainShop()
+    }
+    fun collectShop(map: MutableMap<String, String>): Observable<BaseResp<Collect>> {
+        return RetrofitFactoryPost(map).create(GoodsApi::class.java).collectShop()
     }
 
 }

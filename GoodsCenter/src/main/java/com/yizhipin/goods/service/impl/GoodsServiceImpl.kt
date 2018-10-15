@@ -1,6 +1,7 @@
 package com.yizhipin.goods.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.convert
@@ -54,16 +55,23 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
     override fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
         return mRepository.getReportList(map).convertPaging()
     }
+
     override fun giveLike(map: MutableMap<String, String>): Observable<Boolean> {
         return mRepository.giveLike(map).convertBoolean()
     }
+
     override fun giveLikeReport(map: MutableMap<String, String>): Observable<Boolean> {
         return mRepository.giveLikeReport(map).convertBoolean()
     }
+
     override fun getShopDetails(map: MutableMap<String, String>): Observable<Shop> {
         return mRepository.getShopDetails(map).convert()
     }
+
     override fun getComplainShop(map: MutableMap<String, String>): Observable<Complain> {
         return mRepository.getComplainShop(map).convert()
+    }
+    override fun collectShop(map: MutableMap<String, String>): Observable<Collect> {
+        return mRepository.collectShop(map).convert()
     }
 }

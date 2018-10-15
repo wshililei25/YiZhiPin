@@ -213,13 +213,14 @@
             android:layout_marginLeft="@dimen/yPadding"/>
 
         <RelativeLayout
+            android:id="@+id/mCartView"
             style="@style/MatchWrap">
 
             <TextView
                 style="@style/MeItemStyle"
                 android:drawableLeft="@drawable/shoppingcart"
                 android:drawablePadding="@dimen/yPaddingSmall"
-                android:text="@string/nav_bar_cart"/>
+                android:text="@string/cart"/>
 
             <TextView
                 android:id="@+id/mCartCountTv"
@@ -227,6 +228,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/yPaddingBigSmall"
+                android:text="1个商品"
                 android:textColor="@color/yBlackDeep"
                 android:textSize="@dimen/yTextMiddleBigSize"/>
         </RelativeLayout>

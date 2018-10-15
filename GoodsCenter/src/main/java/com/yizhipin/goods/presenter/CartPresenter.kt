@@ -3,6 +3,7 @@ package com.yizhipin.goods.presenter
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
+import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.presenter.view.CartView
 import com.yizhipin.goods.service.impl.CartServiceImpl
@@ -16,16 +17,13 @@ open class CartPresenter @Inject constructor() : BasePresenter<CartView>() {
     @Inject
     lateinit var mCartServiceImpl: CartServiceImpl
 
-    fun getCartList() {
+    fun getCartList(map: MutableMap<String, String>) {
 
-        if (!checkNetWork()) {
-            return
-        }
-        mView.showLoading()
-        mCartServiceImpl.getCartList()
-                .execute(object : BaseSubscriber<MutableList<CartGoods>?>(mView) {
-                    override fun onNext(t: MutableList<CartGoods>?) {
-                        mView.onGetCartListResult(t)
+//        mView.showLoading()
+        mCartServiceImpl.getCartList(map)
+                .execute(object : BaseSubscriber<MutableList<Cart>?>(mView) {
+                    override fun onNext(t: MutableList<Cart>?) {
+                        mView.onGetCartListSuccess(t)
                     }
                 }, mLifecycleProvider)
 
@@ -52,7 +50,7 @@ open class CartPresenter @Inject constructor() : BasePresenter<CartView>() {
             return
         }
         mView.showLoading()
-        mCartServiceImpl.submitCart(list,totalPrice).execute(object : BaseSubscriber<Int>(mView) {
+        mCartServiceImpl.submitCart(list, totalPrice).execute(object : BaseSubscriber<Int>(mView) {
             override fun onNext(t: Int) {
                 mView.onSubmitCartListResult(t)
             }

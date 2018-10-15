@@ -6,17 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
-import com.yizhipin.base.event.CartAllCheckedEvent
+import com.yizhipin.base.event.CartCheckedEvent
+import com.yizhipin.base.event.UpdateTotalPriceEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.base.utils.YuanFenConverter
+import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.CartGoods
+import com.yizhipin.goods.getEditText
 import kotlinx.android.synthetic.main.layout_cart_goods_item.view.*
 
-/*
-    购物车数据适配器
+
+/**
+ * 购物车二级适配器
  */
 class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, CartGoodsAdapter.ViewHolder>(context) {
 
@@ -30,35 +34,37 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
         val model = dataList[position]
         //是否选中
         holder.itemView.mCheckedCb.isChecked = model.isSelected
-        //加载商品图片
-        holder.itemView.mGoodsIconIv.loadUrl(model.goodsIcon)
-        //商品描述
-        holder.itemView.mGoodsDescTv.text = model.goodsDesc
-        //商品SKU
-        holder.itemView.mGoodsSkuTv.text = model.goodsSku
-        //商品价格
-        holder.itemView.mGoodsPriceTv.text = YuanFenConverter.changeF2YWithUnit(model.goodsPrice)
-        //商品数量
-//        holder.itemView.mGoodsCountBtn.setCurrentNumber(model.goodsCount)
+        holder.itemView.mGoodsIconIv.loadUrl(model.productImgurl)
+        holder.itemView.mGoodsNameTv.text = model.productName
+        holder.itemView.mSinPriceTv.text = model.price.toString()
+        holder.itemView.mPriceTv.text = "${model.price * model.count}"
+        holder.itemView.mGoodsCountBtn.setCurrentNumber(model.count)
+
+        if (position == dataList.size - 1) {
+            holder.itemView.mLine.setVisible(false)
+        } else {
+            holder.itemView.mLine.setVisible(true)
+        }
+
         //选中按钮事件
         holder.itemView.mCheckedCb.onClick {
+            //当所有的二级选中时发送事件让对应的一级选中
             model.isSelected = holder.itemView.mCheckedCb.isChecked
             val isAllChecked = dataList.all { it.isSelected }
-            Bus.send(CartAllCheckedEvent(isAllChecked))
-            notifyDataSetChanged()
+            Bus.send(CartCheckedEvent(isAllChecked))
         }
 
         //商品数量变化监听
-        /*  holder.itemView.mGoodsCountBtn.getEditText().addTextChangedListener(object : DefaultTextWatcher() {
-              override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                  //修复Bug，删除为空时异常
-                  if (s.isNullOrEmpty().not()) {
-                      model.goodsCount = s.toString().toInt()
-                      Bus.send(UpdateTotalPriceEvent())
-                  }
+        holder.itemView.mGoodsCountBtn.getEditText().addTextChangedListener(object : DefaultTextWatcher() {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                //修复Bug，删除为空时异常
+                if (s.isNullOrEmpty().not()) {
+                    model.count = s.toString().toInt()
+                    Bus.send(UpdateTotalPriceEvent())
+                }
 
-              }
-          })*/
+            }
+        })
 
     }
 

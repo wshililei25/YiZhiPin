@@ -18,12 +18,14 @@ import com.yizhipin.base.event.UpdateCartSizeEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.base.widgets.IdeaScrollView
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
+import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
@@ -39,6 +41,7 @@ import kotlinx.android.synthetic.main.activity_good_details.*
 import kotlinx.android.synthetic.main.layout_evaluate_item.*
 import kotlinx.android.synthetic.main.layout_report_item.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import q.rorbin.badgeview.QBadgeView
 
 /**
@@ -133,12 +136,13 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
     private fun initView() {
 
-        mBackIv.onClick(this)
-        mBackHeadIv.onClick(this)
+        mBackIv.onClick { finish() }
+        mBackHeadIv.onClick { finish() }
         mEvaluateMoreTv.onClick(this)
         mReportMoreTv.onClick(this)
         mShopView.onClick(this)
         mSingleBuyView.onClick(this)
+        mAddCartBtn.onClick(this)
 
         retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         retailRmb.paint.isAntiAlias = true
@@ -191,12 +195,15 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.mBackIv -> finish()
-            R.id.mBackHeadIv -> finish()
 
             R.id.mAddCartBtn -> {
                 afterLogin {
-                    Bus.send(AddCartEvent())
+                    //                    Bus.send(AddCartEvent())
+                    var map = mutableMapOf<String, String>()
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                    map.put("productId", mGoods.id.toString())
+                    map.put("count", "1")
+                    mBasePresenter.addCart(map)
                 }
             }
             R.id.mEvaluateMoreTv -> startActivity<EvaluateActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId
@@ -344,9 +351,13 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         }
     }
 
-
-    override fun onAddCartSuccess(result: Int) {
-
+    /**
+     * 加入购物车成功
+     */
+    override fun onAddCartSuccess(result: CartGoods) {
+        result?.let {
+            toast(getString(R.string.add_cart_success))
+        }
     }
 
     override fun onDestroy() {

@@ -5,6 +5,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.R
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -17,6 +18,7 @@ import com.yizhipin.ordercender.ui.activity.ShipAddressActivity
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.common.afterLogin
 import com.yizhipin.provider.common.isLogined
+import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.ui.activity.SettingActivity
 import com.yizhipin.usercenter.common.UserConstant
 import com.yizhipin.usercenter.data.response.UserInfo
@@ -70,6 +72,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mAllOrderTv.onClick(this)
         mCommissionerTv.onClick(this)
         mWalletView.onClick(this)
+        mCartView.onClick(this)
 
         setCartBadge()
     }
@@ -143,6 +146,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mWalletView -> { //钱包
                 afterLogin {
                     startActivity<WalletActivity>()
+                }
+            }
+            R.id.mCartView -> { //购物车
+                afterLogin {
+                    ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_GOODS_CART).navigation()
                 }
             }
 

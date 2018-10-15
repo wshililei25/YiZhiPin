@@ -11,6 +11,12 @@ object RouterPath {
         }
     }
 
+    //商品模块
+    class GoodsCenter {
+        companion object {
+            const val PATH_GOODS_CART = "/goodsCenter/cart"
+        }
+    }
     //订单模块
     class OrderCenter {
         companion object {

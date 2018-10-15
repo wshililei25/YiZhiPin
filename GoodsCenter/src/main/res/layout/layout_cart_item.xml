@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap.Vertical.White">
+
+    <View style="@style/DividerFixedHeight_10"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:paddingLeft="@dimen/yPadding"
+        android:paddingTop="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPadding"
+        android:paddingBottom="@dimen/yPaddingMiddle">
+
+        <CheckBox
+            android:id="@+id/mShopCb"
+            style="@style/WrapWrap"
+            android:button="@null"
+            android:drawableLeft="@drawable/common_check_selector" />
+
+        <TextView
+            android:id="@+id/mShopTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:layout_toRightOf="@id/mShopCb"
+            android:text="店铺"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        style="@style/DividerFixedHeight" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mCartGoodsRv"
+        style="@style/MatchWrap" />
+</LinearLayout>

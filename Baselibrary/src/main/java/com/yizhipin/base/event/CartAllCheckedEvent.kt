@@ -1,6 +1,6 @@
 package com.yizhipin.base.event
 
-/*
-    购物车全选事件
+/**
+ * 购物车全选事件
  */
 class CartAllCheckedEvent(val isAllChecked: Boolean)

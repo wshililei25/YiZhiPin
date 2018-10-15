@@ -69,7 +69,6 @@
                         style="@style/WrapWrap"
                         android:layout_marginLeft="@dimen/yPadding"
                         android:layout_toRightOf="@+id/mHeadView"
-                        android:text="@string/shop"
                         android:textColor="@color/yShopTv"
                         android:textSize="@dimen/yTextHugeSize" />
 
@@ -123,6 +122,7 @@
                         android:textSize="@dimen/yTextLargeSize" />
 
                     <TextView
+                        android:id="@+id/mCollectTv"
                         style="@style/WrapWrap"
                         android:layout_alignBottom="@+id/mHeadView"
                         android:layout_alignParentRight="true"

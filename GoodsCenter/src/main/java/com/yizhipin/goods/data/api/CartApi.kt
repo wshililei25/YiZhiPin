@@ -1,13 +1,16 @@
 package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.goods.data.protocol.AddCartReq
 import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.protocol.DeleteCartReq
 import com.yizhipin.goods.data.protocol.SubmitCartReq
+import com.yizhipin.goods.data.response.Cart
+import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 /*
     购物车 接口
@@ -16,14 +19,14 @@ interface CartApi {
     /*
         获取购物车列表
      */
-    @POST("cart/getList")
-    fun getCartList(): Observable<BaseResp<MutableList<CartGoods>?>>
+    @GET(Api.CART_LIST)
+    fun getCartList(@Query("uid") uid: String): Observable<BaseResp<MutableList<Cart>?>>
 
     /*
         添加商品到购物车
      */
-    @POST("cart/add")
-    fun addCart(@Body req: AddCartReq): Observable<BaseResp<Int>>
+    @POST(Api.ADD_CART)
+    fun addCart(): Observable<BaseResp<CartGoods>>
 
     /*
         删除购物车商品

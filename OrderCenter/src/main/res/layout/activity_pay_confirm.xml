@@ -10,7 +10,7 @@
 
     <ScrollView
         style="@style/MatchWrap"
-        android:layout_above="@+id/mBtn"
+        android:layout_above="@+id/bottomView"
         android:layout_below="@+id/mHeaderBar">
 
         <LinearLayout
@@ -125,6 +125,7 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/bottomView"
         style="@style/MatchWrap"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/yPadding"

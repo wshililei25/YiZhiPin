@@ -8,6 +8,7 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
@@ -33,6 +34,7 @@ import java.io.File
  * 投诉举报
  */
 class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.OnClickListener, UploadUtil.OnUploadProcessListener {
+
 
     @Autowired(name = GoodsConstant.KEY_SHOP_ID) //注解接收上个页面的传参
     @JvmField
@@ -173,4 +175,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
         super.onDestroy()
         CustomToast.INSTANCE.cancelToast()//销毁页面时，取消掉toast
     }
+    override fun oncollectShopSuccess(result: Collect) {
+    }
+
 }

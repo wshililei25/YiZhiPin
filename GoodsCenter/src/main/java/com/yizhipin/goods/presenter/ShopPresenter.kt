@@ -1,5 +1,6 @@
 package com.yizhipin.goods.presenter
 
+import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
@@ -20,7 +21,7 @@ class ShopPresenter @Inject constructor() : BasePresenter<ShopView>() {
     /**
      * 店铺详情
      */
-    fun getShopDetails(map :MutableMap<String,String>) {
+    fun getShopDetails(map: MutableMap<String, String>) {
 
         mView.showLoading()
         mGoodsServiceImpl.getShopDetails(map).execute(object : BaseSubscriber<Shop>(mView) {
@@ -33,12 +34,25 @@ class ShopPresenter @Inject constructor() : BasePresenter<ShopView>() {
     /**
      * 举报投诉
      */
-    fun getComplainShop(map :MutableMap<String,String>) {
+    fun getComplainShop(map: MutableMap<String, String>) {
 
         mView.showLoading()
         mGoodsServiceImpl.getComplainShop(map).execute(object : BaseSubscriber<Complain>(mView) {
             override fun onNext(t: Complain) {
                 mView.onComplainShopSuccess(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    /**
+     * 收藏店铺
+     */
+    fun collectShop(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mGoodsServiceImpl.collectShop(map).execute(object : BaseSubscriber<Collect>(mView) {
+            override fun onNext(t: Collect) {
+                mView.oncollectShopSuccess(t)
             }
         }, mLifecycleProvider)
     }

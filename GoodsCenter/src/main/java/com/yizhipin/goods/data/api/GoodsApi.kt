@@ -2,6 +2,7 @@ package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.Shop
 import com.yizhipin.goods.data.protocol.GoodsReq
@@ -95,11 +96,17 @@ interface GoodsApi {
      * 店铺详情
      */
     @GET("${Api.SHOP_DETAIL}${"/{id}"}")
-    fun getShopDetails(@Path("id") id: String): Observable<BaseResp<Shop>>
+    fun getShopDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Shop>>
 
     /**
      * 举报投诉
      */
     @POST(Api.COMPLAIN_SHOP)
     fun getComplainShop(): Observable<BaseResp<Complain>>
+
+    /**
+     * 收藏店铺
+     */
+    @POST(Api.COLLECT_SHOP)
+    fun collectShop(): Observable<BaseResp<Collect>>
 }

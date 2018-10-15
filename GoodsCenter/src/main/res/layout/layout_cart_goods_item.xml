@@ -1,57 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                style="@style/WrapWrap.Vertical"
-                android:background="@drawable/border_bottom"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/common_padding">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchWrap.Vertical.White">
 
-    <CheckBox
-        android:id="@+id/mCheckedCb"
-        style="@style/WrapWrap"
-        android:layout_centerVertical="true"
-        android:button="@null"
-        android:drawableLeft="@drawable/common_check_selector"/>
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:paddingLeft="@dimen/yPadding"
+        android:paddingTop="@dimen/yPaddingMiddle"
+        android:paddingRight="@dimen/yPadding"
+        android:paddingBottom="@dimen/yPaddingMiddle">
 
-    <ImageView
-        android:id="@+id/mGoodsIconIv"
-        android:layout_width="@dimen/yHeadWidth"
-        android:layout_height="@dimen/yHeadHeight"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/common_padding"
-        android:layout_toRightOf="@id/mCheckedCb"
-        android:scaleType="fitXY"/>
+        <CheckBox
+            android:id="@+id/mCheckedCb"
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/common_check_selector" />
 
-    <TextView
-        android:id="@+id/mGoodsDescTv"
-        style="@style/WrapWrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/common_padding"
-        android:layout_toRightOf="@id/mGoodsIconIv"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/text_light_dark"/>
+        <ImageView
+            android:id="@+id/mGoodsIconIv"
+            android:layout_width="@dimen/yHeadWidth"
+            android:layout_height="@dimen/yHeadHeight"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:layout_toRightOf="@id/mCheckedCb"
+            android:scaleType="fitXY" />
 
-    <TextView
-        android:id="@+id/mGoodsSkuTv"
-        style="@style/WrapWrap"
-        android:layout_alignLeft="@id/mGoodsDescTv"
-        android:layout_below="@id/mGoodsDescTv"
-        android:layout_marginTop="@dimen/common_padding_small"
-        android:textSize="@dimen/text_small_size"/>
+        <TextView
+            android:id="@+id/mGoodsNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@id/mGoodsIconIv"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="名字名字"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleBigSize" />
 
-    <TextView
-        android:id="@+id/mGoodsPriceTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/mGoodsSkuTv"
-        android:layout_below="@id/mGoodsSkuTv"
-        android:layout_marginTop="@dimen/common_padding_small"
-        android:textColor="@color/common_red"
-        android:textSize="@dimen/text_middle_size"/>
+        <TextView
+            android:id="@+id/mGoodsSkuTv"
+            style="@style/WrapWrap"
+            android:layout_below="@id/mGoodsNameTv"
+            android:layout_alignLeft="@id/mGoodsNameTv"
+            android:layout_alignBottom="@+id/mSinPriceTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:gravity="bottom"
+            android:text="零售价:  ¥"
+            android:textColor="@color/yCategory"
+            android:textSize="@dimen/yTextSmallLarSize" />
 
-    <ren.qinc.numberbutton.NumberButton
-        android:id="@+id/mGoodsCountBtn"
-        style="@style/WrapWrap"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/mGoodsPriceTv"/>
-</RelativeLayout>
+        <TextView
+            android:id="@+id/mSinPriceTv"
+            style="@style/WrapWrap"
+            android:layout_below="@id/mGoodsNameTv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsSkuTv"
+            android:text="0.00"
+            android:textColor="@color/yCategory"
+            android:textSize="@dimen/yTextMiddleBigSize" />
+
+        <TextView
+            android:id="@+id/subtotal"
+            style="@style/WrapWrap"
+            android:layout_alignLeft="@id/mGoodsNameTv"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:gravity="bottom"
+            android:text="@string/subtotal"
+            android:textColor="@color/yCategory"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/rmb"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/subtotal"
+            android:gravity="bottom"
+            android:text="@string/rmb"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/mPriceTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/rmb"
+            android:text="0.00"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleBigSize" />
+
+        <com.yizhipin.base.widgets.NumberButton
+            android:id="@+id/mGoodsCountBtn"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_alignParentRight="true"
+            app:editable="false" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/mLine"
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding" />
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.yizhipin.goods.service.impl
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.goods.data.repository.CartRepository
+import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.service.CartService
 import io.reactivex.Observable
@@ -18,16 +19,15 @@ class CartServiceImpl @Inject constructor() : CartService {
     /*
         加入购物车
      */
-    override fun addCart(goodsId: Int, goodsDesc: String, goodsIcon: String, goodsPrice: Long, goodsCount: Int, goodsSku: String): Observable<Int> {
-        return repository.addCart(goodsId, goodsDesc, goodsIcon, goodsPrice,
-                goodsCount, goodsSku).convert()
+    override fun addCart(map: MutableMap<String, String>): Observable<CartGoods> {
+        return repository.addCart(map).convert()
     }
 
     /*
         获取购物车列表
      */
-    override fun getCartList(): Observable<MutableList<CartGoods>?> {
-        return repository.getCartList().convert()
+    override fun getCartList(map: MutableMap<String, String>): Observable<MutableList<Cart>?> {
+        return repository.getCartList(map).convert()
     }
 
     /*
