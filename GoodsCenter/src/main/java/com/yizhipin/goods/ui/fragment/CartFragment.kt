@@ -11,6 +11,8 @@ import com.eightbitlab.rxbus.registerInBus
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.event.CartAllCheckedEvent
+import com.yizhipin.base.event.CartDeleteAllEvent
+import com.yizhipin.base.event.CartDeleteEvent
 import com.yizhipin.base.event.UpdateTotalPriceEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
@@ -34,7 +36,6 @@ import org.jetbrains.anko.support.v4.toast
  */
 class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickListener {
 
-
     private lateinit var mCartAdapter: CartAdapter
 
     private var mTotalPrice: Double = 0.00
@@ -56,30 +57,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
         mCartRv.adapter = mCartAdapter
 
         mAllCheckedCb.onClick(this)
-
-        /*   mDeleteBtn.onClick {
-                val cartIdList: MutableList<Int> = arrayListOf()
-                mCartAdapter.dataList
-                        .filter { it.isSelected }
-                        .mapTo(cartIdList) { it.id }
-                if (cartIdList.size == 0) {
-                    toast("请选择需要删除的数据")
-                } else {
-                    mBasePresenter.deleteCartList(cartIdList)
-                }
-           }*/
-
-        mSettleAccountsBtn.onClick {
-            val cartIdList: MutableList<Cart> = mutableListOf()
-            mCartAdapter.dataList
-                    .filter { it.isSelected }
-                    .mapTo(cartIdList) { it }
-            if (cartIdList.size == 0) {
-                toast("请选择需要提交的数据")
-            } else {
-//                mBasePresenter.submitCart(cartIdList, mTotalPrice)
-            }
-        }
+        mSettleAccountsBtn.onClick(this)
     }
 
     override fun onStart() {
@@ -106,10 +84,8 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
         if (result != null && result.size > 0) {
             mAllCheckedCb.isChecked = false
             mCartAdapter.setData(result)
-            mHeaderBar.getRightTv().visibility = View.VISIBLE
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
-            mHeaderBar.getRightTv().visibility = View.GONE
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
         updateTotalPrice()
@@ -122,6 +98,17 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
                     item.isSelected = mAllCheckedCb.isChecked
                 }
                 mCartAdapter.notifyDataSetChanged()
+            }
+            R.id.mSettleAccountsBtn -> {
+                val cartIdList: MutableList<Cart> = mutableListOf()
+                mCartAdapter.dataList
+                        .filter { it.isSelected }
+                        .mapTo(cartIdList) { it }
+                if (cartIdList.size == 0) {
+                    toast("请选择需要提交的数据")
+                } else {
+//                mBasePresenter.submitCart(cartIdList, mTotalPrice)
+                }
             }
         }
     }
@@ -153,6 +140,27 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
                     }
                 }
                 .registerInBus(this)
+
+        Bus.observe<CartDeleteEvent>()
+                .subscribe { t: CartDeleteEvent ->
+                    run {
+                        /*var map = mutableMapOf<String, String>()
+                        map.put("id", t.id.toString())
+                        mBasePresenter.deleteCartList(map)*/
+                    }
+                }.registerInBus(this)
+
+        Bus.observe<CartDeleteAllEvent>()
+                .subscribe { t: CartDeleteAllEvent ->
+                    run {
+                        //当所有商品全部删除UI置空
+                        if (mCartAdapter.dataList.size <= 0) {
+                            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
+                            mCartAdapter.notifyDataSetChanged()
+                        }
+
+                    }
+                }.registerInBus(this)
     }
 
     /**

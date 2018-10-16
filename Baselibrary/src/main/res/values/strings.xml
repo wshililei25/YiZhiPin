@@ -165,6 +165,7 @@
     <string name="subtotal">小计:</string>
     <string name="settle_account">去结算</string>
     <string name="collect_already">已收藏</string>
+    <string name="delete">删除</string>
 
     <string name="send_code_success">发送验证码成功</string>
     <string name="next">下一步</string>
@@ -178,6 +179,6 @@
     <string name="save">保存</string>
     <string name="edit">编辑</string>
     <string name="complete">完成</string>
-    <string name="delete">删除</string>
+
 
 </resources>

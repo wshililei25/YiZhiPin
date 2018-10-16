@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
-import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter
-import com.yizhipin.base.event.CartAllCheckedEvent
-import com.yizhipin.base.event.CartCheckedEvent
-import com.yizhipin.base.event.UpdateTotalPriceEvent
+import com.yizhipin.base.event.*
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.goods.R
@@ -24,7 +21,6 @@ import kotlinx.android.synthetic.main.layout_cart_item.view.*
 class CartAdapter(val context: Context) : BaseRecyclerViewAdapter<Cart, CartAdapter.ViewHolder>(context) {
 
     private lateinit var mCartGoodsAdapter: CartGoodsAdapter
-    private lateinit var mLRecyclerViewAdapter: LRecyclerViewAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_cart_item, parent, false)
@@ -35,18 +31,10 @@ class CartAdapter(val context: Context) : BaseRecyclerViewAdapter<Cart, CartAdap
         super.onBindViewHolder(holder, position)
         val model = dataList[position]
 
-      /*  holder.itemView.mCartGoodsRv.layoutManager = LinearLayoutManager(context)
+        holder.itemView.mCartGoodsRv.layoutManager = LinearLayoutManager(context!!)
         mCartGoodsAdapter = CartGoodsAdapter(context!!)
         mCartGoodsAdapter.setData(model.carts)
-        holder.itemView.mCartGoodsRv.adapter = mCartGoodsAdapter*/
-
-
-         holder.itemView.mCartGoodsRv.layoutManager = LinearLayoutManager(context)
-        mCartGoodsAdapter = CartGoodsAdapter(context!!)
-        mCartGoodsAdapter.setData(model.carts)
-
-        mLRecyclerViewAdapter = LRecyclerViewAdapter(mCartGoodsAdapter)
-        holder.itemView.mCartGoodsRv.adapter = mLRecyclerViewAdapter
+        holder.itemView.mCartGoodsRv.adapter = mCartGoodsAdapter
 
         //是否选中
         holder.itemView.mShopCb.isChecked = model.isSelected
@@ -81,6 +69,19 @@ class CartAdapter(val context: Context) : BaseRecyclerViewAdapter<Cart, CartAdap
                         //当所有的一级全部选中时发送事件让最外边的全部CheckBox选中
                         val isAllChecked = dataList.all { it.isSelected }
                         Bus.send(CartAllCheckedEvent(isAllChecked))
+
+                    }
+                }.registerInBus(context)
+
+        Bus.observe<CartDeleteEvent>()
+                .subscribe { t: CartDeleteEvent ->
+                    run {
+                        //当所有的二级全部移除时让对应的一级移除
+                        if (dataList.get(position).carts.size <= 0) {
+                            dataList.removeAt(position)
+                            notifyDataSetChanged()
+                            Bus.send(CartDeleteAllEvent())
+                        }
 
                     }
                 }.registerInBus(context)

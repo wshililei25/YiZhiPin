@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.event.CartCheckedEvent
+import com.yizhipin.base.event.CartDeleteEvent
 import com.yizhipin.base.event.UpdateTotalPriceEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -54,6 +55,13 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
             Bus.send(CartCheckedEvent(isAllChecked))
         }
 
+        //删除按钮事件
+        holder.itemView.mDeleteBtn.onClick {
+            dataList.removeAt(position)
+            notifyDataSetChanged()
+            Bus.send(CartDeleteEvent(model.id))
+        }
+
         //商品数量变化监听
         holder.itemView.mGoodsCountBtn.getEditText().addTextChangedListener(object : DefaultTextWatcher() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -62,7 +70,6 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
                     model.count = s.toString().toInt()
                     Bus.send(UpdateTotalPriceEvent())
                 }
-
             }
         })
 

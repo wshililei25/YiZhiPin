@@ -31,11 +31,11 @@
         android:id="@+id/line"
         style="@style/DividerFixedHeight" />
 
-  <!--  <android.support.v7.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/mCartGoodsRv"
-        style="@style/MatchWrap" />-->
+        style="@style/MatchWrap" />
 
-    <com.github.jdsjlzx.recyclerview.LRecyclerView
+<!--    <com.github.jdsjlzx.recyclerview.LRecyclerView
         android:id="@+id/mCartGoodsRv"
-        style="@style/MatchWrap"/>
+        style="@style/MatchWrap"/>-->
 </LinearLayout>

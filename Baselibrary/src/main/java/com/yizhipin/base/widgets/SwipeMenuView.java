@@ -1,4 +1,4 @@
-package com.yizhipin.goods.widget;
+package com.yizhipin.base.widgets;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
-import com.yizhipin.goods.R;
+import com.yizhipin.base.R;
 
 
 public class SwipeMenuView extends ViewGroup {
@@ -162,8 +162,6 @@ public class SwipeMenuView extends ViewGroup {
             }
         }
         ta.recycle();
-
-
     }
 
     @Override
@@ -192,7 +190,7 @@ public class SwipeMenuView extends ViewGroup {
                 //measureChildWithMargins(childView, widthMeasureSpec, 0, heightMeasureSpec, 0);
                 final MarginLayoutParams lp = (MarginLayoutParams) childView.getLayoutParams();
                 mHeight = Math.max(mHeight, childView.getMeasuredHeight()/* + lp.topMargin + lp.bottomMargin*/);
-                if (measureMatchParentChildren && lp.height == ViewGroup.LayoutParams.MATCH_PARENT) {
+                if (measureMatchParentChildren && lp.height == LayoutParams.MATCH_PARENT) {
                     isNeedMeasureChildHeight = true;
                 }
                 if (i > 0) {//第一个布局是Left item，从第二个开始才是RightMenu

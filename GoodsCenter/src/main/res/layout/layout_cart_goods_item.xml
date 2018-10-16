@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yizhipin.goods.widget.SwipeMenuView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:clickable="true"
-    android:paddingBottom="1dp">
+<com.yizhipin.base.widgets.SwipeMenuView xmlns:android="http://schemas.android.com/apk/res/android"
+                                         xmlns:app="http://schemas.android.com/apk/res-auto"
+                                         style="@style/MatchWrap"
+                                         android:clickable="true">
 
     <LinearLayout style="@style/MatchWrap.Vertical.White">
 
@@ -20,7 +18,7 @@
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
                 android:button="@null"
-                android:drawableLeft="@drawable/common_check_selector" />
+                android:drawableLeft="@drawable/common_check_selector"/>
 
             <ImageView
                 android:id="@+id/mGoodsIconIv"
@@ -29,7 +27,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/common_padding"
                 android:layout_toRightOf="@id/mCheckedCb"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/mGoodsNameTv"
@@ -40,7 +38,7 @@
                 android:maxLines="1"
                 android:text="名字名字"
                 android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleBigSize" />
+                android:textSize="@dimen/yTextMiddleBigSize"/>
 
             <TextView
                 android:id="@+id/mGoodsSkuTv"
@@ -52,7 +50,7 @@
                 android:gravity="bottom"
                 android:text="零售价:  ¥"
                 android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextSmallLarSize" />
+                android:textSize="@dimen/yTextSmallLarSize"/>
 
             <TextView
                 android:id="@+id/mSinPriceTv"
@@ -63,7 +61,7 @@
                 android:layout_toRightOf="@+id/mGoodsSkuTv"
                 android:text="0.00"
                 android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextMiddleBigSize" />
+                android:textSize="@dimen/yTextMiddleBigSize"/>
 
             <TextView
                 android:id="@+id/subtotal"
@@ -74,7 +72,7 @@
                 android:gravity="bottom"
                 android:text="@string/subtotal"
                 android:textColor="@color/yCategory"
-                android:textSize="@dimen/yTextSmallLarSize" />
+                android:textSize="@dimen/yTextSmallLarSize"/>
 
             <TextView
                 android:id="@+id/rmb"
@@ -86,7 +84,7 @@
                 android:gravity="bottom"
                 android:text="@string/rmb"
                 android:textColor="@color/yRed"
-                android:textSize="@dimen/yTextSmallLarSize" />
+                android:textSize="@dimen/yTextSmallLarSize"/>
 
             <TextView
                 android:id="@+id/mPriceTv"
@@ -96,44 +94,28 @@
                 android:layout_toRightOf="@+id/rmb"
                 android:text="0.00"
                 android:textColor="@color/yRed"
-                android:textSize="@dimen/yTextMiddleBigSize" />
+                android:textSize="@dimen/yTextMiddleBigSize"/>
 
             <com.yizhipin.base.widgets.NumberButton
                 android:id="@+id/mGoodsCountBtn"
                 style="@style/WrapWrap"
                 android:layout_alignBottom="@+id/mGoodsIconIv"
                 android:layout_alignParentRight="true"
-                app:editable="false" />
+                app:editable="false"/>
         </RelativeLayout>
 
         <View
             android:id="@+id/mLine"
             style="@style/DividerFixedHeight"
-            android:layout_marginLeft="@dimen/yPadding" />
+            android:layout_marginLeft="@dimen/yPadding"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnTop"
+        android:id="@+id/mDeleteBtn"
         android:layout_width="60dp"
         android:layout_height="match_parent"
-        android:background="#d9dee4"
-        android:text="置顶"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/btnUnRead"
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:background="#ecd50a"
-        android:clickable="true"
-        android:text="标记未读"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:background="@color/yWhite"
-        android:text="删除"
-        android:textColor="@android:color/white" />
-</com.yizhipin.goods.widget.SwipeMenuView>
+        android:background="@color/yRed"
+        android:text="@string/delete"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextLargeSize"/>
+</com.yizhipin.base.widgets.SwipeMenuView>
