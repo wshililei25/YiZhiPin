@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter
 import com.yizhipin.base.event.CartAllCheckedEvent
 import com.yizhipin.base.event.CartCheckedEvent
 import com.yizhipin.base.event.UpdateTotalPriceEvent
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.layout_cart_item.view.*
 class CartAdapter(val context: Context) : BaseRecyclerViewAdapter<Cart, CartAdapter.ViewHolder>(context) {
 
     private lateinit var mCartGoodsAdapter: CartGoodsAdapter
+    private lateinit var mLRecyclerViewAdapter: LRecyclerViewAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_cart_item, parent, false)
@@ -33,10 +35,18 @@ class CartAdapter(val context: Context) : BaseRecyclerViewAdapter<Cart, CartAdap
         super.onBindViewHolder(holder, position)
         val model = dataList[position]
 
-        holder.itemView.mCartGoodsRv.layoutManager = LinearLayoutManager(context)
+      /*  holder.itemView.mCartGoodsRv.layoutManager = LinearLayoutManager(context)
         mCartGoodsAdapter = CartGoodsAdapter(context!!)
         mCartGoodsAdapter.setData(model.carts)
-        holder.itemView.mCartGoodsRv.adapter = mCartGoodsAdapter
+        holder.itemView.mCartGoodsRv.adapter = mCartGoodsAdapter*/
+
+
+         holder.itemView.mCartGoodsRv.layoutManager = LinearLayoutManager(context)
+        mCartGoodsAdapter = CartGoodsAdapter(context!!)
+        mCartGoodsAdapter.setData(model.carts)
+
+        mLRecyclerViewAdapter = LRecyclerViewAdapter(mCartGoodsAdapter)
+        holder.itemView.mCartGoodsRv.adapter = mLRecyclerViewAdapter
 
         //是否选中
         holder.itemView.mShopCb.isChecked = model.isSelected

@@ -30,6 +30,7 @@ buildscript {
 //    ext.numberbutton_version = "0.0.1"
     ext.arouter_api_version = '1.4.0'
     ext.arouter_compiler_version = '1.2.1'
+    ext.startview_version = '1.0.0'
 
     repositories {
         google()
