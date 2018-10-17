@@ -4,23 +4,23 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.Gravity
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
-import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.GoodsCollect
-import com.yizhipin.base.event.UpdateCartSizeEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.base.utils.StringUtils
+import com.yizhipin.base.utils.ToastUtils
 import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.base.widgets.IdeaScrollView
 import com.yizhipin.goods.R
@@ -41,14 +41,12 @@ import kotlinx.android.synthetic.main.activity_good_details.*
 import kotlinx.android.synthetic.main.layout_evaluate_item.*
 import kotlinx.android.synthetic.main.layout_report_item.*
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import q.rorbin.badgeview.QBadgeView
 
 /**
  * Created by ${XiLei} on 2018/9/22.
  */
 class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetailView, View.OnClickListener {
-
 
     @Autowired(name = GoodsConstant.KEY_GOODS_ID) //注解接收上个页面的传参
     @JvmField
@@ -69,13 +67,10 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         initView()
         initSrarView()
         initBanner()
-//        initEvaluateView()
         loadEvaluateData()
         loadReportData()
-//        loadCartSize()
-//        initObserve()
+        loadCartSize()
     }
-
 
     override fun injectComponent() {
         DaggerGoodsComponent.builder().activityComponent(mActivityComponent).goodsModule(GoodsModule()).build().inject(this)
@@ -136,6 +131,12 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
     private fun initView() {
 
+        mQBadgeView = QBadgeView(this)
+        retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
+        retailRmb.paint.isAntiAlias = true
+        mRetailPriceTv.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
+        mRetailPriceTv.paint.isAntiAlias = true
+
         mBackIv.onClick { finish() }
         mBackHeadIv.onClick { finish() }
         mEvaluateMoreTv.onClick(this)
@@ -144,11 +145,15 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mSingleBuyView.onClick(this)
         mAddCartBtn.onClick(this)
         mCollectionTv.onClick(this)
-
-        retailRmb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
-        retailRmb.paint.isAntiAlias = true
-        mRetailPriceTv.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
-        mRetailPriceTv.paint.isAntiAlias = true
+        mQBadgeView.onClick {
+            afterLogin {
+                var map = mutableMapOf<String, String>()
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                map.put("productId", mGoods.id.toString())
+                map.put("count", "1")
+                mBasePresenter.addCart(map)
+            }
+        }
     }
 
     private fun initSrarView() {
@@ -167,11 +172,6 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         //设置指示器位置（当banner模式中有指示器时）
         mBanner.setIndicatorGravity(BannerConfig.RIGHT);
     }
-    /*   private fun initEvaluateView() {
-           mEvaluateRv.layoutManager = LinearLayoutManager(this)
-           mEvaluateAdapter = EvaluateAdapter(this)
-           mEvaluateRv.adapter = mEvaluateAdapter
-       }*/
 
     private fun setRadioButtonTextColor(percentage: Float) {
         if (Math.abs(percentage - mCurrentPercentage) >= 0.1f) {
@@ -190,8 +190,16 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         return view.measuredHeight
     }
 
+    /**
+     * 设置购物车数量
+     */
     private fun loadCartSize() {
-        setCartBadge()
+        if (AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) > 0) {
+            mQBadgeView.badgeGravity = Gravity.END or Gravity.TOP
+            mQBadgeView.setGravityOffset(26f, 2f, true)
+            mQBadgeView.setBadgeTextSize(6f, true)
+            mQBadgeView.bindTarget(mAddCartBtn).badgeNumber = AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
+        }
     }
 
     override fun onClick(v: View) {
@@ -199,7 +207,6 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mAddCartBtn -> {
                 afterLogin {
-                    //                    Bus.send(AddCartEvent())
                     var map = mutableMapOf<String, String>()
                     map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                     map.put("productId", mGoods.id.toString())
@@ -236,21 +243,6 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 }
             }
         }
-    }
-
-    private fun initObserve() {
-
-        Bus.observe<UpdateCartSizeEvent>()
-                .subscribe {
-                    setCartBadge()
-                }.registerInBus(this)
-    }
-
-    private fun setCartBadge() {
-//        mQBadgeView.badgeGravity = Gravity.END or Gravity.TOP
-//        mQBadgeView.setGravityOffset(22f, -2f, true)
-//        mQBadgeView.setBadgeTextSize(6f, true)
-//        mQBadgeView.bindTarget(mEnterCartTv).badgeNumber = AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
     }
 
     override fun onStart() {
@@ -373,7 +365,9 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onAddCartSuccess(result: CartGoods) {
         result?.let {
-            toast(getString(R.string.add_cart_success))
+            ToastUtils.INSTANCE.showToast(this,getString(R.string.add_cart_success))
+            AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) + 1)
+            loadCartSize()
         }
     }
 

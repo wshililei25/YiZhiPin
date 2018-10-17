@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.R
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.common.OrderStatus
 import com.yizhipin.ordercender.ui.activity.OrderActivity
@@ -85,9 +87,10 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             mNewView.visibility = View.VISIBLE
             credit.visibility = View.VISIBLE
             mCreditTv.visibility = View.VISIBLE
-            mAnountTv.visibility = View.VISIBLE
+            mAmountTv.visibility = View.VISIBLE
             mCartCountTv.visibility = View.VISIBLE
             mBasePresenter.getUserInfo()
+
         } else {
             mUserIconIv.setImageResource(R.drawable.user)
             mUserNameTv.text = activity!!.getString(R.string.login)
@@ -96,7 +99,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             mNewView.visibility = View.GONE
             credit.visibility = View.GONE
             mCreditTv.visibility = View.GONE
-            mAnountTv.visibility = View.GONE
+            mAmountTv.visibility = View.GONE
             mCartCountTv.visibility = View.GONE
         }
     }
@@ -162,9 +165,13 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
      */
     override fun getUserResult(result: UserInfo) {
 
+        var map = mutableMapOf<String, String>()
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        mBasePresenter.getCartCount(map)
+
         mUserNameTv.text = if (result.nickname.isNullOrEmpty()) getString(R.string.app_name) else result.nickname
         mCreditTv.text = result.score
-        mAnountTv.text = "￥${result.totalAmount}"
+        mAmountTv.text = "￥${result.totalAmount}"
         mUserIconIv.loadUrl(result.imgurl)
         if (result.commissioner) mCommissionerIv.visibility = View.VISIBLE else mCommissionerIv.visibility = View.GONE
         if (result.commissioner) mCommissionerTv.text = getString(R.string.commissioner_plate) else mCommissionerTv.text = getString(R.string.apply_commissioner)
@@ -180,6 +187,16 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             8 -> mGradeIv.setImageResource(R.drawable.grade8)
             9 -> mGradeIv.setImageResource(R.drawable.grade9)
             10 -> mGradeIv.setImageResource(R.drawable.grade10)
+        }
+    }
+
+    /**
+     * 获取购物车数量成功
+     */
+    override fun onGetCartSuccess(result: Int) {
+        if (result > 0) {
+            mCartCountTv.text = "${result}个商品"
+            AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, result)
         }
     }
 

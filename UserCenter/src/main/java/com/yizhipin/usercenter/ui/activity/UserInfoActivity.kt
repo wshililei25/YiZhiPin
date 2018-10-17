@@ -8,9 +8,7 @@ import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
-import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.UploadUtil
-import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.common.UserConstant
 import com.yizhipin.usercenter.data.response.UserInfo
@@ -81,11 +79,9 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
 
         when (v.id) {
             R.id.mBackIv -> {
-                AppPrefsUtils.putBoolean(ProviderConstant.KEY_IS_EDIT_USERINFO, true)
                 finish()
             }
             R.id.mRightTv -> { //跳过
-                AppPrefsUtils.putBoolean(ProviderConstant.KEY_IS_EDIT_USERINFO, true)
                 finish()
             }
             R.id.mUserIconView -> showAlertView()
@@ -182,10 +178,6 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         return mConfirmBtn.text.isNullOrEmpty().not()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        if (!intent.getBooleanExtra(UserConstant.KEY_TO_USERINFO, false)) {
-            AppPrefsUtils.putBoolean(ProviderConstant.KEY_IS_EDIT_USERINFO, true)
-        }
+    override fun onGetCartSuccess(result: Int) {
     }
 }

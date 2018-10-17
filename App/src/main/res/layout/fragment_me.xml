@@ -176,7 +176,7 @@
                 android:text="@string/wallet"/>
 
             <TextView
-                android:id="@+id/mAnountTv"
+                android:id="@+id/mAmountTv"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -228,7 +228,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/yPaddingBigSmall"
-                android:text="1个商品"
                 android:textColor="@color/yBlackDeep"
                 android:textSize="@dimen/yTextMiddleBigSize"/>
         </RelativeLayout>

@@ -84,8 +84,6 @@ dependencies {
     api "com.eightbitlab:rxbus:${rxbus_version}"
     //BadgeView
     api "q.rorbin:badgeview:${badgeview_version}"
-    //NumberButton
-//    api "ren.qinc.numberbutton:numberbutton:${numberbutton_version}"
     //ARouter
     api "com.alibaba:arouter-api:$arouter_api_version"
     //StarView

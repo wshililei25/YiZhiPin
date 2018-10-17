@@ -41,6 +41,10 @@ open class UserServiceImpl @Inject constructor() : UserService {
                 .convert()
     }
 
+    override fun getCartCount(map : MutableMap<String,String>): Observable<Int> {
+        return mRepository.getCartCount(map).convert()
+    }
+
     /**
      * 绑定手机号
      */

@@ -15,7 +15,7 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.UploadUtil
-import com.yizhipin.base.widgets.CustomToast
+import com.yizhipin.base.utils.ToastUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Complain
@@ -136,7 +136,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
     override fun onUploadDone(responseCode: Int, message: String) {
         runOnUiThread {
             hideLoading()
-            CustomToast.INSTANCE.showToast(this,R.string.upload_success)
+            ToastUtils.INSTANCE.showToast(this,R.string.upload_success)
             mComplainImageAdapter.dataList.add(message)
             mComplainImageAdapter.setData(mComplainImageAdapter.dataList)
         }
@@ -173,7 +173,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
 
     override fun onDestroy() {
         super.onDestroy()
-        CustomToast.INSTANCE.cancelToast()//销毁页面时，取消掉toast
+        ToastUtils.INSTANCE.cancelToast()//销毁页面时，取消掉toast
     }
     override fun oncollectShopSuccess(result: Collect) {
     }
