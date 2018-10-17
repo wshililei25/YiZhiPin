@@ -9,6 +9,6 @@ import com.yizhipin.goods.data.response.CartGoods
  */
 interface CartView : BaseView {
     fun onGetCartListSuccess(result: MutableList<Cart>?)
-    fun onDeleteCartListResult(result: Boolean)
+    fun onDeleteCartListSuccess(result: Boolean)
     fun onSubmitCartListResult(result: Int)
 }

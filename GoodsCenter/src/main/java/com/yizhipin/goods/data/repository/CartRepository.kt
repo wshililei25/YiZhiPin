@@ -1,6 +1,7 @@
 package com.yizhipin.goods.data.repository
 
 import com.yizhipin.base.data.net.RetrofitFactory
+import com.yizhipin.base.data.net.RetrofitFactoryDelete
 import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BaseResp
@@ -39,8 +40,8 @@ class CartRepository @Inject constructor() {
     /*
         删除购物车商品
      */
-    fun deleteCartList(list: List<Int>): Observable<BaseResp<String>> {
-        return RetrofitFactory.instance.create(CartApi::class.java).deleteCartList(DeleteCartReq(list))
+    fun deleteCartList(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryDelete(map).create(CartApi::class.java).deleteCartList(map["id"]!!)
     }
 
     /*

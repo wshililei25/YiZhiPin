@@ -37,8 +37,8 @@ class CartServiceImpl @Inject constructor() : CartService {
     /*
         删除购物车商品
      */
-    override fun deleteCartList(list: List<Int>): Observable<Boolean> {
-        return repository.deleteCartList(list).convertBoolean()
+    override fun deleteCartList(map: MutableMap<String, String>): Observable<Boolean> {
+        return repository.deleteCartList(map).convertBoolean()
     }
 
     /*

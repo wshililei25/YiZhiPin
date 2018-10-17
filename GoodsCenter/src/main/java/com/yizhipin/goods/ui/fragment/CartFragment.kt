@@ -19,6 +19,7 @@ import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.injection.component.DaggerCartComponent
@@ -30,6 +31,7 @@ import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_cart.*
 import org.jetbrains.anko.support.v4.toast
+
 
 /**
  * Created by ${XiLei} on 2018/8/23.
@@ -113,8 +115,11 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
         }
     }
 
-    override fun onDeleteCartListResult(result: Boolean) {
-        loadData()
+    /**
+     * 删除商品成功
+     */
+    override fun onDeleteCartListSuccess(result: Boolean) {
+
     }
 
     override fun onSubmitCartListResult(result: Int) {
@@ -144,9 +149,9 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
         Bus.observe<CartDeleteEvent>()
                 .subscribe { t: CartDeleteEvent ->
                     run {
-                        /*var map = mutableMapOf<String, String>()
+                        var map = mutableMapOf<String, String>()
                         map.put("id", t.id.toString())
-                        mBasePresenter.deleteCartList(map)*/
+                        mBasePresenter.deleteCartList(map)
                     }
                 }.registerInBus(this)
 

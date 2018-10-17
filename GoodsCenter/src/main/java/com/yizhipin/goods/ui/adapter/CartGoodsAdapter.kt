@@ -13,6 +13,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.CartGoods
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.layout_cart_goods_item.view.*
 /**
  * 购物车二级适配器
  */
-class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, CartGoodsAdapter.ViewHolder>(context) {
+class CartGoodsAdapter(var context: Context) : BaseRecyclerViewAdapter<CartGoods, CartGoodsAdapter.ViewHolder>(context) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_cart_goods_item, parent, false)
@@ -57,9 +58,19 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
 
         //删除按钮事件
         holder.itemView.mDeleteBtn.onClick {
-            dataList.removeAt(position)
-            notifyDataSetChanged()
-            Bus.send(CartDeleteEvent(model.id))
+
+            val baseAlertDialog = BaseAlertDialog(context!!)
+            baseAlertDialog.setMessage(context.getString(R.string.delete_doods_confirm))
+            baseAlertDialog.show()
+            baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
+                override fun okClickListener() {
+                    dataList.removeAt(position)
+                    notifyDataSetChanged()
+                    Bus.send(CartDeleteEvent(model.id))
+                }
+            })
+
+
         }
 
         //商品数量变化监听

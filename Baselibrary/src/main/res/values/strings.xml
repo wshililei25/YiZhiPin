@@ -31,6 +31,7 @@
     <string name="bind_no">未绑定</string>
     <string name="basis">基础资料</string>
     <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
     <string name="empower_bind">授权绑定</string>
     <string name="credit">信用分</string>
     <string name="my_order">我的订单</string>
@@ -166,6 +167,7 @@
     <string name="settle_account">去结算</string>
     <string name="collect_already">已收藏</string>
     <string name="delete">删除</string>
+    <string name="delete_doods_confirm">确定要删除商品吗</string>
 
     <string name="send_code_success">发送验证码成功</string>
     <string name="next">下一步</string>

@@ -35,7 +35,4 @@
         android:id="@+id/mCartGoodsRv"
         style="@style/MatchWrap" />
 
-<!--    <com.github.jdsjlzx.recyclerview.LRecyclerView
-        android:id="@+id/mCartGoodsRv"
-        style="@style/MatchWrap"/>-->
 </LinearLayout>

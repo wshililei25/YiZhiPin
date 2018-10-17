@@ -1,5 +1,6 @@
 package com.yizhipin.goods.data.api
 
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.goods.data.protocol.DeleteCartReq
@@ -8,10 +9,7 @@ import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /*
     购物车 接口
@@ -35,11 +33,11 @@ interface CartApi {
     @POST(Api.COLLECT_GOOD)
     fun collectGood(): Observable<BaseResp<GoodsCollect>>
 
-    /*
-        删除购物车商品
+    /**
+     *  删除购物车商品
      */
-    @POST("cart/delete")
-    fun deleteCartList(@Body req: DeleteCartReq): Observable<BaseResp<String>>
+    @DELETE("${Api.DELETE_CART_GOODS}${"/{id}"}")
+    fun deleteCartList(@Path("id") id: String): Observable<BaseResp<String>>
 
     /*
         提交购物车商品

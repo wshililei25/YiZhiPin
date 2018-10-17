@@ -17,6 +17,9 @@ open class CartPresenter @Inject constructor() : BasePresenter<CartView>() {
     @Inject
     lateinit var mCartServiceImpl: CartServiceImpl
 
+    /**
+     * 购物车列表
+     */
     fun getCartList(map: MutableMap<String, String>) {
 
 //        mView.showLoading()
@@ -29,14 +32,14 @@ open class CartPresenter @Inject constructor() : BasePresenter<CartView>() {
 
     }
 
-    fun deleteCartList(list: List<Int>) {
-        if (!checkNetWork()) {
-            return
-        }
+    /**
+     * 删除购物车商品
+     */
+    fun deleteCartList(map: MutableMap<String, String>) {
         mView.showLoading()
-        mCartServiceImpl.deleteCartList(list).execute(object : BaseSubscriber<Boolean>(mView) {
+        mCartServiceImpl.deleteCartList(map).execute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
-                mView.onDeleteCartListResult(t)
+                mView.onDeleteCartListSuccess(t)
             }
         }, mLifecycleProvider)
 

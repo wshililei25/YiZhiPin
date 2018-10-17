@@ -24,7 +24,7 @@ interface CartService {
     /*
         删除购物车商品
      */
-    fun deleteCartList(list: List<Int>): Observable<Boolean>
+    fun deleteCartList(map: MutableMap<String, String>): Observable<Boolean>
 
     /*
         购物车结算
