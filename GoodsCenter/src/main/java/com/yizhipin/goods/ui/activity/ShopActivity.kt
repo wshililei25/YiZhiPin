@@ -71,17 +71,17 @@ class ShopActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.OnClickLis
 
     override fun onGetShopDetailsSuccess(result: Shop) {
         result?.let {
-            mShop = result
-            mShopNameTv.text = result.shopName
-            mShopIv.loadUrl(result.shopImgurl)
-            if (result.collection) mCollectTv.setText(getString(R.string.collect_already)) else mCollectTv.setText(getString(R.string.collect_add))
-            if (result.shopIdentity == "product") {
+            mShop = it
+            mShopNameTv.text = it.shopName
+            mShopIv.loadUrl(it.shopImgurl)
+            if (it.collection) mCollectTv.setText(getString(R.string.collect_already)) else mCollectTv.setText(getString(R.string.collect_add))
+            if (it.shopIdentity == "product") {
                 mCategoryTv.text = getString(R.string.hamlet)
-            } else if (result.shopIdentity == "homestay") {
+            } else if (it.shopIdentity == "homestay") {
                 mCategoryTv.text = getString(R.string.stay)
-            } else if (result.shopIdentity == "trip") {
+            } else if (it.shopIdentity == "trip") {
                 mCategoryTv.text = getString(R.string.group_group)
-            } else if (result.shopIdentity == "car") {
+            } else if (it.shopIdentity == "car") {
                 mCategoryTv.text = getString(R.string.motor_homes)
             }
         }

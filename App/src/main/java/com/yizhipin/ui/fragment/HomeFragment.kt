@@ -2,12 +2,12 @@ package com.yizhipin.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
@@ -20,7 +20,7 @@ import com.yizhipin.goods.ui.activity.SearchGoodsActivity
 import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.ui.adapter.CategoryHomeAdapter
-import com.yizhipin.ui.adapter.HomeDiscountAdapter
+import com.yizhipin.ui.adapter.HotGoodsAdapter
 import com.yizhipin.ui.adapter.TopicAdapter
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
@@ -36,6 +36,8 @@ import org.jetbrains.anko.support.v4.startActivity
  */
 class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
+    private lateinit var mHotGoodsAdapter: HotGoodsAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_home, null)
@@ -47,11 +49,15 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
         initBanner()
         initNews()
         initCategoryRv()
-        initDiscount()
         initTopic()
     }
 
     private fun initView() {
+
+        mGoodsRv.layoutManager = GridLayoutManager(activity!!, 3)
+        mHotGoodsAdapter = HotGoodsAdapter(activity!!)
+        mGoodsRv.adapter = mHotGoodsAdapter
+
         mSearchEt.onClick {
             startActivity<SearchGoodsActivity>()
         }
@@ -100,18 +106,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
         })
     }
 
-    /**
-     * 折扣
-     */
-    private fun initDiscount() {
-        val manager = LinearLayoutManager(activity)
-        manager.orientation = LinearLayoutManager.HORIZONTAL
-        mHomeDiscountRv.layoutManager = manager
-        val discountAdapter = HomeDiscountAdapter(context!!)
-        mHomeDiscountRv.adapter = discountAdapter
-        discountAdapter.setData(mutableListOf(HOME_DISCOUNT_ONE, HOME_DISCOUNT_TWO, HOME_DISCOUNT_THREE, HOME_DISCOUNT_FOUR, HOME_DISCOUNT_FIVE))
-    }
-
     private fun initTopic() {
         //话题
         mTopicPager.adapter = TopicAdapter(context!!, listOf(HOME_TOPIC_ONE, HOME_TOPIC_TWO, HOME_TOPIC_THREE, HOME_TOPIC_FOUR, HOME_TOPIC_FIVE))
@@ -128,6 +122,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
 
     private fun loadData() {
         loadBannerData()
+        loadGoodsData()
     }
 
     private fun loadBannerData() {
@@ -152,5 +147,16 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
             }
 
         })
+    }
+
+    /**
+     * 获取商品列表
+     */
+    private fun loadGoodsData() {
+        mBasePresenter.getGoodsList()
+    }
+
+    override fun onGetGoodsListSuccess(result: MutableList<Goods>) {
+        mHotGoodsAdapter.setData(result)
     }
 }

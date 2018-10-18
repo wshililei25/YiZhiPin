@@ -27,32 +27,34 @@ class ShipAddressAdapter(context: Context) : BaseRecyclerViewAdapter<ShipAddress
         super.onBindViewHolder(holder, position)
         val model = dataList[position]
 
-        holder.itemView.mSetDefaultTv.isSelected = (model.isDefault == true)
-        holder.itemView.mShipNameTv.text = model.name
-        holder.itemView.mShipMobileTv.text = model.mobile
-        holder.itemView.mShipAddressTv.text = model.pro + model.city + model.area + model.detail
+        with(model) {
 
-        holder.itemView.mSetDefaultTv.onClick {
-            mOptClickListener?.let {
-                if (holder.itemView.mSetDefaultTv.isSelected) {
-                    return@onClick
+            holder.itemView.mSetDefaultTv.isSelected = (isDefault == true)
+            holder.itemView.mShipNameTv.text = name
+            holder.itemView.mShipMobileTv.text = mobile
+            holder.itemView.mShipAddressTv.text = pro + city + area + detail
+
+            holder.itemView.mSetDefaultTv.onClick {
+                mOptClickListener?.let {
+                    if (holder.itemView.mSetDefaultTv.isSelected) {
+                        return@onClick
+                    }
+                    isDefault = true
+                    it.onSetDefault(this)
                 }
-                model.isDefault = true
-                it.onSetDefault(model)
             }
-        }
 
-        holder.itemView.mEditTv.onClick {
-            mOptClickListener?.let {
-                it.onEdit(model)
+            holder.itemView.mEditTv.onClick {
+                mOptClickListener?.let {
+                    it.onEdit(this)
+                }
+            }
+            holder.itemView.mDeleteTv.onClick {
+                mOptClickListener?.let {
+                    it.onDelete(this)
+                }
             }
         }
-        holder.itemView.mDeleteTv.onClick {
-            mOptClickListener?.let {
-                it.onDelete(model)
-            }
-        }
-
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

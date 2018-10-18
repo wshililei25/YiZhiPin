@@ -1,6 +1,10 @@
 package com.yizhipin.usercenter.service.impl
 
+import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.convert
+import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.data.response.Banner
 import com.yizhipin.usercenter.data.repository.MainRepository
 import com.yizhipin.usercenter.service.MainService
@@ -20,4 +24,8 @@ open class MainServiceImpl @Inject constructor() : MainService {
                 .convert()
     }
 
+    override fun getGoodsList(): Observable<MutableList<Goods>> {
+
+        return mRepository.getGoodsList().convert()
+    }
 }

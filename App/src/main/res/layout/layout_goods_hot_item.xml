@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap"
+    android:background="@color/yWhite">
+
+    <RelativeLayout
+        style="@style/WrapWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mGoodsIv"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/mGoodsNameTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mGoodsIv"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="dddd"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize" />
+
+        <RelativeLayout
+            android:id="@+id/systemView"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mGoodsNameTv"
+            android:layout_marginTop="@dimen/yPaddingSmall">
+
+            <TextView
+                android:id="@+id/system"
+                style="@style/WrapWrap"
+                android:text="@string/system_price"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallSize" />
+
+            <TextView
+                android:id="@+id/rmb_s"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@+id/system"
+                android:text="@string/rmb"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallSize" />
+
+            <TextView
+                android:id="@+id/mSystemTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                android:layout_toRightOf="@+id/rmb_s"
+                android:text="0.00"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallSize" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mRetailView"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/systemView"
+            android:layout_marginTop="@dimen/yPaddingSmall">
+
+            <TextView
+                android:id="@+id/retail"
+                style="@style/WrapWrap"
+                android:text="@string/retail_price"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextSmallSize" />
+
+            <TextView
+                android:id="@+id/rmb"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_toRightOf="@+id/retail"
+                android:text="@string/rmb"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextSmallSize" />
+
+            <TextView
+                android:id="@+id/mRetailTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                android:layout_toRightOf="@+id/rmb"
+                android:text="0.00"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextSmallSize" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>

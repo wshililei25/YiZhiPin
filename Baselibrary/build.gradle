@@ -70,8 +70,6 @@ dependencies {
     api "com.ashokvarma.android:bottom-navigation-bar:${bottom_navigation}"
     //Banner
     api "com.youth.banner:banner:${banner_version}"
-    //标签
-    api "com.github.shts:TriangleLabelView:${triangle_label_view_version}"
     //画廊
     api 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
     //MultiStateView
@@ -84,8 +82,6 @@ dependencies {
     api "com.eightbitlab:rxbus:${rxbus_version}"
     //BadgeView
     api "q.rorbin:badgeview:${badgeview_version}"
-    //NumberButton
-//    api "ren.qinc.numberbutton:numberbutton:${numberbutton_version}"
     //ARouter
     api "com.alibaba:arouter-api:$arouter_api_version"
     //StarView

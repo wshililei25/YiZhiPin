@@ -106,7 +106,7 @@
                 style="@style/DividerFixedHeight"/>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/mHomeDiscountRv"
+                android:id="@+id/mGoodsRv"
                 style="@style/commonRecyclerView"
                 android:layout_height="wrap_content"
                 android:background="@color/common_white"

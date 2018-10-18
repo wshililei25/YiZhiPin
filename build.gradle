@@ -23,11 +23,9 @@ buildscript {
     ext.alert_view_version = "1.0.3"
     ext.bottom_navigation = "2.0.4"
     ext.banner_version = "1.4.10"
-    ext.triangle_label_view_version = "1.1.2"
     ext.flowlayout_version = "1.0.3"
     ext.rxbus_version = "1.0.2"
     ext.badgeview_version = "1.1.2"
-//    ext.numberbutton_version = "0.0.1"
     ext.arouter_api_version = '1.4.0'
     ext.arouter_compiler_version = '1.2.1'
     ext.startview_version = '1.0.0'
