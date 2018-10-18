@@ -1,4 +1,4 @@
-package com.yizhipin.base.widgets
+package com.yizhipin.base.utils
 
 import android.content.Context
 import android.view.Gravity
@@ -12,7 +12,7 @@ import com.yizhipin.base.R
 /**
  *  Created by ${XiLei} on 2018/9/2.
  */
-enum class CustomToast {
+enum class ToastUtils {
     INSTANCE;
     // 实现单例
     private var mToast: Toast? = null

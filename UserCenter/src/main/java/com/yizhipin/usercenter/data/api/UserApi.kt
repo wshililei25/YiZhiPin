@@ -4,10 +4,7 @@ import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.usercenter.data.response.UserInfo
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 /**
@@ -24,6 +21,12 @@ interface UserApi {
     //    @PUT(Api.EDIT_USER_INFO.plus("/{id}")) //编辑用户信息
     @PUT("${Api.EDIT_USER_INFO}${"/{"}${BaseConstant.KEY_SP_TOKEN}${"}"}") //编辑用户信息
     fun editUserInfo(@Path(BaseConstant.KEY_SP_TOKEN) id: String): Observable<BaseResp<UserInfo>>
+
+    /**
+     * 获取购物车数量
+     */
+    @PUT(Api.CART_COUNT)
+    fun getCartCount(@Query("uid") uid: String): Observable<BaseResp<Int>>
 
     @PUT("${Api.BIND_MOBILE}${"/{"}${BaseConstant.KEY_SP_TOKEN}${"}"}") //绑定手机号
     fun bindMobile(@Path(BaseConstant.KEY_SP_TOKEN) id: String): Observable<BaseResp<Boolean>>

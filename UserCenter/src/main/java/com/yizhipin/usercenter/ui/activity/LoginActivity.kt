@@ -6,8 +6,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.data.response.UserInfo
@@ -43,9 +41,9 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 
     override fun onClick(v: View) {
         when (v.id) {
-        /* R.id.mSendCodeTv -> {
-             mBasePresenter.login(mMobileEt.text.toString(), mCodeEt.text.toString(), "user")
-         }*/
+            /* R.id.mSendCodeTv -> {
+                 mBasePresenter.login(mMobileEt.text.toString(), mCodeEt.text.toString(), "user")
+             }*/
 
             R.id.mLoginBtn -> {
                 var map = mutableMapOf<String, String>()
@@ -72,7 +70,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
      */
     override fun onLoginSuccess(result: UserInfo) {
         UserPrefsUtils.putUserInfo(result)
-        if (!AppPrefsUtils.getBoolean(ProviderConstant.KEY_IS_EDIT_USERINFO)) {
+        if (result.newUser) {
             startActivity<UserInfoActivity>()
         }
         finish()

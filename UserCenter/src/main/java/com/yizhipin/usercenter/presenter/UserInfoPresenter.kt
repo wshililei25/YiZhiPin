@@ -20,9 +20,6 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
      * 获取用户信息
      */
     fun getUserInfo() {
-        if (!checkNetWork())
-            return
-
         mView.showLoading()
         mUserServiceImpl.getUserInfo().execute(object : BaseSubscriber<UserInfo>(mView) {
             override fun onNext(t: UserInfo) {
@@ -42,6 +39,19 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
         mUserServiceImpl.editUserInfo(map).execute(object : BaseSubscriber<UserInfo>(mView) {
             override fun onNext(t: UserInfo) {
                 mView.onEditUserResult(t)
+            }
+        }, mLifecycleProvider)
+    }
+
+    /**
+     * 获取购物车数量
+     */
+    fun getCartCount(map: MutableMap<String, String>) {
+
+//        mView.showLoading()
+        mUserServiceImpl.getCartCount(map).execute(object : BaseSubscriber<Int>(mView) {
+            override fun onNext(t: Int) {
+                mView.onGetCartSuccess(t)
             }
         }, mLifecycleProvider)
     }

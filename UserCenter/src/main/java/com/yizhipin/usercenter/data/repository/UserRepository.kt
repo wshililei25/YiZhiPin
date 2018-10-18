@@ -41,6 +41,10 @@ class UserRepository @Inject constructor() {
                 .editUserInfo(AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
     }
 
+    fun getCartCount(map: MutableMap<String, String>): Observable<BaseResp<Int>> {
+        return RetrofitFactoryGet().create(UserApi::class.java).getCartCount(map["uid"]!!)
+    }
+
     /**
      * 绑定手机号
      */

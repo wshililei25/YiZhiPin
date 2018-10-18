@@ -43,7 +43,6 @@ class GoodsDetailPresenter @Inject constructor() : BasePresenter<GoodsDetailView
         mView.showLoading()
         mCartServiceImpl.addCart(map).execute(object : BaseSubscriber<CartGoods>(mView) {
             override fun onNext(t: CartGoods) {
-//                AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, t)
                 mView.onAddCartSuccess(t)
             }
         }, mLifecycleProvider)

@@ -32,6 +32,7 @@ interface Api {
         const val CART_LIST = "api/ShopCart/List"//购物车列表
         const val COLLECT_GOOD = "api/ProductCollection"//收藏商品
         const val DELETE_CART_GOODS = "api/ShopCart"//删除购物车商品
+        const val CART_COUNT = "api/ShopCart/Count"//获取购物车数量
         const val HOT_GOODS_LIST = "api/Product/List"//热门商品列表
     }
 }

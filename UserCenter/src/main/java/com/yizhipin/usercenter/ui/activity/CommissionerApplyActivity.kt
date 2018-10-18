@@ -9,7 +9,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.UploadUtil
-import com.yizhipin.base.widgets.CustomToast
+import com.yizhipin.base.utils.ToastUtils
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.presenter.CommissionerPresenter
 import kotlinx.android.synthetic.main.activity_commissioner_apply.*
@@ -94,7 +94,7 @@ class CommissionerApplyActivity : BaseTakePhotoActivity<CommissionerPresenter>()
     override fun onUploadDone(responseCode: Int, message: String) {
         runOnUiThread {
             hideLoading()
-            CustomToast.INSTANCE.showToast(this, getString(R.string.upload_success));
+            ToastUtils.INSTANCE.showToast(this, getString(R.string.upload_success));
             when (mType) {
                 1 -> {
                     mFrontFileUrl = message

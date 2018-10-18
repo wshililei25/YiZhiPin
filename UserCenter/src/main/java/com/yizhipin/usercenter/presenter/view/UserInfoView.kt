@@ -9,4 +9,5 @@ import com.yizhipin.usercenter.data.response.UserInfo
 interface UserInfoView : BaseView {
     fun getUserResult(result:UserInfo)
     fun onEditUserResult(result:UserInfo)
+    fun onGetCartSuccess(result:Int)
 }
