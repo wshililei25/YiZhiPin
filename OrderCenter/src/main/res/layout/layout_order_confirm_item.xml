@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               style="@style/MatchWrap.Vertical"
               android:background="@color/yWhite">
 
@@ -74,4 +75,74 @@
         style="@style/DividerFixedHeight"
         android:layout_below="@+id/mGoodsIv"
         android:layout_marginTop="@dimen/yPaddingMiddle"/>
+
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/buy_num"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <com.yizhipin.base.widgets.NumberButton
+            android:id="@+id/mGoodsCountBtn"
+            style="@style/WrapWrap"
+            app:editable="false"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/postage"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mPostageTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:text="¥ 0.00"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPadding"/>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/payment"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mPracticalAmountTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:text="¥ 0.00"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </RelativeLayout>
 </LinearLayout>

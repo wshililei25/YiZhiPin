@@ -44,7 +44,6 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     @JvmField
     var mGoodsList: ArrayList<Goods>? = null
 
-
     private lateinit var mShipAddress: ShipAddress
     private lateinit var mOrderGoodsAdapter: OrderGoodsAdapter
     private var mOrder: Order? = null
@@ -61,31 +60,31 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     private fun initView() {
 
         mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
-        mOrderGoodsAdapter = OrderGoodsAdapter(this)
+        mOrderGoodsAdapter = OrderGoodsAdapter(this, mIsPin)
         mOrderGoodsAdapter.setData(mGoodsList as MutableList<Goods>)
         mOrderGoodsRv.adapter = mOrderGoodsAdapter
 
         if (mIsPin) {
-            var amount = 0.00
-            for (good in mGoodsList as MutableList<Goods>) {
-                amount += good.pinPrice
-            }
-            mAmountTv.text = getString(R.string.rmb).plus(amount.toString())
+            /* var amount = 0.00
+             for (good in mGoodsList as MutableList<Goods>) {
+                 amount += good.pinPrice
+             }
+             mAmountTv.text = getString(R.string.rmb).plus(amount.toString())*/
             mBtn.text = getString(R.string.participate_share_bill)
         } else {
-            var amount = 0.00
-            for (good in mGoodsList as MutableList<Goods>) {
-                amount += good.price
-            }
-            mAmountTv.text = getString(R.string.rmb).plus(amount.toString())
+            /* var amount = 0.00
+             for (good in mGoodsList as MutableList<Goods>) {
+                 amount += good.price
+             }
+             mAmountTv.text = getString(R.string.rmb).plus(amount.toString())*/
             mBtn.text = getString(R.string.commit_order)
         }
 
-        var amount = 0.00
-        for (good in mGoodsList as MutableList<Goods>) {
-            amount += good.postage
-        }
-        mPostageTv.text = getString(R.string.rmb).plus(amount.toString())
+        /* var amount = 0.00
+         for (good in mGoodsList as MutableList<Goods>) {
+             amount += good.postage
+         }
+         mPostageTv.text = getString(R.string.rmb).plus(amount.toString())*/
         mBtn.onClick(this)
         mShipView.onClick(this)
         mSelectShipTv.onClick(this)
@@ -129,14 +128,16 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                     return
                 }
 
-                var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                map.put("pid", mGoodsList!!.get(0).id.toString())
-                map.put("productCount", mGoodsCountBtn.number.toString())
-                map.put("conponId", "")
-                map.put("addressId", mShipAddress.id.toString())
+                startActivity<PayConfirmActivity>(OrderConstant.KEY_GOODS_LIST to mGoodsList)
 
-                mBasePresenter.submitOrder(map)
+                /*  var map = mutableMapOf<String, String>()
+                  map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                  map.put("pid", mGoodsList!!.get(0).id.toString())
+                  map.put("productCount", mGoodsCountBtn.number.toString())
+                  map.put("conponId", "")
+                  map.put("addressId", mShipAddress.id.toString())
+
+                  mBasePresenter.submitOrder(map)*/
             }
         }
     }
@@ -169,13 +170,10 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
         }
     }
 
-    /**
-     * 提交订单成功
-     */
     override fun onSubmitOrderSuccess(result: Order) {
-        result?.let {
+     /*   result?.let {
             startActivity<PayConfirmActivity>(OrderConstant.KEY_ORDER to result)
-        }
+        }*/
     }
 
     override fun onDestroy() {
