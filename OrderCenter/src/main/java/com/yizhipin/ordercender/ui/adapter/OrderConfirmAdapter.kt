@@ -11,16 +11,16 @@ import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.base.widgets.NumberButton
 import com.yizhipin.ordercender.R
-import kotlinx.android.synthetic.main.layout_order_goods_item.view.*
+import kotlinx.android.synthetic.main.layout_order_confirm_item.view.*
 import org.jetbrains.anko.toast
 
 /**
  * 订单详情页、订单列表中的商品
  */
-class OrderGoodsAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyclerViewAdapter<Goods, OrderGoodsAdapter.ViewHolder>(context) {
+class OrderConfirmAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyclerViewAdapter<Goods, OrderConfirmAdapter.ViewHolder>(context) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(mContext).inflate(R.layout.layout_order_goods_item, parent, false)
+        val view = LayoutInflater.from(mContext).inflate(R.layout.layout_order_confirm_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -39,7 +39,7 @@ class OrderGoodsAdapter(var context: Context, var mIsPin: Boolean) : BaseRecycle
             holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.price.toString())
         }
 
-        holder.itemView.mGoodsCountBtn.number
+        model.goodsCount = 1
         holder.itemView.mGoodsCountBtn.setBuyMax(model.count)
         holder.itemView.mGoodsCountBtn.setOnWarnListener(object : NumberButton.OnWarnListener {
             override fun onWarningForBuyMax(max: Int) {
@@ -66,8 +66,6 @@ class OrderGoodsAdapter(var context: Context, var mIsPin: Boolean) : BaseRecycle
 
             }
         })
-
-
 
         if (model.primaryCategory == "product") {
             holder.itemView.mTypeTv.text = context.getString(R.string.hamlet)

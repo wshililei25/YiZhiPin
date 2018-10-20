@@ -11,7 +11,5 @@ interface OrderConfirmView : BaseView {
 
     //获取订单回调
     fun onGetOrderByIdResult(result: Order)
-    //提交订单回调
-    fun onSubmitOrderSuccess(result:Order)
     fun onGetDefaultAddressSuccess(result:ShipAddress)
 }

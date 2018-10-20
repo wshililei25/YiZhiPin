@@ -230,7 +230,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
 
-            R.id.mSingleBuyView -> {
+            R.id.mSingleBuyView -> { //单价买
                 afterLogin {
                     mGoods?.let {
                         var list = arrayListOf<Goods>()
@@ -365,7 +365,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onAddCartSuccess(result: CartGoods) {
         result?.let {
-            ToastUtils.INSTANCE.showToast(this,getString(R.string.add_cart_success))
+            ToastUtils.INSTANCE.showToast(this, getString(R.string.add_cart_success))
             AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) + 1)
             loadCartSize()
         }

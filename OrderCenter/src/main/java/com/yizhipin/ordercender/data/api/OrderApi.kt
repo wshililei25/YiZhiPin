@@ -54,6 +54,6 @@ interface OrderApi {
         提交订单
      */
     @POST(Api.SUBMIT_ORDER)
-    fun submitOrder(): Observable<BaseResp<Order>>
+    fun submitOrder(): Observable<BaseResp<Boolean>>
 
 }

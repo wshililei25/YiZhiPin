@@ -37,5 +37,6 @@ data class Goods(
         val order: String? = null,//为了解决使用Parcelable传参时参数为null报错的问题，这里允许参数为null(后台返null)
         val orderType: String? = null,
         val collection: Boolean = false,
-        val shop: Shop
+        val shop: Shop,
+        var goodsCount: Int = 1//购买的商品数量
 ) : Parcelable

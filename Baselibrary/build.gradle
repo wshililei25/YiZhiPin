@@ -27,6 +27,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
@@ -48,7 +49,6 @@ dependencies {
     api "io.reactivex.rxjava2:rxandroid:${rx_android_version}"
     //Retrofit
     api "com.squareup.okhttp3:logging-interceptor:${ok_http_version}"
-//    api "com.squareup.okhttp3:okhttp:${ok_http_version}"
     api "com.squareup.retrofit2:retrofit:${retrofit_version}"
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
     api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
@@ -70,14 +70,10 @@ dependencies {
     api "com.ashokvarma.android:bottom-navigation-bar:${bottom_navigation}"
     //Banner
     api "com.youth.banner:banner:${banner_version}"
-    //画廊
-    api 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
     //MultiStateView
-    api 'com.github.Kennyc1012:MultiStateView:1.3.2'
+    api "com.github.Kennyc1012:MultiStateView:${multistateview_version}"
     //上下拉刷新
     api 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
-    //FlowLayout
-    api "com.zhy:flowlayout-lib:${flowlayout_version}"
     //Kotlin Bus
     api "com.eightbitlab:rxbus:${rxbus_version}"
     //BadgeView

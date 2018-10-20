@@ -13,28 +13,27 @@ import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.ui.web.WebViewActivity
 import com.yizhipin.base.widgets.BannerImageLoader
-import com.yizhipin.common.*
 import com.yizhipin.data.response.Banner
 import com.yizhipin.data.response.CategoryHome
+import com.yizhipin.goods.common.GoodsConstant
+import com.yizhipin.goods.ui.activity.GoodsDetailActivity
 import com.yizhipin.goods.ui.activity.SearchGoodsActivity
 import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.ui.adapter.CategoryHomeAdapter
 import com.yizhipin.ui.adapter.HotGoodsAdapter
-import com.yizhipin.ui.adapter.TopicAdapter
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.listener.OnBannerListener
 import kotlinx.android.synthetic.main.fragment_home.*
-import me.crosswall.lib.coverflow.CoverFlow
 import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * Created by ${XiLei} on 2018/8/19.
  */
-class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
+class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickListener {
 
     private lateinit var mHotGoodsAdapter: HotGoodsAdapter
 
@@ -46,26 +45,33 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initHotGoodsView()
         initBanner()
         initNews()
         initCategoryRv()
-        initTopic()
-    }
-
-    private fun initView() {
-
-        mGoodsRv.layoutManager = GridLayoutManager(activity!!, 3)
-        mHotGoodsAdapter = HotGoodsAdapter(activity!!)
-        mGoodsRv.adapter = mHotGoodsAdapter
-
-        mSearchEt.onClick {
-            startActivity<SearchGoodsActivity>()
-        }
     }
 
     override fun injectComponent() {
         DaggerMainComponent.builder().activityComponent(mActivityComponent).mianModule(MianModule()).build().inject(this)
         mBasePresenter.mView = this
+    }
+
+    private fun initView() {
+
+        mSearchEt.onClick(this)
+        mUnderstandTv.onClick(this)
+    }
+
+    private fun initHotGoodsView() {
+        mGoodsRv.layoutManager = GridLayoutManager(activity!!, 3)
+        mHotGoodsAdapter = HotGoodsAdapter(activity!!)
+        mGoodsRv.adapter = mHotGoodsAdapter
+        mHotGoodsAdapter.setOnItemClickListener(object :BaseRecyclerViewAdapter.OnItemClickListener<Goods>{
+            override fun onItemClick(item: Goods, position: Int) {
+                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
+            }
+
+        })
     }
 
     private fun initBanner() {
@@ -106,13 +112,15 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView {
         })
     }
 
-    private fun initTopic() {
-        //话题
-        mTopicPager.adapter = TopicAdapter(context!!, listOf(HOME_TOPIC_ONE, HOME_TOPIC_TWO, HOME_TOPIC_THREE, HOME_TOPIC_FOUR, HOME_TOPIC_FIVE))
-        mTopicPager.currentItem = 1
-        mTopicPager.offscreenPageLimit = 5
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.mUnderstandTv -> { //了解一下
 
-        CoverFlow.Builder().with(mTopicPager).scale(0.3f).pagerMargin(-30.0f).spaceSize(0.0f).build()
+            }
+            R.id.mSearchEt -> { //搜索
+                startActivity<SearchGoodsActivity>()
+            }
+        }
     }
 
     override fun onStart() {

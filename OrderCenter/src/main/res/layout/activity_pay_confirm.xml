@@ -97,23 +97,22 @@
                 android:orientation="vertical">
 
                 <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/p1"
+                    android:id="@+id/mBalanceRadio"
                     style="@style/MatchWrap"
                     app:checked="true"
-                    app:desc="@string/balance_insufficient"
                     app:logo1="@drawable/wallet"
                     app:radio="@drawable/radio"
                     app:title1="@string/balance_pay"/>
 
                 <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/p2"
+                    android:id="@+id/mAliRadio"
                     style="@style/MatchWrap"
                     app:logo1="@drawable/alipay"
                     app:radio="@drawable/radio"
                     app:title1="@string/ali_pay"/>
 
                 <com.yizhipin.base.widgets.PayRadioPurified
-                    android:id="@+id/p3"
+                    android:id="@+id/mWechatRadio"
                     style="@style/MatchWrap"
                     app:logo1="@drawable/wechat2"
                     app:radio="@drawable/radio"
@@ -151,7 +150,7 @@
             android:textSize="@dimen/yTextBigSize"/>
 
         <Button
-            android:id="@+id/mLoginBtn"
+            android:id="@+id/mPayBtn"
             style="@style/FullBtnStyle"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"

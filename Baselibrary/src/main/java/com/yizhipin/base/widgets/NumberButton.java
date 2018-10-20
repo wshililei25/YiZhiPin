@@ -230,4 +230,8 @@ public class NumberButton extends LinearLayout implements View.OnClickListener, 
 
         void onWarningForBuyMax(int max);
     }
+
+    public EditText getEditText(){
+        return mCount;
+    }
 }

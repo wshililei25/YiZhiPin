@@ -23,19 +23,19 @@ import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderConfirmPresenter
 import com.yizhipin.ordercender.presenter.view.OrderConfirmView
-import com.yizhipin.ordercender.ui.adapter.OrderGoodsAdapter
+import com.yizhipin.ordercender.ui.adapter.OrderConfirmAdapter
 import com.yizhipin.provider.router.RouterPath
-import kotlinx.android.synthetic.main.activity_order_details.*
+import kotlinx.android.synthetic.main.activity_order_confirm.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
  * Created by ${XiLei} on 2018/9/24.
- * 订单详情
+ * 订单确认
  */
 
 @Route(path = RouterPath.OrderCenter.PATH_ORDER_DETAILS)
-class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConfirmView, View.OnClickListener {
+class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConfirmView, View.OnClickListener {
 
     @Autowired(name = BaseConstant.KEY_IS_PIN) //注解接收上个页面的传参
     @JvmField
@@ -45,12 +45,12 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     var mGoodsList: ArrayList<Goods>? = null
 
     private lateinit var mShipAddress: ShipAddress
-    private lateinit var mOrderGoodsAdapter: OrderGoodsAdapter
+    private lateinit var mOrderConfirmAdapter: OrderConfirmAdapter
     private var mOrder: Order? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order_details)
+        setContentView(R.layout.activity_order_confirm)
 
         initView()
         loadData()
@@ -60,9 +60,9 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     private fun initView() {
 
         mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
-        mOrderGoodsAdapter = OrderGoodsAdapter(this, mIsPin)
-        mOrderGoodsAdapter.setData(mGoodsList as MutableList<Goods>)
-        mOrderGoodsRv.adapter = mOrderGoodsAdapter
+        mOrderConfirmAdapter = OrderConfirmAdapter(this, mIsPin)
+        mOrderConfirmAdapter.setData(mGoodsList as MutableList<Goods>)
+        mOrderGoodsRv.adapter = mOrderConfirmAdapter
 
         if (mIsPin) {
             /* var amount = 0.00
@@ -128,16 +128,9 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                     return
                 }
 
-                startActivity<PayConfirmActivity>(OrderConstant.KEY_GOODS_LIST to mGoodsList)
+                startActivity<PayConfirmActivity>(OrderConstant.KEY_GOODS_LIST to mGoodsList
+                        , BaseConstant.KEY_IS_PIN to mIsPin, OrderConstant.KEY_ADDRESS_ID to mShipAddress.id)
 
-                /*  var map = mutableMapOf<String, String>()
-                  map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                  map.put("pid", mGoodsList!!.get(0).id.toString())
-                  map.put("productCount", mGoodsCountBtn.number.toString())
-                  map.put("conponId", "")
-                  map.put("addressId", mShipAddress.id.toString())
-
-                  mBasePresenter.submitOrder(map)*/
             }
         }
     }
@@ -168,12 +161,6 @@ class OrderDetailsActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
             mShipMobileTv.text = StringUtils.setMobileStar(result.mobile)
             mShipAddressTv.text = result.pro + result.city + result.area + result.detail
         }
-    }
-
-    override fun onSubmitOrderSuccess(result: Order) {
-     /*   result?.let {
-            startActivity<PayConfirmActivity>(OrderConstant.KEY_ORDER to result)
-        }*/
     }
 
     override fun onDestroy() {

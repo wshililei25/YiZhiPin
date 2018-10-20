@@ -55,7 +55,7 @@ class OrderRepository @Inject constructor() {
     /*
         提交订单
      */
-    fun submitOrder(map: MutableMap<String, String>): Observable<BaseResp<Order>> {
+    fun submitOrder(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrder()
     }
 

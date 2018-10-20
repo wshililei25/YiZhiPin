@@ -1,4 +1,4 @@
-package com.paypassword;
+package com.yizhipin.base.widgets;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.yizhipin.base.R;
 
 /**
  * Created by Administrator on 2018/3/19.
@@ -16,7 +19,7 @@ import android.widget.TextView;
 
 public class PayPasswordDialog extends Dialog implements View.OnClickListener {
     Context context;
-    private TextView tvReturn;
+    private ImageView tvReturn;
     private PayPasswordView payPassword;
     private TextView tv1;
     private TextView tv2;
@@ -48,11 +51,10 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
 
         Window window = getWindow();
         WindowManager.LayoutParams mParams = window.getAttributes();
-        mParams.width= WindowManager.LayoutParams.MATCH_PARENT;
+        mParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         window.setGravity(Gravity.BOTTOM);
         window.setAttributes(mParams);
         setCanceledOnTouchOutside(true);
-
 
         tvReturn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +72,7 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
         payPassword.setPayPasswordEndListener(new PayPasswordView.PayEndListener() {
             @Override
             public void doEnd(String password) {
-                if (dialogClick!=null){
+                if (dialogClick != null) {
                     dialogClick.doConfirm(password);
                 }
             }
@@ -85,11 +87,10 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
         tv7.setOnClickListener(this);
         tv8.setOnClickListener(this);
         tv9.setOnClickListener(this);
-
     }
 
     private void initView() {
-        tvReturn = (TextView) findViewById(R.id.tv_return);
+        tvReturn = (ImageView) findViewById(R.id.mBackIv);
         payPassword = (PayPasswordView) findViewById(R.id.pay_password);
         tv1 = (TextView) findViewById(R.id.tv1);
         tv2 = (TextView) findViewById(R.id.tv2);
@@ -105,47 +106,38 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
     }
 
     DialogClick dialogClick;
-    public void setDialogClick(DialogClick dialogClick){
-        this.dialogClick=dialogClick;
+
+    public void setDialogClick(DialogClick dialogClick) {
+        this.dialogClick = dialogClick;
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.tv:
-                payPassword.addPassword("0");
-                break;
-            case R.id.tv1:
-                payPassword.addPassword("1");
-                break;
-            case R.id.tv2:
-                payPassword.addPassword("2");
-                break;
-            case R.id.tv3:
-                payPassword.addPassword("3");
-                break;
-            case R.id.tv4:
-                payPassword.addPassword("4");
-                break;
-            case R.id.tv5:
-                payPassword.addPassword("5");
-                break;
-            case R.id.tv6:
-                payPassword.addPassword("6");
-                break;
-            case R.id.tv7:
-                payPassword.addPassword("7");
-                break;
-            case R.id.tv8:
-                payPassword.addPassword("8");
-                break;
-            case R.id.tv9:
-                payPassword.addPassword("9");
-                break;
+        int i = view.getId();
+        if (i == R.id.tv) {
+            payPassword.addPassword("0");
+        } else if (i == R.id.tv1) {
+            payPassword.addPassword("1");
+        } else if (i == R.id.tv2) {
+            payPassword.addPassword("2");
+        } else if (i == R.id.tv3) {
+            payPassword.addPassword("3");
+        } else if (i == R.id.tv4) {
+            payPassword.addPassword("4");
+        } else if (i == R.id.tv5) {
+            payPassword.addPassword("5");
+        } else if (i == R.id.tv6) {
+            payPassword.addPassword("6");
+        } else if (i == R.id.tv7) {
+            payPassword.addPassword("7");
+        } else if (i == R.id.tv8) {
+            payPassword.addPassword("8");
+        } else if (i == R.id.tv9) {
+            payPassword.addPassword("9");
         }
     }
 
-    public interface DialogClick{
+    public interface DialogClick {
         void doConfirm(String password);
     }
 

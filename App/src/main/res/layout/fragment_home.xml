@@ -75,6 +75,8 @@
                     android:layout_marginRight="@dimen/common_padding_middle"
                     android:layout_marginBottom="@dimen/common_padding_small"
                     android:background="@drawable/corner_news_bg"/>
+
+
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
@@ -132,22 +134,53 @@
                     android:text="@string/nearby_bill"
                     android:textColor="@color/yMain"
                     android:textSize="@dimen/yTextMiddleSize"/>
+
             </LinearLayout>
 
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@color/yWhite"
+                android:padding="@dimen/yPaddingBig">
+
+                <TextView
+                    android:id="@+id/hint"
+                    style="@style/WrapWrap"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/hint"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleBigSize"/>
+
+                <TextView
+                    android:id="@+id/hint_commissioner"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/hint"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/yPaddingBigSmall"
+                    android:text="@string/hint_commissioner"
+                    android:textColor="@color/yBlack"
+                    android:textSize="@dimen/yTextMiddleBigSize"/>
+
+                <View
+                    android:id="@+id/line"
+                    style="@style/DividerFixedHeight"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"
+                    android:layout_below="@+id/hint_commissioner"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/mUnderstandTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/line"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"
+                    android:text="@string/understand"
+                    android:textColor="@color/yMain"
+                    android:textSize="@dimen/yTextBigSize"/>
+            </RelativeLayout>
+
             <View
-                style="@style/DividerFixedHeight"/>
+                style="@style/DividerFixedHeight_10"/>
 
-            <me.crosswall.lib.coverflow.core.PagerContainer
-                android:id="@+id/mTopicContainer"
-                style="@style/MatchMatch">
-
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/mTopicPager"
-                    android:layout_width="200dp"
-                    android:layout_height="160dp"
-                    android:layout_gravity="center"
-                    android:overScrollMode="never"/>
-            </me.crosswall.lib.coverflow.core.PagerContainer>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

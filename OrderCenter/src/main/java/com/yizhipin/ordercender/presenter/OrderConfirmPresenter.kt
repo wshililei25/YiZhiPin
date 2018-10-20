@@ -44,18 +44,4 @@ class OrderConfirmPresenter @Inject constructor() : BasePresenter<OrderConfirmVi
 
     }
 
-    /*
-        提交订单
-     */
-    fun submitOrder(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mOrderServiceImpl.submitOrder(map).execute(object : BaseSubscriber<Order>(mView) {
-            override fun onNext(t: Order) {
-                mView.onSubmitOrderSuccess(t)
-            }
-        }, mLifecycleProvider)
-
-    }
-
-
 }

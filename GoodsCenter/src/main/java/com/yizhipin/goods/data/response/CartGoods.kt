@@ -14,6 +14,7 @@ data class CartGoods(
         var count: Int,
         val shopId: Int,
         val postage: Double,
-        var isSelected: Boolean = false
+        var isSelected: Boolean = false,
+        var goodsCount: Int//商品数量
 )
 

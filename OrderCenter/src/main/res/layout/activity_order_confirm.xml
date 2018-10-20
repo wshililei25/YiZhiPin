@@ -6,7 +6,7 @@
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
-        app:titleText="@string/order_details"/>
+        app:titleText="@string/order_confirm"/>
 
     <ScrollView
         style="@style/MatchWrap"
