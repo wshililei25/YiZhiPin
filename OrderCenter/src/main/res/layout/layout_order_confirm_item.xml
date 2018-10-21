@@ -4,6 +4,9 @@
               style="@style/MatchWrap.Vertical"
               android:background="@color/yWhite">
 
+    <View
+        style="@style/DividerFixedHeight_10"/>
+
     <RelativeLayout
         style="@style/MatchWrap"
         android:padding="@dimen/yPaddingMiddle">
@@ -92,8 +95,8 @@
         <com.yizhipin.base.widgets.NumberButton
             android:id="@+id/mGoodsCountBtn"
             style="@style/WrapWrap"
-            app:editable="false"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            app:editable="false"/>
     </RelativeLayout>
 
     <View

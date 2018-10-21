@@ -14,4 +14,7 @@ interface UserService {
     fun editUserInfo(map: MutableMap<String, String>): Observable<UserInfo>
     fun bindMobile(map: MutableMap<String, String>): Observable<Boolean>
     fun getCartCount(map: MutableMap<String, String>): Observable<Int>
+    fun setPayPwd(map: MutableMap<String, String>): Observable<Boolean>
+    fun updatePayPwd(map: MutableMap<String, String>): Observable<Boolean>
+    fun resetPayPwd(map: MutableMap<String, String>): Observable<Boolean>
 }

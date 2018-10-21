@@ -75,6 +75,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mCommissionerTv.onClick(this)
         mWalletView.onClick(this)
         mCartView.onClick(this)
+        mRedPaperTv.onClick(this)
 
         setCartBadge()
     }
@@ -112,9 +113,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                 }
             }
             R.id.mSettingTv -> {
-                afterLogin {
-                    startActivity<SettingActivity>()
-                }
+                startActivity<SettingActivity>()
             }
             R.id.mAddressTv -> { //收货地址
                 afterLogin {
@@ -154,6 +153,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mCartView -> { //购物车
                 afterLogin {
                     ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_GOODS_CART).navigation()
+                }
+            }
+            R.id.mRedPaperTv -> { //我的红包
+                afterLogin {
+                    ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_COUPON).navigation()
                 }
             }
 

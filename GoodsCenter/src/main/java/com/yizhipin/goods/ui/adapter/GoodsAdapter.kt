@@ -30,8 +30,8 @@ class GoodsAdapter(context: Context,var isShop:Boolean) : BaseRecyclerViewAdapte
         holder.itemView.mGoodsNameTv.text = model.name
         holder.itemView.mSystemTv.text = model.pinPrice.toString()
         holder.itemView.mRetailTv.text = model.price.toString()
-        holder.itemView.mShopTv.text = model.shop.shopName
-        holder.itemView.mGoodsIv.loadUrl(model.imgurl)
+        holder.itemView.mShopTv.text = model.shop!!.shopName
+        holder.itemView.mGoodsIv.loadUrl(model.imgurl!!)
 
         if(isShop) holder.itemView.mTypeTv.setVisible(false) else holder.itemView.mTypeTv.setVisible(true)
         if(isShop) holder.itemView.mShopTv.setVisible(false) else holder.itemView.mShopTv.setVisible(true)

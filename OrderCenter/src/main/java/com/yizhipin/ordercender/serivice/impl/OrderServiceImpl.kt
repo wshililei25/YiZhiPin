@@ -31,8 +31,8 @@ class OrderServiceImpl @Inject constructor(): OrderService {
     /*
         订单确认，提交订单
      */
-    override fun submitOrder(map: MutableMap<String, String>): Observable<Boolean> {
-        return repository.submitOrder(map).convertBoolean()
+    override fun submitOrder(map: MutableMap<String, String>): Observable<String> {
+        return repository.submitOrder(map).convert()
     }
 
     /*

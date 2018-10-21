@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/set_pay_pwd"/>
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:padding="@dimen/yPadding"
+        android:text="@string/set_six_pay_pwd"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextMiddleSize"/>
+
+    <com.yizhipin.base.widgets.PayPasswordView
+        android:id="@+id/mPayView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginRight="@dimen/yPadding"
+        android:background="#ffffffff"
+        app:bgCorner="5dp"
+        app:bgSize="1dp"
+        app:divisionLineColor="@color/yDivider"
+        app:passwordNumber="6"/>
+
+    <Button
+        android:id="@+id/mPayBtn"
+        style="@style/FullBtnStyle"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/yPaddingBigLar"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPaddingBigLar"
+        android:paddingLeft="@dimen/yPaddingBig"
+        android:paddingRight="@dimen/yPaddingBig"
+        android:text="@string/save"
+        android:textSize="@dimen/yTextBigSize"/>
+
+</LinearLayout>

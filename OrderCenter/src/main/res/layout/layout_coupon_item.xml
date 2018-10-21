@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical"
+              android:layout_marginLeft="@dimen/yPaddingMiddle"
+              android:layout_marginTop="@dimen/yPaddingMiddle"
+              android:layout_marginRight="@dimen/yPaddingMiddle"
+              android:background="@color/yBgGray">
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical.White"
+        android:background="@drawable/shape_whire_solid">
+
+        <ImageView
+            style="@style/MatchWrap"
+            android:src="@drawable/lace"/>
+
+        <TextView
+            android:id="@+id/mMoneyTv"
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPadding"
+            android:text="10元"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yCouponTvSize"/>
+
+        <TextView
+            android:id="@+id/mTypeTv"
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:text="通用类型:"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            android:id="@+id/mTimeTv"
+            style="@style/MatchWrap"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingTop="@dimen/yPaddingSmall"
+            android:paddingBottom="@dimen/yPadding"
+            android:text="过期时间:"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </LinearLayout>
+
+</LinearLayout>

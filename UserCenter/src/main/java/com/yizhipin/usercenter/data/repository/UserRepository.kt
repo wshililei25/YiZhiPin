@@ -52,4 +52,16 @@ class UserRepository @Inject constructor() {
         return RetrofitFactoryPut(map).create(UserApi::class.java)
                 .bindMobile(AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
     }
+    fun setPayPwd(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(UserApi::class.java)
+                .setPayPwd()
+    }
+    fun updatePayPwd(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(UserApi::class.java)
+                .updatePayPwd()
+    }
+    fun resetPayPwd(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(UserApi::class.java)
+                .resetPayPwd()
+    }
 }

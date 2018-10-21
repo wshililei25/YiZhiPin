@@ -19,8 +19,8 @@ class PayConfirmPresenter @Inject constructor() : BasePresenter<PayConfirmView>(
      */
     fun submitOrder(map: MutableMap<String, String>) {
         mView.showLoading()
-        mOrderServiceImpl.submitOrder(map).execute(object : BaseSubscriber<Boolean>(mView) {
-            override fun onNext(t: Boolean) {
+        mOrderServiceImpl.submitOrder(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
                 mView.onSubmitOrderSuccess(t)
             }
         }, mLifecycleProvider)

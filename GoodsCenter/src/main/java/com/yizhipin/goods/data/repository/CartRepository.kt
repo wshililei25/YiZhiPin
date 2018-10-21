@@ -1,16 +1,12 @@
 package com.yizhipin.goods.data.repository
 
-import com.yizhipin.base.data.net.RetrofitFactory
-import com.yizhipin.base.data.net.RetrofitFactoryDelete
-import com.yizhipin.base.data.net.RetrofitFactoryGet
-import com.yizhipin.base.data.net.RetrofitFactoryPost
+import com.yizhipin.base.data.net.*
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.goods.data.api.CartApi
-import com.yizhipin.goods.data.protocol.DeleteCartReq
 import com.yizhipin.goods.data.protocol.SubmitCartReq
 import com.yizhipin.goods.data.response.Cart
-import com.yizhipin.goods.data.response.CartGoods
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -29,7 +25,7 @@ class CartRepository @Inject constructor() {
     /*
         添加商品到购物车
      */
-    fun addCart(map: MutableMap<String, String>): Observable<BaseResp<CartGoods>> {
+    fun addCart(map: MutableMap<String, String>): Observable<BaseResp<Goods>> {
         return RetrofitFactoryPost(map).create(CartApi::class.java).addCart()
     }
 
@@ -44,10 +40,14 @@ class CartRepository @Inject constructor() {
         return RetrofitFactoryDelete(map).create(CartApi::class.java).deleteCartList(map["id"]!!)
     }
 
+    fun updateCartGoodsCount(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryPut(map).create(CartApi::class.java).updateCartGoodsCount(map["id"]!!,map["count"]!!)
+    }
+
     /*
         购物车结算
      */
-    fun submitCart(list: MutableList<CartGoods>, totalPrice: Long): Observable<BaseResp<Int>> {
+    fun submitCart(list: MutableList<Goods>, totalPrice: Long): Observable<BaseResp<Int>> {
         return RetrofitFactory.instance.create(CartApi::class.java).submitCart(SubmitCartReq(list, totalPrice))
     }
 

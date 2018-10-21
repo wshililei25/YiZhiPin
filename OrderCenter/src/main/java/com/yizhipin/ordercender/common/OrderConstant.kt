@@ -29,6 +29,10 @@ class OrderConstant {
         const val KEY_ORDER = "orderItem"
         //商品集合
         const val KEY_GOODS_LIST = "goodsList"
+        //优惠券
+        const val KEY_COUPON_ITEM = "couponItem"
+        //优惠券item点击事件判断
+        const val KEY_IS_PAY = "isPay"
     }
 
 

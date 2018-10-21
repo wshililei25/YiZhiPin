@@ -34,5 +34,9 @@ interface Api {
         const val DELETE_CART_GOODS = "api/ShopCart"//删除购物车商品
         const val CART_COUNT = "api/ShopCart/Count"//获取购物车数量
         const val HOT_GOODS_LIST = "api/Product/List"//热门商品列表
+        const val SET_PAY_PWD = "api/WebUser/PayPassword/Set"//设置支付密码
+        const val UPDATE_PAY_PWD = "api/WebUser/PayPassword/Change"//修改支付密码
+        const val RESET_PAY_PWD = "api/WebUser/PayPassword/Reset"//重置支付密码
+        const val COUPON_LIST = "api/UserConpon/Page"//优惠券列表
     }
 }

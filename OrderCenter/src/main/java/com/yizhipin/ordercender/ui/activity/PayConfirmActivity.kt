@@ -1,23 +1,29 @@
 package com.yizhipin.ordercender.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.base.widgets.PayPasswordDialog
 import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
+import com.yizhipin.ordercender.data.response.Coupon
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.PayConfirmPresenter
 import com.yizhipin.ordercender.presenter.PayConfirmView
+import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.ProviderConstant
+import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_pay_confirm.*
 
 /**
@@ -34,11 +40,13 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
     @JvmField
     var mAddressId: Int = 0
 
-    var mGoodsList: MutableList<Goods>? = null
-    var mGoodsId = "" //商品id
-    var mProductCounts = "" //商品数量
-    var mConponId = "" //优惠券id
-    var mType = "balance" //支付方式
+    private var mGoodsList: MutableList<Goods>? = null
+    private var mGoodsId = "" //商品id
+    private var mProductCounts = "" //商品数量
+    private var mConponId = "" //优惠券id
+    private var mType = "balance" //支付方式
+    private lateinit var mPayPasswordDialog: PayPasswordDialog
+    private var mAmount = 0.00
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,31 +61,33 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
     }
 
     private fun initView() {
-        mGoodsList = intent.getParcelableArrayListExtra<Goods>(OrderConstant.KEY_GOODS_LIST)
+        mGoodsList = intent.getParcelableArrayListExtra<Goods>(OrderConstant.KEY_GOODS_LIST) as MutableList<Goods>
 
-        var amount = 0.00
+
         if (mIsPin) {
             for (good in mGoodsList as MutableList<Goods>) {
-                amount += good.pinPrice * good.goodsCount
+                mAmount += good.pinPrice!! * good.goodsCount
             }
         } else {
             for (good in mGoodsList as MutableList<Goods>) {
-                amount += good.price * good.goodsCount
+                mAmount += good.price!! * good.goodsCount
             }
         }
         for (list in mGoodsList!!) {
-            mGoodsId += list.id.toString().plus(",")
+            if (list.productId.isNullOrEmpty()) { //单价买
+                mGoodsId += list.id.toString().plus(",")
+            } else { //购物车
+                mGoodsId += list.productId.toString().plus(",")
+            }
             mProductCounts += list.goodsCount.toString().plus(",")
         }
-        mPostageTv.text = getString(R.string.rmb).plus(amount.toString())
-        mPaymentTv.text = getString(R.string.rmb).plus(amount.toString())
+        mPostageTv.text = getString(R.string.rmb).plus(mAmount.toString())
+        mPaymentTv.text = getString(R.string.rmb).plus(mAmount.toString())
 
-        if (AppPrefsUtils.getString(ProviderConstant.KEY_AMOUNT).toDouble() < amount) {
+        if (AppPrefsUtils.getString(ProviderConstant.KEY_AMOUNT).toDouble() < mAmount) {
             mBalanceRadio.setTextDesc(getString(R.string.balance_insufficient))
         }
 
-
-        mBalanceRadio.isChecked
         mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {
                 for (i in 0 until group.getChildCount()) {
@@ -97,39 +107,73 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         })
 
         mPayBtn.onClick(this)
+        mCouponView.onClick(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mPayBtn -> {
 
-                //暂时注释
-                /*if (AppPrefsUtils.getString(ProviderConstant.KEY_PAY_PWD).isNullOrEmpty()) {
-                    toast("请先设置支付密码")
+                if (AppPrefsUtils.getString(ProviderConstant.KEY_PAY_PWD).isNullOrEmpty()) {
+
+                    val baseAlertDialog = BaseAlertDialog(this)
+                    baseAlertDialog.setMessage("请先设置支付密码")
+                    baseAlertDialog.show()
+                    baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
+                        override fun okClickListener() {
+                            ARouter.getInstance().build(RouterPath.UserCenter.SET_PAY_PWD).navigation()
+                        }
+                    })
                     return
-                }*/
+                }
 
-                var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                map.put("conponId", mConponId)
-                map.put("pids", mGoodsId)
-                map.put("productCounts", mProductCounts)
-                map.put("addressId", mAddressId.toString())
-                map.put("payType", mType)
+                mPayPasswordDialog = PayPasswordDialog(this, R.style.PayDialog)
+                mPayPasswordDialog.setDialogClick(object : PayPasswordDialog.DialogClick {
+                    override fun doConfirm(password: String?) {
+                        var map = mutableMapOf<String, String>()
+                        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                        map.put("conponId", mConponId)
+                        map.put("pids", mGoodsId)
+                        map.put("productCounts", mProductCounts)
+                        map.put("addressId", mAddressId.toString())
+                        map.put("payType", mType)
+                        map.put("payPwd", password!!)
 
-                mBasePresenter.submitOrder(map)
+                        mBasePresenter.submitOrder(map)
+                        mPayPasswordDialog.dismiss()
+                    }
+                })
+                mPayPasswordDialog.show()
+                mPayPasswordDialog.forgetPwdTv.onClick {
+                    ARouter.getInstance().build(RouterPath.UserCenter.RESET_PAY_PWD).navigation()
+                }
             }
+
+            R.id.mCouponView -> ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_COUPON)
+                    .withBoolean(OrderConstant.KEY_IS_PAY, true)
+                    .navigation(this, ProvideReqCode.CODE_REQ_COUPON)
         }
     }
 
-    override fun onSubmitOrderSuccess(result: Boolean) {
-        val dialog = PayPasswordDialog(this, R.style.PayDialog)
-        dialog.setDialogClick(object : PayPasswordDialog.DialogClick {
-            override fun doConfirm(password: String?) {
-                dialog.dismiss()
-            }
-        })
-        dialog.show()
+    override fun onSubmitOrderSuccess(result: String) {
+        setResult(ProvideReqCode.CODE_RESULT_PAY)
+        finish()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            ProvideReqCode.CODE_RESULT_COUPON -> {
+                var coupon = data!!.getParcelableExtra<Coupon>(OrderConstant.KEY_COUPON_ITEM)
+
+                if (mAmount >= coupon.minAmount.toDouble()) {
+                    mAmountTv.text = "已自动抵扣${coupon.amount}元"
+                    mConponId = coupon.id.toString()
+                } else {
+                    mAmountTv.text = "不可用"
+                    mConponId = ""
+                }
+            }
+        }
+    }
 }

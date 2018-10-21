@@ -30,4 +30,22 @@ interface UserApi {
 
     @PUT("${Api.BIND_MOBILE}${"/{"}${BaseConstant.KEY_SP_TOKEN}${"}"}") //绑定手机号
     fun bindMobile(@Path(BaseConstant.KEY_SP_TOKEN) id: String): Observable<BaseResp<Boolean>>
+
+    /**
+     * 设置支付密码
+     */
+    @POST(Api.SET_PAY_PWD)
+    fun setPayPwd(): Observable<BaseResp<Boolean>>
+
+    /**
+     * 修改支付密码
+     */
+    @POST(Api.UPDATE_PAY_PWD)
+    fun updatePayPwd(): Observable<BaseResp<Boolean>>
+
+    /**
+     * 重置支付密码
+     */
+    @POST(Api.RESET_PAY_PWD)
+    fun resetPayPwd(): Observable<BaseResp<Boolean>>
 }

@@ -4,12 +4,14 @@ package com.yizhipin.ordercender.data.repository
 import com.yizhipin.base.data.net.RetrofitFactory
 import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.ordercender.data.api.OrderApi
 import com.yizhipin.ordercender.data.protocol.CancelOrderReq
 import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
 import com.yizhipin.ordercender.data.protocol.GetOrderByIdReq
 import com.yizhipin.ordercender.data.protocol.GetOrderListReq
+import com.yizhipin.ordercender.data.response.Coupon
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 import io.reactivex.Observable
@@ -38,6 +40,7 @@ class OrderRepository @Inject constructor() {
     fun getDefaultAddress(map: MutableMap<String, String>): Observable<BaseResp<ShipAddress>> {
         return RetrofitFactoryGet().create(OrderApi::class.java).getDefaultAddress(map["uid"]!!)
     }
+
     /*
         根据ID查询订单
      */
@@ -55,8 +58,12 @@ class OrderRepository @Inject constructor() {
     /*
         提交订单
      */
-    fun submitOrder(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+    fun submitOrder(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrder()
+    }
+
+    fun getCouponList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Coupon>>> {
+        return RetrofitFactoryGet().create(OrderApi::class.java).getCouponList(map["currentPage"]!!,map["uid"]!!)
     }
 
 }

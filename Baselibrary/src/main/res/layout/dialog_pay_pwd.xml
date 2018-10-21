@@ -40,6 +40,7 @@
         android:layout_marginTop="@dimen/yPaddingMiddle">
 
         <TextView
+            android:id="@+id/mForgetPwdTv"
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:text="@string/forget_pwd"

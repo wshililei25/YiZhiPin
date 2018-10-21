@@ -17,7 +17,7 @@ interface OrderService {
     /*
     提交订单
  */
-    fun submitOrder(map: MutableMap<String, String>): Observable<Boolean>
+    fun submitOrder(map: MutableMap<String, String>): Observable<String>
 
     /*
     根据状态查询订单列表

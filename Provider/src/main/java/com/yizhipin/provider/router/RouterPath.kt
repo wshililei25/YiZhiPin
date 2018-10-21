@@ -8,6 +8,9 @@ object RouterPath {
     class UserCenter {
         companion object {
             const val PATH_LOGIN = "/userCenter/login"
+            const val SET_PAY_PWD = "/userCenter/setPayPwd" //设置支付密码
+            const val UPDATE_PAY_PWD = "/userCenter/updatePayPwd" //修改支付密码
+            const val RESET_PAY_PWD = "/userCenter/resetPayPwd" //重置支付密码
         }
     }
 
@@ -21,6 +24,7 @@ object RouterPath {
     class OrderCenter {
         companion object {
             const val PATH_ORDER_DETAILS = "/orderCenter/details"
+            const val PATH_ORDER_COUPON = "/orderCenter/coupon" //优惠券
         }
     }
 

@@ -68,7 +68,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         mGoodsRv.adapter = mHotGoodsAdapter
         mHotGoodsAdapter.setOnItemClickListener(object :BaseRecyclerViewAdapter.OnItemClickListener<Goods>{
             override fun onItemClick(item: Goods, position: Int) {
-                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
+                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id!!)
             }
 
         })

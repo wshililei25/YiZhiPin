@@ -1,5 +1,6 @@
 package com.yizhipin.ordercender.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -24,9 +25,11 @@ import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderConfirmPresenter
 import com.yizhipin.ordercender.presenter.view.OrderConfirmView
 import com.yizhipin.ordercender.ui.adapter.OrderConfirmAdapter
+import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_order_confirm.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 
 /**
@@ -128,9 +131,8 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                     return
                 }
 
-                startActivity<PayConfirmActivity>(OrderConstant.KEY_GOODS_LIST to mGoodsList
+                startActivityForResult<PayConfirmActivity>(ProvideReqCode.CODE_REQ_PAY, OrderConstant.KEY_GOODS_LIST to mGoodsList
                         , BaseConstant.KEY_IS_PIN to mIsPin, OrderConstant.KEY_ADDRESS_ID to mShipAddress.id)
-
             }
         }
     }
@@ -160,6 +162,13 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
             mShipNameTv.text = getString(R.string.consignee).plus(result.name)
             mShipMobileTv.text = StringUtils.setMobileStar(result.mobile)
             mShipAddressTv.text = result.pro + result.city + result.area + result.detail
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            ProvideReqCode.CODE_RESULT_PAY -> finish()
         }
     }
 

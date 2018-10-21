@@ -14,6 +14,9 @@
         <activity android:name=".ui.activity.BindWeChatActivity"/>
         <activity android:name=".ui.activity.CommissionerApplyActivity"/>
         <activity android:name=".ui.activity.WalletActivity"/>
+        <activity android:name=".ui.activity.PayPwdSetActivity"/>
+        <activity android:name=".ui.activity.PayPwdUpdateActivity"/>
+        <activity android:name=".ui.activity.PayPwdResetActivity"/>
 
     </application>
 </manifest>

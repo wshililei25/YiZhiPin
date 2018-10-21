@@ -29,7 +29,7 @@ class HotGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<Goods, HotGood
         holder.itemView.mGoodsNameTv.text = model.name
         holder.itemView.mSystemTv.text = model.pinPrice.toString()
         holder.itemView.mRetailTv.text = model.price.toString()
-        holder.itemView.mGoodsIv.loadUrl(model.imgurl)
+        holder.itemView.mGoodsIv.loadUrl(model.imgurl!!)
 
         holder.itemView.retail.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         holder.itemView.retail.paint.isAntiAlias = true

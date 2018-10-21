@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.event.CartCheckedEvent
 import com.yizhipin.base.event.CartDeleteEvent
+import com.yizhipin.base.event.UpdateCartSizeEvent
 import com.yizhipin.base.event.UpdateTotalPriceEvent
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -16,15 +18,13 @@ import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.goods.R
-import com.yizhipin.goods.data.response.CartGoods
-import com.yizhipin.goods.getEditText
 import kotlinx.android.synthetic.main.layout_cart_goods_item.view.*
 
 
 /**
  * 购物车二级适配器
  */
-class CartGoodsAdapter(var context: Context) : BaseRecyclerViewAdapter<CartGoods, CartGoodsAdapter.ViewHolder>(context) {
+class CartGoodsAdapter(var context: Context) : BaseRecyclerViewAdapter<Goods, CartGoodsAdapter.ViewHolder>(context) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_cart_goods_item, parent, false)
@@ -36,10 +36,10 @@ class CartGoodsAdapter(var context: Context) : BaseRecyclerViewAdapter<CartGoods
         val model = dataList[position]
         //是否选中
         holder.itemView.mCheckedCb.isChecked = model.isSelected
-        holder.itemView.mGoodsIconIv.loadUrl(model.productImgurl)
+        holder.itemView.mGoodsIconIv.loadUrl(model.productImgurl!!)
         holder.itemView.mGoodsNameTv.text = model.productName
         holder.itemView.mSinPriceTv.text = model.price.toString()
-        holder.itemView.mPriceTv.text = "${model.price * model.count}"
+        holder.itemView.mPriceTv.text = "${model.price!! * model.count}"
         holder.itemView.mGoodsCountBtn.setCurrentNumber(model.count)
 
         if (position == dataList.size - 1) {
@@ -66,11 +66,9 @@ class CartGoodsAdapter(var context: Context) : BaseRecyclerViewAdapter<CartGoods
                 override fun okClickListener() {
                     dataList.removeAt(position)
                     notifyDataSetChanged()
-                    Bus.send(CartDeleteEvent(model.id))
+                    Bus.send(CartDeleteEvent(model.id!!))
                 }
             })
-
-
         }
 
         //商品数量变化监听
@@ -79,7 +77,9 @@ class CartGoodsAdapter(var context: Context) : BaseRecyclerViewAdapter<CartGoods
                 //修复Bug，删除为空时异常
                 if (s.isNullOrEmpty().not()) {
                     model.count = s.toString().toInt()
+                    holder.itemView.mPriceTv.text = "${model.price!! * model.count}"
                     Bus.send(UpdateTotalPriceEvent())
+                    Bus.send(UpdateCartSizeEvent(model.id.toString(), s.toString()))
                 }
             }
         })

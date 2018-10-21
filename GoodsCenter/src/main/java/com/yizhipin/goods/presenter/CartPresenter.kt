@@ -1,10 +1,10 @@
 package com.yizhipin.goods.presenter
 
+import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
 import com.yizhipin.goods.data.response.Cart
-import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.presenter.view.CartView
 import com.yizhipin.goods.service.impl.CartServiceImpl
 import javax.inject.Inject
@@ -45,10 +45,23 @@ open class CartPresenter @Inject constructor() : BasePresenter<CartView>() {
 
     }
 
+    /**
+     * 更新购物车商品数量
+     */
+    fun updateCartGoodsCount(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mCartServiceImpl.updateCartGoodsCount(map).execute(object : BaseSubscriber<Boolean>(mView) {
+            override fun onNext(t: Boolean) {
+                mView.onUpdateCartGoodsCountSuccess(t)
+            }
+        }, mLifecycleProvider)
+
+    }
+
     /*
     提交购物车商品
  */
-    fun submitCart(list: MutableList<CartGoods>, totalPrice: Long) {
+    fun submitCart(list: MutableList<Goods>, totalPrice: Long) {
         if (!checkNetWork()) {
             return
         }

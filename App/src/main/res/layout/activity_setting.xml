@@ -36,7 +36,7 @@
     <TextView
         android:id="@+id/mUpdatePayTv"
         style="@style/SettingItemStyle"
-        android:text="@string/update_pay_pwd"/>
+        android:text="@string/set_pay_pwd"/>
 
     <View
         style="@style/DividerFixedHeight"

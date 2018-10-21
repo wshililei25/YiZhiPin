@@ -28,19 +28,31 @@ class OrderConfirmAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyc
         super.onBindViewHolder(holder, position)
         val model = dataList[position]
 
-        holder.itemView.mGoodsIv.loadUrl(model.imgurl)
-        holder.itemView.mShopTv.text = model.shop.shopName
         holder.itemView.mAmountTv.text = context.getString(R.string.rmb).plus(model.price.toString())
         holder.itemView.mPostageTv.text = context.getString(R.string.rmb).plus(model.postage.toString())
+        if (model.name.isNullOrEmpty()) { //购物车
+            holder.itemView.mGoodsNameTv.text = model.productName
+            holder.itemView.mShopTv.text = model.shopName
+            holder.itemView.mGoodsIv.loadUrl(model.productImgurl!!)
 
-        if (mIsPin) {
-            holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.pinPrice.toString())
-        } else {
-            holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.price.toString())
+            model.goodsCount = model.count
+            holder.itemView.mGoodsCountBtn.setCurrentNumber(model.goodsCount)
+            holder.itemView.mGoodsCountBtn.setBuyMax(model.count)
+        } else { //单价买
+            holder.itemView.mGoodsNameTv.text = model.name
+            holder.itemView.mShopTv.text = model.shop!!.shopName
+            holder.itemView.mGoodsIv.loadUrl(model.imgurl!!)
+
+            model.goodsCount = 1
+            holder.itemView.mGoodsCountBtn.setBuyMax(model.count)
         }
 
-        model.goodsCount = 1
-        holder.itemView.mGoodsCountBtn.setBuyMax(model.count)
+        if (mIsPin) {
+            holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.pinPrice!! * model.goodsCount)
+        } else {
+            holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.price!! * model.goodsCount)
+        }
+
         holder.itemView.mGoodsCountBtn.setOnWarnListener(object : NumberButton.OnWarnListener {
             override fun onWarningForBuyMax(max: Int) {
                 context.toast("不能大于库存")
@@ -58,9 +70,9 @@ class OrderConfirmAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyc
                     model.goodsCount = s.toString().toInt()
 
                     if (mIsPin) {
-                        holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.pinPrice * model.goodsCount)
+                        holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.pinPrice!! * model.goodsCount)
                     } else {
-                        holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.price * model.goodsCount)
+                        holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.price!! * model.goodsCount)
                     }
                 }
 

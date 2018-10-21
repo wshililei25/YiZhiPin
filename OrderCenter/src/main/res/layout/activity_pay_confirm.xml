@@ -56,6 +56,7 @@
                 style="@style/DividerFixedHeight_10"/>
 
             <RelativeLayout
+                android:id="@+id/mCouponView"
                 style="@style/MatchWrap"
                 android:background="@drawable/border_all"
                 android:padding="@dimen/yPadding">
@@ -72,9 +73,7 @@
                     android:layout_alignParentRight="true"
                     android:drawableRight="@drawable/right"
                     android:drawablePadding="@dimen/yPaddingMiddle"
-                    android:text="已自定抵扣0.00元"
-                    android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextMiddleSize"/>
+                    android:textColor="@color/yRed"/>
             </RelativeLayout>
 
             <View

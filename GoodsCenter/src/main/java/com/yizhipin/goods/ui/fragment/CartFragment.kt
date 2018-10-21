@@ -1,7 +1,9 @@
 package com.yizhipin.goods.ui.fragment
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +12,15 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
-import com.yizhipin.base.event.CartAllCheckedEvent
-import com.yizhipin.base.event.CartDeleteAllEvent
-import com.yizhipin.base.event.CartDeleteEvent
-import com.yizhipin.base.event.UpdateTotalPriceEvent
+import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.event.*
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.goods.R
+import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.injection.component.DaggerCartComponent
 import com.yizhipin.goods.injection.module.CartModule
@@ -31,6 +31,7 @@ import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.fragment_cart.*
 import org.jetbrains.anko.support.v4.toast
+import java.util.*
 
 
 /**
@@ -102,14 +103,33 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
                 mCartAdapter.notifyDataSetChanged()
             }
             R.id.mSettleAccountsBtn -> {
-                val cartIdList: MutableList<Cart> = mutableListOf()
-                mCartAdapter.dataList
-                        .filter { it.isSelected }
-                        .mapTo(cartIdList) { it }
-                if (cartIdList.size == 0) {
+                val goodsList: MutableList<Goods> = mutableListOf()
+
+
+                for (data in mCartAdapter.dataList) {
+                    mTotalPrice = data.carts
+                            .filter { it.isSelected }
+                            .map { it.count * it.price!! }
+                            .sum()
+                    mPostage = data.carts
+                            .filter { it.isSelected }
+                            .map { it.postage!! }
+                            .sum()
+                }
+
+                for (list in mCartAdapter.dataList) {
+                    list.carts.filter { it.isSelected }
+                            .mapTo(goodsList) { it }
+                }
+
+                if (goodsList.size == 0) {
                     toast("请选择需要提交的数据")
                 } else {
-//                mBasePresenter.submitCart(cartIdList, mTotalPrice)
+                    Log.d("2", "goodsList=" + goodsList.size)
+                    ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+                            .withBoolean(BaseConstant.KEY_IS_PIN, false)
+                            .withParcelableArrayList(BaseConstant.KEY_GOODS_LIST, goodsList as ArrayList<out Parcelable>)
+                            .navigation()
                 }
             }
         }
@@ -119,7 +139,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
      * 删除商品成功
      */
     override fun onDeleteCartListSuccess(result: Boolean) {
-
+        AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) - 1)
     }
 
     override fun onSubmitCartListResult(result: Int) {
@@ -166,6 +186,22 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
 
                     }
                 }.registerInBus(this)
+
+        //更新购物车商品数量
+        Bus.observe<UpdateCartSizeEvent>()
+                .subscribe { t: UpdateCartSizeEvent ->
+                    run {
+                        var map = mutableMapOf<String, String>()
+                        map.put("id", t.id)
+                        map.put("count", t.count)
+                        mBasePresenter.updateCartGoodsCount(map)
+
+                    }
+                }.registerInBus(this)
+    }
+
+    override fun onUpdateCartGoodsCountSuccess(result: Boolean) {
+        toast("更新成功")
     }
 
     /**
@@ -176,11 +212,11 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
         for (data in mCartAdapter.dataList) {
             mTotalPrice = data.carts
                     .filter { it.isSelected }
-                    .map { it.count * it.price }
+                    .map { it.count * it.price!! }
                     .sum()
             mPostage = data.carts
                     .filter { it.isSelected }
-                    .map { it.postage }
+                    .map { it.postage!! }
                     .sum()
         }
 

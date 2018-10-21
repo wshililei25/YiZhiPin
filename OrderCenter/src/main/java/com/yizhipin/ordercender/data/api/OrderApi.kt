@@ -1,18 +1,17 @@
 package com.yizhipin.ordercender.data.api
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.ordercender.data.protocol.CancelOrderReq
 import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
 import com.yizhipin.ordercender.data.protocol.GetOrderByIdReq
 import com.yizhipin.ordercender.data.protocol.GetOrderListReq
+import com.yizhipin.ordercender.data.response.Coupon
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 /*
@@ -54,6 +53,12 @@ interface OrderApi {
         提交订单
      */
     @POST(Api.SUBMIT_ORDER)
-    fun submitOrder(): Observable<BaseResp<Boolean>>
+    fun submitOrder(): Observable<BaseResp<String>>
+
+    /**
+     * 优惠券列表
+     */
+    @POST(Api.COUPON_LIST)
+    fun getCouponList(@Query("currentPage") currentPage:String,@Query("uid") uid:String): Observable<BasePagingResp<MutableList<Coupon>>>
 
 }

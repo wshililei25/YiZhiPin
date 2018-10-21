@@ -3,9 +3,7 @@ package com.yizhipin.usercenter.injection.component
 import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.usercenter.injection.module.UserModule
-import com.yizhipin.usercenter.ui.activity.BindMobileActivity
-import com.yizhipin.usercenter.ui.activity.LoginActivity
-import com.yizhipin.usercenter.ui.activity.UserInfoActivity
+import com.yizhipin.usercenter.ui.activity.*
 import dagger.Component
 
 /**
@@ -18,4 +16,7 @@ interface UserComponent {
     fun inject(activity: LoginActivity)
     fun inject(activity: UserInfoActivity)
     fun inject(activity: BindMobileActivity)
+    fun inject(activity: PayPwdSetActivity)
+    fun inject(activity: PayPwdUpdateActivity)
+    fun inject(activity: PayPwdResetActivity)
 }

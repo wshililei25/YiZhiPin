@@ -53,4 +53,20 @@ open class UserServiceImpl @Inject constructor() : UserService {
         return mRepository.bindMobile(map)
                 .convertBoolean()
     }
+
+    override fun setPayPwd(map: MutableMap<String, String>): Observable<Boolean> {
+
+        return mRepository.setPayPwd(map)
+                .convertBoolean()
+    }
+    override fun updatePayPwd(map: MutableMap<String, String>): Observable<Boolean> {
+
+        return mRepository.updatePayPwd(map)
+                .convertBoolean()
+    }
+    override fun resetPayPwd(map: MutableMap<String, String>): Observable<Boolean> {
+
+        return mRepository.resetPayPwd(map)
+                .convertBoolean()
+    }
 }

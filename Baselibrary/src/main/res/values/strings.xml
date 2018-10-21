@@ -174,6 +174,13 @@
     <string name="order_confirm">订单确认</string>
     <string name="forget_pwd">忘记密码?</string>
     <string name="input_pay_pwd">请输入支付密码</string>
+    <string name="set_pay_pwd">设置支付密码</string>
+    <string name="set_six_pay_pwd">设置6位支付密码</string>
+    <string name="old_pay_pwd">旧密码</string>
+    <string name="new_pay_pwd">新密码</string>
+    <string name="set_new_pay_pwd">设置新密码</string>
+    <string name="reset_pay_pwd">重置支付密码</string>
+    <string name="coupon">我的红包</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

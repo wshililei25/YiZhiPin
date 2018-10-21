@@ -25,7 +25,6 @@ import com.yizhipin.base.widgets.BannerImageLoader
 import com.yizhipin.base.widgets.IdeaScrollView
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
 import com.yizhipin.goods.injection.component.DaggerGoodsComponent
@@ -228,7 +227,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mReportMoreTv -> startActivity<ReportActivity>(GoodsConstant.KEY_GOODS_ID to mGoodsId, GoodsConstant.KEY_EVA_COUNT to mGoods!!.experienceCount)
 
-            R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop.id)
+            R.id.mShopView -> startActivity<ShopActivity>(GoodsConstant.KEY_SHOP_ID to mGoods!!.shop!!.id)
 
             R.id.mSingleBuyView -> { //单价买
                 afterLogin {
@@ -272,26 +271,26 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mInventoryTv.text = "${result.count}件"
             mMonthVolumeTv.text = "月销  ${result.monthSellerCount}单"
             mAllVolumeTv.text = "总成交  ${result.totalCount}单"
-            mStarView.setCheckStarCount(result.starCount)
-            mShopName.text = result.shop.shopName
+            mStarView.setCheckStarCount(result.starCount!!)
+            mShopName.text = result.shop!!.shopName
             mEvaluateTv.text = "${getString(R.string.evaluate_new)} (${result.evaCount})"
             mReportTv.text = "${getString(R.string.report_commissioner)} (${result.experienceCount})"
-            mShopIv.loadUrl(result.shop.shopImgurl)
+            mShopIv.loadUrl(result.shop!!.shopImgurl)
             mSystemPriceBotTv.text = getString(R.string.rmb).plus(result.pinPrice.toString())
             mSingleBuyTv.text = getString(R.string.rmb).plus(result.price.toString())
             if (result.collection) mCollectionTv.setText(getString(R.string.collect_already)) else mCollectionTv.setText(getString(R.string.collect_goods))
 
-            if (result.shop.shopIdentity == "product") {
+            if (result.shop!!.shopIdentity == "product") {
                 mCategoryTv.text = getString(R.string.hamlet)
-            } else if (result.shop.shopIdentity == "homestay") {
+            } else if (result.shop!!.shopIdentity == "homestay") {
                 mCategoryTv.text = getString(R.string.stay)
-            } else if (result.shop.shopIdentity == "trip") {
+            } else if (result.shop!!.shopIdentity == "trip") {
                 mCategoryTv.text = getString(R.string.group_group)
-            } else if (result.shop.shopIdentity == "car") {
+            } else if (result.shop!!.shopIdentity == "car") {
                 mCategoryTv.text = getString(R.string.motor_homes)
             }
             result.banner?.let {
-                val list = result.banner.split(",").toMutableList()
+                val list = result.banner!!.split(",").toMutableList()
                 mBanner.setImages(list)
                 mBanner.start()
             }
@@ -363,7 +362,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     /**
      * 加入购物车成功
      */
-    override fun onAddCartSuccess(result: CartGoods) {
+    override fun onAddCartSuccess(result: Goods) {
         result?.let {
             ToastUtils.INSTANCE.showToast(this, getString(R.string.add_cart_success))
             AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) + 1)

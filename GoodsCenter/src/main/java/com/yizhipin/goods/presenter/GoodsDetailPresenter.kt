@@ -5,7 +5,6 @@ import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
-import com.yizhipin.goods.data.response.CartGoods
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
 import com.yizhipin.goods.presenter.view.GoodsDetailView
@@ -41,8 +40,8 @@ class GoodsDetailPresenter @Inject constructor() : BasePresenter<GoodsDetailView
      */
     fun addCart(map: MutableMap<String, String>) {
         mView.showLoading()
-        mCartServiceImpl.addCart(map).execute(object : BaseSubscriber<CartGoods>(mView) {
-            override fun onNext(t: CartGoods) {
+        mCartServiceImpl.addCart(map).execute(object : BaseSubscriber<Goods>(mView) {
+            override fun onNext(t: Goods) {
                 mView.onAddCartSuccess(t)
             }
         }, mLifecycleProvider)

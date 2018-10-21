@@ -10,6 +10,7 @@
     <dimen name="yTextMiddleSize">13sp</dimen>
     <dimen name="yTextSmallLarSize">12sp</dimen>
     <dimen name="yTextSmallSize">11sp</dimen>
+    <dimen name="yCouponTvSize">44sp</dimen>
 
     <dimen name="yPaddingBigEven">80dp</dimen>
     <dimen name="yPaddingBig">50dp</dimen>

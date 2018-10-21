@@ -32,6 +32,7 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
     private TextView tv9;
     private TextView tv;
     private TextView tvDel;
+    private View mView;
 
     public PayPasswordDialog(Context context, int themeResId) {
         super(context, themeResId);
@@ -45,8 +46,8 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
     }
 
     private void init() {
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_pay_pwd, null);
-        setContentView(view);
+        mView = LayoutInflater.from(context).inflate(R.layout.dialog_pay_pwd, null);
+        setContentView(mView);
         initView();
 
         Window window = getWindow();
@@ -141,4 +142,7 @@ public class PayPasswordDialog extends Dialog implements View.OnClickListener {
         void doConfirm(String password);
     }
 
+    public TextView getForgetPwdTv(){
+        return mView.findViewById(R.id.mForgetPwdTv);
+    }
 }

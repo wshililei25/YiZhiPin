@@ -73,7 +73,6 @@
                 android:id="@+id/mOrderGoodsRv"
                 style="@style/commonRecyclerView"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/yPaddingMiddle"
                 android:background="@color/yWhite"/>
 <!--
             <RelativeLayout
