@@ -52,7 +52,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
         mOrderRv.layoutManager = LinearLayoutManager(activity!!)
         mOrderAdapter = OrderAdapter(activity!!)
         mOrderRv.adapter = mOrderAdapter
-        mOrderAdapter.listener = this
+//        mOrderAdapter.listener = this
 
         mOrderAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Order> {
             override fun onItemClick(item: Order, position: Int) {

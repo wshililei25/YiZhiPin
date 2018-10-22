@@ -1,94 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/WrapWrap.Vertical"
-    android:background="@color/yWhite"
-    android:padding="@dimen/yPaddingMiddle">
+              style="@style/WrapWrap.Vertical"
+              android:background="@color/yWhite">
 
-    <RelativeLayout style="@style/MatchWrap">
-
-        <TextView
-            android:id="@+id/mIsPinTv"
-            style="@style/WrapWrap"
-            android:text="自营"
-            android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize" />
-
-        <TextView
-            android:id="@+id/mStatusTv"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:paddingRight="@dimen/common_padding_small"
-            android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize" />
-    </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mGoodsRv"
-        style="@style/MatchWrap"
-        android:paddingTop="@dimen/yPaddingMiddle"
-        android:paddingBottom="@dimen/yPaddingMiddle" />
+    <View
+        style="@style/DividerFixedHeight_10"/>
 
     <LinearLayout
-        android:id="@+id/systemView"
-        style="@style/MatchWrap"
-        android:gravity="right">
+        style="@style/MatchWrap.Vertical"
+        android:padding="@dimen/yPaddingMiddle">
 
-        <TextView
-            style="@style/WrapWrap"
-            android:text="@string/out_of_pocket"
-            android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize" />
+        <RelativeLayout style="@style/MatchWrap">
 
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_marginLeft="@dimen/yPaddingMiddle"
-            android:text="@string/rmb"
-            android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize" />
+            <TextView
+                android:id="@+id/mIsPinTv"
+                style="@style/WrapWrap"
+                android:text="自营"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize"/>
 
-        <TextView
-            android:id="@+id/mPriceTv"
-            style="@style/WrapWrap"
-            android:layout_marginLeft="@dimen/yPaddingMinSmall"
-            android:text="0.00"
-            android:textColor="@color/yMain"
-            android:textSize="@dimen/yTextSmallLarSize" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/mStatusTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/common_padding_small"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+        </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/mBottomView"
-        style="@style/MatchWrap.Horizontal"
-        android:layout_marginTop="@dimen/yPaddingMiddle"
-        android:background="@color/common_white"
-        android:gravity="right">
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginTop="@dimen/yPaddingMiddle"/>
 
-        <Button
-            android:id="@+id/mConfirmBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="30dip"
-            android:layout_marginRight="@dimen/common_padding"
-            android:background="@drawable/corner_blue_white_bg"
-            android:text="确认收货"
-            android:textColor="@color/common_blue"
-            android:textSize="@dimen/text_small_size" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mGoodsRv"
+            style="@style/MatchWrap"
+            android:paddingTop="@dimen/yPaddingMiddle"
+            android:paddingBottom="@dimen/yPaddingMiddle"/>
 
-        <Button
-            android:id="@+id/mPayBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="30.0dip"
-            android:layout_marginRight="@dimen/common_padding"
-            android:background="@drawable/corner_blue_white_bg"
-            android:text="去支付"
-            android:textColor="@color/common_blue"
-            android:textSize="@dimen/text_small_size" />
+        <LinearLayout
+            android:id="@+id/systemView"
+            style="@style/MatchWrap"
+            android:gravity="right">
 
-        <Button
-            android:id="@+id/mCancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="30.0dip"
-            android:background="@drawable/corner_gray_white_bg"
-            android:text="取消订单"
-            android:textColor="@color/text_light_dark"
-            android:textSize="@dimen/text_small_size" />
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/out_of_pocket"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:text="@string/rmb"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+
+            <TextView
+                android:id="@+id/mPriceTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                android:text="0.00"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mBottomView"
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:background="@color/common_white"
+            android:gravity="right">
+
+            <Button
+                android:id="@+id/mLogisticsBtn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:background="@drawable/corner_gray_white_bg"
+                android:text="查看物流"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/text_small_size"
+                android:visibility="gone"/>
+
+
+            <Button
+                android:id="@+id/mEvaluateBtn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:background="@drawable/corner_blue_white_bg"
+                android:text="评价"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/text_small_size"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/mCancelBtn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:background="@drawable/corner_gray_white_bg"
+                android:text="取消订单"
+                android:textColor="@color/yBlackDeep"
+                android:textSize="@dimen/text_small_size"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/mPayBtn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:background="@drawable/corner_blue_white_bg"
+                android:text="去支付"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/text_small_size"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/mConfirmBtn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:background="@drawable/btn_common_nor"
+                android:text="确认收货"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/text_small_size"
+                android:visibility="gone"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

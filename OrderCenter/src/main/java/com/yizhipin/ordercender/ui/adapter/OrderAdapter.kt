@@ -10,7 +10,6 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.ordercender.R
-import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.data.response.Order
 import kotlinx.android.synthetic.main.layout_order_item.view.*
 
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.layout_order_item.view.*
  */
 class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderAdapter.ViewHolder>(context) {
 
-    var listener: OnOptClickListener? = null
+    var listener: ShipAddressAdapter.OnOptClickListener? = null
     private lateinit var mOrderGoodsAdapter: OrderGoodsAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -50,17 +49,40 @@ class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderA
             }
 
             when (status.toInt()) {
-                1 -> holder.itemView.mStatusTv.text = context.getString(R.string.for_paymen)
+                1 -> {
+                    holder.itemView.mStatusTv.text = context.getString(R.string.for_paymen)
+                    holder.itemView.mCancelBtn.setVisible(true)
+                    holder.itemView.mPayBtn.setVisible(true)
+                }
                 2 -> holder.itemView.mStatusTv.text = context.getString(R.string.send_goods)
-                3 -> holder.itemView.mStatusTv.text = context.getString(R.string.take_goods)
-                4 -> holder.itemView.mStatusTv.text = context.getString(R.string.take_goods)
+                3 -> {
+                    holder.itemView.mStatusTv.text = context.getString(R.string.take_goods)
+                    holder.itemView.mLogisticsBtn.setVisible(true)
+                    holder.itemView.mConfirmBtn.setVisible(true)
+                }
+                4 -> {
+                    holder.itemView.mStatusTv.text = context.getString(R.string.appraise)
+                    holder.itemView.mEvaluateBtn.setVisible(true)
+                }
 //                5 -> holder.itemView.mStatusTv.
                 6 -> holder.itemView.mStatusTv.text = context.getString(R.string.customer_serviceing)
 //                7 -> holder.itemView.mStatusTv.text = context.getString(R.string.for_paymen)
 //                8 -> holder.itemView.mStatusTv.text = context.getString(R.string.for_paymen)
-                9 -> holder.itemView.mStatusTv.text = context.getString(R.string.for_paymen)
-                10 -> holder.itemView.mStatusTv.text = context.getString(R.string.send_goods)
-                11 -> holder.itemView.mStatusTv.text = context.getString(R.string.send_goods)
+                9 -> {
+                    holder.itemView.mStatusTv.text = context.getString(R.string.for_paymen)
+                    holder.itemView.mCancelBtn.setVisible(true)
+                    holder.itemView.mPayBtn.setVisible(true)
+                }
+                10 -> {
+                    holder.itemView.mStatusTv.text = context.getString(R.string.take_goods)
+                    holder.itemView.mLogisticsBtn.setVisible(true)
+                    holder.itemView.mConfirmBtn.setVisible(true)
+                }
+                11 -> {
+                    holder.itemView.mStatusTv.text = context.getString(R.string.take_goods)
+                    holder.itemView.mLogisticsBtn.setVisible(true)
+                    holder.itemView.mConfirmBtn.setVisible(true)
+                }
             }
         }
 
@@ -123,21 +145,21 @@ class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderA
         //设置确认收货点击事件
         holder.itemView.mConfirmBtn.onClick {
             listener?.let {
-                it.onOptClick(OrderConstant.OPT_ORDER_CONFIRM, model)
+                //                it.onOptClick(OrderConstant.OPT_ORDER_CONFIRM, model)
             }
         }
 
         //设置支付订单点击事件
         holder.itemView.mPayBtn.onClick {
             listener?.let {
-                it.onOptClick(OrderConstant.OPT_ORDER_PAY, model)
+                //                it.onOptClick(OrderConstant.OPT_ORDER_PAY, model)
             }
         }
 
         //设置取消订单点击事件
         holder.itemView.mCancelBtn.onClick {
             listener?.let {
-                it.onOptClick(OrderConstant.OPT_ORDER_CANCEL, model)
+                //                it.onOptClick(OrderConstant.OPT_ORDER_CANCEL, model)
             }
         }
 
