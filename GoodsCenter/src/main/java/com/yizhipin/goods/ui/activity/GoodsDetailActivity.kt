@@ -280,15 +280,14 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mSingleBuyTv.text = getString(R.string.rmb).plus(result.price.toString())
             if (result.collection) mCollectionTv.setText(getString(R.string.collect_already)) else mCollectionTv.setText(getString(R.string.collect_goods))
 
-            if (result.shop!!.shopIdentity == "product") {
-                mCategoryTv.text = getString(R.string.hamlet)
-            } else if (result.shop!!.shopIdentity == "homestay") {
-                mCategoryTv.text = getString(R.string.stay)
-            } else if (result.shop!!.shopIdentity == "trip") {
-                mCategoryTv.text = getString(R.string.group_group)
-            } else if (result.shop!!.shopIdentity == "car") {
-                mCategoryTv.text = getString(R.string.motor_homes)
+
+            when(result.shop!!.shopIdentity){
+                "product" ->  mCategoryTv.text = getString(R.string.hamlet)
+                "homestay" ->  mCategoryTv.text = getString(R.string.stay)
+                "trip" ->  mCategoryTv.text = getString(R.string.group_group)
+                "car" ->  mCategoryTv.text = getString(R.string.motor_homes)
             }
+            
             result.banner?.let {
                 val list = result.banner!!.split(",").toMutableList()
                 mBanner.setImages(list)

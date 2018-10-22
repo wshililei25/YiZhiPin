@@ -1,5 +1,6 @@
 package com.yizhipin.ordercender.presenter
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
@@ -19,14 +20,12 @@ class OrderListPresenter @Inject constructor() : BasePresenter<OrderListView>() 
     /*
         根据订单状态获取订单列表
      */
-    fun getOrderList(orderStatus: Int) {
-        if (!checkNetWork()) {
-            return
-        }
-        mView.showLoading()
-        mOrderServiceImpl.getOrderList(orderStatus).execute(object : BaseSubscriber<MutableList<Order>?>(mView) {
-            override fun onNext(t: MutableList<Order>?) {
-                    mView.onGetOrderListResult(t)
+    fun getOrderList(map: MutableMap<String, String>) {
+
+//        mView.showLoading()
+        mOrderServiceImpl.getOrderList(map).execute(object : BaseSubscriber<BasePagingResp<MutableList<Order>>>(mView) {
+            override fun onNext(t: BasePagingResp<MutableList<Order>>) {
+                mView.onGetOrderListResult(t)
             }
         }, mLifecycleProvider)
 
@@ -63,7 +62,6 @@ class OrderListPresenter @Inject constructor() : BasePresenter<OrderListView>() 
         }, mLifecycleProvider)
 
     }
-
 
 
 }

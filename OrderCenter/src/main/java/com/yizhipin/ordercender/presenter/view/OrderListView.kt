@@ -1,5 +1,6 @@
 package com.yizhipin.ordercender.presenter.view
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.presenter.view.BaseView
 import com.yizhipin.ordercender.data.response.Order
 
@@ -9,7 +10,7 @@ import com.yizhipin.ordercender.data.response.Order
 interface OrderListView : BaseView {
 
     //获取订单列表回调
-    fun onGetOrderListResult(result:MutableList<Order>?)
+    fun onGetOrderListResult(result: BasePagingResp<MutableList<Order>>)
     //确认订单回调
     fun onConfirmOrderResult(result:Boolean)
     //取消订单回调

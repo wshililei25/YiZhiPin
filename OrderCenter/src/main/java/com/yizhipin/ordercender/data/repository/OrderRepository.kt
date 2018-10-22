@@ -51,8 +51,8 @@ class OrderRepository @Inject constructor() {
     /*
         根据状态查询订单列表
      */
-    fun getOrderList(orderStatus: Int): Observable<BaseResp<MutableList<Order>?>> {
-        return RetrofitFactory.instance.create(OrderApi::class.java).getOrderList(GetOrderListReq(orderStatus))
+    fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>> {
+        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["status"]!!)
     }
 
     /*
@@ -63,7 +63,7 @@ class OrderRepository @Inject constructor() {
     }
 
     fun getCouponList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Coupon>>> {
-        return RetrofitFactoryGet().create(OrderApi::class.java).getCouponList(map["currentPage"]!!,map["uid"]!!)
+        return RetrofitFactoryGet().create(OrderApi::class.java).getCouponList(map["currentPage"]!!, map["uid"]!!)
     }
 
 }

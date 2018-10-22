@@ -22,7 +22,7 @@ class OrderActivity : BaseActivity() {
     }
 
     private fun initView() {
-        mOrderTab.tabMode = TabLayout.MODE_FIXED
+        mOrderTab.tabMode = TabLayout.MODE_SCROLLABLE
         mOrderVp.adapter = OrderVpAdapter(supportFragmentManager, this)
         mOrderTab.setupWithViewPager(mOrderVp)
 

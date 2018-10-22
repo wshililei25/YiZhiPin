@@ -13,7 +13,7 @@ import com.yizhipin.ordercender.ui.fragment.OrderFragment
  */
 class OrderVpAdapter(fragmentManager: FragmentManager, context: Context) : FragmentPagerAdapter(fragmentManager) {
 
-    private val mTitles = arrayOf("全部", "待付款", "待收货", "已完成", "已取消")
+    private val mTitles = arrayOf("全部", "待付款", "拼单中", "待发货", "待收货", "待评价", "售后")
 
     override fun getItem(position: Int): Fragment {
         val fragment = OrderFragment()

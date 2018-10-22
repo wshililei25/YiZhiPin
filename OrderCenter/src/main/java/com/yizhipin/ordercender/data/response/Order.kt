@@ -55,13 +55,15 @@ data class Order(
         val backAmount: String,
         val backMark: String,
         val backImgurl: String,
-        val valid: Boolean,
+        val valid: String,
         val conponId: String,
         val conponAmount: String,
         val createTime: String,
         val beginTime: String,
         val endTime: String,
         val primaryCategory: String,
-        val secondCategory: String
-):Parcelable
+        val secondCategory: String,
+        val products: MutableList<OrderGoods>
+
+) : Parcelable
 

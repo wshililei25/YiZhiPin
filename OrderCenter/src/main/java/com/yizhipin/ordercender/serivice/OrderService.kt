@@ -1,5 +1,6 @@
 package com.yizhipin.ordercender.serivice
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 import io.reactivex.Observable
@@ -22,7 +23,7 @@ interface OrderService {
     /*
     根据状态查询订单列表
  */
-    fun getOrderList(orderStatus: Int): Observable<MutableList<Order>?>
+    fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>>
 
     /*
     取消订单

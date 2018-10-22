@@ -46,8 +46,9 @@ interface OrderApi {
     /*
         根据订单状态查询查询订单列表
      */
-    @POST("order/getOrderList")
-    fun getOrderList(@Body req: GetOrderListReq): Observable<BaseResp<MutableList<Order>?>>
+    @GET(Api.ORDER_LIST)
+    fun getOrderList(@Query("currentPage") currentPage: String, @Query("uid") uid: String
+                     , @Query("status") status: String): Observable<BasePagingResp<MutableList<Order>>>
 
     /*
         提交订单

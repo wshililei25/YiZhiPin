@@ -1,7 +1,9 @@
 package com.yizhipin.ordercender.serivice.impl
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
+import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.ordercender.data.repository.OrderRepository
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
@@ -38,8 +40,8 @@ class OrderServiceImpl @Inject constructor(): OrderService {
     /*
         根据订单状态获取订单列表
      */
-    override fun getOrderList(orderStatus: Int): Observable<MutableList<Order>?> {
-        return repository.getOrderList(orderStatus).convert()
+    override fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>> {
+        return repository.getOrderList(map).convertPaging()
 
     }
 
