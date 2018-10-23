@@ -23,6 +23,7 @@ object RouterPath {
     //订单模块
     class OrderCenter {
         companion object {
+            const val PATH_ORDER_CONFIRM = "/orderCenter/confirm"
             const val PATH_ORDER_DETAILS = "/orderCenter/details"
             const val PATH_ORDER_COUPON = "/orderCenter/coupon" //优惠券
         }

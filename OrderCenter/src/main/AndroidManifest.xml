@@ -8,5 +8,6 @@
         <activity android:name=".ui.activity.OrderActivity"/>
         <activity android:name=".ui.activity.PayConfirmActivity"/>
         <activity android:name=".ui.activity.CouponActivity"/>
+        <activity android:name=".ui.activity.OrderDetailsActivity"/>
     </application>
 </manifest>

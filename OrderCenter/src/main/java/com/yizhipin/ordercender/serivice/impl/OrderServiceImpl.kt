@@ -14,7 +14,7 @@ import javax.inject.Inject
 /*
     订单业务实现类
  */
-class OrderServiceImpl @Inject constructor(): OrderService {
+class OrderServiceImpl @Inject constructor() : OrderService {
 
     @Inject
     lateinit var repository: OrderRepository
@@ -23,11 +23,9 @@ class OrderServiceImpl @Inject constructor(): OrderService {
     override fun getDefaultAddress(map: MutableMap<String, String>): Observable<ShipAddress> {
         return repository.getDefaultAddress(map).convert()
     }
-    /*
-        根据ID查询订单
-     */
-    override fun getOrderById(orderId: Int): Observable<Order> {
-        return repository.getOrderById(orderId).convert()
+
+    override fun getOrderById(map:MutableMap<String,String>): Observable<Order> {
+        return repository.getOrderById(map).convert()
     }
 
     /*
@@ -48,8 +46,8 @@ class OrderServiceImpl @Inject constructor(): OrderService {
     /*
         取消订单
      */
-    override fun cancelOrder(orderId: Int): Observable<Boolean> {
-        return repository.cancelOrder(orderId).convertBoolean()
+    override fun cancelOrder(map: MutableMap<String, String>): Observable<Boolean> {
+        return repository.cancelOrder(map).convertBoolean()
     }
 
     /*

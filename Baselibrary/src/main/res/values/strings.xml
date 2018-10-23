@@ -183,8 +183,13 @@
     <string name="reset_pay_pwd">重置支付密码</string>
     <string name="coupon">我的红包</string>
     <string name="order_pin">拼单订单</string>
+    <string name="order_pin_tuan">拼团订单</string>
+    <string name="order_pin_tuan_bai">百人团订单</string>
     <string name="order_original">原价订单</string>
     <string name="out_of_pocket">实付</string>
+    <string name="go_pay">去支付</string>
+    <string name="go_evaluate">去评价</string>
+    <string name="confirm_receipt">确认收货</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

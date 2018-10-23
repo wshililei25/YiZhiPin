@@ -7,6 +7,7 @@
         style="@style/DividerFixedHeight_10"/>
 
     <LinearLayout
+        android:id="@+id/mItemView"
         style="@style/MatchWrap.Vertical"
         android:padding="@dimen/yPaddingMiddle">
 
@@ -81,7 +82,6 @@
                 android:textColor="@color/yBlackDeep"
                 android:textSize="@dimen/text_small_size"
                 android:visibility="gone"/>
-
 
             <Button
                 android:id="@+id/mEvaluateBtn"

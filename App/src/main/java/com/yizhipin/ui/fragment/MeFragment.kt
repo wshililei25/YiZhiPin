@@ -1,7 +1,6 @@
 package com.yizhipin.ui.fragment
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.common.OrderStatus
 import com.yizhipin.ordercender.ui.activity.OrderActivity
 import com.yizhipin.ordercender.ui.activity.ShipAddressActivity
 import com.yizhipin.provider.common.ProviderConstant
@@ -69,7 +67,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mSettingTv.onClick(this)
         mAddressTv.onClick(this)
         mWaitPayOrderTv.onClick(this)
+        mSpellListTv.onClick(this)
+        mSendGoodsTv.onClick(this)
         mWaitConfirmOrderTv.onClick(this)
+        mAppraiseTv.onClick(this)
+        mCustomerServiceTv.onClick(this)
 //        mCompleteOrderTv.onClick(this)
         mAllOrderTv.onClick(this)
         mCommissionerTv.onClick(this)
@@ -120,14 +122,39 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     startActivity<ShipAddressActivity>()
                 }
             }
-            R.id.mWaitPayOrderTv -> {
+            R.id.mAllOrderTv -> {
                 afterLogin {
-                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_PAY)
+                    startActivity<OrderActivity>()
                 }
             }
-            R.id.mWaitConfirmOrderTv -> {
+            R.id.mWaitPayOrderTv -> { //待付款
                 afterLogin {
-                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_CONFIRM)
+                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to 1)
+                }
+            }
+            R.id.mSpellListTv -> { //拼单中
+                afterLogin {
+                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to 2)
+                }
+            }
+            R.id.mSendGoodsTv -> { //待发货
+                afterLogin {
+                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to 3)
+                }
+            }
+            R.id.mWaitConfirmOrderTv -> { //待收货
+                afterLogin {
+                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to 4)
+                }
+            }
+            R.id.mAppraiseTv -> { //待评价
+                afterLogin {
+                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to 5)
+                }
+            }
+            R.id.mCustomerServiceTv -> { //售后
+                afterLogin {
+                    startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to 6)
                 }
             }
             /*   R.id.mCompleteOrderTv -> {
@@ -135,11 +162,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                        startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_COMPLETED)
                    }
                }*/
-            R.id.mAllOrderTv -> {
-                afterLogin {
-                    startActivity<OrderActivity>()
-                }
-            }
+
             R.id.mCommissionerTv -> { //申请专员
                 afterLogin {
                     startActivity<CommissionerApplyActivity>()
@@ -208,10 +231,10 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
     }
 
     private fun setCartBadge() {
-        mQBadgeView.badgeGravity = Gravity.END or Gravity.TOP
-        mQBadgeView.setGravityOffset(10f, 0f, true)
-        mQBadgeView.setBadgeTextSize(8f, true)
-        mQBadgeView.bindTarget(mWaitPayOrderTv).badgeNumber = 5
+        /* mQBadgeView.badgeGravity = Gravity.END or Gravity.TOP
+         mQBadgeView.setGravityOffset(10f, 0f, true)
+         mQBadgeView.setBadgeTextSize(8f, true)
+         mQBadgeView.bindTarget(mWaitPayOrderTv).badgeNumber = 5*/
     }
 
 }

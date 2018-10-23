@@ -16,20 +16,16 @@ class OrderDetailPresenter @Inject constructor() : BasePresenter<OrderDetailView
     @Inject
     lateinit var mOrderServiceImpl: OrderServiceImpl
 
-    /*
-        根据ID查询订单
+    /**
+     * 订单详情
      */
-    fun getOrderById(orderId: Int) {
-        if (!checkNetWork()) {
-            return
-        }
+    fun getOrderById(map:MutableMap<String,String>) {
         mView.showLoading()
-        mOrderServiceImpl.getOrderById(orderId).execute(object : BaseSubscriber<Order>(mView) {
+        mOrderServiceImpl.getOrderById(map).execute(object : BaseSubscriber<Order>(mView) {
             override fun onNext(t: Order) {
-                    mView.onGetOrderByIdResult(t)
+                mView.onGetOrderByIdResult(t)
             }
         }, mLifecycleProvider)
 
     }
-
 }

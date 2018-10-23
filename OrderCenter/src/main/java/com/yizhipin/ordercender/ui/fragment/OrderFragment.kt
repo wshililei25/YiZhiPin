@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
-import com.bigkoo.alertview.AlertView
-import com.bigkoo.alertview.OnItemClickListener
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.startLoading
-import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.ordercender.event.DeleteOrderEvent
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.presenter.OrderListPresenter
@@ -30,7 +30,7 @@ import org.jetbrains.anko.support.v4.toast
 /**
  * Created by ${XiLei} on 2018/9/25.
  */
-class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, OrderAdapter.OnOptClickListener, BGARefreshLayout.BGARefreshLayoutDelegate {
+class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
@@ -46,19 +46,13 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
         initView()
         initRefreshLayout()
         loadData()
+        initObserve()
     }
 
     private fun initView() {
         mOrderRv.layoutManager = LinearLayoutManager(activity!!)
         mOrderAdapter = OrderAdapter(activity!!)
         mOrderRv.adapter = mOrderAdapter
-//        mOrderAdapter.listener = this
-
-        mOrderAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Order> {
-            override fun onItemClick(item: Order, position: Int) {
-//                startActivity<OrderDetailActivity>(ProviderConstant.KEY_ORDER_ID to item.id)
-            }
-        })
     }
 
     private fun initRefreshLayout() {
@@ -74,7 +68,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-        map.put("status", arguments!!.getInt(OrderConstant.KEY_ORDER_STATUS, -1).toString())
+        map.put("statusStr", arguments!!.getString(OrderConstant.KEY_ORDER_STATUS, "-1").toString())
         mMultiStateView.startLoading()
         mBasePresenter.getOrderList(map)
     }
@@ -129,18 +123,14 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
         loadData()
     }
 
-    override fun onCancelOrderResult(result: Boolean) {
-        toast("取消订单成功")
-        loadData()
-    }
 
-    override fun onOptClick(optType: Int, order: Order) {
-        when (optType) {
-            OrderConstant.OPT_ORDER_PAY -> {
-                /* ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE)
+    /* override fun onOptClick(optType: Int, order: Order) {
+         when (optType) {
+             OrderConstant.OPT_ORDER_PAY -> {
+                 *//* ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE)
                          .withInt(ProviderConstant.KEY_ORDER_ID, order.id)
                          .withLong(ProviderConstant.KEY_ORDER_PRICE, order.totalPrice)
-                         .navigation()*/
+                         .navigation()*//*
             }
             OrderConstant.OPT_ORDER_CONFIRM -> {
 //                mBasePresenter.confirmOrder(order.id)
@@ -150,18 +140,31 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView, Orde
                 showCancelDialog(order)
             }
         }
+    }*/
+
+    private fun initObserve() {
+        Bus.observe<DeleteOrderEvent>()
+                .subscribe { t: DeleteOrderEvent ->
+                    run {
+                        showCancelDialog(t.id)
+                    }
+                }.registerInBus(this)
     }
 
-    /*
-      取消订单对话框
-   */
-    private fun showCancelDialog(order: Order) {
-        AlertView("取消订单", "确定取消该订单？", "取消", null, arrayOf("确定"), activity, AlertView.Style.Alert, OnItemClickListener { o, position ->
-            if (position == 0) {
-//                mBasePresenter.cancelOrder(order.id)
-            }
-        }
-        ).show()
+    /**
+     * 取消订单对话框
+     */
+    private fun showCancelDialog(id: String) {
+        var map = mutableMapOf<String, String>()
+        map.put("id", id)
+        mBasePresenter.cancelOrder(map)
+    }
+
+    /**
+     * 取消订单成功
+     */
+    override fun onCancelOrderResult(result: Boolean) {
+        loadData()
     }
 
 }

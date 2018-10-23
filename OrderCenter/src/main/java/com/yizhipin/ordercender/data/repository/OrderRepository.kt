@@ -2,15 +2,13 @@ package com.yizhipin.ordercender.data.repository
 
 
 import com.yizhipin.base.data.net.RetrofitFactory
+import com.yizhipin.base.data.net.RetrofitFactoryDelete
 import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.ordercender.data.api.OrderApi
-import com.yizhipin.ordercender.data.protocol.CancelOrderReq
 import com.yizhipin.ordercender.data.protocol.ConfirmOrderReq
-import com.yizhipin.ordercender.data.protocol.GetOrderByIdReq
-import com.yizhipin.ordercender.data.protocol.GetOrderListReq
 import com.yizhipin.ordercender.data.response.Coupon
 import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
@@ -25,8 +23,8 @@ class OrderRepository @Inject constructor() {
     /*
         取消订单
      */
-    fun cancelOrder(orderId: Int): Observable<BaseResp<String>> {
-        return RetrofitFactory.instance.create(OrderApi::class.java).cancelOrder(CancelOrderReq(orderId))
+    fun cancelOrder(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryDelete(map).create(OrderApi::class.java).cancelOrder(map["id"]!!)
     }
 
     /*
@@ -41,18 +39,15 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactoryGet().create(OrderApi::class.java).getDefaultAddress(map["uid"]!!)
     }
 
-    /*
-        根据ID查询订单
-     */
-    fun getOrderById(orderId: Int): Observable<BaseResp<Order>> {
-        return RetrofitFactory.instance.create(OrderApi::class.java).getOrderById(GetOrderByIdReq(orderId))
+    fun getOrderById(map:MutableMap<String,String>): Observable<BaseResp<Order>> {
+        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderById(map["id"]!!)
     }
 
     /*
         根据状态查询订单列表
      */
     fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Order>>> {
-        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["status"]!!)
+        return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["statusStr"]!!)
     }
 
     /*

@@ -1,7 +1,6 @@
 package com.yizhipin.ordercender.presenter.view
 
 import com.yizhipin.base.presenter.view.BaseView
-import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 
 /*
@@ -9,7 +8,5 @@ import com.yizhipin.ordercender.data.response.ShipAddress
  */
 interface OrderConfirmView : BaseView {
 
-    //获取订单回调
-    fun onGetOrderByIdResult(result: Order)
     fun onGetDefaultAddressSuccess(result:ShipAddress)
 }

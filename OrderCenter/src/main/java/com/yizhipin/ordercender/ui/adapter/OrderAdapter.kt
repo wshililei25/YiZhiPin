@@ -6,11 +6,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alibaba.android.arouter.launcher.ARouter
+import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.data.response.Order
+import com.yizhipin.ordercender.data.response.OrderGoods
+import com.yizhipin.ordercender.event.DeleteOrderEvent
+import com.yizhipin.provider.common.ProviderConstant
+import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.layout_order_item.view.*
 
 /*
@@ -18,7 +25,6 @@ import kotlinx.android.synthetic.main.layout_order_item.view.*
  */
 class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderAdapter.ViewHolder>(context) {
 
-    var listener: ShipAddressAdapter.OnOptClickListener? = null
     private lateinit var mOrderGoodsAdapter: OrderGoodsAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,8 +50,8 @@ class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderA
             holder.itemView.mPriceTv.text = "${payAmount} (运费:  ¥${postage})"
             when (orderType) {
                 "buy" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_original)
-                "tuan" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_pin)
-                "bai" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_pin)
+                "tuan" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_pin_tuan)
+                "bai" -> holder.itemView.mIsPinTv.text = context.getString(R.string.order_pin_tuan)
             }
 
             when (status.toInt()) {
@@ -144,24 +150,46 @@ class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderA
 
         //设置确认收货点击事件
         holder.itemView.mConfirmBtn.onClick {
-            listener?.let {
-                //                it.onOptClick(OrderConstant.OPT_ORDER_CONFIRM, model)
-            }
+            //            listener?.let {
+            //                it.onOptClick(OrderConstant.OPT_ORDER_CONFIRM, model)
+//            }
         }
 
         //设置支付订单点击事件
         holder.itemView.mPayBtn.onClick {
-            listener?.let {
-                //                it.onOptClick(OrderConstant.OPT_ORDER_PAY, model)
-            }
+            //            listener?.let {
+            //                it.onOptClick(OrderConstant.OPT_ORDER_PAY, model)
+//            }
         }
+
 
         //设置取消订单点击事件
         holder.itemView.mCancelBtn.onClick {
-            listener?.let {
-                //                it.onOptClick(OrderConstant.OPT_ORDER_CANCEL, model)
-            }
+            val baseAlertDialog = BaseAlertDialog(context)
+            baseAlertDialog.setTitle("提示")
+            baseAlertDialog.setMessage("确定取消该订单?")
+            baseAlertDialog.show()
+            baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
+                override fun okClickListener() {
+                    Bus.send(DeleteOrderEvent(model.id))
+                }
+            })
+
         }
+
+        holder.itemView.mItemView.onClick {
+            ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+                    .withString(ProviderConstant.KEY_ORDER_ID, model.id)
+                    .navigation()
+        }
+
+        mOrderGoodsAdapter.setOnItemClickListener(object :OnItemClickListener<OrderGoods>{
+            override fun onItemClick(item: OrderGoods, position: Int) {
+                ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+                        .withString(ProviderConstant.KEY_ORDER_ID, model.id)
+                        .navigation()
+            }
+        })
 
     }
 
@@ -182,9 +210,5 @@ class OrderAdapter(val context: Context) : BaseRecyclerViewAdapter<Order, OrderA
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
-
-    interface OnOptClickListener {
-        fun onOptClick(optType: Int, order: Order)
-    }
 
 }

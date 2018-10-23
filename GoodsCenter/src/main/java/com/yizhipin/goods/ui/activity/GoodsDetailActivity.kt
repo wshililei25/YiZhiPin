@@ -234,7 +234,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                     mGoods?.let {
                         var list = arrayListOf<Goods>()
                         list.add(mGoods)
-                        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+                        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
                                 .withBoolean(BaseConstant.KEY_IS_PIN, false)
                                 .withParcelableArrayList(BaseConstant.KEY_GOODS_LIST, list)
                                 .navigation()

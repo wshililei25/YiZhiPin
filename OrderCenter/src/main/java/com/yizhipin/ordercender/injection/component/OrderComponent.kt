@@ -5,6 +5,7 @@ import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.ordercender.injection.module.OrderModule
 import com.yizhipin.ordercender.ui.activity.CouponActivity
 import com.yizhipin.ordercender.ui.activity.OrderConfirmActivity
+import com.yizhipin.ordercender.ui.activity.OrderDetailsActivity
 import com.yizhipin.ordercender.ui.activity.PayConfirmActivity
 import com.yizhipin.ordercender.ui.fragment.OrderFragment
 import dagger.Component
@@ -20,4 +21,5 @@ interface OrderComponent {
     fun inject(activity: OrderFragment)
     fun inject(activity: PayConfirmActivity)
     fun inject(activity: CouponActivity)
+    fun inject(activity: OrderDetailsActivity)
 }

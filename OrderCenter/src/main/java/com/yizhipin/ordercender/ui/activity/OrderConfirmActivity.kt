@@ -17,7 +17,6 @@ import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.data.response.Order
 import com.yizhipin.ordercender.data.response.ShipAddress
 import com.yizhipin.ordercender.event.SelectAddressEvent
 import com.yizhipin.ordercender.injection.component.DaggerOrderComponent
@@ -37,7 +36,7 @@ import org.jetbrains.anko.toast
  * 订单确认
  */
 
-@Route(path = RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+@Route(path = RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
 class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConfirmView, View.OnClickListener {
 
     @Autowired(name = BaseConstant.KEY_IS_PIN) //注解接收上个页面的传参
@@ -49,7 +48,6 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     private lateinit var mShipAddress: ShipAddress
     private lateinit var mOrderConfirmAdapter: OrderConfirmAdapter
-    private var mOrder: Order? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,8 +97,6 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
         var map = mutableMapOf<String, String>()
         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         mBasePresenter.getDefaultAddress(map)
-
-//         mBasePresenter.getOrderById(mOrderId)
     }
 
     override fun injectComponent() {
@@ -114,10 +110,6 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     override fun onGetDefaultAddressSuccess(result: ShipAddress) {
 
         updateAddressView(result)
-    }
-
-    override fun onGetOrderByIdResult(result: Order) {
-        mOrder = result
     }
 
     override fun onClick(v: View) {

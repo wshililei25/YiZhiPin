@@ -3,7 +3,6 @@ package com.yizhipin.goods.ui.fragment
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -125,8 +124,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
                 if (goodsList.size == 0) {
                     toast("请选择需要提交的数据")
                 } else {
-                    Log.d("2", "goodsList=" + goodsList.size)
-                    ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS)
+                    ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM)
                             .withBoolean(BaseConstant.KEY_IS_PIN, false)
                             .withParcelableArrayList(BaseConstant.KEY_GOODS_LIST, goodsList as ArrayList<out Parcelable>)
                             .navigation()
@@ -143,7 +141,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
     }
 
     override fun onSubmitCartListResult(result: Int) {
-        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_DETAILS).withInt(ProviderConstant.KEY_ORDER_ID, result).navigation()
+        ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_CONFIRM).withInt(ProviderConstant.KEY_ORDER_ID, result).navigation()
     }
 
     /**

@@ -50,12 +50,9 @@ class OrderListPresenter @Inject constructor() : BasePresenter<OrderListView>() 
     /*
         取消订单
      */
-    fun cancelOrder(orderId: Int) {
-        if (!checkNetWork()) {
-            return
-        }
+    fun cancelOrder(map: MutableMap<String, String>) {
         mView.showLoading()
-        mOrderServiceImpl.cancelOrder(orderId).execute(object : BaseSubscriber<Boolean>(mView) {
+        mOrderServiceImpl.cancelOrder(map).execute(object : BaseSubscriber<Boolean>(mView) {
             override fun onNext(t: Boolean) {
                 mView.onCancelOrderResult(t)
             }

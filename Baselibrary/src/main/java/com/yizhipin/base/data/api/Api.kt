@@ -39,5 +39,6 @@ interface Api {
         const val RESET_PAY_PWD = "api/WebUser/PayPassword/Reset"//重置支付密码
         const val COUPON_LIST = "api/UserConpon/Page"//优惠券列表
         const val ORDER_LIST = "api/Order/Page"//订单列表
+        const val ORDER_CANCEL = "api/Order"//取消订单
     }
 }

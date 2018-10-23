@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.yizhipin.ordercender.common.OrderConstant
+import com.yizhipin.ordercender.common.OrderStatus
 import com.yizhipin.ordercender.ui.fragment.OrderFragment
 
 /**
@@ -18,7 +19,15 @@ class OrderVpAdapter(fragmentManager: FragmentManager, context: Context) : Fragm
     override fun getItem(position: Int): Fragment {
         val fragment = OrderFragment()
         val bunder = Bundle()
-        bunder.putInt(OrderConstant.KEY_ORDER_STATUS, position)
+        when (position) {
+            0 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_ALL)
+            1 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_PAY)
+            2 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_PIN)
+            3 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_SEND)
+            4 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_CONFIRM)
+            5 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_WAIT_EVALUATE)
+            6 -> bunder.putString(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_AFTER_SALE)
+        }
         fragment.arguments = bunder
         return fragment
     }

@@ -10,10 +10,7 @@ import io.reactivex.Observable
  */
 interface OrderService {
 
-    /*
-       根据ID查询订单
-    */
-    fun getOrderById(orderId: Int): Observable<Order>
+    fun getOrderById(map:MutableMap<String,String>): Observable<Order>
 
     /*
     提交订单
@@ -28,7 +25,7 @@ interface OrderService {
     /*
     取消订单
  */
-    fun cancelOrder(orderId: Int): Observable<Boolean>
+    fun cancelOrder(map: MutableMap<String, String>): Observable<Boolean>
 
     /*
         确认订单

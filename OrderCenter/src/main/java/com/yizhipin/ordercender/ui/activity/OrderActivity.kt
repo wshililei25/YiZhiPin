@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout
 import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.ordercender.R
 import com.yizhipin.ordercender.common.OrderConstant
-import com.yizhipin.ordercender.common.OrderStatus
 import com.yizhipin.ordercender.ui.adapter.OrderVpAdapter
 import kotlinx.android.synthetic.main.activity_order.*
 
@@ -26,6 +25,6 @@ class OrderActivity : BaseActivity() {
         mOrderVp.adapter = OrderVpAdapter(supportFragmentManager, this)
         mOrderTab.setupWithViewPager(mOrderVp)
 
-        mOrderVp.currentItem = intent.getIntExtra(OrderConstant.KEY_ORDER_STATUS, OrderStatus.ORDER_ALL)
+        mOrderVp.currentItem = intent.getIntExtra(OrderConstant.KEY_ORDER_STATUS, 0)
     }
 }
