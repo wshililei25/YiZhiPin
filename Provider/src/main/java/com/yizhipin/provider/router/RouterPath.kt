@@ -18,6 +18,7 @@ object RouterPath {
     class GoodsCenter {
         companion object {
             const val PATH_GOODS_CART = "/goodsCenter/cart"
+            const val PATH_GOODS_COLLECT = "/goodsCenter/collect"
         }
     }
     //订单模块

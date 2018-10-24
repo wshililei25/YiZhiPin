@@ -3,6 +3,8 @@ package com.yizhipin.goods.data.repository
 import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.CollectGoods
+import com.yizhipin.base.data.response.CollectShop
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.goods.data.api.CategoryApi
 import com.yizhipin.goods.data.api.GoodsApi
@@ -35,6 +37,15 @@ class CategoryRepository @Inject constructor() {
     fun getShopGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java)
                 .getShopGoodsList(map["currentPage"]!!, map["shopId"]!!)
+    }
+
+    fun getCollectGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CollectGoods>?>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java)
+                .getCollectGoodsList(map["currentPage"]!!, map["uid"]!!)
+    }
+    fun getCollectShopList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CollectShop>?>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java)
+                .getCollectShopList(map["currentPage"]!!, map["uid"]!!)
     }
 
 

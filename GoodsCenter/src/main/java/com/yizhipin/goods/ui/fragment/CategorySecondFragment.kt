@@ -36,6 +36,7 @@ import org.jetbrains.anko.support.v4.startActivity
  */
 class CategorySecondFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARefreshLayout.BGARefreshLayoutDelegate, View.OnClickListener {
 
+
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
     private lateinit var mCategory: Category //一级分类
@@ -87,7 +88,7 @@ class CategorySecondFragment : BaseMvpFragment<CategoryPresenter>(), CategoryVie
 
         //商品
         mGoodsRv.layoutManager = LinearLayoutManager(activity)
-        mGoodsAdapter = GoodsAdapter(context!!,false)
+        mGoodsAdapter = GoodsAdapter(context!!, false)
         mGoodsRv.adapter = mGoodsAdapter
         mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods> {
             override fun onItemClick(item: Goods, position: Int) {

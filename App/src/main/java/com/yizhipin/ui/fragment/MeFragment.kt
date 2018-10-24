@@ -78,6 +78,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mWalletView.onClick(this)
         mCartView.onClick(this)
         mRedPaperTv.onClick(this)
+        mCollectSkimTv.onClick(this)
 
         setCartBadge()
     }
@@ -181,6 +182,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mRedPaperTv -> { //我的红包
                 afterLogin {
                     ARouter.getInstance().build(RouterPath.OrderCenter.PATH_ORDER_COUPON).navigation()
+                }
+            }
+            R.id.mCollectSkimTv -> { //我的收藏与浏览记录
+                afterLogin {
+                    ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_GOODS_COLLECT).navigation()
                 }
             }
 

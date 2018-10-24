@@ -2,9 +2,7 @@ package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.Collect
-import com.yizhipin.base.data.response.Goods
-import com.yizhipin.base.data.response.Shop
+import com.yizhipin.base.data.response.*
 import com.yizhipin.goods.data.protocol.GoodsReq
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Evaluate
@@ -37,6 +35,18 @@ interface GoodsApi {
      */
     @GET(Api.GOODS_LIST)
     fun getShopGoodsList(@Query("currentPage") currentPage: String, @Query("shopId") shopId: String): Observable<BasePagingResp<MutableList<Goods>?>>
+
+    /**
+     * 收藏的商品列表
+     */
+    @GET(Api.COLLECT_GOODS)
+    fun getCollectGoodsList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<CollectGoods>?>>
+
+    /**
+     * 收藏的店铺列表
+     */
+    @GET(Api.COLLECT_SHOP_LIST)
+    fun getCollectShopList(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<CollectShop>?>>
 
     /*
         获取商品详情

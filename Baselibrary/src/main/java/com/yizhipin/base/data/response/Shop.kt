@@ -28,6 +28,8 @@ data class Shop(
         val mouthSell: String? = null,
         val selfCon: String? = null,
         val bail: String,
+        val creditScore: String,
+        val starCount: Int,
         val collection : Boolean
 ) : Parcelable
 

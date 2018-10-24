@@ -8,32 +8,35 @@ import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.kennyc.view.MultiStateView
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.CollectGoods
+import com.yizhipin.base.data.response.CollectShop
 import com.yizhipin.base.ext.startLoading
+import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.goods.R
 import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.data.response.Category
-import com.yizhipin.goods.data.response.CategorySecond
 import com.yizhipin.goods.injection.component.DaggerCategoryComponent
 import com.yizhipin.goods.injection.module.CategoryModule
-import com.yizhipin.goods.presenter.CategoryPresenter
-import com.yizhipin.goods.presenter.view.CategoryView
-import com.yizhipin.goods.ui.adapter.GoodsAdapter
+import com.yizhipin.goods.presenter.CollectPresenter
+import com.yizhipin.goods.presenter.view.CollectView
+import com.yizhipin.goods.ui.activity.GoodsDetailActivity
+import com.yizhipin.goods.ui.adapter.CollectGoodsAdapter
 import kotlinx.android.synthetic.main.fragment_recyclerview.*
+import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * Created by ${XiLei} on 2018/8/23.
- * 店铺的商品列表
+ * 收藏中的商品列表
  */
-class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARefreshLayout.BGARefreshLayoutDelegate {
+class CollectGoodsFragment : BaseMvpFragment<CollectPresenter>(), CollectView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
 
-    private var mShopId: String = ""
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
-    private lateinit var mGoodsAdapter: GoodsAdapter
+    private lateinit var mGoodsAdapter: CollectGoodsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_recyclerview, null)
@@ -49,12 +52,14 @@ class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARef
 
     private fun initView() {
 
-        arguments?.let {
-            mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
-        }
         mRv.layoutManager = LinearLayoutManager(activity)
-        mGoodsAdapter = GoodsAdapter(activity!!, true)
+        mGoodsAdapter = CollectGoodsAdapter(activity!!)
         mRv.adapter = mGoodsAdapter
+        mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<CollectGoods> {
+            override fun onItemClick(item: CollectGoods, position: Int) {
+                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.product.id!!)
+            }
+        })
     }
 
     private fun initRefreshLayout() {
@@ -77,14 +82,14 @@ class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARef
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("shopId", mShopId)
-        mBasePresenter.getShopGoodsList(map)
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        mBasePresenter.getCollectGoodsList(map)
     }
 
     /**
      * 获取商品列表成功
      */
-    override fun onGetGoodsListSuccess(result: BasePagingResp<MutableList<Goods>?>) {
+    override fun onGetCollectGoodsListSuccess(result: BasePagingResp<MutableList<CollectGoods>?>) {
 
         if (result != null && result.data != null && result.data!!.size > 0) {
             mMaxPage = result!!.pi.totalPage
@@ -121,10 +126,7 @@ class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARef
 
     }
 
-    override fun onGetCategoryAllSuccess(result: MutableList<Category>?) {
-    }
-
-    override fun onGetCategorySencondSuccess(result: MutableList<CategorySecond>?) {
+    override fun onGetCollectShopListSuccess(result: BasePagingResp<MutableList<CollectShop>?>) {
     }
 }
 

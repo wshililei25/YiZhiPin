@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_category.*
  */
 class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
 
+
     private lateinit var mCategoryVpAdapter: CategoryVpAdapter
     private lateinit var mData: MutableList<Category>
 

@@ -190,6 +190,7 @@
     <string name="go_pay">去支付</string>
     <string name="go_evaluate">去评价</string>
     <string name="confirm_receipt">确认收货</string>
+    <string name="collect_me">我的收藏</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

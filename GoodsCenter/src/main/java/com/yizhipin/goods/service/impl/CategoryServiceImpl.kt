@@ -1,6 +1,8 @@
 package com.yizhipin.goods.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.data.response.CollectGoods
+import com.yizhipin.base.data.response.CollectShop
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertPaging
@@ -36,6 +38,14 @@ open class CategoryServiceImpl @Inject constructor() : CategoryService {
     override fun getShopGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
 
         return mRepository.getShopGoodsList(map).convertPaging()
+    }
+    override fun getCollectGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CollectGoods>?>> {
+
+        return mRepository.getCollectGoodsList(map).convertPaging()
+    }
+    override fun getCollectShopList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CollectShop>?>> {
+
+        return mRepository.getCollectShopList(map).convertPaging()
     }
 
 
