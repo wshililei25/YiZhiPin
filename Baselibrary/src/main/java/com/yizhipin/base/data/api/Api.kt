@@ -42,5 +42,6 @@ interface Api {
         const val ORDER_CANCEL = "api/Order"//取消订单
         const val COLLECT_GOODS = "api/ProductCollection/Page"//收藏的商品列表
         const val COLLECT_SHOP_LIST = "api/ShopCollection/Page"//收藏的店铺列表
+        const val GENERALIZE_LIST = "api/Investment/Page"//推广中的商品列表
     }
 }

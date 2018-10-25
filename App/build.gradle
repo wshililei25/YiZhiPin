@@ -72,6 +72,7 @@ dependencies {
     implementation project(':GoodsCenter')
     implementation project(':OrderCenter')
     implementation project(':PayCenter')
+    implementation project(':GeneralizeCenter')
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }

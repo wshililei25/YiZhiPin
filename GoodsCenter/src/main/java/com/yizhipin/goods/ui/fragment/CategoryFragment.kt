@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.fragment_category.*
  */
 class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
 
-
     private lateinit var mCategoryVpAdapter: CategoryVpAdapter
     private lateinit var mData: MutableList<Category>
 
@@ -38,7 +37,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
 
     private fun initView() {
         mTab.tabMode = TabLayout.MODE_FIXED
-        mCategoryVpAdapter = CategoryVpAdapter(activity!!.supportFragmentManager)
+        mCategoryVpAdapter = CategoryVpAdapter(childFragmentManager)
         mVp.adapter = mCategoryVpAdapter
         mTab.setupWithViewPager(mVp)
     }

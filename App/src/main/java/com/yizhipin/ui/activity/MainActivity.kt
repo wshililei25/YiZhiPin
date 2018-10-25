@@ -7,6 +7,7 @@ import com.eightbitlab.rxbus.Bus
 import com.yizhipin.R
 import com.yizhipin.base.common.AppManager
 import com.yizhipin.base.ui.activity.BaseActivity
+import com.yizhipin.generalizecenter.ui.fragment.GeneralizeFragment
 import com.yizhipin.goods.ui.fragment.CategoryFragment
 import com.yizhipin.ui.fragment.HomeFragment
 import com.yizhipin.ui.fragment.MeFragment
@@ -19,7 +20,7 @@ class MainActivity : BaseActivity() {
     private val mStack = Stack<Fragment>()
     private val mHomeFragment by lazy { HomeFragment() }
     private val mCategoryFragment by lazy { CategoryFragment() }
-    private val mMsgFragment by lazy { HomeFragment() }
+    private val mGeneralizeFragment by lazy { GeneralizeFragment() }
     private val mMeFragment by lazy { MeFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,13 +36,13 @@ class MainActivity : BaseActivity() {
         val manager = supportFragmentManager.beginTransaction()
         manager.add(R.id.mContaier, mHomeFragment)
         manager.add(R.id.mContaier, mCategoryFragment)
-        manager.add(R.id.mContaier, mMsgFragment)
+        manager.add(R.id.mContaier, mGeneralizeFragment)
         manager.add(R.id.mContaier, mMeFragment)
         manager.commit()
 
         mStack.add(mHomeFragment)
         mStack.add(mCategoryFragment)
-        mStack.add(mMsgFragment)
+        mStack.add(mGeneralizeFragment)
         mStack.add(mMeFragment)
     }
 

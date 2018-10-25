@@ -1,12 +1,10 @@
 package com.yizhipin.usercenter.data.repository
 
 import com.yizhipin.base.data.net.RetrofitFactoryGet
-import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.data.api.MainApi
 import com.yizhipin.data.response.Banner
-import com.yizhipin.goods.data.api.GoodsApi
 import io.reactivex.Observable
 import javax.inject.Inject
 

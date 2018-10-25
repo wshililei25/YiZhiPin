@@ -1,4 +1,4 @@
-package com.yizhipin.goods.ui.fragment
+package com.yizhipin.generalizecenter.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,37 +8,31 @@ import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.kennyc.view.MultiStateView
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.CollectGoods
-import com.yizhipin.base.data.response.CollectShop
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
-import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.goods.R
-import com.yizhipin.goods.common.GoodsConstant
-import com.yizhipin.goods.injection.component.DaggerCategoryComponent
-import com.yizhipin.goods.injection.module.CategoryModule
-import com.yizhipin.goods.presenter.CollectPresenter
-import com.yizhipin.goods.presenter.view.CollectView
-import com.yizhipin.goods.ui.activity.GoodsDetailActivity
-import com.yizhipin.goods.ui.adapter.CollectGoodsAdapter
-import kotlinx.android.synthetic.main.fragment_recyclerview.*
-import org.jetbrains.anko.support.v4.startActivity
+import com.yizhipin.generalizecenter.R
+import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
+import com.yizhipin.generalizecenter.ui.adapter.GeneralizeGoodsAdapter
+import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
+import com.yizhipin.goods.injection.module.GeneralizeModule
+import com.yizhipin.goods.presenter.GeneralizePresenter
+import kotlinx.android.synthetic.main.fragment_gen.*
 
 /**
  * Created by ${XiLei} on 2018/8/23.
- * 收藏中的商品列表
+ * 推广中的商品列表
  */
-class CollectGoodsFragment : BaseMvpFragment<CollectPresenter>(), CollectView, BGARefreshLayout.BGARefreshLayoutDelegate {
+class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), GeneralizeView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
-    private lateinit var mGoodsAdapter: CollectGoodsAdapter
+    private lateinit var mGoodsAdapter: GeneralizeGoodsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_recyclerview, null)
+        return inflater.inflate(R.layout.fragment_gen, null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,11 +46,11 @@ class CollectGoodsFragment : BaseMvpFragment<CollectPresenter>(), CollectView, B
     private fun initView() {
 
         mRv.layoutManager = LinearLayoutManager(activity)
-        mGoodsAdapter = CollectGoodsAdapter(activity!!)
+        mGoodsAdapter = GeneralizeGoodsAdapter(context!!)
         mRv.adapter = mGoodsAdapter
-        mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<CollectGoods> {
-            override fun onItemClick(item: CollectGoods, position: Int) {
-                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.product.id!!)
+        mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<GeneralizeCollect> {
+            override fun onItemClick(item: GeneralizeCollect, position: Int) {
+//                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.product.id!!)
             }
         })
     }
@@ -71,7 +65,7 @@ class CollectGoodsFragment : BaseMvpFragment<CollectPresenter>(), CollectView, B
     }
 
     override fun injectComponent() {
-        DaggerCategoryComponent.builder().activityComponent(mActivityComponent).categoryModule(CategoryModule()).build().inject(this)
+        DaggerGeneralizeComponent.builder().activityComponent(mActivityComponent).generalizeModule(GeneralizeModule()).build().inject(this)
         mBasePresenter.mView = this
     }
 
@@ -81,21 +75,20 @@ class CollectGoodsFragment : BaseMvpFragment<CollectPresenter>(), CollectView, B
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-        mBasePresenter.getCollectGoodsList(map)
+        map.put("bidding", "true")
+        mBasePresenter.getGenBiddingList(map)
     }
 
     /**
      * 获取商品列表成功
      */
-    override fun onGetCollectGoodsListSuccess(result: BasePagingResp<MutableList<CollectGoods>?>) {
-
-        if (result != null && result.data != null && result.data!!.size > 0) {
+    override fun onGetGoodsListSuccess(result: BasePagingResp<MutableList<GeneralizeCollect>>) {
+        if (result != null && result.data != null && result.data.size > 0) {
             mMaxPage = result!!.pi.totalPage
             if (mCurrentPage == 1) {
-                mGoodsAdapter.setData(result.data!!)
+                mGoodsAdapter.setData(result.data)
             } else {
-                mGoodsAdapter.dataList.addAll(result.data!!)
+                mGoodsAdapter.dataList.addAll(result.data)
                 mGoodsAdapter.notifyDataSetChanged()
             }
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
@@ -123,9 +116,6 @@ class CollectGoodsFragment : BaseMvpFragment<CollectPresenter>(), CollectView, B
      */
     override fun onBGARefreshLayoutBeginRefreshing(refreshLayout: BGARefreshLayout?) {
 
-    }
-
-    override fun onGetCollectShopListSuccess(result: BasePagingResp<MutableList<CollectShop>?>) {
     }
 }
 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite"
+              tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingSmall">
+
+        <ImageView
+            android:id="@+id/mGoodsIv"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/mGoodsNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="dddd"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleBigSize" />
+
+        <RelativeLayout
+            android:id="@+id/systemView"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mGoodsNameTv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+
+            android:layout_toRightOf="@+id/mGoodsIv">
+
+            <TextView
+                android:id="@+id/system"
+                style="@style/WrapWrap"
+                android:layout_marginTop="2dp"
+                android:text="@string/system_price"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/rmb_s"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/system"
+                android:text="@string/rmb"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mSystemTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                android:layout_toRightOf="@+id/rmb_s"
+                android:text="0.00"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleBigSize" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/retailView"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/systemView"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv">
+
+            <TextView
+                android:id="@+id/retail"
+                style="@style/WrapWrap"
+                android:layout_marginTop="2dp"
+                android:text="@string/retail_price"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/rmb"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMiddle"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/retail"
+                android:text="@string/rmb"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mRetailTv"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingMinSmall"
+                android:layout_toRightOf="@+id/rmb"
+                android:text="0.00"
+                android:textColor="@color/yCategory"
+                android:textSize="@dimen/yTextMiddleBigSize" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/mTypeTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIv"
+            android:layout_marginLeft="@dimen/yPaddingSmall"
+            android:layout_toRightOf="@+id/mGoodsIv"
+            android:background="@drawable/shape_main"
+            android:paddingLeft="@dimen/yPaddingMinSmall"
+            android:paddingRight="@dimen/yPaddingMinSmall"
+            android:text="@string/hamlet"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/mShopTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIv"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mTypeTv"
+            android:text="kkk"
+            android:textColor="@color/yCategory"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_below="@+id/mGoodsIv"
+        android:layout_marginTop="@dimen/yPaddingMiddle" />
+</LinearLayout>
