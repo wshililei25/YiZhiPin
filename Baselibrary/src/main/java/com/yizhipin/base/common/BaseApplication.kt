@@ -1,5 +1,6 @@
 package com.yizhipin.base.common
 
+import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
@@ -19,6 +20,7 @@ open class BaseApplication : MultiDexApplication() {
 
         initAppInjection()
         context = this
+        app = this
 
         ARouter.openLog();
         ARouter.openDebug();
@@ -31,5 +33,6 @@ open class BaseApplication : MultiDexApplication() {
 
     companion object {
         lateinit var context: Context
+        lateinit var app: Application
     }
 }
