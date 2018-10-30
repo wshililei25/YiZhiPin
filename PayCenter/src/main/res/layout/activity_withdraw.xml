@@ -33,7 +33,7 @@
             android:layout_marginLeft="@dimen/yPadding"
             android:layout_toRightOf="@+id/nickName"
             android:background="@null"
-            android:hint="可提 ￥0.00"
+            android:hint="可提 ¥0.00"
             android:textColor="@color/yBlackLight"
             android:textColorHint="@color/yHint"
             android:textSize="@dimen/yTextMiddleSize"/>

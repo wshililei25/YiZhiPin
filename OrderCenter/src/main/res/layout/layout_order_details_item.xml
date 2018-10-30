@@ -56,7 +56,7 @@
             <TextView
                 android:id="@+id/mAmountTv"
                 style="@style/WrapWrap"
-                android:text="￥ 0.00"
+                android:text="¥ 0.00"
                 android:textColor="@color/yBlack"
                 android:textSize="@dimen/yTextLargeSize"/>
 

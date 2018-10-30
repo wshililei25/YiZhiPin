@@ -204,7 +204,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
 
         mUserNameTv.text = if (result.nickname.isNullOrEmpty()) getString(R.string.app_name) else result.nickname
         mCreditTv.text = result.score
-        mAmountTv.text = "￥${result.totalAmount}"
+        mAmountTv.text = "¥ ${result.totalAmount}"
         mUserIconIv.loadUrl(result.imgurl)
         if (result.commissioner) mCommissionerIv.visibility = View.VISIBLE else mCommissionerIv.visibility = View.GONE
         if (result.commissioner) mCommissionerTv.text = getString(R.string.commissioner_plate) else mCommissionerTv.text = getString(R.string.apply_commissioner)

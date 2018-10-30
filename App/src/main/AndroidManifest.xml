@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yizhipin">
+    package="com.yizhipin">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
@@ -14,20 +14,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- 屏幕适配 begin (value单位为dp)-->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="375" /> <!-- 设计图的宽度 -->
+        <!-- <meta-data
+             android:name="design_height_in_dp"
+             android:value="667" />-->
+        <!-- 屏幕适配 end -->
+
         <meta-data
             android:name="CHANNEL"
-            android:value="${CHANNEL_VALUE}"/>
+            android:value="${CHANNEL_VALUE}" />
 
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.SettingActivity"/>
-        <activity android:name=".ui.activity.VersionInfoActivity"/>
-        <activity android:name=".base.ui.web.WebViewActivity"/>
+        <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.VersionInfoActivity" />
+        <activity android:name=".base.ui.web.WebViewActivity" />
     </application>
 
 </manifest>

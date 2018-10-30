@@ -31,7 +31,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setCustomDensity(this, BaseApplication.app)
         initFragment()
         initBottomNav()
         changeFragment(0)
@@ -89,44 +88,6 @@ class MainActivity : BaseActivity() {
         } else {
             AppManager.instance.exitApp(this)
         }
-    }
-
-    private var sNoncompatDensity: Float = 0.toFloat()
-    private var sNoncompatScaledDensity: Float = 0.toFloat()
-    /**
-     * 屏幕适配
-     */
-    private fun setCustomDensity(activity: Activity, application: Application) {
-
-        val appDisplayMetrics = application.resources.displayMetrics
-        if (sNoncompatDensity == 0f) {
-            sNoncompatDensity = appDisplayMetrics.density
-            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity
-            application.registerComponentCallbacks(object : ComponentCallbacks {
-                override fun onLowMemory() {
-                }
-
-                override fun onConfigurationChanged(newConfig: Configuration?) {
-                    if (newConfig != null && newConfig!!.fontScale > 0) {
-                        sNoncompatScaledDensity = application.resources.displayMetrics.scaledDensity
-                    }
-                }
-
-            })
-        }
-
-        val targetDensity = (appDisplayMetrics.widthPixels / 375).toFloat()
-        val targetScaledDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity)
-        val targetDensityDpi = (160 * targetDensity).toInt()
-
-        appDisplayMetrics.density = targetDensity
-        appDisplayMetrics.scaledDensity = targetScaledDensity
-        appDisplayMetrics.densityDpi = targetDensityDpi
-
-        val activityDisplayMetrics = activity.resources.displayMetrics
-        activityDisplayMetrics.density = targetDensity
-        activityDisplayMetrics.scaledDensity = targetScaledDensity
-        activityDisplayMetrics.densityDpi = targetDensityDpi
     }
 }
 

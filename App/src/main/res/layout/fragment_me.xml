@@ -181,7 +181,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/yPaddingBigSmall"
-                android:text="￥0.00"
+                android:text="¥ 0.00"
                 android:textColor="@color/yBlackDeep"
                 android:textSize="@dimen/yTextMiddleBigSize"/>
         </RelativeLayout>
