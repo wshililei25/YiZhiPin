@@ -11,11 +11,13 @@ import android.widget.RadioGroup
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
+import com.yizhipin.base.common.BaseApplication.Companion.context
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.GoodsCollect
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.DateUtils
@@ -153,6 +155,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 mBasePresenter.addCart(map)
             }
         }
+
     }
 
     private fun initSrarView() {
@@ -280,14 +283,17 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             mSingleBuyTv.text = getString(R.string.rmb).plus(result.price.toString())
             if (result.collection) mCollectionTv.setText(getString(R.string.collect_already)) else mCollectionTv.setText(getString(R.string.collect_goods))
 
-
-            when(result.shop!!.shopIdentity){
-                "product" ->  mCategoryTv.text = getString(R.string.hamlet)
-                "homestay" ->  mCategoryTv.text = getString(R.string.stay)
-                "trip" ->  mCategoryTv.text = getString(R.string.group_group)
-                "car" ->  mCategoryTv.text = getString(R.string.motor_homes)
+            when (result.shop!!.shopIdentity) {
+                "product" -> mCategoryTv.text = getString(R.string.hamlet)
+                "homestay" -> mCategoryTv.text = getString(R.string.stay)
+                "trip" -> mCategoryTv.text = getString(R.string.group_group)
+                "car" -> mCategoryTv.text = getString(R.string.motor_homes)
             }
-            
+            if (result.shop!!.shopIdentity == "homestay") {
+                systemPrice.text = getString(R.string.price_pin)
+                retailPrice.text = context.getString(R.string.price_original)
+                mAddCartBtn.setVisible(false)
+            }
             result.banner?.let {
                 val list = result.banner!!.split(",").toMutableList()
                 mBanner.setImages(list)

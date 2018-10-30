@@ -86,6 +86,7 @@
         android:padding="@dimen/yPadding">
 
         <TextView
+            android:id="@+id/mGoodsCountTv"
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
             android:text="@string/buy_num"
@@ -104,6 +105,7 @@
         android:layout_marginLeft="@dimen/yPadding"/>
 
     <RelativeLayout
+        android:id="@+id/mPostageView"
         style="@style/MatchWrap"
         android:background="@drawable/border_all"
         android:padding="@dimen/yPadding">
@@ -117,6 +119,28 @@
 
         <TextView
             android:id="@+id/mPostageTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:text="¥ 0.00"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mBookingDateView"
+        style="@style/MatchWrap"
+        android:background="@drawable/border_all"
+        android:padding="@dimen/yPadding"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:text="@string/booking_date"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:text="¥ 0.00"

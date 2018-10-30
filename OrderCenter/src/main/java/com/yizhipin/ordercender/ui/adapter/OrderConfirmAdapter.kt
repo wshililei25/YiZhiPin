@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.ext.loadUrl
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.base.widgets.NumberButton
@@ -41,7 +42,10 @@ class OrderConfirmAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyc
         } else { //单价买
             holder.itemView.mGoodsNameTv.text = model.name
             holder.itemView.mShopTv.text = model.shop!!.shopName
-            holder.itemView.mGoodsIv.loadUrl(model.imgurl!!)
+
+            if (!model.imgurl.isNullOrEmpty()) {
+                holder.itemView.mGoodsIv.loadUrl(model.imgurl!!)
+            }
 
             model.goodsCount = 1
             holder.itemView.mGoodsCountBtn.setBuyMax(model.count)
@@ -51,6 +55,12 @@ class OrderConfirmAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyc
             holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.pinPrice!! * model.goodsCount)
         } else {
             holder.itemView.mPracticalAmountTv.text = context.getString(R.string.rmb).plus(model.price!! * model.goodsCount)
+        }
+
+        if (model.primaryCategory == "homestay") {
+            holder.itemView.mGoodsCountTv.text = "预订房间数量(剩余${model.count})"
+            holder.itemView.mPostageView.setVisible(false)
+            holder.itemView.mBookingDateView.setVisible(true)
         }
 
         holder.itemView.mGoodsCountBtn.setOnWarnListener(object : NumberButton.OnWarnListener {
