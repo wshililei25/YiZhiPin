@@ -124,6 +124,7 @@
             android:text="¥ 0.00"
             android:textColor="@color/yBlack"
             android:textSize="@dimen/yTextMiddleSize"/>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -140,12 +141,30 @@
             android:textColor="@color/yBlack"
             android:textSize="@dimen/yTextMiddleSize"/>
 
-        <TextView
+        <LinearLayout
             style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:text="¥ 0.00"
-            android:textColor="@color/yBlack"
-            android:textSize="@dimen/yTextMiddleSize"/>
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/mStartDateTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPadding"
+                android:layout_marginRight="@dimen/yPadding"
+                android:text="@string/to"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize"/>
+
+            <TextView
+                android:id="@+id/mEndDateTv"
+                style="@style/WrapWrap"
+                android:textColor="@color/yMain"
+                android:textSize="@dimen/yTextMiddleSize"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <View

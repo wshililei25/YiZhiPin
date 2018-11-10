@@ -433,6 +433,7 @@
                 android:textSize="@dimen/yTextMiddleBigSize" />
 
             <TextView
+                android:id="@+id/mSinglePriceTv"
                 style="@style/WrapWrap"
                 android:text="@string/single_price"
                 android:textColor="@color/yMain"
@@ -455,6 +456,7 @@
                 android:textSize="@dimen/yTextMiddleBigSize" />
 
             <TextView
+                android:id="@+id/mPinPriceTv"
                 style="@style/WrapWrap"
                 android:text="@string/appname"
                 android:textColor="@color/yWhite"

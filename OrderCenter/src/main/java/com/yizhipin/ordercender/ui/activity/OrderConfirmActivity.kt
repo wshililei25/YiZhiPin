@@ -25,6 +25,7 @@ import com.yizhipin.ordercender.presenter.OrderConfirmPresenter
 import com.yizhipin.ordercender.presenter.view.OrderConfirmView
 import com.yizhipin.ordercender.ui.adapter.OrderConfirmAdapter
 import com.yizhipin.provider.common.ProvideReqCode
+import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_order_confirm.*
 import org.jetbrains.anko.startActivity
@@ -46,7 +47,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     @JvmField
     var mGoodsList: ArrayList<Goods>? = null
 
-    private lateinit var mShipAddress: ShipAddress
+    private var mShipAddress: ShipAddress? = null
     private lateinit var mOrderConfirmAdapter: OrderConfirmAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +61,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     private fun initView() {
 
-        mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
+        mOrderGoodsRv.layoutManager = LinearLayoutManager(this!!)
         mOrderConfirmAdapter = OrderConfirmAdapter(this, mIsPin)
         mOrderConfirmAdapter.setData(mGoodsList as MutableList<Goods>)
         mOrderGoodsRv.adapter = mOrderConfirmAdapter
@@ -94,9 +95,19 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
     }
 
     private fun loadData() {
-        var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-        mBasePresenter.getDefaultAddress(map)
+
+        if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
+            mShipView.isEnabled = false
+            mSelectShipTv.setVisible(false)
+            mShipView.setVisible(true)
+            mShipNameTv.text = getString(R.string.check_in_person) + AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NICKNAME)
+            mShipMobileTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_MOBILE)
+            mShipAddressTv.setVisible(false)
+        } else { //其他
+            var map = mutableMapOf<String, String>()
+            map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+            mBasePresenter.getDefaultAddress(map)
+        }
     }
 
     override fun injectComponent() {
@@ -118,13 +129,13 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
                 startActivity<ShipAddressActivity>()
             }
             R.id.mBtn -> {
-                if (null == mShipAddress) {
+                if (mGoodsList!!.get(0).primaryCategory != "homestay" && null == mShipAddress) {
                     toast("请选择收货地址")
                     return
                 }
 
                 startActivityForResult<PayConfirmActivity>(ProvideReqCode.CODE_REQ_PAY, OrderConstant.KEY_GOODS_LIST to mGoodsList
-                        , BaseConstant.KEY_IS_PIN to mIsPin, OrderConstant.KEY_ADDRESS_ID to mShipAddress.id)
+                        , BaseConstant.KEY_IS_PIN to mIsPin, OrderConstant.KEY_ADDRESS_ID to if (mShipAddress == null) "" else mShipAddress!!.id)
             }
         }
     }

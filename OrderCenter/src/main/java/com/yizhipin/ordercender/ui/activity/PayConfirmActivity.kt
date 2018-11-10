@@ -133,13 +133,21 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                         var map = mutableMapOf<String, String>()
                         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                         map.put("conponId", mConponId)
-                        map.put("pids", mGoodsId)
-                        map.put("productCounts", mProductCounts)
-                        map.put("addressId", mAddressId.toString())
                         map.put("payType", mType)
                         map.put("payPwd", password!!)
 
-                        mBasePresenter.submitOrder(map)
+                        if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
+                            map.put("beginTime", mGoodsList!!.get(0).startDate!!)
+                            map.put("endTime", mGoodsList!!.get(0).endDate!!)
+                            map.put("productCount", mGoodsList!!.get(0).goodsCount.toString())
+//                            mBasePresenter.submitOrder(map)
+                        } else {
+                            map.put("pids", mGoodsId)
+                            map.put("addressId", mAddressId.toString())
+                            map.put("productCounts", mProductCounts)
+                            mBasePresenter.submitOrder(map)
+                        }
+
                         mPayPasswordDialog.dismiss()
                     }
                 })

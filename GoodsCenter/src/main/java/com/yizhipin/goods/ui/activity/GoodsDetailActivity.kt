@@ -289,11 +289,15 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 "trip" -> mCategoryTv.text = getString(R.string.group_group)
                 "car" -> mCategoryTv.text = getString(R.string.motor_homes)
             }
-            if (result.shop!!.shopIdentity == "homestay") {
+
+            //暂时注释
+//            if (result.shop!!.shopIdentity == "homestay") {
                 systemPrice.text = getString(R.string.price_pin)
+                mPinPriceTv.text = getString(R.string.price_pin)
                 retailPrice.text = context.getString(R.string.price_original)
+                mSinglePriceTv.text = context.getString(R.string.price_original)
                 mAddCartBtn.setVisible(false)
-            }
+//            }
             result.banner?.let {
                 val list = result.banner!!.split(",").toMutableList()
                 mBanner.setImages(list)
