@@ -28,6 +28,7 @@ interface Api {
         const val COMPLAIN_SHOP = "api/ShopComplaint"//举报投诉
         const val DEFAULT_ADDRESS = "api/UserAddress/Default"//获取默认地址
         const val SUBMIT_ORDER = "api/Order"//提交订单
+        const val SUBMIT_ORDER_RESIDE = "api/Order/Homestay"//提交订单(一品小住)
         const val ADD_CART = "api/ShopCart"//加入购物车
         const val CART_LIST = "api/ShopCart/List"//购物车列表
         const val COLLECT_GOOD = "api/ProductCollection"//收藏商品
@@ -43,5 +44,6 @@ interface Api {
         const val COLLECT_GOODS = "api/ProductCollection/Page"//收藏的商品列表
         const val COLLECT_SHOP_LIST = "api/ShopCollection/Page"//收藏的店铺列表
         const val GENERALIZE_LIST = "api/Investment/Page"//推广中的商品列表
+        const val GENERALIZE_DETAILS = "api/Investment"//推广中的商品详情
     }
 }

@@ -28,11 +28,13 @@ class OrderServiceImpl @Inject constructor() : OrderService {
         return repository.getOrderById(map).convert()
     }
 
-    /*
-        订单确认，提交订单
-     */
+
     override fun submitOrder(map: MutableMap<String, String>): Observable<String> {
         return repository.submitOrder(map).convert()
+    }
+
+    override fun submitOrderReside(map: MutableMap<String, String>): Observable<String> {
+        return repository.submitOrderReside(map).convert()
     }
 
     /*

@@ -28,4 +28,16 @@ open class GeneralizePresenter @Inject constructor() : BasePresenter<GeneralizeV
                 }, mLifecycleProvider)
 
     }
+
+    fun getGenBiddingDetails(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mCategoryServiceImpl.getGenBiddingDetails(map)
+                .execute(object : BaseSubscriber<GeneralizeCollect>(mView) {
+                    override fun onNext(t: GeneralizeCollect) {
+                        mView.onGetGoodsDetailsSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
 }

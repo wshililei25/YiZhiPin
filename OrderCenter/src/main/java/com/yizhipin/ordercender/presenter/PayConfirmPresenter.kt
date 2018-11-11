@@ -26,6 +26,18 @@ class PayConfirmPresenter @Inject constructor() : BasePresenter<PayConfirmView>(
         }, mLifecycleProvider)
 
     }
+    /**
+     * 提交订单(一品小住)
+     */
+    fun submitOrderReside(map: MutableMap<String, String>) {
+        mView.showLoading()
+        mOrderServiceImpl.submitOrderReside(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
+                mView.onSubmitOrderSuccess(t)
+            }
+        }, mLifecycleProvider)
+
+    }
 
 
 }

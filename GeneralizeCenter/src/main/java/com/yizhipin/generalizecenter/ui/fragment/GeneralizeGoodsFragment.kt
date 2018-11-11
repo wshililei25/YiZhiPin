@@ -2,6 +2,7 @@ package com.yizhipin.generalizecenter.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +14,16 @@ import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.generalizecenter.R
+import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
+import com.yizhipin.generalizecenter.ui.activity.GeneralizeDetailsActivity
 import com.yizhipin.generalizecenter.ui.adapter.GeneralizeGoodsAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule
 import com.yizhipin.goods.presenter.GeneralizePresenter
 import kotlinx.android.synthetic.main.fragment_gen.*
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by ${XiLei} on 2018/8/23.
@@ -50,7 +54,7 @@ class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), Generali
         mRv.adapter = mGoodsAdapter
         mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<GeneralizeCollect> {
             override fun onItemClick(item: GeneralizeCollect, position: Int) {
-//                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.product.id!!)
+                activity!!.startActivity<GeneralizeDetailsActivity>(GeneralizeConstant.KEY_GEN_ID to item.id)
             }
         })
     }
@@ -116,6 +120,9 @@ class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), Generali
      */
     override fun onBGARefreshLayoutBeginRefreshing(refreshLayout: BGARefreshLayout?) {
 
+    }
+
+    override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
     }
 }
 

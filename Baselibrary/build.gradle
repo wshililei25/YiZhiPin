@@ -84,6 +84,8 @@ dependencies {
     api "com.c.gaoyuan.StarView:StarViewLib:$startview_version"
     //AndroidAutoSize 屏幕适配
     api "me.jessyan:autosize:$autosize_version"
+    //日期选择
+    api 'com.github.codbking:PickTime:v1.0.1'
 }
 
 //Parcelable序列化插件

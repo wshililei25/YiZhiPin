@@ -66,16 +66,48 @@ object DateUtils {
         get() = format(Date())
 
     /**
-     * 根据用户格式返回当前日期
-
+     * 获取当前日期
      * @param format
-     * *
      * @return
      */
     fun getNow(format: String): String {
         return format(Date(), format)
     }
 
+    /**
+     * 获取当前时间的前一天时间
+     * @param cl
+     * *
+     * @return
+     */
+    fun getBeforeDay(cl: Calendar): Calendar {
+        val day = cl.get(Calendar.DATE)
+        cl.set(Calendar.DATE, day - 1)
+        return cl
+    }
+
+    /**
+     * 获取当前时间的后一天时间
+     * @param cl
+     * *
+     * @return
+     */
+    fun getAfterDay(cl: Calendar): Calendar {
+        val day = cl.get(Calendar.DATE)
+        cl.set(Calendar.DATE, day + 1)
+        return cl
+    }
+
+    /**
+     * 获取当前日期的后一天
+     */
+    fun getCurrentAfterDate(format: String): String {
+        val sf = SimpleDateFormat(format)
+        var cl = Calendar.getInstance()
+        val day = cl.get(Calendar.DATE)
+        cl.set(Calendar.DATE, day + 1)
+        return sf.format(cl.time)
+    }
 
     val defTimeZone: TimeZone
         get() = TimeZone.getTimeZone(TIMEZONE)
@@ -136,6 +168,24 @@ object DateUtils {
         try {
             val sdf = SimpleDateFormat(pattern)
             sdf.timeZone = defTimeZone
+            return sdf.format(df.parse(strDate.toString()))
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            return null
+        }
+
+    }
+
+    /**
+     * 日期格式化
+     */
+    @JvmOverloads
+    fun parseDateNew(strDate: String, pattern: String , targetPattern: String): String? {
+        val df = SimpleDateFormat(pattern)
+        df.timeZone = defTimeZone
+        try {
+            val sdf = SimpleDateFormat(targetPattern)
+            sdf.timeZone = defTimeZone
             return sdf.format(df.parse(strDate))
         } catch (e: ParseException) {
             e.printStackTrace()
@@ -153,30 +203,6 @@ object DateUtils {
         val sdf = SimpleDateFormat(format)
         sdf.timeZone = defTimeZone
         return sdf.format(time)
-    }
-
-    /**
-     * 获取当前时间的前一天时间
-     * @param cl
-     * *
-     * @return
-     */
-    fun getBeforeDay(cl: Calendar): Calendar {
-        val day = cl.get(Calendar.DATE)
-        cl.set(Calendar.DATE, day - 1)
-        return cl
-    }
-
-    /**
-     * 获取当前时间的后一天时间
-     * @param cl
-     * *
-     * @return
-     */
-    fun getAfterDay(cl: Calendar): Calendar {
-        val day = cl.get(Calendar.DATE)
-        cl.set(Calendar.DATE, day + 1)
-        return cl
     }
 
     fun getWeek(c: Calendar): String {

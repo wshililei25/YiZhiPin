@@ -85,6 +85,8 @@ class OrderConfirmAdapter(var context: Context, var mIsPin: Boolean) : BaseRecyc
             holder.itemView.mBookingDateView.setVisible(true)
             holder.itemView.mStartDateTv.text = DateUtils.getNow(DateUtils.FORMAT_SHORT_CN)
             holder.itemView.mEndDateTv.text = DateUtils.getCurrentAfterDate(DateUtils.FORMAT_SHORT_CN)
+            model.startDate = DateUtils.getNow(DateUtils.FORMAT_SHORT_CN)
+            model.endDate = DateUtils.getCurrentAfterDate(DateUtils.FORMAT_SHORT_CN)
         }
 
         holder.itemView.mStartDateTv.onClick {

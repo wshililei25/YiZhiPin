@@ -17,8 +17,8 @@ data class GeneralizeCollect(
         val promotion: String,
         val bidding: String,
         val amount: String,
-        val max: String,
-        val my: String,
-        val groups: String,
+        val max: GeneralizeCollectMax,
+//        val my: String,
+        val groups: MutableList<GeneralizeCollectGroup>,
         val product: Goods
 ) : Parcelable

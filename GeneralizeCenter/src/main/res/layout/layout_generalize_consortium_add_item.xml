@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap.Vertical.White"
+    android:padding="@dimen/yPaddingMiddle">
+
+    <View style="@style/DividerFixedHeight" />
+
+    <RelativeLayout
+        style="@style/MatchWrap.White"
+        android:paddingTop="@dimen/yPaddingMiddle">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mUserIconIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user" />
+
+        <TextView
+            android:id="@+id/mMobileTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mUserIconIv"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/mDateTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mUserIconIv"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mUserIconIv"
+            android:textColor="@color/yCategory"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/mAmountTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="¥0.00"
+            android:textColor="@color/yBlue"
+            android:textSize="@dimen/yTextMaxSize" />
+    </RelativeLayout>
+</LinearLayout>

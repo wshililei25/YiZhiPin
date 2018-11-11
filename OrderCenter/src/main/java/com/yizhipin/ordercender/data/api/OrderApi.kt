@@ -47,11 +47,17 @@ interface OrderApi {
     fun getOrderList(@Query("currentPage") currentPage: String, @Query("uid") uid: String
                      , @Query("statusStr") status: String): Observable<BasePagingResp<MutableList<Order>>>
 
-    /*
-        提交订单
+    /**
+     * 提交订单
      */
     @POST(Api.SUBMIT_ORDER)
     fun submitOrder(): Observable<BaseResp<String>>
+
+    /**
+     * 提交订单(一品小住)
+     */
+    @POST(Api.SUBMIT_ORDER_RESIDE)
+    fun submitOrderReside(): Observable<BaseResp<String>>
 
     /**
      * 优惠券列表

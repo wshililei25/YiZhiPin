@@ -12,10 +12,9 @@ interface OrderService {
 
     fun getOrderById(map:MutableMap<String,String>): Observable<Order>
 
-    /*
-    提交订单
- */
+
     fun submitOrder(map: MutableMap<String, String>): Observable<String>
+    fun submitOrderReside(map: MutableMap<String, String>): Observable<String>
 
     /*
     根据状态查询订单列表

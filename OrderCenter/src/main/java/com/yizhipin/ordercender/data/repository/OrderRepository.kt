@@ -50,11 +50,11 @@ class OrderRepository @Inject constructor() {
         return RetrofitFactoryGet().create(OrderApi::class.java).getOrderList(map["currentPage"]!!, map["uid"]!!, map["statusStr"]!!)
     }
 
-    /*
-        提交订单
-     */
     fun submitOrder(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrder()
+    }
+    fun submitOrderReside(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryPost(map).create(OrderApi::class.java).submitOrderReside()
     }
 
     fun getCouponList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Coupon>>> {

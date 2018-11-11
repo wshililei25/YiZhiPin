@@ -45,5 +45,7 @@ data class Goods(
         val productName: String? = null,
         val productImgurl: String? = null,
         var isSelected: Boolean = false,
-        var goodsCount: Int = 1//购买的商品数量
+        var goodsCount: Int = 1, //购买的商品数量
+        var startDate: String? = null, //一品小住起始时间
+        var endDate: String? = null //一品小住结束时间
 ) : Parcelable

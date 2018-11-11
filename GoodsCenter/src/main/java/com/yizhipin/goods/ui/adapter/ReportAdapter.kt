@@ -40,7 +40,7 @@ class ReportAdapter(var context: Context) : BaseRecyclerViewAdapter<Evaluate, Re
 
         holder.itemView.mLikeReportView.visibility = View.VISIBLE
         holder.itemView.mPhoneReportTv.text = StringUtils.setMobileStar(modle.nickname)
-        holder.itemView.mDateReportTv.text = DateUtils.parseDate(modle.createTime, DateUtils.FORMAT_SHORT).toString()
+        holder.itemView.mDateReportTv.text = DateUtils.parseDate(modle.createTime, DateUtils.FORMAT_SHORT)
         holder.itemView.mContentReportTv.text = modle.content
         holder.itemView.mLikeCountReportTv.text = "${context.getString(R.string.like)}${"("}${modle.zanCount}${")"}"
         holder.itemView.mEvaCountReportTv.text = "${context.getString(R.string.comment)}${"("}${modle.evaCount}${")"}"

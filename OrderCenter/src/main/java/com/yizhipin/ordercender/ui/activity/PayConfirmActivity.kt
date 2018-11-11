@@ -2,6 +2,7 @@ package com.yizhipin.ordercender.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
@@ -11,6 +12,7 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.BaseAlertDialog
+import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.base.widgets.PayPasswordDialog
 import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
@@ -137,10 +139,11 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
                         map.put("payPwd", password!!)
 
                         if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
-                            map.put("beginTime", mGoodsList!!.get(0).startDate!!)
-                            map.put("endTime", mGoodsList!!.get(0).endDate!!)
+                            map.put("pid", mGoodsList!!.get(0).id.toString())
                             map.put("productCount", mGoodsList!!.get(0).goodsCount.toString())
-//                            mBasePresenter.submitOrder(map)
+                            map.put("beginTime", DateUtils.parseDateNew(mGoodsList!!.get(0).startDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
+                            map.put("endTime", DateUtils.parseDateNew(mGoodsList!!.get(0).endDate!!, DateUtils.FORMAT_SHORT_CN, DateUtils.FORMAT_SHORT)!!)
+                            mBasePresenter.submitOrderReside(map)
                         } else {
                             map.put("pids", mGoodsId)
                             map.put("addressId", mAddressId.toString())
@@ -163,6 +166,9 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         }
     }
 
+    /**
+     * 下单成功
+     */
     override fun onSubmitOrderSuccess(result: String) {
         setResult(ProvideReqCode.CODE_RESULT_PAY)
         finish()

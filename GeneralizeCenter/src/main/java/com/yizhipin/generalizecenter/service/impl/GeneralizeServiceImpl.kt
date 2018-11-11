@@ -1,6 +1,7 @@
 package com.yizhipin.generalizecenter.service.impl
 
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
 import com.yizhipin.generalizecenter.service.GeneralizeService
@@ -19,6 +20,10 @@ open class GeneralizeServiceImpl @Inject constructor() : GeneralizeService {
     override fun getGenBiddingList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<GeneralizeCollect>>> {
 
         return mRepository.getGenBiddingList(map).convertPaging()
+    }
+    override fun getGenBiddingDetails(map: MutableMap<String, String>): Observable<GeneralizeCollect> {
+
+        return mRepository.getGenBiddingDetails(map).convert()
     }
 
 }
