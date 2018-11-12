@@ -22,7 +22,7 @@ class GeneralizeRepository @Inject constructor() {
         return RetrofitFactoryGet().create(GeneralizeApi::class.java).getGenBiddingDetails(map["id"]!!, map["uid"]!!)
     }
 
-    fun payPersonage(map: MutableMap<String, String>): Observable<BaseResp<GeneralizeCollect>> {
+    fun payPersonage(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(GeneralizeApi::class.java).payPersonage()
     }
 

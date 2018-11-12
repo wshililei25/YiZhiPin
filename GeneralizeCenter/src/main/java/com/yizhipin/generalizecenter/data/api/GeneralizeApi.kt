@@ -1,12 +1,14 @@
 package com.yizhipin.goods.data.api
 
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface GeneralizeApi {
 
@@ -26,6 +28,6 @@ interface GeneralizeApi {
      * 个人出价投资
      */
     @POST(Api.PAY_PERSONAGE)
-    fun payPersonage(): Observable<BaseResp<GeneralizeCollect>>
+    fun payPersonage(): Observable<BaseResp<String>>
 
 }

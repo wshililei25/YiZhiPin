@@ -163,6 +163,7 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
                         map.put("investmentId", mId.toString())
                         map.put("payType", mType)
                         map.put("payPwd", password!!)
+                        map.put("amount", mPaymentTv.text.toString())
                         mBasePresenter.payPersonage(map)
 
                         /* if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
@@ -218,7 +219,7 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
         }
     }
 
-    override fun onPayPersonageSuccess(result: GeneralizeCollect) {
+    override fun onPayPersonageSuccess(result: String) {
         setResult(ProvideReqCode.CODE_RESULT_PAY)
         finish()
     }

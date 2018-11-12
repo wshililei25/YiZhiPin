@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/MatchMatch.White">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch.White">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
-        app:titleText="@string/personage_bidding" />
+        app:titleText="@string/personage_bidding"/>
 
     <ScrollView
         style="@style/MatchWrap"
@@ -25,13 +25,13 @@
                     android:layout_centerHorizontal="true"
                     android:text="出资金额(¥)"
                     android:textColor="@color/yBlack"
-                    android:textSize="@dimen/yTextMiddleSize" />
+                    android:textSize="@dimen/yTextMiddleSize"/>
 
             </RelativeLayout>
 
             <View
                 style="@style/DividerFixedHeight"
-                android:layout_marginLeft="@dimen/yPadding" />
+                android:layout_marginLeft="@dimen/yPadding"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -41,7 +41,7 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/mEdt"
-                    android:src="@drawable/reduce" />
+                    android:src="@drawable/reduce"/>
 
                 <EditText
                     android:id="@+id/mEdt"
@@ -54,13 +54,13 @@
                     android:gravity="center_horizontal"
                     android:text="100"
                     android:textColor="@color/yMain"
-                    android:textSize="@dimen/yTextMaxSize" />
+                    android:textSize="@dimen/yTextMaxSize"/>
 
                 <ImageView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/mEdt"
-                    android:src="@drawable/increase" />
+                    android:src="@drawable/increase"/>
             </RelativeLayout>
 
             <TextView
@@ -70,20 +70,20 @@
                 android:paddingBottom="@dimen/yPaddingMiddle"
                 android:text="最低¥100元,增加金额请输入¥100的倍数"
                 android:textColor="@color/yBlackLight"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
-            <View style="@style/DividerFixedHeight_10" />
+            <View style="@style/DividerFixedHeight_10"/>
 
             <TextView
                 style="@style/WrapWrap"
                 android:padding="@dimen/yPadding"
                 android:text="@string/pay_type"
                 android:textColor="@color/yBlack"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
             <View
                 style="@style/DividerFixedHeight"
-                android:layout_marginLeft="@dimen/yPadding" />
+                android:layout_marginLeft="@dimen/yPadding"/>
 
             <com.yizhipin.base.widgets.PayRadioGroup
                 android:id="@+id/mPayRadioGroup"
@@ -96,21 +96,21 @@
                     app:checked="true"
                     app:logo1="@drawable/wallet"
                     app:radio="@drawable/radio"
-                    app:title1="@string/balance_pay" />
+                    app:title1="@string/balance_pay"/>
 
                 <com.yizhipin.base.widgets.PayRadioPurified
                     android:id="@+id/mAliRadio"
                     style="@style/MatchWrap"
                     app:logo1="@drawable/alipay"
                     app:radio="@drawable/radio"
-                    app:title1="@string/ali_pay" />
+                    app:title1="@string/ali_pay"/>
 
                 <com.yizhipin.base.widgets.PayRadioPurified
                     android:id="@+id/mWechatRadio"
                     style="@style/MatchWrap"
                     app:logo1="@drawable/wechat2"
                     app:radio="@drawable/radio"
-                    app:title1="@string/wechat_pay" />
+                    app:title1="@string/wechat_pay"/>
             </com.yizhipin.base.widgets.PayRadioGroup>
 
         </LinearLayout>
@@ -129,19 +129,27 @@
             android:id="@+id/tv"
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/yPadding"
             android:text="@string/payment"
             android:textColor="@color/yBlackLight"
-            android:textSize="@dimen/yTextMiddleSize" />
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/mPaymentTv"
+            android:text="¥"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextBigSize"/>
 
         <TextView
             android:id="@+id/mPaymentTv"
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/yPaddingMiddle"
             android:layout_toRightOf="@+id/tv"
-            android:text="¥100.00"
+            android:text="100.00"
             android:textColor="@color/yRed"
-            android:textSize="@dimen/yTextBigSize" />
+            android:textSize="@dimen/yTextBigSize"/>
 
         <Button
             android:id="@+id/mPayBtn"
@@ -152,7 +160,7 @@
             android:paddingLeft="@dimen/yPaddingBig"
             android:paddingRight="@dimen/yPaddingBig"
             android:text="@string/immediate_pay"
-            android:textSize="@dimen/yTextBigSize" />
+            android:textSize="@dimen/yTextBigSize"/>
 
     </RelativeLayout>
 </RelativeLayout>

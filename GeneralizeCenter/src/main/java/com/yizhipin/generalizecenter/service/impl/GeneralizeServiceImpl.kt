@@ -25,7 +25,7 @@ open class GeneralizeServiceImpl @Inject constructor() : GeneralizeService {
 
         return mRepository.getGenBiddingDetails(map).convert()
     }
-    override fun payPersonage(map: MutableMap<String, String>): Observable<GeneralizeCollect> {
+    override fun payPersonage(map: MutableMap<String, String>): Observable<String> {
 
         return mRepository.payPersonage(map).convert()
     }

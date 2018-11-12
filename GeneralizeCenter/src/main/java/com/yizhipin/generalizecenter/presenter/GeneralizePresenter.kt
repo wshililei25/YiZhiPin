@@ -45,8 +45,8 @@ open class GeneralizePresenter @Inject constructor() : BasePresenter<GeneralizeV
 
         mView.showLoading()
         mCategoryServiceImpl.payPersonage(map)
-                .execute(object : BaseSubscriber<GeneralizeCollect>(mView) {
-                    override fun onNext(t: GeneralizeCollect) {
+                .execute(object : BaseSubscriber<String>(mView) {
+                    override fun onNext(t: String) {
                         mView.onPayPersonageSuccess(t)
                     }
                 }, mLifecycleProvider)
