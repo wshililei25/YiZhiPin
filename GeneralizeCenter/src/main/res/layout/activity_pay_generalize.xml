@@ -139,7 +139,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/yPaddingMiddle"
             android:layout_toRightOf="@+id/tv"
-            android:text="¥0.00"
+            android:text="¥100.00"
             android:textColor="@color/yRed"
             android:textSize="@dimen/yTextBigSize" />
 

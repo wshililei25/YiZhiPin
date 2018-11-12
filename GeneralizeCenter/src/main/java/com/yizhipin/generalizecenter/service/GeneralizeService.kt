@@ -12,4 +12,5 @@ interface GeneralizeService {
 
     fun getGenBiddingList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<GeneralizeCollect>>>
     fun getGenBiddingDetails(map: MutableMap<String, String>): Observable<GeneralizeCollect>
+    fun payPersonage(map: MutableMap<String, String>): Observable<GeneralizeCollect>
 }

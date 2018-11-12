@@ -10,4 +10,5 @@ import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
 interface GeneralizeView : BaseView {
     fun onGetGoodsListSuccess(result: BasePagingResp<MutableList<GeneralizeCollect>>)
     fun onGetGoodsDetailsSuccess(result: GeneralizeCollect)
+    fun onPayPersonageSuccess(result: GeneralizeCollect)
 }

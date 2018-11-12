@@ -31,6 +31,7 @@ import org.jetbrains.anko.startActivity
  */
 class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), GeneralizeView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
+
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
     private lateinit var mGoodsAdapter: GeneralizeGoodsAdapter
@@ -123,6 +124,8 @@ class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), Generali
     }
 
     override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
+    }
+    override fun onPayPersonageSuccess(result: GeneralizeCollect) {
     }
 }
 

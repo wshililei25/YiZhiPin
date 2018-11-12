@@ -5,7 +5,10 @@ package com.yizhipin.base.utils
  */
 object StringUtils {
 
-    fun setMobileStar(string: String):String{
+    /**
+     * 手机号中间四位隐藏
+     */
+    fun setMobileStar(string: String): String {
         return string.replaceRange(3, 7, "****")
     }
 }

@@ -40,4 +40,16 @@ open class GeneralizePresenter @Inject constructor() : BasePresenter<GeneralizeV
                 }, mLifecycleProvider)
 
     }
+
+    fun payPersonage(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mCategoryServiceImpl.payPersonage(map)
+                .execute(object : BaseSubscriber<GeneralizeCollect>(mView) {
+                    override fun onNext(t: GeneralizeCollect) {
+                        mView.onPayPersonageSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
 }

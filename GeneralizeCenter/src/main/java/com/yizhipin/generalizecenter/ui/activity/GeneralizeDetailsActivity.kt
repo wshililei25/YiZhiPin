@@ -11,6 +11,7 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
@@ -78,7 +79,8 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
             mShopTv.text = result.product.shop!!.shopName
             mGoodsIv.loadUrl(result.product.imgurl!!)
 
-//            mMobileTv.text = getString(R.string.rmb).plus(result.max.amount)
+//            mMobileTv.text = StringUtils.setMobileStar(result.max.name)
+            mMobileTv.text = result.max.name
             mDateTv.text = result.max.date
             mAmountTv.text = getString(R.string.rmb).plus(result.max.amount)
             mUserIconIv.loadUrl(result.max.imgurl)
@@ -103,6 +105,9 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
     }
 
     override fun onGetGoodsListSuccess(result: BasePagingResp<MutableList<GeneralizeCollect>>) {
+    }
+
+    override fun onPayPersonageSuccess(result: GeneralizeCollect) {
     }
 }
 

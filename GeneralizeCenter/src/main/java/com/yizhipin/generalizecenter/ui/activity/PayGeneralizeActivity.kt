@@ -14,6 +14,8 @@ import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.BaseAlertDialog
 import com.yizhipin.base.widgets.PayPasswordDialog
+import com.yizhipin.base.widgets.PayRadioGroup
+import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
@@ -21,18 +23,17 @@ import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule
 import com.yizhipin.goods.presenter.GeneralizePresenter
+import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_pay_generalize.*
-import org.jetbrains.anko.toast
 
 /**
  * Created by ${XiLei} on 2018/9/24.
- * 支付确认
+ * 支付确认（一品小住）
  */
 
 class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
-
 
     @Autowired(name = GeneralizeConstant.KEY_GEN_ID) //注解接收上个页面的传参
     @JvmField
@@ -48,7 +49,7 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
     private var mGoodsList: MutableList<Goods>? = null
     private var mGoodsId = "" //商品id
     private var mProductCounts = "" //商品数量
-    private var mConponId = "" //优惠券id
+    //    private var mConponId = "" //优惠券id
     private var mType = "balance" //支付方式
     private lateinit var mPayPasswordDialog: PayPasswordDialog
     private var mAmount = 0.00
@@ -57,7 +58,6 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
         super.onCreate(savedInstanceState)
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         setContentView(R.layout.activity_pay_generalize)
-        toast("mid=" + mId)
         initView()
     }
 
@@ -117,6 +117,25 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
 
            mPayBtn.onClick(this)
            mCouponView.onClick(this)*/
+
+        mPayBtn.onClick(this)
+        mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {
+                for (i in 0 until group.getChildCount()) {
+                    (group.getChildAt(i) as PayRadioPurified).setChangeImg(checkedId)
+                }
+                if (mBalanceRadio.isChecked) {
+                    mType = "balance"
+                }
+                if (mAliRadio.isChecked) {
+                    mType = "Alipay"
+                }
+                if (mWechatRadio.isChecked) {
+                    mType = "Weixin"
+                }
+            }
+
+        })
     }
 
     override fun onClick(v: View) {
@@ -141,9 +160,10 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
                     override fun doConfirm(password: String?) {
                         var map = mutableMapOf<String, String>()
                         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                        map.put("conponId", mConponId)
+                        map.put("investmentId", mId.toString())
                         map.put("payType", mType)
                         map.put("payPwd", password!!)
+                        mBasePresenter.payPersonage(map)
 
                         /* if (mGoodsList!!.get(0).primaryCategory == "homestay") { //一品小住
                              map.put("pid", mGoodsList!!.get(0).id.toString())
@@ -196,6 +216,11 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
                  }
              }*/
         }
+    }
+
+    override fun onPayPersonageSuccess(result: GeneralizeCollect) {
+        setResult(ProvideReqCode.CODE_RESULT_PAY)
+        finish()
     }
 
     override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
