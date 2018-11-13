@@ -80,7 +80,7 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
 
 //            mMobileTv.text = StringUtils.setMobileStar(result.max.name)
             mMobileTv.text = result.max.name
-            mDateTv.text = result.max.date
+            mDateTv.text = "${result.max.date}最新出价"
             mAmountTv.text = getString(R.string.rmb).plus(result.max.amount)
             mUserIconIv.loadUrl(result.max.imgurl)
 
@@ -108,6 +108,7 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
 
     override fun onPayPersonageSuccess(result: String) {
     }
+
     override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
     }
 }

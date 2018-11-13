@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/MatchMatch.Common">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch.Common">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
-        app:titleText="@string/generalize_group_details" />
+        app:titleText="@string/generalize_group_details"/>
 
     <ScrollView
         style="@style/MatchWrap"
@@ -24,31 +24,29 @@
                     android:id="@+id/mGroupNameTv"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="@string/my_bidding"
                     android:textColor="@color/yMain"
-                    android:textSize="@dimen/yTextMiddleSize" />
+                    android:textSize="@dimen/yTextMiddleSize"/>
 
                 <TextView
                     android:id="@+id/mPeopleCountTv"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/mGroupNameTv"
-                    android:text="@string/my_bidding"
                     android:textColor="@color/yBlackLight"
-                    android:textSize="@dimen/yTextMiddleSize" />
+                    android:textSize="@dimen/yTextMiddleSize"/>
 
                 <TextView
+                    android:id="@+id/mAmountTv"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:text="¥0.00"
                     android:textColor="@color/yBlue"
-                    android:textSize="@dimen/yTextMaxSize" />
+                    android:textSize="@dimen/yTextMaxSize"/>
             </RelativeLayout>
 
-            <View style="@style/DividerFixedHeight" />
-
-            <android.support.v7.widget.RecyclerView style="@style/MatchWrap.White" />
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRv"
+                style="@style/MatchWrap.White"/>
 
             <TextView
                 style="@style/MatchWrap.White"
@@ -56,13 +54,107 @@
                 android:padding="@dimen/yPaddingMiddle"
                 android:text="@string/investment_analysis"
                 android:textColor="@color/yBlackLight"
-                android:textSize="@dimen/yTextMiddleSize" />
+                android:textSize="@dimen/yTextMiddleSize"/>
 
-            <View style="@style/DividerFixedHeight" />
+            <View style="@style/DividerFixedHeight"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mConsortiumRv"
-                style="@style/MatchWrap.White" />
+            <LinearLayout
+                style="@style/MatchWrap.Vertical.White">
+
+                <RelativeLayout
+                    style="@style/MatchWrap.White"
+                    android:padding="@dimen/yPaddingMiddle">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/mUserIconIv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/user"/>
+
+                    <TextView
+                        android:id="@+id/mMobileTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:layout_toRightOf="@+id/mUserIconIv"
+                        android:textColor="@color/yBlack"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        android:id="@+id/mDateTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mUserIconIv"
+                        android:layout_marginLeft="@dimen/yPaddingMiddle"
+                        android:layout_toRightOf="@+id/mUserIconIv"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        android:id="@+id/mStartAmountTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="¥0.00"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextMaxSize"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/mContentTv"
+                    style="@style/MatchWrap"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingLeft="@dimen/yPaddingMiddle"
+                    android:paddingRight="@dimen/yPaddingMiddle"
+                    android:textColor="@color/yBlackGray"
+                    android:textSize="@dimen/yTextMiddleBigSize"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mImageRv"
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle"/>
+
+                <RelativeLayout
+                    android:id="@+id/mLikeView"
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/yPaddingMiddle"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/mLikeCountTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginRight="@dimen/yPaddingMiddle"
+                        android:layout_toLeftOf="@+id/mEvaCountTv"
+                        android:drawableLeft="@drawable/news3"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="点赞"
+                        android:textColor="@drawable/selector_text"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+
+                    <TextView
+                        android:id="@+id/mEvaCountTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignParentRight="true"
+                        android:drawableLeft="@drawable/news3"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="评论"
+                        android:textColor="@color/yBlackGray"
+                        android:textSize="@dimen/yTextSmallLarSize"/>
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mReplyRv"
+                    style="@style/MatchWrap"
+                    android:layout_marginLeft="@dimen/yPaddingMiddle"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginRight="@dimen/yPaddingMiddle"
+                    android:background="@drawable/chatbox"
+                    android:paddingBottom="@dimen/yPaddingMiddle"
+                    android:visibility="gone"/>
+
+                <View
+                    style="@style/DividerFixedHeight_10"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -76,7 +168,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/yMain"
         android:gravity="center"
-        android:text="@string/share_invest"
+        android:text="@string/participation_invest"
         android:textColor="@color/yWhite"
-        android:textSize="@dimen/yTextMiddleBigSize" />
+        android:textSize="@dimen/yTextMiddleBigSize"/>
 </RelativeLayout>

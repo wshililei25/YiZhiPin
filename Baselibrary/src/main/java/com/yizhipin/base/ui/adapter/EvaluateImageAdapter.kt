@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yizhipin.base.R
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.goods.R
 import kotlinx.android.synthetic.main.layout_evaluate_image_item.view.*
 
 /**

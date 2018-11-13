@@ -39,6 +39,6 @@
             android:layout_centerVertical="true"
             android:text="¥0.00"
             android:textColor="@color/yBlue"
-            android:textSize="@dimen/yTextMaxSize" />
+            android:textSize="@dimen/yTextLargeSize" />
     </RelativeLayout>
 </LinearLayout>

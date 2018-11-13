@@ -208,6 +208,7 @@
     <string name="generalize_group_details">投资团详情</string>
     <string name="investment_analysis">发起人投资分析</string>
     <string name="share_invest">发起拼单投资</string>
+    <string name="participation_invest">参与拼单投资</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

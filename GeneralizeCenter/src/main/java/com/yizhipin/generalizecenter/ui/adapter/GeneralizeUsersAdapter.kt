@@ -8,12 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.yizhipin.base.utils.StringUtils
 import com.yizhipin.generalizecenter.R
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollectGroup
+import com.yizhipin.generalizecenter.data.response.GeneralizeUsers
 import kotlinx.android.synthetic.main.layout_generalize_consortium_add_item.view.*
 
-class GeneralizeConsortiumAdapter(val context: Context) : BaseRecyclerViewAdapter<GeneralizeCollectGroup, GeneralizeConsortiumAdapter.ViewHolder>(context) {
+class GeneralizeUsersAdapter(val context: Context) : BaseRecyclerViewAdapter<GeneralizeUsers, GeneralizeUsersAdapter.ViewHolder>(context) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_generalize_consortium_add_item, null)
@@ -26,10 +25,12 @@ class GeneralizeConsortiumAdapter(val context: Context) : BaseRecyclerViewAdapte
 
         with(model) {
 
-            holder.itemView.mMobileTv.text = StringUtils.setMobileStar(nickname)
+            holder.itemView.mMobileTv.text = nickname
             holder.itemView.mDateTv.text = "${createTime}最新出价"
             holder.itemView.mAmountTv.text = context.getString(R.string.rmb).plus(amount)
-            holder.itemView.mUserIconIv.loadUrl(imgurl)
+            if(!imgurl.isNullOrEmpty()){
+                holder.itemView.mUserIconIv.loadUrl(imgurl!!)
+            }
         }
 
 
