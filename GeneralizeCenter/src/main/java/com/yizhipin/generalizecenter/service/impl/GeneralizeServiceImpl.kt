@@ -4,6 +4,7 @@ import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.service.GeneralizeService
 import com.yizhipin.goods.data.repository.GeneralizeRepository
 import io.reactivex.Observable
@@ -24,6 +25,10 @@ open class GeneralizeServiceImpl @Inject constructor() : GeneralizeService {
     override fun getGenBiddingDetails(map: MutableMap<String, String>): Observable<GeneralizeCollect> {
 
         return mRepository.getGenBiddingDetails(map).convert()
+    }
+    override fun getGenGroupDetails(map: MutableMap<String, String>): Observable<GeneralizeGroupDetails> {
+
+        return mRepository.getGenGroupDetails(map).convert()
     }
     override fun payPersonage(map: MutableMap<String, String>): Observable<String> {
 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/generalize_group_details" />
+
+    <ScrollView
+        style="@style/MatchWrap"
+        android:layout_below="@+id/mHeaderBar"
+        android:layout_marginBottom="@dimen/yEditHeight">
+
+        <LinearLayout style="@style/MatchMatch.Vertical">
+
+
+            <RelativeLayout
+                style="@style/MatchWrap.White"
+                android:padding="@dimen/yPaddingMiddle">
+
+                <TextView
+                    android:id="@+id/mGroupNameTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="@string/my_bidding"
+                    android:textColor="@color/yMain"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <TextView
+                    android:id="@+id/mPeopleCountTv"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/mGroupNameTv"
+                    android:text="@string/my_bidding"
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextMiddleSize" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:text="¥0.00"
+                    android:textColor="@color/yBlue"
+                    android:textSize="@dimen/yTextMaxSize" />
+            </RelativeLayout>
+
+            <View style="@style/DividerFixedHeight" />
+
+            <android.support.v7.widget.RecyclerView style="@style/MatchWrap.White" />
+
+
+            <TextView
+                style="@style/MatchWrap.White"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:padding="@dimen/yPaddingMiddle"
+                android:text="@string/investment_analysis"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextMiddleSize" />
+
+            <View style="@style/DividerFixedHeight" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mConsortiumRv"
+                style="@style/MatchWrap.White" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/mBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/yEditHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yMain"
+        android:gravity="center"
+        android:text="@string/share_invest"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextMiddleBigSize" />
+</RelativeLayout>

@@ -15,6 +15,7 @@ import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.generalizecenter.ui.activity.GeneralizeDetailsActivity
 import com.yizhipin.generalizecenter.ui.adapter.GeneralizeGoodsAdapter
@@ -29,6 +30,7 @@ import org.jetbrains.anko.startActivity
  * 推广中的商品列表
  */
 class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), GeneralizeView, BGARefreshLayout.BGARefreshLayoutDelegate {
+
 
 
     private var mMaxPage: Int = 1
@@ -125,6 +127,8 @@ class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), Generali
     override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
     }
     override fun onPayPersonageSuccess(result: String) {
+    }
+    override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
     }
 }
 

@@ -5,6 +5,7 @@ import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.generalizecenter.service.impl.GeneralizeServiceImpl
 import javax.inject.Inject
@@ -36,6 +37,17 @@ open class GeneralizePresenter @Inject constructor() : BasePresenter<GeneralizeV
                 .execute(object : BaseSubscriber<GeneralizeCollect>(mView) {
                     override fun onNext(t: GeneralizeCollect) {
                         mView.onGetGoodsDetailsSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
+    fun getGenGroupDetails(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mCategoryServiceImpl.getGenGroupDetails(map)
+                .execute(object : BaseSubscriber<GeneralizeGroupDetails>(mView) {
+                    override fun onNext(t: GeneralizeGroupDetails) {
+                        mView.onGetGroupDetailsSuccess(t)
                     }
                 }, mLifecycleProvider)
 

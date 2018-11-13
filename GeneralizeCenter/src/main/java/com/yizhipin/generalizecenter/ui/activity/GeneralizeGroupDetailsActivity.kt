@@ -21,36 +21,39 @@ import com.yizhipin.generalizecenter.ui.adapter.GeneralizeConsortiumAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule
 import com.yizhipin.goods.presenter.GeneralizePresenter
-import kotlinx.android.synthetic.main.activity_generalize_details.*
+import kotlinx.android.synthetic.main.activity_generalize_group_details.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 /**
  * Created by ${XiLei} on 2018/8/23.
+ * 投资团详情
  */
-class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
+class GeneralizeGroupDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
 
 
-    @Autowired(name = GeneralizeConstant.KEY_GEN_ID) //注解接收上个页面的传参
+    @Autowired(name = GeneralizeConstant.KEY_GEN_GROUP_ID) //注解接收上个页面的传参
     @JvmField
-    var mId: Int = 0
+    var mId: String = ""
 
     private lateinit var mGoodsAdapter: GeneralizeConsortiumAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_generalize_details)
+        setContentView(R.layout.activity_generalize_group_details)
         initView()
         loadData()
     }
 
     private fun initView() {
-        mPersonageBtn.onClick(this)
+        toast("mid=" + mId)
+        mBtn.onClick(this)
         mConsortiumRv.layoutManager = LinearLayoutManager(this!!)
         mGoodsAdapter = GeneralizeConsortiumAdapter(this!!)
         mConsortiumRv.adapter = mGoodsAdapter
         mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<GeneralizeCollectGroup> {
             override fun onItemClick(item: GeneralizeCollectGroup, position: Int) {
-                startActivity<GeneralizeGroupDetailsActivity>(GeneralizeConstant.KEY_GEN_GROUP_ID to item.id)
+                //                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.product.id!!)
             }
         })
     }
@@ -62,17 +65,16 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
 
     private fun loadData() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         map.put("id", mId.toString())
-        mBasePresenter.getGenBiddingDetails(map)
+        mBasePresenter.getGenGroupDetails(map)
     }
 
     /**
      * 获取商品列表成功
      */
-    override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
+    override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
         result?.let {
-            mGoodsNameTv.text = result.product.name
+        /*    mGoodsNameTv.text = result.product.name
             mSystemTv.text = result.product.pinPrice.toString()
             mRetailTv.text = result.product.price.toString()
             mShopTv.text = result.product.shop!!.shopName
@@ -89,7 +91,7 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
                 "homestay" -> mTypeTv.text = getString(R.string.stay)
                 "trip" -> mTypeTv.text = getString(R.string.group_group)
                 "car" -> mTypeTv.text = getString(R.string.motor_homes)
-            }
+            }*/
 
             mGoodsAdapter.setData(result.groups)
         }
@@ -108,7 +110,7 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
 
     override fun onPayPersonageSuccess(result: String) {
     }
-    override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
+    override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
     }
 }
 

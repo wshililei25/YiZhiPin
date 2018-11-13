@@ -3,6 +3,7 @@ package com.yizhipin.goods.data.api
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -23,6 +24,12 @@ interface GeneralizeApi {
      */
     @GET("${Api.GENERALIZE_DETAILS}${"/{id}"}")
     fun getGenBiddingDetails(@Path("id") id: String, @Query("uid") bidding: String): Observable<BaseResp<GeneralizeCollect>>
+
+    /**
+     * 投资团详情
+     */
+    @GET(Api.GENERALIZE_GROUP_DETAILS)
+    fun getGenGroupDetails(@Query("id") id: String): Observable<BaseResp<GeneralizeGroupDetails>>
 
     /**
      * 个人出价投资

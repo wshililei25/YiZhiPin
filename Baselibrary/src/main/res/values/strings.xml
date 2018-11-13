@@ -203,6 +203,11 @@
     <string name="personage_bidding">个人出价</string>
     <string name="consortium_add">可加入的投资团</string>
     <string name="share_bidding">发起拼单竞价</string>
+    <string name="input_hundred_hint">请输入100的整数倍数值</string>
+    <string name="set_pwd">请先设置支付密码</string>
+    <string name="generalize_group_details">投资团详情</string>
+    <string name="investment_analysis">发起人投资分析</string>
+    <string name="share_invest">发起拼单投资</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

@@ -13,12 +13,14 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.utils.BaseAlertDialog
+import com.yizhipin.base.widgets.DefaultTextWatcher
 import com.yizhipin.base.widgets.PayPasswordDialog
 import com.yizhipin.base.widgets.PayRadioGroup
 import com.yizhipin.base.widgets.PayRadioPurified
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule
@@ -27,6 +29,7 @@ import com.yizhipin.provider.common.ProvideReqCode
 import com.yizhipin.provider.common.ProviderConstant
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_pay_generalize.*
+import org.jetbrains.anko.toast
 
 /**
  * Created by ${XiLei} on 2018/9/24.
@@ -34,6 +37,7 @@ import kotlinx.android.synthetic.main.activity_pay_generalize.*
  */
 
 class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
+
 
     @Autowired(name = GeneralizeConstant.KEY_GEN_ID) //注解接收上个页面的传参
     @JvmField
@@ -68,7 +72,19 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
 
     private fun initView() {
 
-        mEdt.setSelection(mEdt.text.length);
+        mSubIv.onClick(this)
+        mAddIv.onClick(this)
+        mEdt.setSelection(mEdt.text.length)
+        mEdt.addTextChangedListener(object : DefaultTextWatcher() {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                if (s!!.isNullOrEmpty()) {
+                    mEdt.setText("100")
+                }
+                mPaymentTv.setText("${mEdt.text.toString()}.00")
+                mEdt.setSelection(mEdt.text.length)
+            }
+        })
 
         /*   mGoodsList = intent.getParcelableArrayListExtra<Goods>(OrderConstant.KEY_GOODS_LIST) as MutableList<Goods>
 
@@ -140,12 +156,28 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
 
     override fun onClick(v: View) {
         when (v.id) {
+
+            R.id.mSubIv -> {
+                if (mEdt.text.toString().toInt() <= 100) {
+                    return
+                }
+                mEdt.setText((mEdt.text.toString().toInt() - 100).toString())
+            }
+            R.id.mAddIv -> {
+                mEdt.setText((mEdt.text.toString().toInt() + 100).toString())
+            }
+
             R.id.mPayBtn -> {
+
+                if (mEdt.text.toString().toInt() % 100 != 0) {
+                    toast(getString(R.string.input_hundred_hint))
+                    return
+                }
 
                 if (AppPrefsUtils.getString(ProviderConstant.KEY_PAY_PWD).isNullOrEmpty()) {
 
                     val baseAlertDialog = BaseAlertDialog(this)
-                    baseAlertDialog.setMessage("请先设置支付密码")
+                    baseAlertDialog.setMessage(getString(R.string.set_pwd))
                     baseAlertDialog.show()
                     baseAlertDialog.setOkClickInterface(object : BaseAlertDialog.OkClickInterface {
                         override fun okClickListener() {
@@ -228,5 +260,7 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
     }
 
     override fun onGetGoodsListSuccess(result: BasePagingResp<MutableList<GeneralizeCollect>>) {
+    }
+    override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
     }
 }

@@ -5,6 +5,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
+import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
 import com.yizhipin.goods.data.api.GeneralizeApi
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -20,6 +21,9 @@ class GeneralizeRepository @Inject constructor() {
 
     fun getGenBiddingDetails(map: MutableMap<String, String>): Observable<BaseResp<GeneralizeCollect>> {
         return RetrofitFactoryGet().create(GeneralizeApi::class.java).getGenBiddingDetails(map["id"]!!, map["uid"]!!)
+    }
+    fun getGenGroupDetails(map: MutableMap<String, String>): Observable<BaseResp<GeneralizeGroupDetails>> {
+        return RetrofitFactoryGet().create(GeneralizeApi::class.java).getGenGroupDetails(map["id"]!!)
     }
 
     fun payPersonage(map: MutableMap<String, String>): Observable<BaseResp<String>> {

@@ -38,7 +38,10 @@
                 android:padding="@dimen/yPaddingMiddle">
 
                 <ImageView
+                    android:id="@+id/mSubIv"
                     style="@style/WrapWrap"
+                    android:paddingTop="@dimen/yPaddingMiddle"
+                    android:paddingBottom="@dimen/yPaddingMiddle"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/mEdt"
                     android:src="@drawable/reduce"/>
@@ -52,11 +55,13 @@
                     android:layout_marginRight="@dimen/yPadding"
                     android:background="@null"
                     android:gravity="center_horizontal"
+                    android:inputType="number"
                     android:text="100"
                     android:textColor="@color/yMain"
                     android:textSize="@dimen/yTextMaxSize"/>
 
                 <ImageView
+                    android:id="@+id/mAddIv"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/mEdt"
