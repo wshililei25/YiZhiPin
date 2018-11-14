@@ -98,7 +98,7 @@ class GeneralizeGroupDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), G
 
         }
     }
-
+    //
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mPersonageBtn -> {
