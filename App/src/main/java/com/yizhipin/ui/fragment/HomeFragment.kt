@@ -5,9 +5,11 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.eightbitlab.rxbus.Bus
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.event.HomeIntentEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
@@ -63,10 +65,10 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
     }
 
     private fun initHotGoodsView() {
-        mGoodsRv.layoutManager = GridLayoutManager(activity!!, 3)
+        mGoodsRv.layoutManager = GridLayoutManager(activity, 3)
         mHotGoodsAdapter = HotGoodsAdapter(activity!!)
         mGoodsRv.adapter = mHotGoodsAdapter
-        mHotGoodsAdapter.setOnItemClickListener(object :BaseRecyclerViewAdapter.OnItemClickListener<Goods>{
+        mHotGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods> {
             override fun onItemClick(item: Goods, position: Int) {
                 startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id!!)
             }
@@ -107,7 +109,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         mCategoryRv.adapter = categoryHomeAdapter
         categoryHomeAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<CategoryHome> {
             override fun onItemClick(item: CategoryHome, position: Int) {
-
+                Bus.send(HomeIntentEvent(position))
             }
         })
     }

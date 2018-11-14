@@ -5,8 +5,13 @@ import android.support.design.widget.TabLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
+import com.kennyc.view.MultiStateView
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.event.CartDeleteAllEvent
+import com.yizhipin.base.event.HomeIntentEvent
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.goods.R
 import com.yizhipin.goods.data.response.Category
@@ -16,6 +21,7 @@ import com.yizhipin.goods.injection.module.CategoryModule
 import com.yizhipin.goods.presenter.CategoryPresenter
 import com.yizhipin.goods.presenter.view.CategoryView
 import com.yizhipin.goods.ui.adapter.CategoryVpAdapter
+import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.fragment_category.*
 
 /**
@@ -33,6 +39,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initObserve()
     }
 
     private fun initView() {
@@ -59,6 +66,21 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
     override fun onGetCategoryAllSuccess(result: MutableList<Category>?) {
         mData = result!!
         mCategoryVpAdapter.setData(mData!!)
+    }
+
+    private fun initObserve() {
+        Bus.observe<HomeIntentEvent>()
+                .subscribe { t: HomeIntentEvent ->
+                    run {
+                        when (t.position) {
+                            0 -> mVp.setCurrentItem(0)
+                            1 -> mVp.setCurrentItem(3)
+                            2 -> mVp.setCurrentItem(1)
+                            4 -> mVp.setCurrentItem(2)
+                        }
+
+                    }
+                }.registerInBus(this)
     }
 
     override fun onGetCategorySencondSuccess(result: MutableList<CategorySecond>?) {

@@ -8,9 +8,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
 import com.yizhipin.base.common.AppManager
 import com.yizhipin.base.common.BaseApplication
+import com.yizhipin.base.event.HomeIntentEvent
 import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.generalizecenter.ui.fragment.GeneralizeFragment
 import com.yizhipin.goods.ui.fragment.CategoryFragment
@@ -34,6 +36,7 @@ class MainActivity : BaseActivity() {
         initFragment()
         initBottomNav()
         changeFragment(0)
+        initObserve()
     }
 
     private fun initFragment() {
@@ -72,6 +75,22 @@ class MainActivity : BaseActivity() {
         }
         manager.show(mStack[position])
         manager.commit()
+    }
+
+    private fun initObserve() {
+        Bus.observe<HomeIntentEvent>()
+                .subscribe { t: HomeIntentEvent ->
+                    run {
+
+                        if (t.position == 3) {
+                            changeFragment(2)
+                            mBottomNavBar.selectTab(2)
+                        } else {
+                            changeFragment(1)
+                            mBottomNavBar.selectTab(1)
+                        }
+                    }
+                }.registerInBus(this)
     }
 
     override fun onDestroy() {
