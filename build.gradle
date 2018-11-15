@@ -9,7 +9,7 @@ buildscript {
 
     ext.multidex_version = '1.0.2'
 
-    ext.kotlin_version = '1.3.0'
+    ext.kotlin_version = '1.3.10'
     ext.anko_version = '0.10.4'
     ext.rx_java_version = '2.1.12'
     ext.rx_android_version = '2.0.2'

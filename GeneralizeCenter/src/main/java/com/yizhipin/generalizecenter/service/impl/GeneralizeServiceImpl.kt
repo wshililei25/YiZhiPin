@@ -3,9 +3,7 @@ package com.yizhipin.generalizecenter.service.impl
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertPaging
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
-import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
+import com.yizhipin.generalizecenter.data.response.*
 import com.yizhipin.generalizecenter.service.GeneralizeService
 import com.yizhipin.goods.data.repository.GeneralizeRepository
 import io.reactivex.Observable
@@ -42,6 +40,14 @@ open class GeneralizeServiceImpl @Inject constructor() : GeneralizeService {
     override fun getInvestStatistics(map: MutableMap<String, String>): Observable<GeneralizeInvestAmount> {
 
         return mRepository.getInvestStatistics(map).convert()
+    }
+    override fun getGenInvestList(map: MutableMap<String, String>): Observable<MutableList<GeneralizeInvest>> {
+
+        return mRepository.getGenInvestList(map).convert()
+    }
+    override fun getInvestDetailsList(map: MutableMap<String, String>): Observable<MutableList<InvestDetails>> {
+
+        return mRepository.getInvestDetailsList(map).convert()
     }
 
 }

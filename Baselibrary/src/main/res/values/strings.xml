@@ -213,6 +213,11 @@
     <string name="invest_detail">投资明细</string>
     <string name="month_income">本月收益</string>
     <string name="history_all_income">历史总收益</string>
+    <string name="contributive">出资:</string>
+    <string name="earnings">收益中</string>
+    <string name="in_bidding">竞价中</string>
+    <string name="finished">已结束</string>
+    <string name="bidding_failure">竞价失败</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

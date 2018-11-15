@@ -1,14 +1,12 @@
 package com.yizhipin.goods.presenter
 
-import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.presenter.BasePresenter
 import com.yizhipin.base.rx.BaseSubscriber
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
+import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
+import com.yizhipin.generalizecenter.data.response.InvestDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeInvestView
-import com.yizhipin.generalizecenter.presenter.view.GeneralizeView
 import com.yizhipin.generalizecenter.service.impl.GeneralizeServiceImpl
 import javax.inject.Inject
 
@@ -22,24 +20,35 @@ open class GeneralizeInvestPresenter @Inject constructor() : BasePresenter<Gener
 
     fun getInvestStatistics(map: MutableMap<String, String>) {
 
-        mView.showLoading()
+//        mView.showLoading()
         mCategoryServiceImpl.getInvestStatistics(map)
                 .execute(object : BaseSubscriber<GeneralizeInvestAmount>(mView) {
                     override fun onNext(t: GeneralizeInvestAmount) {
+                        mView.onGetInvestAmountSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
+    fun getGenInvestList(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mCategoryServiceImpl.getGenInvestList(map)
+                .execute(object : BaseSubscriber<MutableList<GeneralizeInvest>>(mView) {
+                    override fun onNext(t: MutableList<GeneralizeInvest>) {
                         mView.onGetInvestListSuccess(t)
                     }
                 }, mLifecycleProvider)
 
     }
-    fun getGenBiddingList(map: MutableMap<String, String>) {
+    fun getInvestDetailsList(map: MutableMap<String, String>) {
 
-       /* mView.showLoading()
-        mCategoryServiceImpl.getGenBiddingList(map)
-                .execute(object : BaseSubscriber<BasePagingResp<MutableList<GeneralizeCollect>>>(mView) {
-                    override fun onNext(t: BasePagingResp<MutableList<GeneralizeCollect>>) {
-                        mView.onGetInvestListSuccess(t)
+        mView.showLoading()
+        mCategoryServiceImpl.getInvestDetailsList(map)
+                .execute(object : BaseSubscriber<MutableList<InvestDetails>>(mView) {
+                    override fun onNext(t: MutableList<InvestDetails>) {
+                        mView.onGetInvestDetailsListSuccess(t)
                     }
-                }, mLifecycleProvider)*/
+                }, mLifecycleProvider)
 
     }
 

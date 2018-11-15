@@ -5,5 +5,6 @@
         <activity android:name=".ui.activity.PayGeneralizeActivity"/>
         <activity android:name=".ui.activity.GeneralizeGroupDetailsActivity"/>
         <activity android:name=".ui.activity.GeneralizeInvestActivity"/>
+        <activity android:name=".ui.activity.InvestDetailsActivity"/>
     </application>
 </manifest>

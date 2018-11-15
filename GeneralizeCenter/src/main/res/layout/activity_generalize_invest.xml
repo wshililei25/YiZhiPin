@@ -4,6 +4,7 @@
     style="@style/MatchMatch.Vertical.White">
 
     <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
         app:rightText="@string/invest_detail"
         app:titleText="@string/invest_generalize" />

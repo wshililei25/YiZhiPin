@@ -1,41 +1,34 @@
-package com.yizhipin.generalizecenter.ui.fragment
+package com.yizhipin.generalizecenter.ui.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.ext.startLoading
-import com.yizhipin.base.ui.fragment.BaseMvpFragment
+import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.generalizecenter.R
-import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
 import com.yizhipin.generalizecenter.data.response.InvestDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeInvestView
-import com.yizhipin.generalizecenter.ui.adapter.GeneralizeInvestAdapter
+import com.yizhipin.generalizecenter.ui.adapter.InvestDetailsAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule
 import com.yizhipin.goods.presenter.GeneralizeInvestPresenter
-import kotlinx.android.synthetic.main.fragment_invest.*
+import kotlinx.android.synthetic.main.activity_invest_details.*
 
 /**
  * Created by ${XiLei} on 2018/9/25.
  */
-class GeneralizeInvestFragment : BaseMvpFragment<GeneralizeInvestPresenter>(), GeneralizeInvestView {
+class InvestDetailsActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), GeneralizeInvestView {
 
-    private lateinit var mOrderAdapter: GeneralizeInvestAdapter
+    private lateinit var mOrderAdapter: InvestDetailsAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_invest, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_invest_details)
 
         initView()
         initRefreshLayout()
@@ -43,13 +36,13 @@ class GeneralizeInvestFragment : BaseMvpFragment<GeneralizeInvestPresenter>(), G
     }
 
     private fun initView() {
-          mOrderRv.layoutManager = LinearLayoutManager(activity!!)
-          mOrderAdapter = GeneralizeInvestAdapter(activity!!)
+          mOrderRv.layoutManager = LinearLayoutManager(this!!)
+          mOrderAdapter = InvestDetailsAdapter(this!!)
           mOrderRv.adapter = mOrderAdapter
     }
 
     private fun initRefreshLayout() {
-        val viewHolder = BGANormalRefreshViewHolder(activity, true)
+        val viewHolder = BGANormalRefreshViewHolder(this, true)
         viewHolder.setRefreshViewBackgroundDrawableRes(R.color.yBgGray)
         viewHolder.setLoadMoreBackgroundColorRes(R.color.yBgGray)
         mRefreshLayout.setRefreshViewHolder(viewHolder)
@@ -58,9 +51,8 @@ class GeneralizeInvestFragment : BaseMvpFragment<GeneralizeInvestPresenter>(), G
     private fun loadData() {
           var map = mutableMapOf<String, String>()
           map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-          map.put("status", arguments!!.getString(GeneralizeConstant.KEY_INVEST_STATUS, "-1").toString())
           mMultiStateView.startLoading()
-          mBasePresenter.getGenInvestList(map)
+          mBasePresenter.getInvestDetailsList(map)
     }
 
     override fun injectComponent() {
@@ -68,17 +60,18 @@ class GeneralizeInvestFragment : BaseMvpFragment<GeneralizeInvestPresenter>(), G
         mBasePresenter.mView = this
     }
 
-    override fun onGetInvestListSuccess(result: MutableList<GeneralizeInvest>) {
+    override fun onGetInvestDetailsListSuccess(result: MutableList<InvestDetails>) {
         if (result != null &&  result.size > 0) {
-                mOrderAdapter.setData(result)
+            mOrderAdapter.setData(result)
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
     }
 
-    override fun onGetInvestAmountSuccess(result: GeneralizeInvestAmount) {
+    override fun onGetInvestListSuccess(result: MutableList<GeneralizeInvest>) {
     }
-    override fun onGetInvestDetailsListSuccess(result: MutableList<InvestDetails>) {
+
+    override fun onGetInvestAmountSuccess(result: GeneralizeInvestAmount) {
     }
 }

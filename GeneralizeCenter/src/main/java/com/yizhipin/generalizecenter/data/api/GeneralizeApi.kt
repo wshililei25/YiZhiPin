@@ -2,9 +2,7 @@ package com.yizhipin.goods.data.api
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
-import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
+import com.yizhipin.generalizecenter.data.response.*
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -43,6 +41,18 @@ interface GeneralizeApi {
      */
     @GET(Api.GENERALIZE_INVEST_AMOUNT)
     fun getInvestStatistics(@Query("uid") uid: String): Observable<BaseResp<GeneralizeInvestAmount>>
+
+    /**
+     * 投资推广列表
+     */
+    @GET(Api.GENERALIZE_INVEST_LIST)
+    fun getGenInvestList(@Query("uid") uid: String, @Query("status") status: String): Observable<BaseResp<MutableList<GeneralizeInvest>>>
+
+    /**
+     * 投资明细列表
+     */
+    @GET(Api.INVEST_DETAILS_LIST)
+    fun getInvestDetailsList(@Query("uid") uid: String): Observable<BaseResp<MutableList<InvestDetails>>>
 
 
 }

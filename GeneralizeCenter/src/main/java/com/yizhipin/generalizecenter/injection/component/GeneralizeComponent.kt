@@ -2,10 +2,7 @@ package com.yizhipin.goods.injection.component
 
 import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
-import com.yizhipin.generalizecenter.ui.activity.GeneralizeDetailsActivity
-import com.yizhipin.generalizecenter.ui.activity.GeneralizeGroupDetailsActivity
-import com.yizhipin.generalizecenter.ui.activity.GeneralizeInvestActivity
-import com.yizhipin.generalizecenter.ui.activity.PayGeneralizeActivity
+import com.yizhipin.generalizecenter.ui.activity.*
 import com.yizhipin.generalizecenter.ui.fragment.GeneralizeGoodsFragment
 import com.yizhipin.generalizecenter.ui.fragment.GeneralizeInvestFragment
 import com.yizhipin.goods.injection.module.GeneralizeModule
@@ -24,4 +21,5 @@ interface GeneralizeComponent {
     fun inject(activity: GeneralizeGroupDetailsActivity)
     fun inject(activity: GeneralizeInvestActivity)
     fun inject(activity: GeneralizeInvestFragment)
+    fun inject(activity: InvestDetailsActivity)
 }

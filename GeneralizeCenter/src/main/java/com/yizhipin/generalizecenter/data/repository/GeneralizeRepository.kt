@@ -4,9 +4,7 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
-import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
-import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
+import com.yizhipin.generalizecenter.data.response.*
 import com.yizhipin.goods.data.api.GeneralizeApi
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -34,6 +32,12 @@ class GeneralizeRepository @Inject constructor() {
 
     fun getInvestStatistics(map: MutableMap<String, String>): Observable<BaseResp<GeneralizeInvestAmount>> {
         return RetrofitFactoryGet().create(GeneralizeApi::class.java).getInvestStatistics(map["uid"]!!)
+    }
+    fun getGenInvestList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<GeneralizeInvest>>> {
+        return RetrofitFactoryGet().create(GeneralizeApi::class.java).getGenInvestList(map["uid"]!!,map["status"]!!)
+    }
+    fun getInvestDetailsList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<InvestDetails>>> {
+        return RetrofitFactoryGet().create(GeneralizeApi::class.java).getInvestDetailsList(map["uid"]!!)
     }
 
 

@@ -3,16 +3,20 @@ package com.yizhipin.generalizecenter.ui.activity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.generalizecenter.R
+import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
+import com.yizhipin.generalizecenter.data.response.InvestDetails
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeInvestView
 import com.yizhipin.generalizecenter.ui.adapter.GenInvestVpAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
 import com.yizhipin.goods.injection.module.GeneralizeModule
 import com.yizhipin.goods.presenter.GeneralizeInvestPresenter
 import kotlinx.android.synthetic.main.activity_generalize_invest.*
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by ${XiLei} on 2018/9/25.
@@ -38,6 +42,10 @@ class GeneralizeInvestActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), G
         mOrderVp.adapter = GenInvestVpAdapter(supportFragmentManager, this)
         mOrderTab.setupWithViewPager(mOrderVp)
 
+        mHeaderBar.getRightTv().onClick {
+            startActivity<InvestDetailsActivity>()
+        }
+
 //        mOrderVp.currentItem = intent.getIntExtra(OrderConstant.KEY_ORDER_STATUS, 0)
     }
 
@@ -48,10 +56,16 @@ class GeneralizeInvestActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), G
         mBasePresenter.getInvestStatistics(map)
     }
 
-    override fun onGetInvestListSuccess(result: GeneralizeInvestAmount) {
+    override fun onGetInvestAmountSuccess(result: GeneralizeInvestAmount) {
         with(result) {
             mMounthIncomeTv.text = getString(R.string.rmb).plus(month)
             mAllIncomeTv.text = getString(R.string.rmb).plus(total)
         }
+    }
+
+    override fun onGetInvestListSuccess(result: MutableList<GeneralizeInvest>) {
+    }
+
+    override fun onGetInvestDetailsListSuccess(result: MutableList<InvestDetails>) {
     }
 }

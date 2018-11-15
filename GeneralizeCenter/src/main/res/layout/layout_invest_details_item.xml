@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite"
+              tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <TextView
+            android:id="@+id/mNameTv"
+            style="@style/WrapWrap"
+            android:text="dddd"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mDateTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mNameTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:text="dddd"
+            android:textColor="@color/yHint"
+            android:textSize="@dimen/yTextSmallSize"/>
+
+        <TextView
+            android:id="@+id/mAmountTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="0.00"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextBigSize"/>
+
+    </RelativeLayout>
+</LinearLayout>
