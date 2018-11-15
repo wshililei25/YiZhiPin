@@ -4,6 +4,7 @@ import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
 import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
+import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -36,5 +37,12 @@ interface GeneralizeApi {
      */
     @POST(Api.PAY_PERSONAGE)
     fun payPersonage(): Observable<BaseResp<String>>
+
+    /**
+     * 投资收益金额
+     */
+    @GET(Api.GENERALIZE_INVEST_AMOUNT)
+    fun getInvestStatistics(@Query("uid") uid: String): Observable<BaseResp<GeneralizeInvestAmount>>
+
 
 }

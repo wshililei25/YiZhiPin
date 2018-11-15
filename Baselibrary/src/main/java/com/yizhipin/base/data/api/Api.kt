@@ -47,5 +47,6 @@ interface Api {
         const val GENERALIZE_DETAILS = "api/Investment"//推广中的商品详情
         const val GENERALIZE_GROUP_DETAILS = "api/Investment/Group/Detail"//投资团详情
         const val PAY_PERSONAGE = "api/Investment/User"//个人出价投资
+        const val GENERALIZE_INVEST_AMOUNT = "api/InvestmentIncome/Total"//投资收益金额
     }
 }

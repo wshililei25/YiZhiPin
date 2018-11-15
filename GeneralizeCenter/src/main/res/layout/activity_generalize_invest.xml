@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        style="@style/MatchWrap"
+        app:rightText="@string/invest_detail"
+        app:titleText="@string/invest_generalize" />
+
+    <LinearLayout
+        style="@style/MatchWrap"
+        android:background="@color/yMain"
+        android:padding="@dimen/yPaddingBigLar">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/month_income"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mMounthIncomeTv"
+                style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:text="¥ 0.00"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextHugeSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/history_all_income"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mAllIncomeTv"
+                style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/yPaddingSmall"
+                android:text="¥ 0.00"
+                android:textColor="@color/yWhite"
+                android:textSize="@dimen/yTextHugeSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mOrderTab"
+        style="@style/TabsStyle.Order" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mOrderVp"
+        style="@style/MatchWrap" />
+</LinearLayout>

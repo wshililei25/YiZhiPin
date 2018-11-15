@@ -11,6 +11,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
+import com.yizhipin.generalizecenter.ui.activity.GeneralizeInvestActivity
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.ui.activity.OrderActivity
@@ -79,6 +80,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mCartView.onClick(this)
         mRedPaperTv.onClick(this)
         mCollectSkimTv.onClick(this)
+        mShareTv.onClick(this)
 
         setCartBadge()
     }
@@ -123,7 +125,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     startActivity<ShipAddressActivity>()
                 }
             }
-            R.id.mAllOrderTv -> {
+            R.id.mAllOrderTv -> { //订单
                 afterLogin {
                     startActivity<OrderActivity>()
                 }
@@ -187,6 +189,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
             R.id.mCollectSkimTv -> { //我的收藏与浏览记录
                 afterLogin {
                     ARouter.getInstance().build(RouterPath.GoodsCenter.PATH_GOODS_COLLECT).navigation()
+                }
+            }
+            R.id.mShareTv -> { //投资推广
+                afterLogin {
+                    startActivity<GeneralizeInvestActivity>()
                 }
             }
 

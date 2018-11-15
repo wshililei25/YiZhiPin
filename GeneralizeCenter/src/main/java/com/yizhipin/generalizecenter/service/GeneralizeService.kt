@@ -3,6 +3,7 @@ package com.yizhipin.generalizecenter.service
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
 import com.yizhipin.generalizecenter.data.response.GeneralizeGroupDetails
+import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
 import io.reactivex.Observable
 
 
@@ -15,4 +16,5 @@ interface GeneralizeService {
     fun getGenBiddingDetails(map: MutableMap<String, String>): Observable<GeneralizeCollect>
     fun getGenGroupDetails(map: MutableMap<String, String>): Observable<GeneralizeGroupDetails>
     fun payPersonage(map: MutableMap<String, String>): Observable<String>
+    fun getInvestStatistics(map: MutableMap<String, String>): Observable<GeneralizeInvestAmount>
 }

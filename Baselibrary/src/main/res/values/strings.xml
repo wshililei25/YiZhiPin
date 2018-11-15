@@ -209,6 +209,10 @@
     <string name="investment_analysis">发起人投资分析</string>
     <string name="share_invest">发起拼单投资</string>
     <string name="participation_invest">参与拼单投资</string>
+    <string name="invest_generalize">投资推广</string>
+    <string name="invest_detail">投资明细</string>
+    <string name="month_income">本月收益</string>
+    <string name="history_all_income">历史总收益</string>
 
 
     <string name="send_code_success">发送验证码成功</string>
