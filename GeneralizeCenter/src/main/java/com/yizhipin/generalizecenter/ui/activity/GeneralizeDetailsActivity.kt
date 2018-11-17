@@ -29,7 +29,6 @@ import org.jetbrains.anko.startActivity
  */
 class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
 
-
     @Autowired(name = GeneralizeConstant.KEY_GEN_ID) //注解接收上个页面的传参
     @JvmField
     var mId: Int = 0

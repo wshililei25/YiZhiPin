@@ -19,7 +19,7 @@ import com.yizhipin.data.response.Banner
 import com.yizhipin.data.response.CategoryHome
 import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.ui.activity.GoodsDetailActivity
-import com.yizhipin.goods.ui.activity.SearchGoodsActivity
+import com.yizhipin.goods.ui.activity.SearchActivity
 import com.yizhipin.presenter.HomePresenter
 import com.yizhipin.presenter.view.HomeView
 import com.yizhipin.ui.adapter.CategoryHomeAdapter
@@ -60,8 +60,9 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
 
     private fun initView() {
 
-        mSearchEt.onClick(this)
         mUnderstandTv.onClick(this)
+        mSearchV.onClick(this)
+        mSearchEt.onClick(this)
     }
 
     private fun initHotGoodsView() {
@@ -116,11 +117,12 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
 
     override fun onClick(v: View) {
         when (v.id) {
+
+            R.id.mSearchEt -> startActivity<SearchActivity>()
+            R.id.mSearchV -> startActivity<SearchActivity>()
+
             R.id.mUnderstandTv -> { //了解一下
 
-            }
-            R.id.mSearchEt -> { //搜索
-                startActivity<SearchGoodsActivity>()
             }
         }
     }

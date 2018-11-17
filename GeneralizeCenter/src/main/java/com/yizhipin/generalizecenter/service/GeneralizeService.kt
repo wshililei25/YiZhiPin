@@ -16,5 +16,6 @@ interface GeneralizeService {
     fun payPersonage(map: MutableMap<String, String>): Observable<String>
     fun getInvestStatistics(map: MutableMap<String, String>): Observable<GeneralizeInvestAmount>
     fun getGenInvestList(map: MutableMap<String, String>): Observable<MutableList<GeneralizeInvest>>
-    fun getInvestDetailsList(map: MutableMap<String, String>): Observable<MutableList<InvestDetails>>
+    fun getInvestDetailsList(map: MutableMap<String, String>): Observable<MutableList<InvestList>>
+    fun getInvestDetails(map: MutableMap<String, String>): Observable<InvestDetails>
 }

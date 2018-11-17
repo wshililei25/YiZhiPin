@@ -1,56 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchMatch.Vertical">
-
-    <LinearLayout style="@style/SearchHeaderStyle">
-
-        <ImageView
-            android:id="@+id/mLeftIv"
-            style="@style/WrapMatch"
-            android:paddingLeft="@dimen/common_padding"
-            android:paddingRight="@dimen/common_padding"
-            android:src="@drawable/leftarrow3"/>
-
-        <EditText
-            android:id="@+id/mKeywordEt"
-            style="@style/SearchHeaderEtStyle"
-            android:hint="搜索商品/品类"/>
-
-        <TextView
-            android:id="@+id/mSearchTv"
-            style="@style/WrapWrap"
-            android:text="搜索"
-            android:textColor="@color/common_white"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/mNoDataTv"
-        style="@style/MatchMatch"
-        android:gravity="center"
-        android:text="暂无历史记录"/>
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
 
     <LinearLayout
-        android:id="@+id/mDataView"
-        style="@style/MatchMatch"
-        android:orientation="vertical">
+        style="@style/SearchHeaderStyle"
+        android:layout_height="@dimen/ySerchHead">
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/ySerchHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_weight="1"
+            android:background="@drawable/home_header_corner_bg">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:src="@drawable/search"/>
+
+            <EditText
+                android:id="@+id/mSearchEt"
+                style="@style/MatchMatch"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:hint="@string/serch_hint"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/mCancelTv"
             style="@style/WrapWrap"
-            android:layout_margin="@dimen/common_padding"
-            android:text="你最近的搜索历史"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mSearchHistoryRv"
-            style="@style/commonRecyclerView"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/mClearBtn"
-            style="@style/MatchWrap"
-            android:layout_margin="30dp"
-            android:background="@drawable/corner_gray_white_bg"
-            android:padding="@dimen/common_padding"
-            android:text="清空历史搜索"
-            android:textColor="@color/text_dark"/>
+            android:layout_marginLeft="@dimen/yPadding"
+            android:text="@string/cancel"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
     </LinearLayout>
+
+    <LinearLayout
+        style="@style/MatchMatch.Horizontal">
+
+        <LinearLayout
+            style="@style/MatchMatch.Vertical"
+            android:layout_weight="1"
+            android:background="@color/yWhite">
+
+            <LinearLayout
+                style="@style/MatchWrap.Horizontal"
+                android:paddingTop="@dimen/yPadding"
+                android:paddingBottom="@dimen/yPadding">
+
+                <LinearLayout
+                    style="@style/WrapWrap.Horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/mAreaTv"
+                        style="@style/WrapWrap"
+                        android:drawableRight="@drawable/lower2"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="@string/region_all"
+                        android:textColor="@drawable/selector_text"
+                        android:textSize="@dimen/yTextMiddleBigSize"/>
+                </LinearLayout>
+
+                <View
+                    style="@style/DividerFixedWidth"/>
+
+                <LinearLayout
+                    android:id="@+id/mSalesView"
+                    style="@style/WrapWrap.Horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/mSalesTv"
+                        style="@style/WrapWrap"
+                        android:drawableRight="@drawable/sort2"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="@string/volume"
+                        android:textColor="@drawable/selector_text"
+                        android:textSize="@dimen/yTextMiddleBigSize"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/DividerFixedWidth"/>
+
+                <LinearLayout
+                    android:id="@+id/mPriceView"
+                    style="@style/WrapWrap.Horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/mPriceTv"
+                        style="@style/WrapWrap"
+                        android:drawableRight="@drawable/sort"
+                        android:drawablePadding="@dimen/yPaddingSmall"
+                        android:text="@string/price"
+                        android:textColor="@drawable/selector_text"
+                        android:textSize="@dimen/yTextMiddleBigSize"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                style="@style/DividerFixedHeight"/>
+
+            <com.kennyc.view.MultiStateView
+                android:id="@+id/mMultiStateView"
+                style="@style/MultiStateStyle">
+
+                <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+                    android:id="@+id/mRefreshLayout"
+                    style="@style/MatchMatch">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/mGoodsRv"
+                        style="@style/commonRecyclerView"/>
+                </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+            </com.kennyc.view.MultiStateView>
+
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

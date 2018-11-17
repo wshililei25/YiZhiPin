@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          style="@style/WrapWrap"
+          android:layout_marginRight="@dimen/common_padding_middle"
+          android:layout_marginBottom="@dimen/common_padding_middle"
+          android:background="@drawable/corner_gray_white_bg"
+          android:gravity="center"
+          android:minWidth="60dp"
+          android:paddingLeft="@dimen/common_padding_middle"
+          android:paddingTop="@dimen/common_padding_small"
+          android:paddingRight="@dimen/common_padding_middle"
+          android:paddingBottom="@dimen/common_padding_small"
+          android:textColor="@color/yBlackLight"
+          android:textSize="@dimen/yTextMiddleBigSize"/>
+

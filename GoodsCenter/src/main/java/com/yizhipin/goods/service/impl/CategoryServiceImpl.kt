@@ -9,6 +9,7 @@ import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.goods.data.repository.CategoryRepository
 import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.data.response.CategorySecond
+import com.yizhipin.goods.data.response.SearchKeyword
 import com.yizhipin.goods.service.CategoryService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -25,6 +26,10 @@ open class CategoryServiceImpl @Inject constructor() : CategoryService {
 
         return mRepository.getCategoryAll().convert()
     }
+    override fun getSearchKeyword(): Observable<MutableList<SearchKeyword>?> {
+
+        return mRepository.getSearchKeyword().convert()
+    }
 
     override fun getCategorySecond(map: MutableMap<String, String>): Observable<MutableList<CategorySecond>?> {
 
@@ -34,6 +39,10 @@ open class CategoryServiceImpl @Inject constructor() : CategoryService {
     override fun getGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
 
         return mRepository.getGoodsList(map).convertPaging()
+    }
+    override fun getSearchGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
+
+        return mRepository.getSearchGoodsList(map).convertPaging()
     }
     override fun getShopGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
 

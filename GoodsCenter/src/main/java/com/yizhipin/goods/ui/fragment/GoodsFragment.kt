@@ -29,7 +29,6 @@ import kotlinx.android.synthetic.main.fragment_recyclerview.*
  */
 class GoodsFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
-
     private var mShopId: String = ""
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1

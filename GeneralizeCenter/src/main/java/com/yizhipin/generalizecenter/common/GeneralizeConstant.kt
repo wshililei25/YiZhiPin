@@ -11,6 +11,8 @@ class GeneralizeConstant {
         const val KEY_GEN_GROUP_ID = "generalizeGroupId"
         //投资状态
         const val KEY_INVEST_STATUS = "invest_status"
+        //投资id
+        const val KEY_INVEST_ID = "investmentId"
     }
 
 

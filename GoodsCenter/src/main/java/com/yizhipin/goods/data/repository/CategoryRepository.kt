@@ -10,6 +10,7 @@ import com.yizhipin.goods.data.api.CategoryApi
 import com.yizhipin.goods.data.api.GoodsApi
 import com.yizhipin.goods.data.response.Category
 import com.yizhipin.goods.data.response.CategorySecond
+import com.yizhipin.goods.data.response.SearchKeyword
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -23,6 +24,11 @@ class CategoryRepository @Inject constructor() {
                 .getCategory()
     }
 
+    fun getSearchKeyword(): Observable<BaseResp<MutableList<SearchKeyword>?>> {
+        return RetrofitFactoryGet().create(CategoryApi::class.java)
+                .getSearchKeyword()
+    }
+
     fun getCategorySecond(map: MutableMap<String, String>): Observable<BaseResp<MutableList<CategorySecond>?>> {
         return RetrofitFactoryGet().create(CategoryApi::class.java)
                 .getCategorySecond(map["primaryCategory"]!!)
@@ -31,6 +37,12 @@ class CategoryRepository @Inject constructor() {
     fun getGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java)
                 .getGoodsList(map["currentPage"]!!, map["primaryCategory"]!!, map["secondCategory"]!!, map["order"]!!
+                        , map["orderType"]!!)
+    }
+
+    fun getSearchGoodsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Goods>?>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java)
+                .getSearchGoodsList(map["currentPage"]!!, map["name"]!!, map["order"]!!
                         , map["orderType"]!!)
     }
 
@@ -43,6 +55,7 @@ class CategoryRepository @Inject constructor() {
         return RetrofitFactoryGet().create(GoodsApi::class.java)
                 .getCollectGoodsList(map["currentPage"]!!, map["uid"]!!)
     }
+
     fun getCollectShopList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<CollectShop>?>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java)
                 .getCollectShopList(map["currentPage"]!!, map["uid"]!!)

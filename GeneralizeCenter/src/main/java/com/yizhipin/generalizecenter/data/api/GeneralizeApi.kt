@@ -52,7 +52,13 @@ interface GeneralizeApi {
      * 投资明细列表
      */
     @GET(Api.INVEST_DETAILS_LIST)
-    fun getInvestDetailsList(@Query("uid") uid: String): Observable<BaseResp<MutableList<InvestDetails>>>
+    fun getInvestDetailsList(@Query("uid") uid: String): Observable<BaseResp<MutableList<InvestList>>>
+
+    /**
+     * 投资详情
+     */
+    @GET(Api.INVEST_DETAILS)
+    fun getInvestDetails(@Query("uid") uid: String, @Query("investmentId") investmentId: String): Observable<BaseResp<InvestDetails>>
 
 
 }

@@ -13,7 +13,7 @@ class GoodsConstant {
         const val KEY_SEARCH_GOODS_TYPE = "search_goods_type"
         //按关键字搜索
         const  val SEARCH_GOODS_TYPE_KEYWORD = 1
-        //商品关键字
+        //搜索关键字
         const val KEY_GOODS_KEYWORD = "goods_keyword"
         //购物车数量
         const val SP_CART_SIZE = "cart_size"

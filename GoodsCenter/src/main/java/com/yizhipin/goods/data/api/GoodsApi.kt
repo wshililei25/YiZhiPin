@@ -31,6 +31,13 @@ interface GoodsApi {
                      , @Query("orderType") orderType: String): Observable<BasePagingResp<MutableList<Goods>?>>
 
     /**
+     * 商品列表
+     */
+    @GET(Api.GOODS_LIST)
+    fun getSearchGoodsList(@Query("currentPage") currentPage: String, @Query("name") name: String
+                           , @Query("order") order: String, @Query("orderType") orderType: String): Observable<BasePagingResp<MutableList<Goods>?>>
+
+    /**
      * 店铺的商品列表
      */
     @GET(Api.GOODS_LIST)

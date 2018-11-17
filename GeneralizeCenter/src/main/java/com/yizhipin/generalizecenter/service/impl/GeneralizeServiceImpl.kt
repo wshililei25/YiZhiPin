@@ -45,9 +45,13 @@ open class GeneralizeServiceImpl @Inject constructor() : GeneralizeService {
 
         return mRepository.getGenInvestList(map).convert()
     }
-    override fun getInvestDetailsList(map: MutableMap<String, String>): Observable<MutableList<InvestDetails>> {
+    override fun getInvestDetailsList(map: MutableMap<String, String>): Observable<MutableList<InvestList>> {
 
         return mRepository.getInvestDetailsList(map).convert()
+    }
+    override fun getInvestDetails(map: MutableMap<String, String>): Observable<InvestDetails> {
+
+        return mRepository.getInvestDetails(map).convert()
     }
 
 }

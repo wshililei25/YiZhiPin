@@ -36,8 +36,11 @@ class GeneralizeRepository @Inject constructor() {
     fun getGenInvestList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<GeneralizeInvest>>> {
         return RetrofitFactoryGet().create(GeneralizeApi::class.java).getGenInvestList(map["uid"]!!,map["status"]!!)
     }
-    fun getInvestDetailsList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<InvestDetails>>> {
+    fun getInvestDetailsList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<InvestList>>> {
         return RetrofitFactoryGet().create(GeneralizeApi::class.java).getInvestDetailsList(map["uid"]!!)
+    }
+    fun getInvestDetails(map: MutableMap<String, String>): Observable<BaseResp<InvestDetails>> {
+        return RetrofitFactoryGet().create(GeneralizeApi::class.java).getInvestDetails(map["uid"]!!,map["investmentId"]!!)
     }
 
 

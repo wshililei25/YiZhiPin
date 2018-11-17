@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.generalizecenter.R
-import com.yizhipin.generalizecenter.data.response.InvestDetails
+import com.yizhipin.generalizecenter.data.response.InvestList
 import kotlinx.android.synthetic.main.layout_invest_details_item.view.*
 
-class InvestDetailsAdapter(val context: Context) : BaseRecyclerViewAdapter<InvestDetails, InvestDetailsAdapter.ViewHolder>(context) {
+class InvestDetailsAdapter(val context: Context) : BaseRecyclerViewAdapter<InvestList, InvestDetailsAdapter.ViewHolder>(context) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.layout_generalize_invest_item, null)

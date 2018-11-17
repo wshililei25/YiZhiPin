@@ -10,6 +10,7 @@ import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
 import com.yizhipin.generalizecenter.data.response.InvestDetails
+import com.yizhipin.generalizecenter.data.response.InvestList
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeInvestView
 import com.yizhipin.generalizecenter.ui.adapter.GenInvestVpAdapter
 import com.yizhipin.goods.injection.component.DaggerGeneralizeComponent
@@ -43,7 +44,7 @@ class GeneralizeInvestActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), G
         mOrderTab.setupWithViewPager(mOrderVp)
 
         mHeaderBar.getRightTv().onClick {
-            startActivity<InvestDetailsActivity>()
+            startActivity<InvestListActivity>()
         }
 
 //        mOrderVp.currentItem = intent.getIntExtra(OrderConstant.KEY_ORDER_STATUS, 0)
@@ -66,6 +67,8 @@ class GeneralizeInvestActivity : BaseMvpActivity<GeneralizeInvestPresenter>(), G
     override fun onGetInvestListSuccess(result: MutableList<GeneralizeInvest>) {
     }
 
-    override fun onGetInvestDetailsListSuccess(result: MutableList<InvestDetails>) {
+    override fun onGetInvestDetailsListSuccess(result: MutableList<InvestList>) {
+    }
+    override fun onGetInvestDetailsSuccess(result: InvestDetails) {
     }
 }

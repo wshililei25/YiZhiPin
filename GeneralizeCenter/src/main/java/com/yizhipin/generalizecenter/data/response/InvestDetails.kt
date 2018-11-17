@@ -1,21 +1,15 @@
 package com.yizhipin.generalizecenter.data.response
 
 import android.os.Parcelable
+import com.yizhipin.base.data.response.Goods
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class InvestDetails(
-        val amount: String,
-        val count: String,
-        val getAmount: String,
-        val getTime: String,
-        val groupId: String,
-        val id: String,
-        val investmentId: String,
-        val per: String,
-        val personId: String,
-        val pid: String,
-        val price: String,
-        val uid: String
-
+        val id: Int,
+        val status: String ? = null,
+//        val investment: String,
+        val product: Goods,
+//        val incomeList: String,
+        val max: GeneralizeCollectMax
 ) : Parcelable

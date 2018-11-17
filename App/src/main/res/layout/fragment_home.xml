@@ -25,6 +25,7 @@
             android:src="@drawable/lower"/>
 
         <LinearLayout
+            android:id="@+id/mSearchV"
             style="@style/MatchWrap.Horizontal"
             android:layout_width="0dp"
             android:layout_height="@dimen/ySerchHeight"

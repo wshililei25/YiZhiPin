@@ -4,14 +4,14 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.activity.SearchGoodsActivity"/>
-        <activity
-            android:name=".ui.activity.GoodsDetailActivity"/>
+        <activity android:name=".ui.activity.GoodsDetailActivity"/>
         <activity android:name=".ui.activity.CartActivity"/>
         <activity android:name=".ui.activity.EvaluateActivity"/>
         <activity android:name=".ui.activity.ReportActivity"/>
         <activity android:name=".ui.activity.ShopActivity"/>
         <activity android:name=".ui.activity.ComplainActivity"/>
         <activity android:name=".ui.activity.CollectActivity"/>
+        <activity android:name=".ui.activity.SearchActivity"/>
+        <activity android:name=".ui.activity.SearchGoodsActivity"/>
     </application>
 </manifest>

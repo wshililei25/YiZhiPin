@@ -50,5 +50,7 @@ interface Api {
         const val GENERALIZE_INVEST_AMOUNT = "api/InvestmentIncome/Total"//投资收益金额
         const val GENERALIZE_INVEST_LIST = "api/InvestmentIncome/Record"//投资推广列表
         const val INVEST_DETAILS_LIST = "api/InvestmentIncome/List"//投资明细列表
+        const val INVEST_DETAILS= "api/InvestmentIncome/My/Detail"//投资详情
+        const val SEARCH_KEYWORD = "api/Product/SearchKeyWords"//关键字
     }
 }

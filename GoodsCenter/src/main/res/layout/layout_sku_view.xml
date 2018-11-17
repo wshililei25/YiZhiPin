@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:zhy="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchWrap.Vertical">
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/mSkuContentView"
+        style="@style/MatchWrap"
+        zhy:max_select="1"/>
+</LinearLayout>

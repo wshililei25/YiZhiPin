@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/yBgGray">
+
+    <LinearLayout
+        style="@style/SearchHeaderStyle"
+        android:layout_height="@dimen/ySerchHead">
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/ySerchHeight"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:layout_weight="1"
+            android:background="@drawable/home_header_corner_bg">
+
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:src="@drawable/search"/>
+
+            <EditText
+                android:id="@+id/mSearchEt"
+                style="@style/MatchMatch"
+                android:layout_marginLeft="@dimen/yPaddingSmall"
+                android:background="@null"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:cursorVisible="false"
+                android:hint="@string/serch_hint"
+                android:textSize="@dimen/yTextSmallLarSize"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mCancelTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:text="@string/cancel"
+            android:textColor="@color/yWhite"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/MatchMatch.Vertical.Common"
+        android:padding="@dimen/yPadding">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:text="@string/hot_search"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <LinearLayout
+            android:id="@+id/mSkuView"
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginTop="@dimen/yPadding"/>
+    </LinearLayout>
+
+</LinearLayout>

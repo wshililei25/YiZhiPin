@@ -1,10 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yizhipin.generalizecenter">
+
     <application>
         <activity android:name=".ui.activity.GeneralizeDetailsActivity"/>
         <activity android:name=".ui.activity.PayGeneralizeActivity"/>
         <activity android:name=".ui.activity.GeneralizeGroupDetailsActivity"/>
         <activity android:name=".ui.activity.GeneralizeInvestActivity"/>
+        <activity android:name=".ui.activity.InvestListActivity"/>
         <activity android:name=".ui.activity.InvestDetailsActivity"/>
     </application>
 </manifest>

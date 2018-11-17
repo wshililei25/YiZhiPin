@@ -6,6 +6,7 @@ import com.yizhipin.base.rx.BaseSubscriber
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvest
 import com.yizhipin.generalizecenter.data.response.GeneralizeInvestAmount
 import com.yizhipin.generalizecenter.data.response.InvestDetails
+import com.yizhipin.generalizecenter.data.response.InvestList
 import com.yizhipin.generalizecenter.presenter.view.GeneralizeInvestView
 import com.yizhipin.generalizecenter.service.impl.GeneralizeServiceImpl
 import javax.inject.Inject
@@ -29,6 +30,7 @@ open class GeneralizeInvestPresenter @Inject constructor() : BasePresenter<Gener
                 }, mLifecycleProvider)
 
     }
+
     fun getGenInvestList(map: MutableMap<String, String>) {
 
         mView.showLoading()
@@ -40,13 +42,26 @@ open class GeneralizeInvestPresenter @Inject constructor() : BasePresenter<Gener
                 }, mLifecycleProvider)
 
     }
+
     fun getInvestDetailsList(map: MutableMap<String, String>) {
 
         mView.showLoading()
         mCategoryServiceImpl.getInvestDetailsList(map)
-                .execute(object : BaseSubscriber<MutableList<InvestDetails>>(mView) {
-                    override fun onNext(t: MutableList<InvestDetails>) {
+                .execute(object : BaseSubscriber<MutableList<InvestList>>(mView) {
+                    override fun onNext(t: MutableList<InvestList>) {
                         mView.onGetInvestDetailsListSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
+
+    fun getInvestDetails(map: MutableMap<String, String>) {
+
+        mView.showLoading()
+        mCategoryServiceImpl.getInvestDetails(map)
+                .execute(object : BaseSubscriber<InvestDetails>(mView) {
+                    override fun onNext(t: InvestDetails) {
+                        mView.onGetInvestDetailsSuccess(t)
                     }
                 }, mLifecycleProvider)
 

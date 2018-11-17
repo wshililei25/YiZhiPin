@@ -21,5 +21,6 @@ interface GeneralizeComponent {
     fun inject(activity: GeneralizeGroupDetailsActivity)
     fun inject(activity: GeneralizeInvestActivity)
     fun inject(activity: GeneralizeInvestFragment)
+    fun inject(activity: InvestListActivity)
     fun inject(activity: InvestDetailsActivity)
 }
