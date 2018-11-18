@@ -34,6 +34,7 @@ class EvaluateFragment : BaseMvpFragment<EvaluatePresenter>(), ReportView, BGARe
 
     private var mGoodsId: Int = 0
     private var mShopId: String = ""
+    private var mUserId: String = ""
     private var mCurrentPage: Int = 1
     private var mMaxPage: Int = 1
     private lateinit var mEvaluateAdapter: EvaluateAdapter
@@ -53,7 +54,8 @@ class EvaluateFragment : BaseMvpFragment<EvaluatePresenter>(), ReportView, BGARe
     private fun initView() {
         mGoodsId = activity!!.intent.getIntExtra(GoodsConstant.KEY_GOODS_ID, 0)
         arguments?.let {
-            mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
+            if (arguments!!.getString(GoodsConstant.KEY_SHOP_ID).isNullOrEmpty()) mShopId = "" else mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
+            if (arguments!!.getString(GoodsConstant.KEY_USER_ID).isNullOrEmpty()) mUserId = "" else mUserId = arguments!!.getString(GoodsConstant.KEY_USER_ID)
         }
         mRv.layoutManager = LinearLayoutManager(activity)
         mEvaluateAdapter = EvaluateAdapter(activity!!)
@@ -79,6 +81,7 @@ class EvaluateFragment : BaseMvpFragment<EvaluatePresenter>(), ReportView, BGARe
         map.put("currentPage", mCurrentPage.toString())
         map.put("pid", if (mShopId.isNullOrEmpty()) mGoodsId.toString() else "") //商品详情里的评论
         map.put("shopId", mShopId) //店铺的评论
+        map.put("uid", mUserId) //用户的评论
         map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         mBasePresenter.getEvaluateList(map)
     }

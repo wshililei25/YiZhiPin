@@ -260,8 +260,8 @@
                         style="@style/DividerFixedHeight"
                         android:layout_marginLeft="@dimen/yPaddingMiddle" />
 
-                    <include layout="@layout/layout_evaluate_item" />
-
+                    <include
+                        layout="@layout/layout_evaluate_item" />
 
                 </LinearLayout>
 
@@ -297,7 +297,8 @@
                         style="@style/DividerFixedHeight"
                         android:layout_marginLeft="@dimen/yPaddingMiddle" />
 
-                    <include layout="@layout/layout_report_item" />
+                    <include
+                        layout="@layout/layout_report_item" />
 
                     <View style="@style/DividerFixedHeight_10" />
                 </LinearLayout>

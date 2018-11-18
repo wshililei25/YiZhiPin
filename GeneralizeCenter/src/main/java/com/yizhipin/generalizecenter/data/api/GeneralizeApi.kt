@@ -37,6 +37,12 @@ interface GeneralizeApi {
     fun payPersonage(): Observable<BaseResp<String>>
 
     /**
+     * 获取倒计时
+     */
+    @POST(Api.END_TIME)
+    fun getEndTime(): Observable<BaseResp<String>>
+
+    /**
      * 投资收益金额
      */
     @GET(Api.GENERALIZE_INVEST_AMOUNT)

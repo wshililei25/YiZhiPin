@@ -1,5 +1,6 @@
 package com.yizhipin.generalizecenter.ui.adapter
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -14,9 +15,9 @@ class GeneralizeVpAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapt
 
     override fun getItem(position: Int): Fragment {
         val fragment = GeneralizeGoodsFragment()
-//        val bundle = Bundle()
-//        bundle.putParcelable(GoodsConstant.KEY_CATEGORY_ITEM, mList[position])
-//        fragment.arguments = bundle
+        val bundle = Bundle()
+        bundle.putInt("position", position)
+        fragment.arguments = bundle
         return fragment
     }
 

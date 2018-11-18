@@ -1,6 +1,7 @@
 package com.yizhipin.goods.data.response
 
 import android.os.Parcelable
+import com.yizhipin.base.data.response.UserInfo
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -23,5 +24,6 @@ data class Evaluate(
         val evaCount: Int,
         var zan: Boolean,
         val loginUid: Int,
-        val comments: MutableList<EvaluateReply>
+        val comments: MutableList<EvaluateReply>,
+        val webUser: UserInfo
 ) : Parcelable

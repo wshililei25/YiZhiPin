@@ -1,6 +1,7 @@
 package com.yizhipin.goods.data.response
 
 import android.os.Parcelable
+import com.yizhipin.base.data.response.UserInfo
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -20,9 +21,10 @@ data class Report(
         val createTime: String,
         val nickname: String,
         val imgurl: String,
-        val comments: String,
+        val comments: MutableList<EvaluateReply>,
         val zan: Boolean,
         val loginUid: String,
-        val starCount: Int
+        val starCount: Int,
+        val webUser: UserInfo
 
 ) : Parcelable

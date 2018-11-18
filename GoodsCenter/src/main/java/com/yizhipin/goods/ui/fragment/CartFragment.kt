@@ -19,7 +19,6 @@ import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.goods.R
-import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.goods.data.response.Cart
 import com.yizhipin.goods.injection.component.DaggerCartComponent
 import com.yizhipin.goods.injection.module.CartModule
@@ -137,7 +136,7 @@ class CartFragment : BaseMvpFragment<CartPresenter>(), CartView, View.OnClickLis
      * 删除商品成功
      */
     override fun onDeleteCartListSuccess(result: Boolean) {
-        AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) - 1)
+//        AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) - 1)
     }
 
     override fun onSubmitCartListResult(result: Int) {

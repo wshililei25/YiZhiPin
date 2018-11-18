@@ -64,4 +64,15 @@ open class GeneralizePresenter @Inject constructor() : BasePresenter<GeneralizeV
                 }, mLifecycleProvider)
 
     }
+    fun getEndTime() {
+
+//        mView.showLoading()
+        mCategoryServiceImpl.getEndTime()
+                .execute(object : BaseSubscriber<String>(mView) {
+                    override fun onNext(t: String) {
+                        mView.onGetEndTimeSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
 }

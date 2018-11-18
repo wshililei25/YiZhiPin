@@ -3,24 +3,20 @@ package com.yizhipin.goods.data.api
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.*
-import com.yizhipin.goods.data.protocol.GoodsReq
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 /*
     商品接口
  */
 interface GoodsApi {
-
-    /*
-        获取商品列表
-     */
-    @POST("goods/getGoodsListByKeyword")
-    fun getGoodsListByKeyword(@Body req: GoodsReq.GetGoodsListByKeywordReq): Observable<BaseResp<MutableList<Goods>?>>
 
     /**
      * 商品列表
@@ -74,6 +70,12 @@ interface GoodsApi {
     fun getReportNew(@Query("pid") pid: String): Observable<BaseResp<Report>>
 
     /**
+     * 购物车数量
+     */
+    @GET("${Api.CART_COUNT}")
+    fun getCartCountData(@Query("uid") uid: String): Observable<BaseResp<String>>
+
+    /**
      * 评价列表(未登陆时)
      */
     @GET("${Api.EVALUATE_LIST}")
@@ -89,13 +91,13 @@ interface GoodsApi {
      * 体验报告列表(未登陆时)
      */
     @GET("${Api.REPORT_LIST}")
-    fun getReportListNotLogin(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    fun getReportListNotLogin(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
      * 体验报告列表
      */
     @GET("${Api.REPORT_LIST}")
-    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
+    fun getReportList(@Query("currentPage") currentPage: String, @Query("pid") pid: String, @Query("shopId") shopId: String, @Query("uid") uid: String, @Query("loginUid") loginUid: String): Observable<BasePagingResp<MutableList<Evaluate>>>
 
     /**
      * 点赞评价
@@ -114,6 +116,18 @@ interface GoodsApi {
      */
     @GET("${Api.SHOP_DETAIL}${"/{id}"}")
     fun getShopDetails(@Path("id") id: String, @Query("loginUid") loginUid: String): Observable<BaseResp<Shop>>
+
+    /**
+     * 用户详情
+     */
+    @GET("${Api.EDIT_USER_INFO}${"/{id}"}")
+    fun getUserDetails(@Path("id") id: String): Observable<BaseResp<UserInfo>>
+
+    /**
+     * 拼单列表
+     */
+    @GET(Api.CROWDORDER_LIST)
+    fun getCrowdorderList(@Query("uid") uid: String): Observable<BaseResp<MutableList<UserInfo>>>
 
     /**
      * 举报投诉

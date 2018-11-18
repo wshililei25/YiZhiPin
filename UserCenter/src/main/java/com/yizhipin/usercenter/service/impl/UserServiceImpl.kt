@@ -1,9 +1,9 @@
 package com.yizhipin.usercenter.service.impl
 
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.usercenter.data.repository.UserRepository
-import com.yizhipin.usercenter.data.response.UserInfo
 import com.yizhipin.usercenter.service.UserService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -36,12 +36,12 @@ open class UserServiceImpl @Inject constructor() : UserService {
     /**
      * 编辑用户资料
      */
-    override fun editUserInfo(map : MutableMap<String,String>): Observable<UserInfo> {
+    override fun editUserInfo(map: MutableMap<String, String>): Observable<UserInfo> {
         return mRepository.editUserInfo(map)
                 .convert()
     }
 
-    override fun getCartCount(map : MutableMap<String,String>): Observable<Int> {
+    override fun getCartCount(map: MutableMap<String, String>): Observable<Int> {
         return mRepository.getCartCount(map).convert()
     }
 
@@ -59,11 +59,13 @@ open class UserServiceImpl @Inject constructor() : UserService {
         return mRepository.setPayPwd(map)
                 .convertBoolean()
     }
+
     override fun updatePayPwd(map: MutableMap<String, String>): Observable<Boolean> {
 
         return mRepository.updatePayPwd(map)
                 .convertBoolean()
     }
+
     override fun resetPayPwd(map: MutableMap<String, String>): Observable<Boolean> {
 
         return mRepository.resetPayPwd(map)

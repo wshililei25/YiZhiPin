@@ -9,9 +9,11 @@ import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.kennyc.view.MultiStateView
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
+import com.yizhipin.base.utils.DateUtils
 import com.yizhipin.generalizecenter.R
 import com.yizhipin.generalizecenter.common.GeneralizeConstant
 import com.yizhipin.generalizecenter.data.response.GeneralizeCollect
@@ -45,6 +47,13 @@ class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), Generali
         initRefreshLayout()
         mMultiStateView.startLoading()
         loadData()
+        if (arguments!!.getInt("position") == 0) {
+            mTimeView.setVisible(true)
+            loadEndTime()
+        } else {
+            mTimeView.setVisible(false)
+        }
+
     }
 
     private fun initView() {
@@ -122,10 +131,28 @@ class GeneralizeGoodsFragment : BaseMvpFragment<GeneralizePresenter>(), Generali
 
     }
 
+    /**
+     * 获取倒计时
+     */
+    private fun loadEndTime() {
+        mBasePresenter.getEndTime()
+    }
+
+    /**
+     * 获取倒计时成功
+     */
+    override fun onGetEndTimeSuccess(result: String) {
+
+        mTimeView.setTime(DateUtils.stringToLong(result, DateUtils.datePattern) - DateUtils.curTime)
+        mTimeView.reStart()
+    }
+
     override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
     }
+
     override fun onPayPersonageSuccess(result: String) {
     }
+
     override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
     }
 }

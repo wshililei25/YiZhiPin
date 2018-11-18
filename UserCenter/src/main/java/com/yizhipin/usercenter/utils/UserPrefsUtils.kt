@@ -1,9 +1,9 @@
 package com.yizhipin.usercenter.utils
 
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.common.ProviderConstant
-import com.yizhipin.usercenter.data.response.UserInfo
 
 /**
  *本地存储用户相关信息
@@ -20,6 +20,6 @@ object UserPrefsUtils {
         AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NICKNAME, userInfo?.nickname ?: "")
         AppPrefsUtils.putBoolean(ProviderConstant.KEY_IS_PUSH, userInfo?.push ?: false)
         AppPrefsUtils.putString(ProviderConstant.KEY_AMOUNT, userInfo?.amount ?: "0")
-        AppPrefsUtils.putString(ProviderConstant.KEY_PAY_PWD, userInfo?.payPwd  ?: "")
+        AppPrefsUtils.putString(ProviderConstant.KEY_PAY_PWD, userInfo?.payPwd ?: "")
     }
 }

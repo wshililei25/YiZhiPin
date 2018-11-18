@@ -23,10 +23,10 @@
             android:textSize="@dimen/yTextSmallLarSize" />
 
         <ImageView
+            android:id="@+id/mGradeIv"
             style="@style/WrapWrap"
             android:layout_marginLeft="@dimen/yPaddingMiddle"
-            android:layout_toRightOf="@+id/mPhoneReportTv"
-            android:src="@drawable/grade12" />
+            android:layout_toRightOf="@+id/mPhoneReportTv" />
 
         <TextView
             android:id="@+id/mDateReportTv"

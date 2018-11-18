@@ -15,8 +15,6 @@ class GoodsConstant {
         const  val SEARCH_GOODS_TYPE_KEYWORD = 1
         //搜索关键字
         const val KEY_GOODS_KEYWORD = "goods_keyword"
-        //购物车数量
-        const val SP_CART_SIZE = "cart_size"
         //sku分隔标识
         const val SKU_SEPARATOR = ","
         //商品ID
@@ -29,6 +27,8 @@ class GoodsConstant {
         const  val KEY_SHOP = "shop"
         //店铺ID
         const  val KEY_SHOP_ID = "shop_id"
+        //用户ID
+        const  val KEY_USER_ID = "userId"
         //商品item
         const  val KEY_GOOD_ITEM = "good_item"
     }

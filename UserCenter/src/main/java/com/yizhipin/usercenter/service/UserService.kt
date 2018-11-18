@@ -1,6 +1,6 @@
 package com.yizhipin.usercenter.service
 
-import com.yizhipin.usercenter.data.response.UserInfo
+import com.yizhipin.base.data.response.UserInfo
 import io.reactivex.Observable
 
 

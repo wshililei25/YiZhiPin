@@ -2,7 +2,7 @@ package com.yizhipin.usercenter.data.api
 
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.usercenter.data.response.UserInfo
+import com.yizhipin.base.data.response.UserInfo
 import io.reactivex.Observable
 import retrofit2.http.*
 

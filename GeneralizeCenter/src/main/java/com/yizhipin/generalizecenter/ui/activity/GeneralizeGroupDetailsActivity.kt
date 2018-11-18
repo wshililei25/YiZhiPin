@@ -31,7 +31,6 @@ import org.jetbrains.anko.startActivity
  */
 class GeneralizeGroupDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
 
-
     @Autowired(name = GeneralizeConstant.KEY_GEN_GROUP_ID) //注解接收上个页面的传参
     @JvmField
     var mId: String = ""
@@ -98,6 +97,7 @@ class GeneralizeGroupDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), G
 
         }
     }
+
     //
     override fun onClick(v: View) {
         when (v.id) {
@@ -114,6 +114,9 @@ class GeneralizeGroupDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), G
     }
 
     override fun onGetGoodsDetailsSuccess(result: GeneralizeCollect) {
+    }
+
+    override fun onGetEndTimeSuccess(result: String) {
     }
 }
 

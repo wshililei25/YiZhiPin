@@ -18,4 +18,5 @@ interface GeneralizeService {
     fun getGenInvestList(map: MutableMap<String, String>): Observable<MutableList<GeneralizeInvest>>
     fun getInvestDetailsList(map: MutableMap<String, String>): Observable<MutableList<InvestList>>
     fun getInvestDetails(map: MutableMap<String, String>): Observable<InvestDetails>
+    fun getEndTime(): Observable<String>
 }

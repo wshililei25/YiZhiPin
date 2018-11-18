@@ -38,7 +38,6 @@ import org.jetbrains.anko.toast
 
 class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), GeneralizeView, View.OnClickListener {
 
-
     @Autowired(name = GeneralizeConstant.KEY_GEN_ID) //注解接收上个页面的传参
     @JvmField
     var mId: Int = 0
@@ -261,6 +260,10 @@ class PayGeneralizeActivity : BaseMvpActivity<GeneralizePresenter>(), Generalize
 
     override fun onGetGoodsListSuccess(result: BasePagingResp<MutableList<GeneralizeCollect>>) {
     }
+
     override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
+    }
+
+    override fun onGetEndTimeSuccess(result: String) {
     }
 }

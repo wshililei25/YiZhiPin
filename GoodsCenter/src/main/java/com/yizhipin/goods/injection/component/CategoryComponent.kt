@@ -6,6 +6,7 @@ import com.yizhipin.goods.injection.module.CategoryModule
 import com.yizhipin.goods.ui.activity.SearchActivity
 import com.yizhipin.goods.ui.activity.SearchGoodsActivity
 import com.yizhipin.goods.ui.activity.ShopActivity
+import com.yizhipin.goods.ui.activity.UserActivity
 import com.yizhipin.goods.ui.fragment.*
 import dagger.Component
 
@@ -25,4 +26,6 @@ interface CategoryComponent {
     fun inject(activity: CollectShopFragment)
     fun inject(activity: SearchActivity)
     fun inject(activity: SearchGoodsActivity)
+    fun inject(activity: UserActivity)
+    fun inject(activity: CrowdorderFragment)
 }

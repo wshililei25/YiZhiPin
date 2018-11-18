@@ -54,11 +54,12 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     var mGoodsId: Int = 0
 
     private lateinit var mQBadgeView: QBadgeView
-
     private var mCurrentPercentage = 0f
     private var isNeedScrollTo = true
     private lateinit var mEvaluateImageAdapter: EvaluateImageAdapter
     private lateinit var mGoods: Goods
+    private lateinit var mEvaluate: Evaluate
+    private lateinit var mReport: Report
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,8 +70,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         initSrarView()
         initBanner()
         loadEvaluateData()
+        loadCartCountData()
         loadReportData()
-        loadCartSize()
     }
 
     override fun injectComponent() {
@@ -146,6 +147,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mSingleBuyView.onClick(this)
         mAddCartBtn.onClick(this)
         mCollectionTv.onClick(this)
+        mUserIconIv.onClick(this)
+        mUserIconReportIv.onClick(this)
         mQBadgeView.onClick {
             afterLogin {
                 var map = mutableMapOf<String, String>()
@@ -192,18 +195,6 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         return view.measuredHeight
     }
 
-    /**
-     * 设置购物车数量
-     */
-    private fun loadCartSize() {
-        if (AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) > 0) {
-            mQBadgeView.badgeGravity = Gravity.END or Gravity.TOP
-            mQBadgeView.setGravityOffset(26f, 2f, true)
-            mQBadgeView.setBadgeTextSize(6f, true)
-            mQBadgeView.bindTarget(mAddCartBtn).badgeNumber = AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
-        }
-    }
-
     override fun onClick(v: View) {
         when (v.id) {
 
@@ -244,6 +235,9 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                     }
                 }
             }
+
+            R.id.mUserIconIv -> startActivity<UserActivity>(GoodsConstant.KEY_USER_ID to mEvaluate.uid)
+            R.id.mUserIconReportIv -> startActivity<UserActivity>(GoodsConstant.KEY_USER_ID to mReport.uid)
         }
     }
 
@@ -290,14 +284,13 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 "car" -> mCategoryTv.text = getString(R.string.motor_homes)
             }
 
-            //暂时注释
-//            if (result.shop!!.shopIdentity == "homestay") {
+            if (result.shop!!.shopIdentity == "homestay") {
                 systemPrice.text = getString(R.string.price_pin)
                 mPinPriceTv.text = getString(R.string.price_pin)
                 retailPrice.text = context.getString(R.string.price_original)
                 mSinglePriceTv.text = context.getString(R.string.price_original)
                 mAddCartBtn.setVisible(false)
-//            }
+            }
             result.banner?.let {
                 val list = result.banner!!.split(",").toMutableList()
                 mBanner.setImages(list)
@@ -320,6 +313,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onGetEvaluateNewSuccess(result: Evaluate) {
         result?.let {
+            mEvaluate = result
             mPhoneTv.text = StringUtils.setMobileStar(result.nickname)
             mDateTv.text = DateUtils.parseDate(result.createTime, DateUtils.FORMAT_SHORT).toString()
             mContentTv.text = result.content
@@ -351,6 +345,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onGetReportNewSuccess(result: Report) {
         result?.let {
+            mReport = result
             mPhoneReportTv.text = StringUtils.setMobileStar(result.nickname)
             mDateReportTv.text = DateUtils.parseDate(result.createTime, DateUtils.FORMAT_SHORT).toString()
             mContentReportTv.text = result.content
@@ -365,6 +360,19 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 mEvaluateImageAdapter.setData(list)
             }
 
+            when (result.webUser.level) {
+                1 -> mGradeIv.setImageResource(R.drawable.grade12)
+                2 -> mGradeIv.setImageResource(R.drawable.grade13)
+                3 -> mGradeIv.setImageResource(R.drawable.grade14)
+                4 -> mGradeIv.setImageResource(R.drawable.grade15)
+                5 -> mGradeIv.setImageResource(R.drawable.grade16)
+                6 -> mGradeIv.setImageResource(R.drawable.grade17)
+                7 -> mGradeIv.setImageResource(R.drawable.grade18)
+                8 -> mGradeIv.setImageResource(R.drawable.grade19)
+                9 -> mGradeIv.setImageResource(R.drawable.grade20)
+                10 -> mGradeIv.setImageResource(R.drawable.grade21)
+            }
+
         }
     }
 
@@ -374,8 +382,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     override fun onAddCartSuccess(result: Goods) {
         result?.let {
             ToastUtils.INSTANCE.showToast(this, getString(R.string.add_cart_success))
-            AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE) + 1)
-            loadCartSize()
+            loadCartCountData()
         }
     }
 
@@ -391,6 +398,34 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
      */
     override fun onDataIsNull() {
         mCollectionTv.setText(getString(R.string.collect_goods))
+    }
+
+    /**
+     * 购物车数量
+     */
+    private fun loadCartCountData() {
+        var map = mutableMapOf<String, String>()
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+        mBasePresenter.getCartCountData(map)
+    }
+
+    /**
+     * 获取购物车数量成功
+     */
+    override fun onGetCartCountSuccess(result: String) {
+        loadCartSize(result)
+    }
+
+    /**
+     * 设置购物车数量
+     */
+    private fun loadCartSize(result: String) {
+        if (result.toInt() > 0) {
+            mQBadgeView.badgeGravity = Gravity.END or Gravity.TOP
+            mQBadgeView.setGravityOffset(26f, 2f, true)
+            mQBadgeView.setBadgeTextSize(6f, true)
+            mQBadgeView.bindTarget(mAddCartBtn).badgeNumber = result.toInt()
+        }
     }
 
     override fun onDestroy() {

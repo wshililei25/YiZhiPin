@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 style="@style/MatchMatch.Vertical.White"
+                                                 tools:ignore="MissingDefaultResource">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|snap">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background">
+
+                <ImageView
+                    android:id="@+id/mBackIv"
+                    style="@style/WrapWrap"
+                    android:paddingLeft="@dimen/yPaddingMiddle"
+                    android:paddingTop="@dimen/yPaddingMiddle"
+                    android:paddingRight="@dimen/yPaddingMiddle"
+                    android:src="@drawable/leftarrow3"/>
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/yPaddingBigSmall"
+                    android:paddingRight="@dimen/yPaddingBigSmall">
+
+                    <RelativeLayout
+                        android:id="@+id/mHeadView"
+                        style="@style/WrapWrap">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/mShopIv"
+                            android:layout_width="@dimen/yHeadWidth"
+                            android:layout_height="@dimen/yHeadHeight"
+                            android:src="@drawable/user"/>
+
+                        <TextView
+                            android:id="@+id/mCategoryTv"
+                            style="@style/WrapWrap"
+                            android:layout_width="55dp"
+                            android:layout_alignBottom="@+id/mShopIv"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/shape_whire_solid"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/yPaddingSmall"
+                            android:paddingTop="@dimen/yPaddingMinSmall"
+                            android:paddingRight="@dimen/yPaddingSmall"
+                            android:paddingBottom="@dimen/yPaddingMinSmall"
+                            android:text="专员"
+                            android:textColor="@color/yMain"
+                            android:textSize="@dimen/yTextSmallLarSize"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/mShopNameTv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPadding"
+                        android:layout_toRightOf="@+id/mHeadView"
+                        android:text="dddd"
+                        android:textColor="@color/yShopTv"
+                        android:textSize="@dimen/yTextHugeSize"/>
+
+                    <ImageView
+                        android:id="@+id/mGradeIv"
+                        style="@style/WrapWrap"
+                        android:layout_marginLeft="@dimen/yPadding"
+                        android:layout_marginTop="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/mShopNameTv"/>
+
+                    <TextView
+                        android:id="@+id/credit"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/yPadding"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toRightOf="@+id/mHeadView"
+                        android:text="@string/credit"
+                        android:textColor="@color/yShopTv"
+                        android:textSize="@dimen/yTextMiddleSize"/>
+
+                    <TextView
+                        android:id="@+id/mCreditTv"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/credit"
+                        android:text="0"
+                        android:textColor="@color/yShopTv"
+                        android:textSize="@dimen/yTextLargeSize"/>
+
+                    <ImageView
+                        android:id="@+id/mNewIv"
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mShopNameTv"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/telephonecall"/>
+
+                    <TextView
+                        android:id="@+id/lump"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mHeadView"
+                        android:layout_marginLeft="@dimen/yPadding"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toRightOf="@+id/mHeadView"
+                        android:text="@string/hundred_number"
+                        android:textColor="@color/yShopTv"
+                        android:textSize="@dimen/yTextMiddleSize"/>
+
+                    <TextView
+                        android:id="@+id/mLumpTv"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mHeadView"
+                        android:layout_marginLeft="@dimen/yPaddingSmall"
+                        android:layout_toRightOf="@+id/lump"
+                        android:text="0"
+                        android:textColor="@color/yShopTv"
+                        android:textSize="@dimen/yTextLargeSize"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mTab"
+            style="@style/TabsStyle.Category"
+            app:tabMode="scrollable"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mVp"
+        style="@style/MatchWrap"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+</android.support.design.widget.CoordinatorLayout>

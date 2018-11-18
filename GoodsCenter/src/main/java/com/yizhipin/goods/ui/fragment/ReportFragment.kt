@@ -34,6 +34,7 @@ class ReportFragment : BaseMvpFragment<ReportPresenter>(), ReportView, BGARefres
 
     private var mGoodsId: Int = 0
     private var mShopId: String = ""
+    private var mUserId: String = ""
     private var mCurrentPage: Int = 1
     private var mMaxPage: Int = 1
     private lateinit var mReportAdapter: ReportAdapter
@@ -53,7 +54,8 @@ class ReportFragment : BaseMvpFragment<ReportPresenter>(), ReportView, BGARefres
     private fun initView() {
         mGoodsId = activity!!.intent.getIntExtra(GoodsConstant.KEY_GOODS_ID, 0)
         arguments?.let {
-            mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
+            if (arguments!!.getString(GoodsConstant.KEY_SHOP_ID).isNullOrEmpty()) mShopId = "" else mShopId = arguments!!.getString(GoodsConstant.KEY_SHOP_ID)
+            if (arguments!!.getString(GoodsConstant.KEY_USER_ID).isNullOrEmpty()) mUserId = "" else mUserId = arguments!!.getString(GoodsConstant.KEY_USER_ID)
         }
         mRv.layoutManager = LinearLayoutManager(activity)
         mReportAdapter = ReportAdapter(activity!!)
@@ -78,6 +80,7 @@ class ReportFragment : BaseMvpFragment<ReportPresenter>(), ReportView, BGARefres
         map.put("currentPage", mCurrentPage.toString())
         map.put("pid", if (mShopId.isNullOrEmpty()) mGoodsId.toString() else "") //商品详情里的体验报告
         map.put("shopId", mShopId) //店铺的体验报告
+        map.put("uid", mUserId) //用户的体验报告
         map.put("loginUid", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         mBasePresenter.getReportList(map)
     }

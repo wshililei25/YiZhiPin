@@ -5,9 +5,9 @@ import com.yizhipin.base.data.net.RetrofitFactoryGet
 import com.yizhipin.base.data.net.RetrofitFactoryPost
 import com.yizhipin.base.data.net.RetrofitFactoryPut
 import com.yizhipin.base.data.protocol.BaseResp
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.data.api.UserApi
-import com.yizhipin.usercenter.data.response.UserInfo
 import io.reactivex.Observable
 import javax.inject.Inject
 

@@ -13,4 +13,5 @@ interface GeneralizeView : BaseView {
     fun onGetGoodsDetailsSuccess(result: GeneralizeCollect)
     fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails)
     fun onPayPersonageSuccess(result: String)
+    fun onGetEndTimeSuccess(result: String)
 }

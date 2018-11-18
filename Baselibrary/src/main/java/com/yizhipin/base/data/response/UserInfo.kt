@@ -1,4 +1,4 @@
-package com.yizhipin.usercenter.data.response
+package com.yizhipin.base.data.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -29,4 +29,6 @@ class UserInfo(val id: String,
                val newUser: Boolean,
                val evaCount: String,
                val experience: String,
-               val pin: String):Parcelable
+               val pin: String,
+               val baiPin: String
+):Parcelable

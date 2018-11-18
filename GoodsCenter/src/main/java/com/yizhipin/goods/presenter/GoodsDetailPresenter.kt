@@ -87,4 +87,14 @@ class GoodsDetailPresenter @Inject constructor() : BasePresenter<GoodsDetailView
         }, mLifecycleProvider)
 
     }
+
+    fun getCartCountData(map: MutableMap<String, String>) {
+//        mView.showLoading()
+        mGoodsServiceImpl.getCartCountData(map).execute(object : BaseSubscriber<String>(mView) {
+            override fun onNext(t: String) {
+                mView.onGetCartCountSuccess(t)
+            }
+        }, mLifecycleProvider)
+
+    }
 }

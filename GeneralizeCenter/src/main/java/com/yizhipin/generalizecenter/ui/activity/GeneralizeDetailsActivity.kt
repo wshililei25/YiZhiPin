@@ -110,6 +110,9 @@ class GeneralizeDetailsActivity : BaseMvpActivity<GeneralizePresenter>(), Genera
 
     override fun onGetGroupDetailsSuccess(result: GeneralizeGroupDetails) {
     }
+
+    override fun onGetEndTimeSuccess(result: String) {
+    }
 }
 
 

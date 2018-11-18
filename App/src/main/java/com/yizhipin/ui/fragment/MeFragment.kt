@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.generalizecenter.ui.activity.GeneralizeInvestActivity
-import com.yizhipin.goods.common.GoodsConstant
 import com.yizhipin.ordercender.common.OrderConstant
 import com.yizhipin.ordercender.ui.activity.OrderActivity
 import com.yizhipin.ordercender.ui.activity.ShipAddressActivity
@@ -22,7 +22,6 @@ import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.ui.activity.SettingActivity
 import com.yizhipin.usercenter.common.UserConstant
-import com.yizhipin.usercenter.data.response.UserInfo
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
 import com.yizhipin.usercenter.presenter.UserInfoPresenter
@@ -236,7 +235,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
     override fun onGetCartSuccess(result: Int) {
         if (result > 0) {
             mCartCountTv.text = "${result}个商品"
-            AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, result)
         }
     }
 

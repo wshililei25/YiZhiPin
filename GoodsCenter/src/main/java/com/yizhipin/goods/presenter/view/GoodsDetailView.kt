@@ -20,4 +20,5 @@ interface GoodsDetailView : BaseView {
     fun onGetEvaluateNewSuccess(result: Evaluate)
     //最新体验报告
     fun onGetReportNewSuccess(result: Report)
+    fun onGetCartCountSuccess(result: String)
 }

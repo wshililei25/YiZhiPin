@@ -36,6 +36,10 @@ open class GeneralizeServiceImpl @Inject constructor() : GeneralizeService {
 
         return mRepository.payPersonage(map).convert()
     }
+    override fun getEndTime(): Observable<String> {
+
+        return mRepository.getEndTime().convert()
+    }
 
     override fun getInvestStatistics(map: MutableMap<String, String>): Observable<GeneralizeInvestAmount> {
 

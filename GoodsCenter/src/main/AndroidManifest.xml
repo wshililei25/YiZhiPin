@@ -13,5 +13,6 @@
         <activity android:name=".ui.activity.CollectActivity"/>
         <activity android:name=".ui.activity.SearchActivity"/>
         <activity android:name=".ui.activity.SearchGoodsActivity"/>
+        <activity android:name=".ui.activity.UserActivity"/>
     </application>
 </manifest>

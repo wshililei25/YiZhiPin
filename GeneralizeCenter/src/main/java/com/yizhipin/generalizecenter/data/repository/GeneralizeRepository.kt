@@ -29,6 +29,9 @@ class GeneralizeRepository @Inject constructor() {
     fun payPersonage(map: MutableMap<String, String>): Observable<BaseResp<String>> {
         return RetrofitFactoryPost(map).create(GeneralizeApi::class.java).payPersonage()
     }
+    fun getEndTime(): Observable<BaseResp<String>> {
+        return RetrofitFactoryGet().create(GeneralizeApi::class.java).getEndTime()
+    }
 
     fun getInvestStatistics(map: MutableMap<String, String>): Observable<BaseResp<GeneralizeInvestAmount>> {
         return RetrofitFactoryGet().create(GeneralizeApi::class.java).getInvestStatistics(map["uid"]!!)

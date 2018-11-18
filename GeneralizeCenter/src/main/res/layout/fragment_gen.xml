@@ -2,6 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchMatch.Vertical.White">
 
+    <com.yizhipin.base.widgets.TimeView
+        android:id="@+id/mTimeView"
+        style="@style/MatchWrap"
+        android:background="@color/yBgGray"
+        android:gravity="center"
+        android:padding="@dimen/yPaddingMiddle"
+        android:visibility="gone"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextSmallLarSize"/>
+
     <com.kennyc.view.MultiStateView
         android:id="@+id/mMultiStateView"
         style="@style/MultiStateStyle">

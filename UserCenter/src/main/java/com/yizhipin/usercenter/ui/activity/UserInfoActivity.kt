@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
@@ -11,7 +12,6 @@ import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.UploadUtil
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.common.UserConstant
-import com.yizhipin.usercenter.data.response.UserInfo
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.UserInfoPresenter

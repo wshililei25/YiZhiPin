@@ -4,11 +4,14 @@ import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Goods
 import com.yizhipin.base.data.response.Shop
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.convert
 import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.goods.data.repository.GoodsRepository
-import com.yizhipin.goods.data.response.*
+import com.yizhipin.goods.data.response.Complain
+import com.yizhipin.goods.data.response.Evaluate
+import com.yizhipin.goods.data.response.Report
 import com.yizhipin.goods.service.GoodsService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -20,18 +23,6 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
 
     @Inject
     lateinit var mRepository: GoodsRepository
-
-    override fun getGoodsList(categoryId: Int, pageNo: Int): Observable<MutableList<Goods>?> {
-
-        return mRepository.getGoodsList(categoryId, pageNo).convert()
-    }
-
-    /*
-          根据关键字查询商品
-       */
-    override fun getGoodsListByKeyword(keyword: String, pageNo: Int): Observable<MutableList<Goods>?> {
-        return mRepository.getGoodsListByKeyword(keyword, pageNo).convert()
-    }
 
     /*
        获取商品详情
@@ -46,6 +37,10 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
 
     override fun getReportNew(map: MutableMap<String, String>): Observable<Report> {
         return mRepository.getReportNew(map).convert()
+    }
+
+    override fun getCartCountData(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.getCartCountData(map).convert()
     }
 
     override fun getEvaluateList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
@@ -68,9 +63,17 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
         return mRepository.getShopDetails(map).convert()
     }
 
+    override fun getUserDetails(map: MutableMap<String, String>): Observable<UserInfo> {
+        return mRepository.getUserDetails(map).convert()
+    }
+    override fun getCrowdorderList(map: MutableMap<String, String>): Observable<MutableList<UserInfo>> {
+        return mRepository.getCrowdorderList(map).convert()
+    }
+
     override fun getComplainShop(map: MutableMap<String, String>): Observable<Complain> {
         return mRepository.getComplainShop(map).convert()
     }
+
     override fun collectShop(map: MutableMap<String, String>): Observable<Collect> {
         return mRepository.collectShop(map).convert()
     }
