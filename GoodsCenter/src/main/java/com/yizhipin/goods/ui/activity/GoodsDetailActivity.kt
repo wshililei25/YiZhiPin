@@ -149,6 +149,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mCollectionTv.onClick(this)
         mUserIconIv.onClick(this)
         mUserIconReportIv.onClick(this)
+        mPinPriceView.onClick(this)
         mQBadgeView.onClick {
             afterLogin {
                 var map = mutableMapOf<String, String>()
@@ -238,6 +239,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
             R.id.mUserIconIv -> startActivity<UserActivity>(GoodsConstant.KEY_USER_ID to mEvaluate.uid)
             R.id.mUserIconReportIv -> startActivity<UserActivity>(GoodsConstant.KEY_USER_ID to mReport.uid)
+            R.id.mPinPriceView -> startActivity<ShareBillListActivity>(GoodsConstant.KEY_GOODS_ID to mGoods.id)
         }
     }
 

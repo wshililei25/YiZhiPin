@@ -14,5 +14,6 @@
         <activity android:name=".ui.activity.SearchActivity"/>
         <activity android:name=".ui.activity.SearchGoodsActivity"/>
         <activity android:name=".ui.activity.UserActivity"/>
+        <activity android:name=".ui.activity.ShareBillListActivity"/>
     </application>
 </manifest>

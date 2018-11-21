@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical.White"
+    >
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <ImageView
+            android:id="@+id/mGoodsIconIv"
+            android:layout_width="@dimen/yHeadWidth"
+            android:layout_height="@dimen/yHeadHeight"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/mCheckedCb"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/mGoodsNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@id/mGoodsIconIv"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="名字名字"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+        <ImageView
+            android:id="@+id/mGradeIv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mGoodsNameTv"/>
+
+        <TextView
+            android:id="@+id/mKmTv"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:text="1km"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextMiddleBigSize"/>
+
+
+        <TextView
+            android:id="@+id/mAddressTv"
+            style="@style/WrapWrap"
+            android:layout_below="@id/mGoodsNameTv"
+            android:layout_alignLeft="@id/mGoodsNameTv"
+            android:layout_alignBottom="@+id/mSinPriceTv"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:gravity="bottom"
+            android:text="上海市"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/subtotal"
+            style="@style/WrapWrap"
+            android:layout_alignLeft="@id/mGoodsNameTv"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:gravity="bottom"
+            android:text="@string/completed"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/mNumberTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_toRightOf="@+id/subtotal"
+            android:gravity="bottom"
+            android:text="1"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_toRightOf="@+id/mNumberTv"
+            android:text="种商品的拼单"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/mStateTv"
+            style="@style/WrapWrap"
+            android:layout_alignBottom="@+id/mGoodsIconIv"
+            android:layout_alignParentRight="true"
+            android:gravity="bottom"
+            android:text="还剩2人成单"
+            android:textColor="@color/yMain"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/mLine"
+        style="@style/DividerFixedHeight"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"/>
+</LinearLayout>

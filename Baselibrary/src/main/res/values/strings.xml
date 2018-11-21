@@ -222,6 +222,7 @@
     <string name="invest_details">投资详情</string>
     <string name="hot_search">热门搜索</string>
     <string name="hundred_number">百人团人数</string>
+    <string name="completed">已完成</string>
 
 
     <string name="send_code_success">发送验证码成功</string>

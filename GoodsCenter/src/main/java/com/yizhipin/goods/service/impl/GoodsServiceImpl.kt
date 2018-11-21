@@ -12,6 +12,7 @@ import com.yizhipin.goods.data.repository.GoodsRepository
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.ShareBill
 import com.yizhipin.goods.service.GoodsService
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -76,5 +77,8 @@ open class GoodsServiceImpl @Inject constructor() : GoodsService {
 
     override fun collectShop(map: MutableMap<String, String>): Observable<Collect> {
         return mRepository.collectShop(map).convert()
+    }
+    override fun getShareBillList(map: MutableMap<String, String>): Observable<MutableList<ShareBill>> {
+        return mRepository.getShareBillList(map).convert()
     }
 }

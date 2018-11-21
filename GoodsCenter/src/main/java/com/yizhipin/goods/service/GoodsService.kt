@@ -8,6 +8,7 @@ import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.ShareBill
 import io.reactivex.Observable
 
 
@@ -29,4 +30,5 @@ interface GoodsService {
     fun collectShop(map: MutableMap<String, String>): Observable<Collect>
     fun getUserDetails(map: MutableMap<String, String>): Observable<UserInfo>
     fun getCrowdorderList(map: MutableMap<String, String>): Observable<MutableList<UserInfo>>
+    fun getShareBillList(map: MutableMap<String, String>): Observable<MutableList<ShareBill>>
 }

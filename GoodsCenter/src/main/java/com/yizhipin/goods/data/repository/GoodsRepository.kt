@@ -12,6 +12,7 @@ import com.yizhipin.goods.data.api.GoodsApi
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.ShareBill
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -49,9 +50,9 @@ class GoodsRepository @Inject constructor() {
 
     fun getReportList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Evaluate>>> {
         if (map["loginUid"].isNullOrEmpty()) {
-            return RetrofitFactoryGet().create(GoodsApi::class.java).getReportListNotLogin(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!,map["uid"]!!)
+            return RetrofitFactoryGet().create(GoodsApi::class.java).getReportListNotLogin(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!, map["uid"]!!)
         } else {
-            return RetrofitFactoryGet().create(GoodsApi::class.java).getReportList(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!,map["uid"]!!, map["loginUid"]!!)
+            return RetrofitFactoryGet().create(GoodsApi::class.java).getReportList(map["currentPage"]!!, map["pid"]!!, map["shopId"]!!, map["uid"]!!, map["loginUid"]!!)
         }
     }
 
@@ -70,6 +71,7 @@ class GoodsRepository @Inject constructor() {
     fun getUserDetails(map: MutableMap<String, String>): Observable<BaseResp<UserInfo>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getUserDetails(map["id"]!!)
     }
+
     fun getCrowdorderList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<UserInfo>>> {
         return RetrofitFactoryGet().create(GoodsApi::class.java).getCrowdorderList(map["uid"]!!)
     }
@@ -80,6 +82,10 @@ class GoodsRepository @Inject constructor() {
 
     fun collectShop(map: MutableMap<String, String>): Observable<BaseResp<Collect>> {
         return RetrofitFactoryPost(map).create(GoodsApi::class.java).collectShop()
+    }
+
+    fun getShareBillList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<ShareBill>>> {
+        return RetrofitFactoryGet().create(GoodsApi::class.java).getShareBillList(map["lng"]!!, map["lat"]!!, map["pid"]!!)
     }
 
 }

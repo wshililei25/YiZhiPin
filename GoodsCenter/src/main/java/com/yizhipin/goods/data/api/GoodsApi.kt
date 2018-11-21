@@ -6,6 +6,7 @@ import com.yizhipin.base.data.response.*
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.goods.data.response.Evaluate
 import com.yizhipin.goods.data.response.Report
+import com.yizhipin.goods.data.response.ShareBill
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -140,4 +141,10 @@ interface GoodsApi {
      */
     @POST(Api.COLLECT_SHOP)
     fun collectShop(): Observable<BaseResp<Collect>>
+
+    /**
+     * 附近品团列表
+     */
+    @GET(Api.SHARE_BILL_LIST)
+    fun getShareBillList(@Query("lng") lng: String, @Query("lat") lat: String, @Query("pid") pid: String): Observable<BaseResp<MutableList<ShareBill>>>
 }

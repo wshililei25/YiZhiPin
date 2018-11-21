@@ -54,5 +54,6 @@ interface Api {
         const val SEARCH_KEYWORD = "api/Product/SearchKeyWords"//关键字
         const val END_TIME = "api/Investment/EndTime"//竞价结束时间
         const val CROWDORDER_LIST = "api/Tuan/List"//拼单列表
+        const val SHARE_BILL_LIST = "api/Tuan/NearBy"//附近品团列表
     }
 }
